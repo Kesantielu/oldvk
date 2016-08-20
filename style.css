@@ -4,6 +4,7 @@ body {
     font-size: 11px;
     background: #FFF;
     line-height: 1.182;
+    overflow-x: hidden;
 }
 body:before {
     content: "0.42 alpha";
@@ -89,6 +90,9 @@ textarea {
     border-radius: 0px;
     margin: 0;
     box-shadow: none;
+}
+.ui_rmenu {
+    width: 607px;
 }
 #profile .wide_column,
 #group .wide_column,
@@ -1354,6 +1358,9 @@ input.text.ts_input {
 .top_profile_img {
     border-radius: 2px;
     margin: 6px 0;
+}
+#top_nav {
+    padding-right: 10px;
 }
 .top_nav_link {
     line-height: 40px;
@@ -2894,12 +2901,15 @@ div.submit_post_field~.placeholder .ph_input {
     order: 8;
 }
 /* Ответы 9 */
-
+#side_bar_inner ol #l_ntf {
+    order: 9;
+}
 #side_bar_inner ol #l_fav {
     order: 10;
 }
-/* Настройки 11 */
-
+#side_bar_inner ol #l_apm {
+    order: 11;
+}
 #side_bar_inner ol #l_ap {
     order: 13;
 }
@@ -2909,16 +2919,16 @@ div.submit_post_field~.placeholder .ph_input {
 #side_bar_inner ol #l_ads {
     order: 15;
 }
-#side_bar_inner ol #l_apm {
-    order: 16;
-}
 #side_bar_inner ol .l_comm {
-    order: 18;
+    order: 17;
 }
 #side_bar_inner ol .more_div.l_main {
     order: 12;
 }
 #side_bar_inner ol .more_div {
-    order: 17;
+    order: 16;
+}
+.fave_link_thumb {
+    border-radius: 0;
 }
 }
