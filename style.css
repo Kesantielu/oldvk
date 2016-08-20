@@ -68,10 +68,13 @@ textarea {
 }
 .left_count_wrap {
     font-size: 10px;
-    padding: 4px;
+    padding: 3px;
     margin: 1px;
     height: auto;
     line-height: inherit;
+}
+#side_bar .left_count_wrap .inl_bl {
+    line-height: 130%
 }
 .left_count:before {
     content: "+";
@@ -1134,7 +1137,8 @@ input.text.ts_input {
     padding: 0;
 }
 #side_bar ol li .left_row:hover .left_count_wrap {
-    padding: 5px;
+    padding: 3px;
+    margin: 1px;
 }
 .profile_msg_split,
 .page_actions_wide {
@@ -1873,8 +1877,8 @@ textarea.page_poll_export_code {
 .flat_button.active,
 .flat_button:active {
     background-color: #5c7ca1;
-    padding-top: 7px;
-    padding-bottom: 6px;
+    padding-top: 6px;
+    padding-bottom: 5px;
 }
 .wk_like_icon {
     margin: 2px 8px 0 0;
@@ -2066,7 +2070,7 @@ h5.post_author {
 .im-right-menu.ui_rmenu {
     position: fixed;
     margin-left: 0;
-    z-index: 10;
+    z-index: 2;
     width: 607px;
     top: 40px;
     border-bottom: 1px solid #597DA3;
@@ -2097,6 +2101,7 @@ h5.post_author {
     left: 0px;
     padding: 8px 5px;
     border-bottom: 1px solid #DAE1E8;
+    /*display: none!important; /*Для отладки*/
 }
 ._im_ui_peers_list .ui_rmenu_item {
     font-weight: bold;
@@ -2105,6 +2110,63 @@ h5.post_author {
     border-radius: 2px;
     padding: 3px 6px 4px;
     margin: 5px;
+}
+.im-page .im-page--peer.im-page--peer_actions {
+    background-color: #6383a8;
+    color: #FFF;
+    font-weight: bold;
+    padding: 5px 10px 6px;
+    border-radius: 2px;
+}
+.im-page .im-page--toolsw {
+    border-bottom: 1px solid #DAE1E8;
+    background: #F7F7F7;
+}
+.im-page.im-page_classic .im-page--header-inner {
+    box-shadow: none;
+}
+.im-page.im-page_classic .im-page--top-date-bar-wrap {
+    width: 100%;
+    display: none;
+    /*не было в старом дизайне*/
+}
+.im-deselect:before {
+    background: url('data:image/gif;base64,R0lGODlhCwAYAJECAEVojvf39////wAAACH5BAEAAAIALAAAAAALABgAAAI1lGCJBq3e4omI2nfTlNo65kHUJi6boh3pyrZB+hrBnMyvTeO3btc8jAPqfLxdb9iT0WQwQwEAOw==')no-repeat 0 -12px;
+    width: 11px;
+    height: 12px;
+}
+.im-deselect {
+    width: 11px;
+    height: 12px;
+    opacity: 0.5;
+    margin: 0;
+    position: relative;
+    right: auto;
+    top: 2px;
+}
+.im-page .im-page--peer .im-deselect {
+    right: auto;
+}
+.im-page .im-page--simple-name {
+    padding: 10px 20px;
+}
+.im-page--header-more:before {
+    content: "...";
+    float: right;
+    margin-right: 5px;
+    top: -20px;
+    position: relative;
+    color: #45688E;
+}
+.im-page .im-page--header-more .ui_actions_menu_icons {
+    background: none;
+}
+.ui_actions_menu_wrap {
+    top: -25px;
+    position: relative;
+}
+.im-page .im-page--messages-search {
+    display: none;
 }
 .im-mess-stack .im-mess-stack--content .im-mess-stack--pname,
 .im-page .im-page--lastact,
