@@ -1416,7 +1416,7 @@ input.text.ts_input {
 }
 .ui_actions_menu_wrap,
 .feed_filter_icon {
-    display: none
+    /*display: none*/
 }
 /* в целях отладки */
 
@@ -2066,7 +2066,7 @@ h5.post_author {
 .im-right-menu.ui_rmenu {
     position: fixed;
     margin-left: 0;
-    z-index: 200;
+    z-index: 10;
     width: 607px;
     top: 40px;
     border-bottom: 1px solid #597DA3;
@@ -2487,15 +2487,52 @@ input.ui_search_field:-ms-input-placeholder {
 /* Настройка левого меню */
 
 a.ts_contact {
-    padding: 8px
+    height: 30px;
+    line-height: 30px;
+    padding: 4px 13px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+a.ts_contact:first-child {
+    padding-top: 8px;
+}
+a.ts_contact:last-child {
+    padding-bottom: 8px;
 }
 .ts_cont_wrap {
-    border-radius: 1px;
-    left: 145px;
-    top: 40px;
+    position: absolute;
+    top: 47px;
+    left: 147px;
+    background: #fff;
+    width: 210px;
+    z-index: 800;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 0 6px #999;
 }
 .ts_contact_info {
     font-size: 10px;
+    padding-top: 0;
+}
+.ts_contact_title_wrap {
+    display: block;
+    line-height: 140%;
+}
+.ts_contact_name {
+    line-height: 30px;
+    padding: 0 0 0 8px;
+    white-space: nowrap;
+    display: block;
+    width: 133px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: normal;
+    height: 30px;
+}
+.ts_contact_photo,
+.ts_contact_img {
+    width: 30px;
+    height: 30px;
 }
 .ts_contact_photo.online:after {
     content: "";
@@ -2525,12 +2562,19 @@ a.ts_contact {
     background-position: 0 0;
 }
 .ts_search_link .ts_contact_status {
-    background: none;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAMCAYAAAC0qUeeAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEtJREFUeNpj+P//PwOxGIWzfOuRM0D8H4iNgZig4v9IGEMDumJjfBrQFePVgE0xNg2YivGYjlMx0c7AqhCXYqwKcSk+g0shVjfjwwAJr3QjHT5QjwAAAABJRU5ErkJggg==');
+    width: 11px;
+    height: 12px;
+    top: 13px;
+    right: 15px;
 }
 a.ts_search_link {
-    height: 20px;
-    line-height: 20px;
-    border-bottom: 1px solid #e7e8ec;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 4px 13px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .ts_search_sep {
     display: none;
@@ -2860,7 +2904,13 @@ div.submit_post_field~.placeholder .ph_input {
 #group .narrow_column.fixed,
 #profile .narrow_column.fixed,
 #side_bar_inner {
-    position: relative!important
+    position: relative!important;
+}
+#public .narrow_column.fixed,
+#group .narrow_column.fixed,
+#profile .narrow_column.fixed {
+    margin-top: 0!important;
+    top: 0!important;
 }
 #side_bar_inner ol {
     display: flex;
