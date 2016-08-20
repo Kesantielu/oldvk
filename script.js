@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Design for VK
 // @namespace    https://dasefern.com/
-// @version      0.19
+// @version      0.17
 // @description  Companion script for using with Old Design VK CSS
 // @author       Kesantielu Dasefern and others
 // @include      https://vk.com/*
@@ -36,6 +36,7 @@
 
     $(".left_menu_nav_wrap").empty();
     $("#ads_left").css({'display': 'none'});
+    
 
 		
 function check_feed_count(){
@@ -52,5 +53,23 @@ setTimeout(check_feed_count, 0);
 setInterval(check_feed_count, 2*1000);
 
 $('<li id="l_ntf" class=""><a href="/feed?section=notifications" class="left_row"><span class="left_fixer" id="feed_li"></span></a></div></li>').insertAfter('#l_nwsf');
+    
+   
+   /* var max_depth = $("div.narrow_column_wrap").outerHeight(true) + 50;
+    $("#page_layout").change(function(){
+        max_depth = $("div.narrow_column_wrap").outerHeight(true) + 50;
+    }); */   
+    
+    $(document).scroll(function(){
+        if (document.location.href != "https://vk.com/friends" & document.location.href != "https://vk.com/groups" & document.location.href != "https://vk.com/feed" & document.location.href.indexOf("https://vk.com/audios") == -1) {
+            if ($(document).scrollTop() > 2300) {
+                $("div#wide_column").width(597);
+                $("div.wall_post_text").width(537);
+            } else {
+                $("div#wide_column").width(387);
+                $("div.wall_post_text").width(327);
+            }
+        }
+    });
 
 })();
