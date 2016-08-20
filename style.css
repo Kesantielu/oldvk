@@ -424,6 +424,9 @@ h2.page_name {
 .wall_module .post_header {
     padding: 5px 0 0;
 }
+.wall_module .post_header:hover .ui_actions_menu_icons {
+    opacity: 0.6;
+}
 .wall_fixed .wall_module .wall_text {
     padding: 0 1px 0;
 }
@@ -1039,7 +1042,7 @@ input.ui_search_field,
     width: 11px;
     height: 11px;
     opacity: 0;
-    transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.1s ease-in-out;
 }
 .wall_module .post_header .ui_actions_menu_icons:hover {
     opacity: 1
@@ -1418,12 +1421,6 @@ input.text.ts_input {
     background: #597DA3;
     padding-left: 8px;
 }
-.ui_actions_menu_wrap,
-.feed_filter_icon {
-    /*display: none*/
-}
-/* в целях отладки */
-
 .pr {
     display: none;
 }
@@ -2164,7 +2161,7 @@ h5.post_author {
     background: none;
 }
 .ui_actions_menu_wrap {
-    top: -25px;
+    top: -35px;
     position: relative;
 }
 .im-page .im-page--messages-search {
