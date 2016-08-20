@@ -32,6 +32,9 @@ textarea {
     font-size: inherit;
     font-family: inherit;
 }
+.scroll_fix {
+    overflow-x: hidden;
+}
 #page_body {
     font-size: 11px;
     width: 631px!important;
@@ -120,7 +123,10 @@ textarea {
 }
 .page_avatar,
 .page_avatar_img,
-.post_img {
+.post_img,
+.feedback_img,
+.feedback_row_answer .feedback_img,
+.search_item_img {
     border-radius: 0;
 }
 #page_layout,
@@ -3107,6 +3113,17 @@ div.submit_post_field~.placeholder .ph_input {
     margin-top: 0!important;
     top: 0!important;
 }
+.tt {
+    font-size: inherit;
+}
+.preq_friend {
+    padding: 10px;
+}
+.preq_wrap {
+    width: 200px;
+}
+/* Порядок левого меню */
+
 #side_bar_inner ol {
     display: flex;
     flex-wrap: wrap;
@@ -3138,13 +3155,18 @@ div.submit_post_field~.placeholder .ph_input {
 #side_bar_inner ol #l_nwsf {
     order: 8;
 }
-/* Ответы 9 */
-
+#side_bar_inner ol #l_ntf {
+    order: 8;
+}
 #side_bar_inner ol #l_fav {
     order: 10;
 }
-/* Настройки 11 */
-
+#side_bar_inner ol #l_set {
+    order: 11;
+}
+#side_bar_inner ol .more_div.l_main {
+    order: 12;
+}
 #side_bar_inner ol #l_ap {
     order: 13;
 }
@@ -3157,13 +3179,10 @@ div.submit_post_field~.placeholder .ph_input {
 #side_bar_inner ol #l_apm {
     order: 16;
 }
-#side_bar_inner ol .l_comm {
-    order: 18;
-}
-#side_bar_inner ol .more_div.l_main {
-    order: 12;
-}
 #side_bar_inner ol .more_div {
     order: 17;
+}
+#side_bar_inner ol .l_comm {
+    order: 18;
 }
 }
