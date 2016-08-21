@@ -6,7 +6,7 @@ body {
     line-height: 1.182;
 }
 body:before {
-    content: "0.43 alpha \A \A9  Kesantielu Dasefern \A vk.com/old_vk_style";
+    content: "0.44 alpha \A \A9  Kesantielu Dasefern \A vk.com/old_vk_style";
     position: absolute;
     white-space: pre;
     right: 0;
@@ -46,6 +46,7 @@ textarea {
 .side_bar_inner {
     width: 136px;
     padding: 5px 0 10px 4px;
+    margin-top: 40px!important;
 }
 #side_bar .left_label {
     font-size: 11px;
@@ -130,7 +131,8 @@ textarea {
 .feedback_row_answer .feedback_img,
 .search_item_img,
 .olist_item_photo,
-.im-chat-placeholder {
+.im-chat-placeholder,
+.fave_link_thumb {
     border-radius: 0;
 }
 #page_layout,
@@ -258,7 +260,12 @@ textarea {
 .cal_table .day.sel.hover {
     line-height: 22px;
 }
-.ui_actions_menu_item.im-action:before {}
+.ui_actions_menu_item.im-action:before {
+    padding-left: 10px;
+}
+.ui_actions_menu {
+    border-radius: 2px;
+}
 .im_cal_clear_lnk {
     font-family: inherit;
     font-size: inherit;
@@ -1710,7 +1717,7 @@ small.divider:before {
     padding: 6px 0;
 }
 .ui_zoom_count {
-    color: #00002B;
+    color: #00002C;
 }
 .fans_fan_name {
     font-size: inherit;
@@ -2550,6 +2557,13 @@ input.ui_search_field:-ms-input-placeholder {
     padding: 13px 10px;
     font-size: inherit;
     height: 40px;
+}
+.im-mess .im-mess--check {
+    background: url('data:image/gif;base64,R0lGODlhDwAMAJH/APIGb4ikwk3M9bD0GSH5BAkAAAMALAAAAAAPAAwAAAIcnI8WyRrbzptxzCfThRY7+mGbtoHkGKGVWVlVAQA7') no-repeat;
+    left: 35px;
+}
+.im-page.im-page_classic .im-mess:not(.im-mess_fwd).im-mess_unread>.im-mess--check {
+    left: 35px;
 }
 .nim-dialog .nim-dialog--name .nim-dialog--name-w {
     color: #2B587A;
