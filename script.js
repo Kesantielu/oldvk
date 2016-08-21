@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Design for VK
 // @namespace    https://dasefern.com/
-// @version      0.19
+// @version      0.20
 // @description  Companion script for using with Old Design VK CSS
 // @author       Kesantielu Dasefern and others
 // @include      https://vk.com/*
@@ -40,7 +40,7 @@
 		
 function check_feed_count(){
 		feed_count = $("#top_notify_count").text();
-		if (feed_count != 0){
+		if (feed_count !== '0'){
 			$("#feed_li").html('<span class="left_count_wrap fl_r"><span class="inl_bl left_count" id="feed_count">'+ feed_count +'</span></span><span class="left_label inl_bl">Мои Ответы</span>');
 		}
 		else {
