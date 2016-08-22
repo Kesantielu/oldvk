@@ -1,3 +1,4 @@
+@-moz-document domain("vk.com") {
 body {
     font-family: tahoma, arial, verdana, sans-serif, Lucida Sans;
     font-size: 11px;
@@ -3510,4 +3511,5 @@ div.submit_post_field~.placeholder .ph_input {
 }
 #side_bar_inner ol .l_comm {
     order: 18;
+}
 }
