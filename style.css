@@ -54,7 +54,10 @@ h5.post_author,
 .im-mess.im-mess_srv .im-mess--text,
 .im-topic,
 .im-topic_dialog,
-.im-settings {
+.im-settings,
+.ui_crumb_count,
+.page_block_header,
+.ui_tab_count {
     font-size: inherit;
     font-family: inherit;
 }
@@ -705,10 +708,13 @@ h2.page_name {
     color: #99ADC2;
 }
 .ui_tab_count {
-    font-size: 11px;
-    padding-left: 4px;
-    color: #99ADC2
+    color: #45688E;
 }
+.ui_tab_sel .ui_tab_count {
+    color: #FFF;
+}
+.ui_tab,
+.ui_tabs .ui_tab,
 .ui_tab_sel,
 .ui_tabs .ui_tab_sel,
 .ui_tabs .ui_tab.ui_tab_sel {
@@ -720,12 +726,9 @@ h2.page_name {
 #page_wall_suggest .ui_tab:hover {
     text-decoration: underline
 }
-.ui_tab,
-.ui_tabs .ui_tab {
-    color: #45688E;
-}
 .ui_tabs_slider {
     display: none;
+    height: 0;
 }
 /* Эффект при переключении вкладок */
 
@@ -1527,11 +1530,12 @@ input.text.ts_input {
 /* #feed_rmenu,*/
 
 .ui_rmenu {
-    width: 607px;
+    /* width: 607px; */
+    
     background: #F7F7F7;
     border-bottom: 1px solid #DAE1E8;
     margin: -10px -10px 0;
-    padding: 8px 10px 8px;
+    padding: 5px;
 }
 #ui_rmenu_news_list {
     display: block!important;
@@ -1551,6 +1555,12 @@ input.text.ts_input {
 }
 #content>.wide_column_left .narrow_column.fixed {
     position: inherit;
+    top: 0!important;
+}
+.ui_search.ui_search_fixed {
+    position: relative;
+    top: 0!important;
+    box-shadow: none;
 }
 .ui_toggler_wrap {
     padding: 16px 10px 4px;
@@ -1756,6 +1766,10 @@ small.divider:before {
 }
 .fans_fan_name {
     font-size: inherit;
+    font-weight: bold;
+    width: 120px;
+    margin-left: -10px;
+    padding-top: 5px;
 }
 .wk_poll_extra_checkbox .idd_selected_value {
     color: #2B587A;
@@ -2219,7 +2233,6 @@ img.fc_contact_photo {
     border-radius: 2px;
 }
 .im-page .im-page--toolsw {
-    border-bottom: 1px solid #DAE1E8;
     background: #F7F7F7;
 }
 .im-page.im-page_classic .im-page--header-inner {
@@ -2255,7 +2268,7 @@ img.fc_contact_photo {
     right: auto;
 }
 .im-page .im-page--simple-name {
-    padding: 11px 20px;
+    padding: 13px 20px;
 }
 .nim-dialog--typing:before {
     content: "";
@@ -2381,6 +2394,7 @@ img.fc_contact_photo {
 }
 .im-page.im-page_classic .im-mess-stack--content .im-mess-stack--pname {
     left: 132px;
+    height: 0;
 }
 .im-page.im-page_classic .im-page--lastact {
     padding-left: 132px
@@ -2477,7 +2491,7 @@ img.fc_contact_photo {
     /*margin: 0 -15px;*/
     
     border: none;
-    border-bottom: 1px solid #DAE1E8;
+    /* border-bottom: 1px solid #DAE1E8;*/
 }
 input.ui_search_field::-webkit-input-placeholder,
 input.ui_search_field::-moz-placeholder,
@@ -2797,6 +2811,7 @@ input.ui_search_field:-ms-input-placeholder {
 .nim-peer.online.mobile:after {
     background: url('data:image/gif;base64,R0lGODlhBwALAMQeAAAAAAgICBAQEBgYGCEhISkpKTExMTk5OUJCQkpKSlJSUlpaWmNjY2tra3Nzc3t7e4SEhIyMjJSUlJycnKWlpa2trbW1tb29vcbGxs7OztbW1t7e3ufn5+/v7/f395K6RSH5BAkAAB8ALAAAAAAHAAsAAAUe4CeK1qdZKHpaV5te44XCoszGr5uea5qlKsuqpwoBADs=') no-repeat 0 center;
     padding-left: 10px;
+    background-color: transparent!important;
 }
 .nim-dialog .nim-dialog--name .nim-dialog--name-w {
     max-width: 90%
@@ -2833,6 +2848,26 @@ input.ui_search_field:-ms-input-placeholder {
     margin-top: 0;
     right: 0;
     top: 25px;
+}
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog_hovered,
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog_selected,
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog_unread.nim-dialog_classic,
+.nim-dialog:not(.nim-dialog_deleted):hover {
+    background: #edf1f5;
+    /*фон непрочитанных собщений*/
+}
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog.nim-dialog_classic.nim-dialog_unread,
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog.nim-dialog_hovered,
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog:hover,
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog_hovered+.im-page--messages-search,
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog_hovered+.nim-dialog,
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog_selected+.im-page--messages-search,
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog_selected+.nim-dialog,
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog_unread.nim-dialog_classic+.im-page--messages-search,
+.nim-dialog:not(.nim-dialog_deleted).nim-dialog_unread.nim-dialog_classic+.nim-dialog,
+.nim-dialog:not(.nim-dialog_deleted):hover+.im-page--messages-search,
+.nim-dialog:not(.nim-dialog_deleted):hover+.nim-dialog {
+    border-top: solid 1px #dae1e8;
 }
 .nim-dialog.nim-dialog_classic .nim-dialog--photo .nim-peer .im_grid>.dialogs_inline_chatter {
     width: 24px;
@@ -3316,8 +3351,32 @@ a.ts_search_link {
 .fans_rows.wall_module {
     padding: 0 20px 5px
 }
-.fans_fan_row {
-    padding: 0 10px 45px;
+.fave_users_row .fans_fan_row {
+    padding: 0 10px 40px;
+}
+.fave_users_row {
+    padding: 15px 2px;
+}
+.page_block_header {
+    color: #45688e;
+    padding: 13px 10px 0px;
+    border-bottom: 1px solid #dae1e8;
+    background: #FFF;
+    line-height: inherit;
+    height: auto;
+    font-weight: bold;
+}
+.page_block_header_inner {
+    padding: 3px 0px 4px;
+}
+.ui_crumb,
+.ui_crumb_count {
+    line-height: inherit;
+    height: auto;
+    color: #45688e;
+}
+.fave_module .photos_container {
+    padding: 15px 5px;
 }
 .wk_likes #wk_content {
     width: 620px;
@@ -3630,4 +3689,14 @@ div.submit_post_field~.placeholder .ph_input {
 }
 /* === */
 /* ==||== */
+
+h2.page_block_h2,
+.search_query_wrap {
+    margin: 0 -10px;
+}
+#profile h2.page_block_h2,
+#group h2.page_block_h2,
+#public h2.page_block_h2 {
+    margin: 0;
+}
 }
