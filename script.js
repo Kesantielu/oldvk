@@ -40,7 +40,7 @@
 		
 function check_feed_count(){
 		feed_count = $("#top_notify_count").text();
-		if (feed_count !== '0'){
+		if (feed_count > '0'){ //иначе показывает всегда что есть новые ответы, но пофакту новых нет (не красиво, когда светится плюсик всегда)
 			$("#feed_li").html('<span class="left_count_wrap fl_r"><span class="inl_bl left_count" id="feed_count">'+ feed_count +'</span></span><span class="left_label inl_bl">Мои Ответы</span>');
 		}
 		else {
