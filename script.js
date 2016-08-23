@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Design for VK
 // @namespace    https://dasefern.com/
-// @version      0.20
+// @version      0.21
 // @description  Companion script for using with Old Design VK CSS
 // @author       Kesantielu Dasefern and others
 // @include      https://vk.com/*
@@ -11,7 +11,8 @@
 
 (function() {
     'use strict';
-       var check = false;
+	document.querySelector("link[rel*='icon']").href = "http://vkontakte.ru/images/favicon.ico";
+	var check = false;
 	$('#top_notify_btn').attr('style','display: none !important');
 	$("#top_audio").attr('style','display: none !important');
 	$("#top_profile_link").attr('style','display: none !important');
