@@ -2400,7 +2400,6 @@ img.fc_contact_photo {
 .ui_actions_menu_wrap {
     top: -35px;
     position: relative;
-    outline: 2px solid red;
 }
 .im-page .im-page--messages-search {
     display: none;
