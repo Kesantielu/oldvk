@@ -7,7 +7,7 @@ body {
     -webkit-font-smoothing: auto;
 }
 body:before {
-    content: "0.46 alpha \A \A9 Kesantielu Dasefern \A vk.com/old_vk_style";
+    content: "0.47 alpha \A \A9 Kesantielu Dasefern \A vk.com/old_vk_style";
     position: absolute;
     white-space: pre;
     right: 0;
@@ -2400,6 +2400,7 @@ img.fc_contact_photo {
 .ui_actions_menu_wrap {
     top: -35px;
     position: relative;
+    outline: 2px solid red;
 }
 .im-page .im-page--messages-search {
     display: none;
@@ -3479,10 +3480,9 @@ a.ts_search_link {
 .page_block_header .flat_button,
 .page_block_sub_header .flat_button,
 .ui_tabs_header .flat_button {
-    margin: 0;
-    bottom: 7px;
-    position: relative;
-    right: 0;
+    padding: 6px 16px 7px;
+    margin: 0px;
+    position: absolute;
 }
 .fave_link_item {
     padding: 10px;
@@ -3557,6 +3557,7 @@ a.ts_search_link {
 }
 #friends_search_input_wrap {
     margin: 0 -10px;
+    padding-right: 265px;
 }
 .ui_search_fltr {
     padding: 10px;
@@ -3885,5 +3886,49 @@ div.submit_post_field~.placeholder .ph_input {
 #group h2.page_block_h2,
 #public h2.page_block_h2 {
     margin: 0;
+}
+}
+
+@-moz-document url-prefix("https://vk.com/friends") {
+.narrow_column_wrap,
+#friends_req_block,
+.ui_search_fltr_control {
+    display: none !important
+}
+.ui_search_fltr_control {
+    top: 0px;
+    right: 0px;
+    position: absolute
+}
+.ui_search.friends_search_cont {
+    border-bottom: none;
+}
+#friends .ui_search_custom input.ui_search_field {
+    width: 346px;
+    padding-right: 40px;
+}
+#invite_button {
+    padding: 6px 16px 7px;
+    position: absolute;
+    bottom: auto;
+    top: 49px;
+    right: 15px;
+    transition: none!important;
+}
+.friends_list {
+    width: 447px;
+    padding: 5px 5px 6px;
+}
+.friends_photo_wrap,
+.friends_photo_img,
+.friends_photo {
+    width: 100px;
+    height: 100px;
+}
+.friends_actions_menu .ui_actions_menu {
+    visibility: visible;
+    opacity: 1;
+    transition: none;
+    pointer-events: auto;
 }
 }
