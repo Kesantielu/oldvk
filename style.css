@@ -70,7 +70,8 @@ h5.post_author,
 .feedback_footer,
 .top_notify_header,
 .top_notify_cont,
-.friends_lists .friends_lists_group {
+.friends_lists .friends_lists_group,
+.friends_cur_filters .token {
     font-size: inherit;
     font-family: inherit;
 }
@@ -3913,25 +3914,95 @@ div.submit_post_field~.placeholder .ph_input {
 #public h2.page_block_h2 {
     margin: 0;
 }
+.big.selector_container td.selector {
+    padding: 3px;
+}
+.big.selector_container td.selector input {
+    padding: 0;
+    margin: 0
+}
+.ui_search_fltr_label {
+    color: #555
+}
+.ui_search_fltr_sel {
+    padding: 5px 0 15px;
+}
+.ui_search_fltr:after,
+.ui_search_fltr:before {
+    content: none;
+}
+.big .result_list ul li {
+    padding: 2px 0 4px 5px;
+}
+.ui_search_fltr_control {
+    line-height: inherit;
+}
+.selector_container td.selector_dropdown {
+    background: url('data:image/gif;base64,R0lGODlhBwAEAIABAAAAAP///yH5BAEAAAEALAAAAAAHAAQAAAIIhA+BGWoNWSgAOw==')no-repeat;
+}
+.ui_search_fltr_sep {
+    line-height: 24px;
+}
 }
 
 @-moz-document url-prefix("https://vk.com/friends") {
 .narrow_column_wrap,
-.ui_search_fltr_control,
 #friends_req_block {
     display: none !important
 }
-.ui_search_fltr_control {
-    top: 0px;
-    right: 0px;
-    position: absolute
+#friends .ui_search_fltr_control {
+    visibility: hidden;
+    padding: 0;
+    height: 0;
+    width: 0;
 }
 .ui_search.friends_search_cont {
     border-bottom: none;
 }
+#friends .ui_search_fltr {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    right: -266px;
+    top: 40px;
+    box-shadow: none;
+    background-color: #f7f7f7;
+    border: 1px solid #DAE1E8;
+    width: 150px;
+}
 #friends .ui_search_custom input.ui_search_field {
     width: 346px;
     padding-right: 40px;
+}
+#friends .ui_search_fltr_label {
+    font-weight: bold;
+    padding-bottom: 1px;
+}
+#friends .ui_search_fltr #container1 {
+    width: 100% !important;
+}
+#friends .ui_search_fltr #container1 .selector {
+    width: 85% !important;
+}
+#friends .ui_search_fltr #container1 .selector_dropdown {
+    width: 15% !important;
+}
+#friends .ui_search_fltr .big.selector_container .selector_input {
+    width: 100% !important;
+}
+#friends .ui_search_fltr .result_list {
+    width: 150px !important;
+    height: 200px !important;
+}
+#friends .ui_search_fltr .results_container .result_list {
+    width: 65px !important;
+}
+#friends .ui_search_fltr #container1 .result_list {
+    width: 150px !important;
+}
+#friends .ui_search_fltr #container2,
+#friends .ui_search_fltr #container3 {
+    width: 65px !important;
 }
 #invite_button {
     padding: 6px 16px 7px;
@@ -3942,7 +4013,7 @@ div.submit_post_field~.placeholder .ph_input {
     transition: none!important;
 }
 .friends_list {
-    width: 447px;
+    width: 427px;
     padding: 5px 5px 6px;
 }
 .friends_photo_wrap,
@@ -3975,7 +4046,7 @@ div.submit_post_field~.placeholder .ph_input {
     pointer-events: auto;
     border: none;
     box-shadow: none;
-    right: 0;
+    right: 35px;
     width: 126px;
     min-width: 0;
 }
@@ -4005,6 +4076,21 @@ div.submit_post_field~.placeholder .ph_input {
     margin-bottom: 8px;
 }
 .friends_user_info {
-    width: 200px;
+    width: 167px;
+}
+.friends_cur_filters {
+    padding: 5px;
+    width: 427px;
+}
+.friends_cur_filters .token {
+    padding: 4px;
+    margin: 2px 5px 0 0;
+    line-height: 13px;
+    height: auto;
+}
+.friends_cur_filters .token .del_icon {
+    background: url('data:image/gif;base64,R0lGODlhCwALAIABAGuNsf///yH5BAEAAAEALAAAAAALAAsAAAIZTGCJBq3e4omI2nfTlNo65kHUJi6boh1GAQA7')no-repeat;
+    height: 11px;
+    width: 11px;
 }
 }
