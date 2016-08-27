@@ -71,7 +71,10 @@ h5.post_author,
 .top_notify_header,
 .top_notify_cont,
 .friends_lists .friends_lists_group,
-.friends_cur_filters .token {
+.friends_cur_filters .token,
+.bd_day_num,
+.bd_header_month,
+.bd_header_info {
     font-size: inherit;
     font-family: inherit;
 }
@@ -189,7 +192,10 @@ h5.post_author,
 .nim-dialog.nim-dialog_classic .nim-dialog--photo .nim-peer .nim-peer--photo .im_grid>img,
 .nim-dialog.nim-dialog_classic .nim-dialog--photo .nim-peer .nim-peer--photo>img,
 .im-page--dialogs .nim-dialog.nim-dialog_classic .nim-peer--photo,
-.bd_cell_img {
+.bd_cell_img,
+.bd_user_cells_2 .bd_cell_img,
+.bd_user_cells_3 .bd_cell_img,
+.bd_user_cells_4 .bd_cell_img {
     border-radius: 0;
 }
 #page_layout,
@@ -1844,8 +1850,8 @@ small.divider:before {
     height: 25px;
     padding: 6px 0;
 }
-.ui_zoom_count {
-    color: #00002C;
+.ui_zoom_scroll {
+    color: #000030;
 }
 .fans_fan_name {
     font-size: inherit;
@@ -3943,12 +3949,43 @@ div.submit_post_field~.placeholder .ph_input {
 .ui_search_fltr_sep {
     line-height: 24px;
 }
+.bd_calendar,
+.bd_day_table {
+    width: 100%;
+}
+.bd_header_month {
+    line-height: 22px;
+}
+.bd_day_head.day1,
+.bd_day_head.day7,
+.bd_day_table tr:last-child .day1,
+.bd_day_table tr:last-child .day7 {
+    border-radius: 0;
+}
+.bd_day_head {
+    height: 22px;
+    border-bottom: 1px solid #e0dee2;
+    color: #999b9f;
+}
+.bd_day_cell.holiday {
+    background: #f8f6f8;
+}
+.bd_day_cell {
+    border-right: 1px solid #e0dee2;
+    border-bottom: 1px solid #e0dee2;
+}
+.bd_day_cell.left {
+    border-left: 1px solid #e0dee2;
+}
+.bd_day_num {
+    color: #999b9f
+}
 }
 
 @-moz-document url-prefix("https://vk.com/friends") {
-.narrow_column_wrap,
 #friends_req_block {
     display: none !important
+    /*рекомендованные друзья*/
 }
 #friends .ui_search_fltr_control {
     visibility: hidden;
@@ -3959,6 +3996,11 @@ div.submit_post_field~.placeholder .ph_input {
 .ui_search.friends_search_cont {
     border-bottom: none;
 }
+#friends .ui_actions_menu_icons {
+    display: none;
+    height: 0;
+    width: 0;
+}
 #friends .ui_search_fltr {
     visibility: visible;
     opacity: 1;
@@ -3968,7 +4010,8 @@ div.submit_post_field~.placeholder .ph_input {
     box-shadow: none;
     background-color: #f7f7f7;
     border: 1px solid #DAE1E8;
-    width: 150px;
+    width: 150px !important;
+    border-bottom: none;
 }
 #friends .ui_search_custom input.ui_search_field {
     width: 346px;
@@ -3978,15 +4021,7 @@ div.submit_post_field~.placeholder .ph_input {
     font-weight: bold;
     padding-bottom: 1px;
 }
-#friends .ui_search_fltr #container1 {
-    width: 100% !important;
-}
-#friends .ui_search_fltr #container1 .selector {
-    width: 85% !important;
-}
-#friends .ui_search_fltr #container1 .selector_dropdown {
-    width: 15% !important;
-}
+#friends .ui_search_fltr .selector_container,
 #friends .ui_search_fltr .big.selector_container .selector_input {
     width: 100% !important;
 }
@@ -3994,21 +4029,18 @@ div.submit_post_field~.placeholder .ph_input {
     width: 150px !important;
     height: 200px !important;
 }
-#friends .ui_search_fltr .results_container .result_list {
-    width: 65px !important;
-}
-#friends .ui_search_fltr #container1 .result_list {
+#friends .ui_search_fltr .selector_container .result_list {
     width: 150px !important;
 }
-#friends .ui_search_fltr #container2,
-#friends .ui_search_fltr #container3 {
+#friends .ui_search_fltr_sel.clear_fix .selector_container,
+#friends .ui_search_fltr_sel.clear_fix .result_list {
     width: 65px !important;
 }
 #invite_button {
     padding: 6px 16px 7px;
     position: absolute;
     bottom: auto;
-    top: 49px;
+    top: 39px;
     right: 15px;
     transition: none!important;
 }
@@ -4046,7 +4078,7 @@ div.submit_post_field~.placeholder .ph_input {
     pointer-events: auto;
     border: none;
     box-shadow: none;
-    right: 35px;
+    right: 0px;
     width: 126px;
     min-width: 0;
 }
@@ -4076,7 +4108,7 @@ div.submit_post_field~.placeholder .ph_input {
     margin-bottom: 8px;
 }
 .friends_user_info {
-    width: 167px;
+    width: 183px;
 }
 .friends_cur_filters {
     padding: 5px;
@@ -4092,5 +4124,65 @@ div.submit_post_field~.placeholder .ph_input {
     background: url('data:image/gif;base64,R0lGODlhCwALAIABAGuNsf///yH5BAEAAAEALAAAAAALAAsAAAIZTGCJBq3e4omI2nfTlNo65kHUJi6boh1GAQA7')no-repeat;
     height: 11px;
     width: 11px;
+}
+.wide_column_left .narrow_column_wrap {
+    float: right;
+    position: absolute;
+    right: 41px;
+    top: 351px;
+    z-index: 1;
+}
+.narrow_column,
+.narrow_column_wrap {
+    width: 152px;
+}
+.wide_column_left .narrow_column_wrap .ui_rmenu {
+    border: 1px solid #DAE1E8;
+    border-top: none;
+}
+.ui_search_fltr_sel:last-child {
+    padding-bottom: 0;
+}
+.ui_rmenu {
+    padding: 10px;
+}
+.ui_rmenu_item {
+    padding: 6px 6px 7px 10px;
+    border-radius: 0;
+    width: 134px;
+    margin: 0;
+    font-weight: normal;
+}
+.ui_rmenu_item:hover {
+    font-weight: normal;
+}
+.ui_rmenu_subitem.ui_rmenu_item_sel,
+.ui_rmenu_subitem.ui_rmenu_item_sel:hover,
+.ui_rmenu_item.ui_rmenu_item_sel,
+.ui_rmenu_item.ui_rmenu_item_sel:hover {
+    padding-left: 10px;
+}
+.ui_tabs_header {
+    padding-top: 0
+}
+#ui_rmenu_all {
+    margin-bottom: 26px;
+}
+#ui_rmenu_all .ui_calendar_icon {
+    position: absolute;
+    margin: 0;
+    width: 134px;
+    top: 36px;
+    left: 10px;
+    background: none;
+    opacity: 1;
+    padding: 6px 6px 7px 10px;
+}
+#ui_rmenu_all .ui_calendar_icon:after {
+    content: "\1F4C6";
+    color: #45688E;
+}
+#ui_rmenu_all .ui_calendar_icon:hover {
+    background: #E1E7ED
 }
 }
