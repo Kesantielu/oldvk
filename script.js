@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Design for VK
 // @namespace    https://dasefern.com/
-// @version      0.21
+// @version      0.22
 // @description  Companion script for using with Old Design VK CSS
 // @author       Kesantielu Dasefern and others
 // @include      https://vk.com/*
@@ -53,5 +53,70 @@ setTimeout(check_feed_count, 0);
 setInterval(check_feed_count, 2*1000);
 
 $('<li id="l_ntf" class=""><a href="/feed?section=notifications" class="left_row"><span class="left_fixer" id="feed_li"></span></a></div></li>').insertAfter('#l_nwsf');
+
+var nonZoom = true;
+updateNarrow = function(sup){ // Сравнение высоты и прокрутки, расширение/сужение если требуется, где надо
+  return function() {
+	var cc=ge("narrow_column");
+	if (!cc) return sup.apply(this, arguments);
+	if (cc.offsetHeight && (cur.module=="profile" || cur.module=="group" || cur.module=="public" || cur.module=="event"))
+	if(cc.offsetHeight<=-cc.getBoundingClientRect().top) {
+	  if (nonZoom) {
+		ge("wide_column").style.width="597px";
+		nonZoom = false;
+		resImg(document.getElementsByClassName("page_post_sized_thumbs"));
+	  }
+	} else if (!nonZoom) {
+	  ge("wide_column").style.width="397px";
+	  nonZoom = true;
+	  resImg(document.getElementsByClassName("page_post_sized_thumbs"));
+	}
+	return sup.apply(this, arguments);
+  };
+}(updateNarrow);
+
+ge = function(sup){ // Ресайз на функции обзора страницы, должна обрабатывать все видимые элементы
+  return function() {
+  if (arguments[0] instanceof HTMLDivElement && arguments[0].getElementsByClassName("page_post_sized_thumbs").length)
+	resImg(arguments[0].getElementsByClassName("page_post_sized_thumbs"));
+  return sup.apply(this, arguments);
+  };
+}(ge);
+
+function resImg (ZCont) { // Функция масштабирования
+  var sz;
+  if(ZCont && ZCont.length) {
+	for(var i=0;i<ZCont.length;i++){
+	  if(!ZCont[i].parentNode.offsetWidth) continue;
+	  ZCont[i].style.height="auto";
+	  var factor=ZCont[i].parentNode.offsetWidth/ZCont[i].offsetWidth;
+	  for(var j=0;j<ZCont[i].children.length;j++) {
+		var c=ZCont[i].children[j];
+		if (c.getAttribute('ResMin') != nonZoom || (nonZoom && c.getAttribute('ResMin') !== null))
+		  if(factor<1) {
+			var w, h;
+			if(!c.hasAttribute("OiginalSize")) {
+			  w=c.offsetWidth;
+			  h=c.offsetHeight;
+			  c.setAttribute("OiginalSize", w+","+h);
+			} else {
+			  sz=c.getAttribute("OiginalSize").split(",");
+			  w=parseInt(sz[0]);
+			  h=parseInt(sz[1]);
+			}
+			c.setAttribute("ResMin", true);
+			c.style.width=Math.round(w*factor)+"px";
+			c.style.height=Math.round(h*factor)+"px";
+		  } else if(c.hasAttribute("OiginalSize")) {
+			sz=c.getAttribute("OiginalSize").split(",");
+			c.style.width=sz[0]+"px";
+			c.style.height=sz[1]+"px";
+			c.setAttribute("ResMin", false);
+		  }
+	  }
+	}
+  }
+}
+
 
 })();
