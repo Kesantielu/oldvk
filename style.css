@@ -90,7 +90,10 @@ h5.post_author,
 #main_feed .post_date,
 .wall_comments_summary,
 .pg_in,
-.ui_ownblock_info {
+.ui_ownblock_info,
+.page_block.page_block_header_outer .pg_in,
+.page_market_item_title,
+.page_market_price {
     font-size: inherit;
     font-family: inherit;
 }
@@ -716,7 +719,7 @@ h2.page_name {
 .wall_module .reply .reply_wrap {
     padding: 6px 0;
 }
-.wall_module .tt_w .reply .reply_wrap,
+.tt_w .reply .reply_wrap,
 .big_wall .wall_module .tt_w .reply .reply_wrap {
     padding: 10px;
 }
@@ -1856,7 +1859,8 @@ a.page_poll_code {
 .wall_comments_summary {
     font-weight: bold;
 }
-.wall_comments_header .pg_in {
+.wall_comments_header .pg_in,
+.page_block.page_block_header_outer .pg_in {
     padding: 2px 5px;
 }
 .pg_in,
@@ -3650,6 +3654,9 @@ a.ts_search_link {
 .page_block_header_extra {
     padding-top: 4px;
 }
+.page_block_header_count {
+    color: #45688e;
+}
 .ui_crumb,
 .ui_crumb_count {
     line-height: inherit;
@@ -4124,7 +4131,7 @@ div.submit_post_field~.placeholder .ph_input {
 }
 #wall_rmenu {
     background: none;
-    padding-bottom: 0;
+    padding: 11px 10px 0px;
     height: 23px;
     border-bottom: 1px solid #597DA3
 }
@@ -4133,6 +4140,23 @@ div.submit_post_field~.placeholder .ph_input {
     font-weight: normal;
     border-radius: 4px 4px 0 0;
     margin: 0 5px 0 0;
+}
+.wall_module .page_wall_posts .page_block~.page_block {
+    margin: 0;
+}
+.reply_box_inner_wrap.fixed {
+    position: relative !important;
+}
+#fw_summary_wrap .ui_search {
+    border-bottom: none;
+    margin-top: 8px;
+}
+.page_block.page_block_header_outer .pg_pages {
+    right: 0;
+    margin-top: 11px;
+}
+.ui_search_custom_ctrl .ui_calendar_icon {
+    margin: 6px 6px 0;
 }
 }
 
