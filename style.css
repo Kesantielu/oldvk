@@ -87,8 +87,10 @@ h5.post_author,
 .search_results .post_date,
 .search_results .post_full_like_wrap,
 .search_results.wall_module .reply_footer,
+#main_feed .post_date,
 .wall_comments_summary,
-.pg_in {
+.pg_in,
+.ui_ownblock_info {
     font-size: inherit;
     font-family: inherit;
 }
@@ -105,6 +107,8 @@ h5.post_author,
     width: 136px;
     padding: 5px 0 10px 4px;
     margin-top: 40px !important;
+    top: 0 !important;
+    bottom: auto !important;
 }
 #side_bar .left_label {
     font-size: 11px;
@@ -186,14 +190,17 @@ h5.post_author,
 .wl_post .page_post_sized_thumbs,
 .wl_post .post_thumbed_media,
 .search_results .page_post_sized_thumbs,
-.search_results .post_thumbed_media {
+.search_results .post_thumbed_media,
+#main_feed .page_post_sized_thumbs,
+#main_feed .post_thumbed_media {
     zoom: 1;
     -moz-transform: scale(1);
 }
 .wide .wall_module .post_like_icon,
 .wide .wall_module .post_share_icon,
 .big_wall .wall_module .post_like_icon,
-.big_wall .wall_module .post_share_icon .search_results.wall_module .post_like_icon,
+.big_wall .wall_module .post_share_icon,
+.search_results.wall_module .post_like_icon,
 .search_results.wall_module .post_share_icon {
     margin-top: 3px;
 }
@@ -709,7 +716,8 @@ h2.page_name {
 .wall_module .reply .reply_wrap {
     padding: 6px 0;
 }
-.wall_module .tt_w .reply .reply_wrap {
+.wall_module .tt_w .reply .reply_wrap,
+.big_wall .wall_module .tt_w .reply .reply_wrap {
     padding: 10px;
 }
 .tt_w.fw_reply_tt {
@@ -4089,6 +4097,42 @@ div.submit_post_field~.placeholder .ph_input {
 .page_verified {
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAALCAYAAACksgdhAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAOUlEQVR42mNgIBLsOnTmPwgzkKqBaI3oGghqwqsBmwlEaUCWIOgkbAqI8gPJGsgOJWwaGUgBxGgAALZ2utCtGzDMAAAAAElFTkSuQmCC') no-repeat;
     padding: 0 16px 0 0;
+}
+.ui_ownblock {
+    padding: 0;
+}
+.ui_ownblock ~ .ui_rmenu_sep {
+    display: none;
+}
+.ui_ownblock_hint {
+    float: right;
+    color: #2B587A;
+    padding-top: 5px;
+}
+.ui_ownblock_hint:first-letter {
+    text-transform: uppercase;
+}
+.ui_ownblock_hint:hover {
+    text-decoration: underline;
+}
+.ui_ownblock:after {
+    content: none;
+}
+.ui_ownblock_img,
+.ui_ownblock_label {
+    display: none;
+}
+#wall_rmenu {
+    background: none;
+    padding-bottom: 0;
+    height: 23px;
+    border-bottom: 1px solid #597DA3
+}
+#wall_rmenu .ui_rmenu_item {
+    padding: 5px 10px;
+    font-weight: normal;
+    border-radius: 4px 4px 0 0;
+    margin: 0 5px 0 0;
 }
 }
 
