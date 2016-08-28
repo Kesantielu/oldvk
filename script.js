@@ -127,14 +127,14 @@ function resImg (ZCont) { // Функция масштабирования
 			c.style.width=Math.round(w*factor)+"px";
 			c.style.height=Math.round(h*factor)+"px";
 			if (!j && ZCont[i].children.length > 4)
-+			  ZCont[i].setAttribute('style', 'width: 420px; height: auto; margin-left: -70px;');
+			  ZCont[i].setAttribute('style', 'width: 420px; height: auto; margin-left: -70px;');
 		  } else if(c.hasAttribute("OiginalSize")) {
 			sz=c.getAttribute("OiginalSize").split(",");
 			c.style.width=sz[0]+"px";
 			c.style.height=sz[1]+"px";
 			c.setAttribute("ResMin", false);
 			if (!j && ZCont[i].children.length)
-+			  ZCont[i].setAttribute('style', 'width: 496px; height: auto;');
+			  ZCont[i].setAttribute('style', 'width: 496px; height: auto;');
 		  }
 	  }
 	}
