@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Design for VK
 // @namespace    https://dasefern.com/
-// @version      0.22
+// @version      0.23
 // @description  Companion script for using with Old Design VK CSS
 // @author       Kesantielu Dasefern and others
 // @include      https://vk.com/*
@@ -53,6 +53,25 @@ setTimeout(check_feed_count, 0);
 setInterval(check_feed_count, 2*1000);
 
 $('<li id="l_ntf" class=""><a href="/feed?section=notifications" class="left_row"><span class="left_fixer" id="feed_li"></span></a></div></li>').insertAfter('#l_nwsf');
+
+var addCSS = function () {/*
+
+.page_post_sized_thumbs, .post_thumbed_media {
+	zoom: 100%;
+	-moz-transform: scale(1);
+	-moz-transform-origin: left center;
+}
+
+#public .narrow_column.fixed, #group .narrow_column.fixed, #profile .narrow_column.fixed {
+	position: absolute !important;
+}
+*/}.toString().slice(15,-1); 
+
+var head = document.getElementsByTagName('html')[0];
+var styleElement = document.createElement("style"); 
+styleElement.type = 'text/css'; // Тип
+styleElement.appendChild(document.createTextNode(addCSS)); 
+head.appendChild(styleElement);
 
 var nonZoom = true;
 updateNarrow = function(sup){ // Сравнение высоты и прокрутки, расширение/сужение если требуется, где надо
