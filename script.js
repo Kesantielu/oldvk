@@ -5,6 +5,11 @@
 // @description  Companion script for using with Old Design VK CSS
 // @author       Kesantielu Dasefern and others
 // @include      https://vk.com/*
+// @exclude      *://vk.com/notifier.php*
+// @exclude      *://vk.com/al_*
+// @exclude      *://vk.com/upload_fails.php
+// @exclude      *://vk.com/ads_rotate.php*
+// @exclude      *://vk.com/share.php*
 // @grant        none
 // @require      http://code.jquery.com/jquery-3.1.0.min.js
 // ==/UserScript==
