@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Design for VK
 // @namespace    https://dasefern.com/
-// @version      0.25
+// @version      0.26
 // @description  Companion script for using with Old Design VK CSS
 // @author       Kesantielu Dasefern and others
 // @include      https://vk.com/*
@@ -62,8 +62,8 @@ $('<li id="l_ntf" class=""><a href="/feed?section=notifications" class="left_row
 var addCSS = function () {/*
 
 .page_post_sized_thumbs, .post_thumbed_media {
-	zoom: 100%;
-	-moz-transform: scale(1);
+	zoom: 100% !important;
+	-moz-transform: scale(1) !important;
 	-moz-transform-origin: left center;
 }
 
