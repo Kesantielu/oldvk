@@ -131,7 +131,7 @@ function resImg (ZCont) { // Функция масштабирования
 			c.setAttribute("ResMin", true);
 			c.style.width=Math.round(w*factor)+"px";
 			c.style.height=Math.round(h*factor)+"px";
-			if (!j && ZCont[i].children.length > 4)
+			if (!j && ZCont[i].children.length > 2)
 			  ZCont[i].setAttribute('style', 'width: 420px; height: auto; margin-left: -70px;');
 		  } else if(c.hasAttribute("OiginalSize")) {
 			sz=c.getAttribute("OiginalSize").split(",");
