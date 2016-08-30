@@ -11,7 +11,7 @@
 // @exclude      *://vk.com/ads_rotate.php*
 // @exclude      *://vk.com/share.php*
 // @grant        none
-// @require      http://code.jquery.com/jquery-3.1.0.min.js
+// @require      https://code.jquery.com/jquery-3.1.0.min.js
 // ==/UserScript==
 
 (function() {
