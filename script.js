@@ -16,7 +16,7 @@
 
 (function() {
     'use strict';
-	document.querySelector("link[rel*='icon']").href = "http://vkontakte.ru/images/favicon.ico";
+	document.querySelector("link[rel*='icon']").href = "https://vkontakte.ru/images/favicon.ico";
 	var check = false;
 	$('#top_notify_btn').attr('style','display: none !important');
 	$("#top_audio").attr('style','display: none !important');
