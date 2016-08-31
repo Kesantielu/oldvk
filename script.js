@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Old Design for VK
 // @namespace    https://dasefern.com/
-// @version      0.26
+// @version      0.27
 // @description  Companion script for using with Old Design VK CSS
 // @author       Kesantielu Dasefern and others
-// @include      https://vk.com/*
+// @match        *://vk.com/*
 // @exclude      *://vk.com/notifier.php*
 // @exclude      *://vk.com/al_*
 // @exclude      *://vk.com/upload_fails.php
@@ -79,72 +79,102 @@ styleElement.appendChild(document.createTextNode(addCSS));
 head.appendChild(styleElement);
 
 var nonZoom = true;
-updateNarrow = function(sup){ // Сравнение высоты и прокрутки, расширение/сужение если требуется, где надо
-  return function() {
-	var cc=ge("narrow_column");
-	if (!cc) return sup.apply(this, arguments);
-	if (cc.offsetHeight && (cur.module=="profile" || cur.module=="group" || cur.module=="public" || cur.module=="event"))
-	if(cc.offsetHeight<=-cc.getBoundingClientRect().top) {
-	  if (nonZoom) {
-		ge("wide_column").style.width="597px";
-		nonZoom = false;
-		resImg(document.getElementsByClassName("page_post_sized_thumbs"));
-	  }
-	} else if (!nonZoom) {
-	  ge("wide_column").style.width="397px";
-	  nonZoom = true;
-	  resImg(document.getElementsByClassName("page_post_sized_thumbs"));
-	}
-	return sup.apply(this, arguments);
-  };
-}(updateNarrow);
+var Factor, FindCont;
+document.onscroll = function() { // Сравнение высоты и прокрутки, расширение/сужение если требуется, где надо
+    ge("narrow_column").setAttribute("style", "display: fixed;");
+    var cc = ge("narrow_column");
+    if (!cc) return;
+    if (cc.offsetHeight && (cur.module == "profile" || cur.module == "group" || cur.module == "public" || cur.module == "event")) {
+        if (cc.offsetHeight <= -cc.getBoundingClientRect().top) {
+            if (nonZoom) {
+                ge("wide_column").style.width = "597px";
+                nonZoom = false;
+                $("[ResMin=true]").each(function() {
+                    zWin(this, 1);
+                });
+            }
+        } else if (!nonZoom) {
+            ge("wide_column").style.width = "397px";
+            nonZoom = true;
+            $("div.page_album_wrap[ResMin=false], div.reply_text div.page_post_sized_thumbs[ResMin=false], div.copy_quote > div.page_post_sized_thumbs[ResMin=false], div._wall_post_cont > div.page_post_sized_thumbs[ResMin=false]").each(function() {
+                for (var i = 0; i < FindCont.length; i++) {
+                    var Factor = this[i].parentNode.offsetWidth / this[i].offsetWidth;
+                    zWin(this[i], Factor + 0.01);
+                    $("[ResMin=false]", this[i]).each(function() {
+                        var inCont = this;
+                        zWin(inCont, Factor);
+                        return true;
+                    });
+                }
+            });
+        }
+        if (nonZoom) {
+            FindCont = inWin("div.page_album_wrap[ResMin!=true], div.reply_text div.page_post_sized_thumbs[ResMin!=true], div.copy_quote > div.page_post_sized_thumbs[ResMin!=true], div._wall_post_cont > div.page_post_sized_thumbs[ResMin!=true]");
+            for (var i = 0; i < FindCont.length; i++) {
+                var Factor = FindCont[i].parentNode.offsetWidth / FindCont[i].offsetWidth;
+                zWin(FindCont[i], Factor + 0.01);
+                $("div[ResMin!=true],a[ResMin!=true]", FindCont[i]).each(function() {
+                    var inCont = this;
+                    zWin(inCont, Factor);
+                    return true;
+                });
+            }
+        }
+        return;
+    }
+};
 
-ge = function(sup){ // Ресайз на функции обзора страницы, должна обрабатывать все видимые элементы
-  return function() {
-  if (arguments[0] instanceof HTMLDivElement && arguments[0].getElementsByClassName("page_post_sized_thumbs").length)
-	resImg(arguments[0].getElementsByClassName("page_post_sized_thumbs"));
-  return sup.apply(this, arguments);
-  };
-}(ge);
-
-function resImg (ZCont) { // Функция масштабирования
-  var sz;
-  if(ZCont && ZCont.length) {
-	for(var i=0;i<ZCont.length;i++){
-	  if(!ZCont[i].parentNode.offsetWidth) continue;
-	  ZCont[i].style.height="auto";
-	  var factor=ZCont[i].parentNode.offsetWidth/ZCont[i].offsetWidth;
-	  for(var j=0;j<ZCont[i].children.length;j++) {
-		var c=ZCont[i].children[j];
-		if (c.getAttribute('ResMin') != nonZoom || (nonZoom && c.getAttribute('ResMin') !== null))
-		  if(factor<1) {
-			var w, h;
-			if(!c.hasAttribute("OiginalSize")) {
-			  w=c.offsetWidth;
-			  h=c.offsetHeight;
-			  c.setAttribute("OiginalSize", w+","+h);
-			} else {
-			  sz=c.getAttribute("OiginalSize").split(",");
-			  w=parseInt(sz[0]);
-			  h=parseInt(sz[1]);
-			}
-			c.setAttribute("ResMin", true);
-			c.style.width=Math.round(w*factor)+"px";
-			c.style.height=Math.round(h*factor)+"px";
-			if (!j && ZCont[i].children.length > 2)
-			  ZCont[i].setAttribute('style', 'width: 420px; height: auto; margin-left: -70px;');
-		  } else if(c.hasAttribute("OiginalSize")) {
-			sz=c.getAttribute("OiginalSize").split(",");
-			c.style.width=sz[0]+"px";
-			c.style.height=sz[1]+"px";
-			c.setAttribute("ResMin", false);
-			if (!j && ZCont[i].children.length)
-			  ZCont[i].setAttribute('style', 'width: 496px; height: auto;');
-		  }
-	  }
-	}
-  }
+function zWin(c, Factor) {
+    if (c.getAttribute('ResMin') !== nonZoom || (nonZoom && c.getAttribute('ResMin') !== false))
+        if (Factor < 1) {
+            var w, h;
+            if (!c.hasAttribute("OiginalSize")) {
+                w = c.offsetWidth;
+                h = c.offsetHeight;
+                c.setAttribute("OiginalSize", w + "," + h);
+            } else {
+                sz = c.getAttribute("OiginalSize").split(",");
+                w = parseInt(sz[0]);
+                h = parseInt(sz[1]);
+            }
+            c.setAttribute("ResMin", true);
+            c.style.width = Math.round(w * Factor) + "px";
+            c.style.height = Math.round(h * Factor) + "px";
+            c.classList.add("img_small");
+        } else if (c.hasAttribute("OiginalSize")) {
+        sz = c.getAttribute("OiginalSize").split(",");
+        c.style.width = sz[0] + "px";
+        c.style.height = sz[1] + "px";
+        c.setAttribute("ResMin", false);
+        c.classList.remove("img_small");
+    }
 }
 
+setTimeout(function() {
+    FindCont = inWin("div.page_album_wrap[ResMin!=true], div.reply_text div.page_post_sized_thumbs[ResMin!=true], div.copy_quote > div.page_post_sized_thumbs[ResMin!=true], div._wall_post_cont > div.page_post_sized_thumbs[ResMin!=true]");
+    for (var i = 0; i < FindCont.length; i++) {
+        var Factor = FindCont[i].parentNode.offsetWidth / FindCont[i].offsetWidth;
+        zWin(FindCont[i], Factor + 0.01);
+        $("div[ResMin!=true],a[ResMin!=true]", FindCont[i]).each(function() {
+            var inCont = this;
+            zWin(inCont, Factor);
+            return true;
+        });
+    }
+}, 1000);
 
 })();
+
+function inWin(s) {
+    var scrollTop = $(window).scrollTop() < 500 ? 0 : $(window).scrollTop() - 500;
+    var windowHeight = $(window).height() + 1000;
+    var currentEls = $(s);
+    var result = [];
+    currentEls.each(function() {
+        var el = $(this);
+        var offset = el.offset();
+        if (scrollTop <= offset.top && (el.height() + offset.top) < (scrollTop + windowHeight))
+            result.push(this);
+    });
+    return $(result);
+}
