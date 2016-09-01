@@ -10,7 +10,7 @@
 // @exclude      *://vk.com/upload_fails.php
 // @exclude      *://vk.com/ads_rotate.php*
 // @exclude      *://vk.com/share.php*
-// @grant        none
+// @grant	 GM_xmlhttpRequest
 // @require      https://code.jquery.com/jquery-3.1.0.min.js
 // ==/UserScript==
 
@@ -21,7 +21,7 @@
 	 return function() {
 	   if (arguments[0].search(/\/fav_im\.ico/i) == -1) {
 	    debugLog("Подменяем - "+arguments[0]);
-	    arguments[0]="http://vkontakte.ru/images/favicon.ico";
+	    arguments[0]="https://vkontakte.ru/images/favicon.ico";
 	   }
 	 return sup.apply(this, arguments);
 	 };
