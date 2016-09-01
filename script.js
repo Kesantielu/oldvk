@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Design for VK
 // @namespace    https://dasefern.com/
-// @version      0.27
+// @version      0.28
 // @description  Companion script for using with Old Design VK CSS
 // @author       Kesantielu Dasefern and others
 // @match        *://vk.com/*
@@ -17,6 +17,15 @@
 (function() {
     'use strict';
 	document.querySelector("link[rel*='icon']").href = "https://vkontakte.ru/images/favicon.ico";
+	unsafeWindow.setFavIcon = function(sup){ // Перехватываем и заменяем иконку сайта, если требуется (диалоговую не трогаю)
+	 return function() {
+	   if (arguments[0].search(/\/fav_im\.ico/i) == -1) {
+	    debugLog("Подменяем - "+arguments[0]);
+	    arguments[0]="http://vkontakte.ru/images/favicon.ico";
+	   }
+	 return sup.apply(this, arguments);
+	 };
+        }(setFavIcon);
 	var check = false;
 	$('#top_notify_btn').attr('style','display: none !important');
 	$("#top_audio").attr('style','display: none !important');
@@ -69,6 +78,10 @@ var addCSS = function () {/*
 
 #public .narrow_column.fixed, #group .narrow_column.fixed, #profile .narrow_column.fixed {
 	position: absolute !important;
+}
+
+.wall_post_text {
+	width: auto;
 }
 */}.toString().slice(15,-1); 
 
