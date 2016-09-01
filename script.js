@@ -10,7 +10,6 @@
 // @exclude      *://vk.com/upload_fails.php
 // @exclude      *://vk.com/ads_rotate.php*
 // @exclude      *://vk.com/share.php*
-// @grant	 GM_xmlhttpRequest
 // @require      https://code.jquery.com/jquery-3.1.0.min.js
 // ==/UserScript==
 
