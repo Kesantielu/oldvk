@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Design for VK
 // @namespace    https://dasefern.com/
-// @version      0.28
+// @version      0.29
 // @description  Companion script for using with Old Design VK CSS
 // @author       Kesantielu Dasefern and others
 // @match        *://vk.com/*
@@ -93,10 +93,10 @@ head.appendChild(styleElement);
 var nonZoom = true;
 var Factor, FindCont;
 document.onscroll = function() { // Сравнение высоты и прокрутки, расширение/сужение если требуется, где надо
-    ge("narrow_column").setAttribute("style", "display: fixed;");
     var cc = ge("narrow_column");
+    if (cur.module=="profile" || cur.module=="groups" || cur.module=="public" || cur.module=="event") cc.setAttribute("style", "display: fixed;");
     if (!cc) return;
-    if (cc.offsetHeight && (cur.module == "profile" || cur.module == "group" || cur.module == "public" || cur.module == "event")) {
+    if (cc.offsetHeight && (cur.module=="profile" || cur.module=="groups" || cur.module=="public" || cur.module=="event")) {
         if (cc.offsetHeight <= -cc.getBoundingClientRect().top) {
             if (nonZoom) {
                 ge("wide_column").style.width = "597px";
@@ -108,7 +108,7 @@ document.onscroll = function() { // Сравнение высоты и прок�
         } else if (!nonZoom) {
             ge("wide_column").style.width = "397px";
             nonZoom = true;
-            $("div.page_album_wrap[ResMin=false], div.reply_text div.page_post_sized_thumbs[ResMin=false], div.copy_quote > div.page_post_sized_thumbs[ResMin=false], div._wall_post_cont > div.page_post_sized_thumbs[ResMin=false]").each(function() {
+            $("div.page_gif_large[ResMin=false], div.page_album_wrap[ResMin=false], div.reply_text div.page_post_sized_thumbs[ResMin=false], div.copy_quote > div.page_post_sized_thumbs[ResMin=false], div._wall_post_cont > div.page_post_sized_thumbs[ResMin=false], div._wall_post_cont > div.page_post_thumb_wrap[ResMin=false]").each(function() {
                 for (var i = 0; i < FindCont.length; i++) {
                     var Factor = this[i].parentNode.offsetWidth / this[i].offsetWidth;
                     zWin(this[i], Factor + 0.01);
@@ -121,7 +121,7 @@ document.onscroll = function() { // Сравнение высоты и прок�
             });
         }
         if (nonZoom) {
-            FindCont = inWin("div.page_album_wrap[ResMin!=true], div.reply_text div.page_post_sized_thumbs[ResMin!=true], div.copy_quote > div.page_post_sized_thumbs[ResMin!=true], div._wall_post_cont > div.page_post_sized_thumbs[ResMin!=true]");
+            FindCont = inWin("div.page_gif_large[ResMin!=true], div.page_album_wrap[ResMin!=true], div.reply_text div.page_post_sized_thumbs[ResMin!=true], div.copy_quote > div.page_post_sized_thumbs[ResMin!=true], div._wall_post_cont > div.page_post_sized_thumbs[ResMin!=true], div._wall_post_cont > div.page_post_thumb_wrap[ResMin!=true]");
             for (var i = 0; i < FindCont.length; i++) {
                 var Factor = FindCont[i].parentNode.offsetWidth / FindCont[i].offsetWidth;
                 zWin(FindCont[i], Factor + 0.01);
@@ -137,6 +137,7 @@ document.onscroll = function() { // Сравнение высоты и прок�
 };
 
 function zWin(c, Factor) {
+    if (c.matches('div[class *= video]')) return;
     if (c.getAttribute('ResMin') !== nonZoom || (nonZoom && c.getAttribute('ResMin') !== false))
         if (Factor < 1) {
             var w, h;
@@ -163,7 +164,7 @@ function zWin(c, Factor) {
 }
 
 setTimeout(function() {
-    FindCont = inWin("div.page_album_wrap[ResMin!=true], div.reply_text div.page_post_sized_thumbs[ResMin!=true], div.copy_quote > div.page_post_sized_thumbs[ResMin!=true], div._wall_post_cont > div.page_post_sized_thumbs[ResMin!=true]");
+    FindCont = inWin("div.page_gif_large[ResMin!=true], div.page_album_wrap[ResMin!=true], div.reply_text div.page_post_sized_thumbs[ResMin!=true], div.copy_quote > div.page_post_sized_thumbs[ResMin!=true], div._wall_post_cont > div.page_post_sized_thumbs[ResMin!=true], div._wall_post_cont > div.page_post_thumb_wrap[ResMin!=true]");
     for (var i = 0; i < FindCont.length; i++) {
         var Factor = FindCont[i].parentNode.offsetWidth / FindCont[i].offsetWidth;
         zWin(FindCont[i], Factor + 0.01);
