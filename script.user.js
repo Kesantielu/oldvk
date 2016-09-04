@@ -18,13 +18,33 @@
 	document.querySelector("link[rel*='icon']").href = "https://vkontakte.ru/images/favicon.ico";
 	unsafeWindow.setFavIcon = function(sup){ // Перехватываем и заменяем иконку сайта, если требуется (диалоговую не трогаю)
 	 return function() {
-	   if (arguments[0].search(/\/fav_im\.ico/i) == -1) {
+	   if (arguments[0].search(/\/fav_logo\.ico/i) != -1) {
 	    debugLog("Подменяем - "+arguments[0]);
 	    arguments[0]="https://vkontakte.ru/images/favicon.ico";
-	   }
+	   } else debugLog("Без замены - "+arguments[0]);
 	 return sup.apply(this, arguments);
 	 };
         }(setFavIcon);
+        
+        unsafeWindow.addEvent = function(sup){
+	return function() {
+	  if (arguments[1] === 'blur' && arguments[0] instanceof HTMLDivElement)
+	  {
+		FindCont = inWin("div.page_gif_large[ResMin!=true], div.page_album_wrap[ResMin!=true], div.reply_text div.page_post_sized_thumbs[ResMin!=true], div.copy_quote > div.page_post_sized_thumbs[ResMin!=true], div._wall_post_cont > div.page_post_sized_thumbs[ResMin!=true], div._wall_post_cont > div.page_post_thumb_wrap[ResMin!=true]");
+		for(var i=0;i<FindCont.length;i++) {
+		  var Factor=FindCont[i].parentNode.offsetWidth/FindCont[i].offsetWidth;
+		  zWin(FindCont[i], Factor+0.01);
+		  $("div[ResMin!=true],a[ResMin!=true]", FindCont[i]).each(function() {
+			var inCont = this;
+			zWin(inCont, Factor);
+			return true;
+		  });
+		}
+	  }
+	return sup.apply(this, arguments);
+	};
+  	}(addEvent);
+        
 	var check = false;
 	$('#top_notify_btn').attr('style','display: none !important');
 	$("#top_audio").attr('style','display: none !important');
@@ -94,8 +114,8 @@ var nonZoom = true;
 var Factor, FindCont;
 document.onscroll = function() { // Сравнение высоты и прокрутки, расширение/сужение если требуется, где надо
     var cc = ge("narrow_column");
-    if (cur.module=="profile" || cur.module=="groups" || cur.module=="public" || cur.module=="event") cc.setAttribute("style", "display: fixed;");
     if (!cc) return;
+    if (cur.module=="profile" || cur.module=="groups" || cur.module=="public" || cur.module=="event") cc.setAttribute("style", "display: fixed;");
     if (cc.offsetHeight && (cur.module=="profile" || cur.module=="groups" || cur.module=="public" || cur.module=="event")) {
         if (cc.offsetHeight <= -cc.getBoundingClientRect().top) {
             if (nonZoom) {
