@@ -299,8 +299,18 @@ h5.post_author,
     border-radius: 0;
 }
 #page_layout,
-#page_header {
+#page_header,
+#page_wrap {
     width: 791px !important;
+}
+#page_wrap .scroll_fix {
+    width: auto!important
+}
+#page_wrap {
+    margin: 0 auto
+}
+#page_layout {
+    padding: 0
 }
 .flat_button {
     font-size: 11px;
