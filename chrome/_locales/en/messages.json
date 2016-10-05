@@ -1,0 +1,26 @@
+{
+  "appName": {
+    "message": "Old Design VK",
+    "description": ""
+  },
+  "appDesc": {
+    "message": "The extension, which brings back old design of VK", 
+    "description":""
+  },
+  "styleVersion": {
+    "message": "Style version",
+    "description": ""
+  },
+  "updateStyle": {
+    "message": "Update style",
+    "description": ""
+  },
+  "developing": {
+    "message": "Developing",
+    "description": ""
+  },
+  "support": {
+    "message": "Support",
+    "description": ""
+  }
+}

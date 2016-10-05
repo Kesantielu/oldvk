@@ -1,2 +1,121 @@
+<<<<<<< .mine
+{
+  "manifest_version": 2,
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
+  "version": "0.49",
+  "default_locale": "en",
+  "author": "Kesantielu Dasefern",
+  "homepage_url": "https://dasefern.com/vk",
+  "minimum_chrome_version": "26",
+  "icons": {
+    "48": "oldvk-48.png",
+    "64": "oldvk-64.png",
+    "128": "oldvk-128.png"
+  },
+  "browser_action": {
+    "default_icon": "oldvk-48.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "*://*.vk.com/",
+    "*://vk.com/",
+    "tabs",
+    "webNavigation",
+    "storage"
+  ],
+  "background": {
+    "scripts": [
+      "lib/jquery-3.1.0.min.js",
+      "events.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://vk.com/*"
+      ],
+      "js": [
+        "lib/jquery-3.1.0.min.js",
+        "lib/arrive.min.js",
+        "content/init.js"
+      ],
+      "run_at": "document_start",
+      "exclude_matches": [
+        "*://vk.com/notifier.php*",
+        "*://vk.com/al_*",
+        "*://vk.com/dev*",
+        "*://vk.com/apps?act=manage*",
+        "*://vk.com/upload_fails.php*",
+        "*://vk.com/ads_rotate.php*",
+        "*://vk.com/share.php*"
+      ],
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    "content/*.css"
+  ]
+}
+=======
 {
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
