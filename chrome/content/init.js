@@ -92,8 +92,12 @@ function localizeCSS(lang) {
         case 1:
             my = 'Мої ';
             break;
-        case 2:
+        case 3:
             my = 'My ';
+            break;
+        case 2:
+        case 114:
+            my = 'Mае ';
             break;
         default:
             console.log('Этот язык пока не поддерживается: ' + lang);
