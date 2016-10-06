@@ -4,21 +4,17 @@ var styles = [
 ];
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    var id = sender.tab.id;
-
     function listener(details) {
         console.log(details);
-        if (details.tabId == id) {
-            var url = document.createElement('a');
-            url.href = details.url;
-            var path = url.pathname.slice(1);
-            var Styles = [];
-            styles.forEach(function (style) {
-                var apply = !!path.startsWith(style.match);
-                Styles.push({css: style.css, apply: apply})
-            });
-            chrome.tabs.sendMessage(id, {action: 'updating', css: Styles}, null)
-        }
+        var url = document.createElement('a');
+        url.href = details.url;
+        var path = url.pathname.slice(1);
+        var Styles = [];
+        styles.forEach(function (style) {
+            var apply = !!path.startsWith(style.match);
+            Styles.push({css: style.css, apply: apply})
+        });
+        chrome.tabs.sendMessage(details.tabId, {action: 'updating', css: Styles}, null)
     }
 
     if (request.action == 'activating') {
