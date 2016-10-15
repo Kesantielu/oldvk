@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
-  "version": "0.49",
+  "version": "0.491",
   "default_locale": "en",
   "author": "Kesantielu Dasefern",
   "homepage_url": "https://dasefern.com/vk",
@@ -20,7 +20,6 @@
     "*://*.vk.com/",
     "*://vk.com/",
     "tabs",
-    "webNavigation",
     "storage"
   ],
   "background": {
@@ -41,6 +40,24 @@
         "content/init.js"
       ],
       "run_at": "document_start",
+      "exclude_matches": [
+        "*://vk.com/notifier.php*",
+        "*://vk.com/al_*",
+        "*://vk.com/dev*",
+        "*://vk.com/apps?act=manage*",
+        "*://vk.com/upload_fails.php*",
+        "*://vk.com/ads_rotate.php*",
+        "*://vk.com/share.php*"
+      ],
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://vk.com/*"
+      ],
+      "js": [
+        "content/main.js"
+      ],
       "exclude_matches": [
         "*://vk.com/notifier.php*",
         "*://vk.com/al_*",
