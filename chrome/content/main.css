@@ -7,13 +7,13 @@ body {
     overflow-y: scroll;
 }
 
-body:before {
-    content: "0.48a alpha \A \A9 Kesantielu Dasefern \A vk.com/old_vk_style";
+/*body:before {
+    content: "0.49 alpha \A \A9 Kesantielu Dasefern \A vk.com/old_vk_style";
     position: absolute;
     white-space: pre;
     right: 0;
     text-align: right;
-}
+}*/
 
 a {
     color: #2B587A;
@@ -3040,8 +3040,9 @@ img.fc_contact_photo {
     width: 607px;
     top: 40px;
     border-bottom: 1px solid #597DA3;
-    padding: 11px 10px 0px;
+    padding: 11px 10px 0;
     background-color: #FFF;
+    max-width: none;
 }
 
 .body_im #content {
@@ -3714,6 +3715,7 @@ input.ui_search_field:-ms-input-placeholder {
     padding: 13px 10px;
     font-size: inherit;
     height: 40px;
+    max-width:none;
 }
 
 .im-mess .im-mess--check {
@@ -3999,6 +4001,7 @@ input.ui_search_field:-ms-input-placeholder {
     background: #F7F7F7;
     width: 617px;
     border-bottom: 1px solid #DAE1E8;
+    max-width: none;
 }
 
 .im-page.im-page_classic .im-page--hisory_search-open .im-page--search-header {
