@@ -1,0 +1,26 @@
+{
+  "appName": {
+    "message": "Старый дизайн ВК",
+    "description": ""
+  },
+  "appDesc": {
+    "message": "Расширение, возвращающее старый дизайн ВК.", 
+    "description": ""
+  },
+  "styleVersion": {
+    "message": "Версия стиля",
+    "description": ""
+  },
+  "updateStyle": {
+    "message": "Обновить стиль",
+    "description": ""
+  },
+  "developing": {
+    "message": "Разработка",
+    "description": ""
+  },
+  "support": {
+    "message": "Поддержка",
+    "description": ""
+  }
+}
