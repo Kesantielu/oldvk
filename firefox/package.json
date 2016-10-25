@@ -1,0 +1,32 @@
+{
+  "id": "oldvk@dasefern.com",
+  "title": "Old Design VK",
+  "name": "oldvk",
+  "version": "0.49.3",
+  "description": "An extension which brings back old design for VK",
+  "author": "Kesantielu Dasefern",
+  "homepage": "https://kesantielu.github.io/oldvk",
+  "updateURL": "https://kesantielu.github.io/oldvk/update.rdf",
+  "updateLink": "https://kesantielu.github.io/oldvk/oldvk.xpi",
+  "main": "init.js",
+  "locales": {
+    "ru": {
+      "title": "Старый дизайн ВК",
+      "description": "Расширение, возвращающее старый дизайн ВК"
+    }
+  },
+  "preferences": [
+    {
+      "name": "enabled",
+      "title": "Enable add-on",
+      "description": "Enable or disable add-on",
+      "type": "bool",
+      "value": true
+    }
+  ],
+  "engines": {
+    "firefox": ">=38.0",
+    "fennec": ">=38.0",
+    "seamonkey": ">=2.35"
+  }
+}

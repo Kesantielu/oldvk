@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+/* audios */
+
+head.oldvk-audios ~ body #page_header_cont,
+head.oldvk-audios ~ body #side_bar {
+    position: fixed;
+}
+
+head.oldvk-audios ~ body .narrow_column,
+head.oldvk-audios ~ body .narrow_column_wrap {
+    width: 176px;
+}
+
+head.oldvk-audios ~ body #stl_side {
+    display: none !important
+}
+
+/* friends */
+
+head.oldvk-friends ~ body .wide_column_left .narrow_column_wrap {
+    float: right;
+    position: absolute;
+    right: 41px;
+    top: 351px;
+    z-index: 1;
+}
+
+head.oldvk-friends ~ body .narrow_column,
+head.oldvk-friends ~ body .narrow_column_wrap {
+    width: 152px;
+}
+
+head.oldvk-friends ~ body .wide_column_left .narrow_column_wrap .ui_rmenu {
+    border: 1px solid #DAE1E8;
+    border-top: none;
+}
+
+head.oldvk-friends ~ body .ui_search_fltr_sel:last-child {
+    padding-bottom: 0;
+}
+
+head.oldvk-friends ~ body .ui_rmenu {
+    padding: 10px;
+}
+
+head.oldvk-friends ~ body .ui_rmenu_item,
+head.oldvk-friends ~ body .ui_rmenu_subitem {
+    padding: 6px 6px 7px 10px;
+    border-radius: 0;
+    width: 134px;
+    margin: 0;
+    font-weight: normal;
+}
+
+head.oldvk-friends ~ body .ui_rmenu_item:hover {
+    font-weight: normal;
+}
+
+head.oldvk-friends ~ body .ui_rmenu_subitem.ui_rmenu_item_sel,
+head.oldvk-friends ~ body .ui_rmenu_subitem.ui_rmenu_item_sel:hover,
+head.oldvk-friends ~ body .ui_rmenu_item.ui_rmenu_item_sel,
+head.oldvk-friends ~ body .ui_rmenu_item.ui_rmenu_item_sel:hover,
+head.oldvk-friends ~ body .ui_rmenu_sliding .ui_rmenu_subitem.ui_rmenu_item_sel,
+head.oldvk-friends ~ body .ui_rmenu_sliding .ui_rmenu_item_sel {
+    padding-left: 10px;
+    font-weight: normal;
+}
+
+head.oldvk-friends ~ body .ui_tabs_header {
+    padding-top: 0
+}
+
+head.oldvk-friends ~ body .ui_calendar_icon {
+    margin: 0;
+    opacity: 1;
+}
+
+head.oldvk-friends ~ body #ui_rmenu_lists_list {
+    display: block !important;
+}
+
+head.oldvk-friends ~ body #ui_rmenu_lists {
+    display: none;
+}
+
+/* localize */
+#l_pr .left_label:before {content: none !important;}
+:lang(ru) .left_label:before {content: "Мои "}
+:lang(uk) .left_label:before {content: "Мої "}
+:lang(be-tarask) .left_label:before, :lang(be) .left_label:before {content: "Мае "}
+:lang(en-us) .left_label:before {content: "My "}
