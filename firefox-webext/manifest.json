@@ -2,9 +2,9 @@
   "manifest_version": 2,
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
-  "version": "0.491",
+  "version": "0.494",
   "default_locale": "en",
-  "homepage_url": "https://dasefern.com/vk",
+  "homepage_url": "https://kesantielu.github.io/oldvk",
   "icons": {
     "48": "oldvk-48.png",
     "64": "oldvk-64.png",
@@ -23,7 +23,6 @@
   ],
   "background": {
     "scripts": [
-      "lib/jquery-3.1.0.min.js",
       "events.js"
     ]
   },
@@ -33,14 +32,13 @@
         "*://vk.com/*"
       ],
       "js": [
-        "lib/jquery-3.1.0.min.js",
         "lib/arrive.min.js",
         "content/init.js"
       ],
       "run_at": "document_start",
       "exclude_matches": [
         "*://vk.com/notifier.php*",
-        "*://vk.com/al_*",
+        "*://vk.com/al_*.php*",
         "*://vk.com/dev*",
         "*://vk.com/apps?act=manage*",
         "*://vk.com/upload_fails.php*",
@@ -52,5 +50,12 @@
   ],
   "web_accessible_resources": [
     "content/*.css"
-  ]
+  ],
+  "applications": {
+    "gecko": {
+      "id": "{6acba1db-bca7-4dc3-b20e-3230c4f5a54e}",
+      "strict_min_version": "48.0",
+      "update_url": "https://kesantielu.github.io/oldvk/updates.json"
+    }
+  }
 }
