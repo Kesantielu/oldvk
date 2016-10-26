@@ -14,27 +14,21 @@ if (!String.prototype.startsWith) {
         }
     });
 }
-
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    function listener(tabid, info, tab) {
-        console.log(info);
-        if (info.status == 'loading') {
-            var url = document.createElement('a');
-            url.href = info.url;
-            var path = url.pathname.slice(1);
-            var Styles = [];
-            styles.forEach(function (style) {
-                var apply = !!path.startsWith(style.match);
-                Styles.push({css: style.css, apply: apply})
-            });
-            chrome.tabs.sendMessage(tabid, {action: 'updating', css: Styles}, null)
-        }
+function listener(tabId, info, tab) {
+    if (info.status == 'loading') {
+        var url = document.createElement('a');
+        url.href = info.url;
+        var path = url.pathname.slice(1);
+        var Styles = [];
+        styles.forEach(function (style) {
+            var apply = !!path.startsWith(style.match);
+            Styles.push({css: style.css, apply: apply})
+        });
+        chrome.tabs.sendMessage(tabId, {action: 'updating', css: Styles}, null)
     }
+}
 
-    if (request.action == 'activating') {
-        chrome.tabs.onUpdated.addListener(listener);
-    }
-});
+chrome.tabs.onUpdated.addListener(listener);
 
 chrome.runtime.onInstalled.addListener(function () {
     chrome.storage.local.set({enabled: true})
