@@ -1,0 +1,13 @@
+{
+  "addons": {
+    "{6acba1db-bca7-4dc3-b20e-3230c4f5a54e}": {
+      "updates": [
+        {
+          "version": "0.494",
+          "update_link": "https://kesantielu.github.io/oldvk/oldvk-webext.xpi",
+          "update_hash": "sha256:21b881ad54f790865375980964f5de85e2f4becbe84fff71c5ece0818a257764"
+        }
+      ]
+    }
+  }
+}
