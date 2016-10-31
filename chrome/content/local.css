@@ -85,8 +85,101 @@ head.oldvk-friends ~ body #ui_rmenu_lists {
 }
 
 /* localize */
-#l_pr .left_label:before {content: none !important;}
-:lang(ru) .left_label:before {content: "Мои "}
-:lang(uk) .left_label:before {content: "Мої "}
-:lang(be-tarask) .left_label:before, :lang(be) .left_label:before {content: "Мае "}
-:lang(en-us) .left_label:before {content: "My "}
+
+:lang(ru) #l_nwsf .left_label:before,
+:lang(ru) #l_ntf .left_label:before,
+:lang(ru) #l_msg .left_label:before,
+:lang(ru) #l_fr .left_label:before,
+:lang(ru) #l_gr .left_label:before,
+:lang(ru) #l_ph .left_label:before,
+:lang(ru) #l_aud .left_label:before,
+:lang(ru) #l_vid .left_label:before,
+:lang(ru) #l_fav .left_label:before,
+:lang(ru) #l_sett .left_label:before
+{
+    content: "Мои "
+}
+
+:lang(uk) #l_nwsf .left_label:before,
+:lang(uk) #l_ntf .left_label:before,
+:lang(uk) #l_msg .left_label:before,
+:lang(uk) #l_fr .left_label:before,
+:lang(uk) #l_gr .left_label:before,
+:lang(uk) #l_ph .left_label:before,
+:lang(uk) #l_aud .left_label:before,
+:lang(uk) #l_vid .left_label:before,
+:lang(uk) #l_fav .left_label:before,
+:lang(uk) #l_sett .left_label:before{
+    content: "Мої "
+}
+
+:lang(be) #l_nwsf .left_label:before,
+:lang(be) #l_ntf .left_label:before,
+:lang(be) #l_msg .left_label:before,
+:lang(be) #l_fr .left_label:before,
+:lang(be) #l_gr .left_label:before,
+:lang(be) #l_ph .left_label:before,
+:lang(be) #l_aud .left_label:before,
+:lang(be) #l_vid .left_label:before,
+:lang(be) #l_fav .left_label:before,
+:lang(be) #l_sett .left_label:before,
+:lang(be-tarask) #l_nwsf .left_label:before,
+:lang(be-tarask) #l_ntf .left_label:before,
+:lang(be-tarask) #l_msg .left_label:before,
+:lang(be-tarask) #l_fr .left_label:before,
+:lang(be-tarask) #l_gr .left_label:before,
+:lang(be-tarask) #l_ph .left_label:before,
+:lang(be-tarask) #l_aud .left_label:before,
+:lang(be-tarask) #l_vid .left_label:before,
+:lang(be-tarask) #l_fav .left_label:before,
+:lang(be-tarask) #l_sett .left_label:before {
+    content: "Мае "
+}
+
+:lang(en-us) #l_nwsf .left_label:before,
+:lang(en-us) #l_ntf .left_label:before,
+:lang(en-us) #l_msg .left_label:before,
+:lang(en-us) #l_fr .left_label:before,
+:lang(en-us) #l_gr .left_label:before,
+:lang(en-us) #l_ph .left_label:before,
+:lang(en-us) #l_aud .left_label:before,
+:lang(en-us) #l_vid .left_label:before,
+:lang(en-us) #l_fav .left_label:before,
+:lang(en-us) #l_sett .left_label:before {
+    content: "My "
+}
+
+:lang(ru-ussr) #l_ntf .left_label:before,
+:lang(ru-ussr) #l_msg .left_label:before,
+:lang(ru-ussr) #l_fr .left_label:before,
+:lang(ru-ussr) #l_gr .left_label:before,
+:lang(ru-ussr) #l_ph .left_label:before,
+:lang(ru-ussr) #l_aud .left_label:before,
+:lang(ru-ussr) #l_vid .left_label:before,
+:lang(ru-ussr) #l_fav .left_label:before,
+:lang(ru-ussr) #l_sett .left_label:before
+{
+    content: "Мои "
+}
+
+:lang(ru-ussr) #l_nwsf .left_label:before {
+    content: "Моё "
+}
+
+:lang(ru-petr1708) #l_nwsf .left_label:before,
+:lang(ru-petr1708) #l_ntf .left_label:before,
+:lang(ru-petr1708) #l_msg .left_label:before,
+:lang(ru-petr1708) #l_fr .left_label:before,
+:lang(ru-petr1708) #l_gr .left_label:before,
+:lang(ru-petr1708) #l_ph .left_label:before,
+:lang(ru-petr1708) #l_aud .left_label:before,
+:lang(ru-petr1708) #l_sett .left_label:before
+{
+    content: "Мои "
+}
+
+:lang(ru-petr1708) #l_vid .left_label:before,
+:lang(ru-petr1708) #l_fav .left_label:before
+{
+    content: "Мой "
+}
