@@ -16,7 +16,7 @@ if (!String.prototype.startsWith) {
 }
 
 function listener(tabId, info, tab) {
-    if (info.status == 'complete') {
+    if (info.status == 'complete' && info.url) {
         var url = document.createElement('a');
         url.href = info.url;
         var path = url.pathname.slice(1);

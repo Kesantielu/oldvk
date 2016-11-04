@@ -2,7 +2,7 @@ window.onload = function () {
     document.title = chrome.i18n.getMessage("appName");
     document.getElementById("title").innerHTML = chrome.i18n.getMessage("appName");
     document.getElementById("version").innerHTML = chrome.i18n.getMessage("styleVersion");
-    document.getElementById("version_number").innerHTML = "0.494";
+    document.getElementById("version_number").innerHTML = "0.50";
     document.getElementById("developing").innerHTML = chrome.i18n.getMessage("developing");
     document.getElementById("support").innerHTML = chrome.i18n.getMessage("support");
     chrome.storage.local.get("enabled",function (item) {
