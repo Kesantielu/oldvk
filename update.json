@@ -6,6 +6,11 @@
           "version": "0.494",
           "update_link": "https://kesantielu.github.io/oldvk/oldvk-webext.xpi",
           "update_hash": "sha256:21b881ad54f790865375980964f5de85e2f4becbe84fff71c5ece0818a257764"
+        },
+        {
+          "version": "0.50.1",
+          "update_link": "https://kesantielu.github.io/oldvk/firefox-webext/oldvk-0.50.1-an+fx.xpi",
+          "update_hash": "sha256:0fc071f09397d3486b57bb3d1e7fab3f7e3f4294318f0d7503724c9446b999ef"
         }
       ]
     }
