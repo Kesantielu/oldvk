@@ -22,5 +22,17 @@
   "support": {
     "message": "Support",
     "description": ""
+  },
+  "save": {
+    "message": "Save",
+    "description": ""
+  },
+  "saved": {
+    "message": "Options saved",
+    "description": ""
+  },
+  "option_cover": {
+    "message": "Use adapted community covers",
+    "description": ""
   }
 }

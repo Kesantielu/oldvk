@@ -22,5 +22,17 @@
   "support": {
     "message": "Поддержка",
     "description": ""
+  },
+  "save": {
+    "message": "Сохранить",
+    "description": ""
+  },
+  "saved": {
+    "message": "Настройки сохранены",
+    "description": ""
+  },
+  "option_cover": {
+    "message": "Использовать адаптированные обложки сообществ",
+    "description": ""
   }
 }

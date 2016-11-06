@@ -70,21 +70,11 @@ const i18n = {
     }
 };
 
-if (!String.prototype.startsWith) {
-    Object.defineProperty(String.prototype, 'startsWith', {
-        enumerable: false,
-        configurable: false,
-        writable: false,
-        value: function (searchString, position) {
-            position = position || 0;
-            return this.lastIndexOf(searchString, position) === position;
-        }
-    });
-}
+var options = {optionCover: false};
 
-function insertAfter(referenceNode, newNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
+chrome.storage.local.get(function (items) {
+    Object.assign(options, items)
+});
 
 var injectStart = document.createElement('script');
 injectStart.setAttribute('type', 'text/javascript');
@@ -160,7 +150,7 @@ var LocalizedContent = {
 
     init: function () {
         this.l_ntf.id = 'l_ntf';
-        this.l_ntf.innerHTML = '<a href="/feed?section=notifications" class="left_row" onclick="return nav.go(this, event, {noback: true, params: {_ref: \'left_nav\'}});" onmouseover="TopNotifier.preload(); if (!TopNotifier.shown()) {ntf = setTimeout(function(){TopNotifier.show(event)},1200)}" onmouseout="clearTimeout(ntf);"><span class="left_fixer"><span class="left_count_wrap fl_r" id="oldvk-notify-wrap" onmouseover="TopNotifier.preload()" onclick="TopNotifier.show(event);"><span class="inl_bl left_count" id="oldvk-notify"></span></span><span class="left_label inl_bl">' + i18n.answers[lang] + '</span></span></a>';
+        this.l_ntf.innerHTML = '<a href="/feed?section=notifications" class="left_row" onclick="return nav.go(this, event, {noback: true, params: {_ref: \'left_nav\'}});" onmouseover="TopNotifier.preload(); if (!TopNotifier.shown()) {ntf = setTimeout(function(){TopNotifier.show(event)},2000)}" onmouseout="clearTimeout(ntf);"><span class="left_fixer"><span class="left_count_wrap fl_r" id="oldvk-notify-wrap" onmouseover="TopNotifier.preload()" onclick="TopNotifier.show(event);"><span class="inl_bl left_count" id="oldvk-notify"></span></span><span class="left_label inl_bl">' + i18n.answers[lang] + '</span></span></a>';
 
         this.l_edit.id = 'l_edit';
         this.l_edit.classList.add('fl_r');
@@ -172,15 +162,12 @@ var LocalizedContent = {
 
         document.arrive('#side_bar_inner', {onceOnly: true, existing: true}, function () {
             LocalizedContent.updateMenu();
-            var notifyCount = parseInt(document.getElementById('top_notify_count').innerHTML, 10);
-            if (notifyCount < 1) document.getElementById('oldvk-notify-wrap').classList.add('has_notify');
-            document.getElementById('oldvk-notify').innerHTML = notifyCount.toString();
             document.arrive('#top_settings_link', {onceOnly: true, existing: true}, function () {
                 document.getElementById('oldvk-settings').innerHTML = this.innerHTML
             })
         });
 
-        var top_menu = '<div class="head_nav_item fl_r"><a id="oldvk_top_exit" class="top_nav_link" href="" onclick="if (checkEvent(event) === false) { window.Notifier && Notifier.lcSend(\'logged_off\'); location.href = this.href; return cancelEvent(event); }" onmousedown="tnActive(this)"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_help" class="top_nav_link" href="/support?act=home" onclick="return TopMenu.select(this, event);"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_music" class="top_nav_link" href="" onclick="return (checkKeyboardEvent(event) ? showAudioLayer(event, this) : false);" onmouseover="prepareAudioLayer()" onmousedown="return (checkKeyboardEvent(event) ? false : showAudioLayer(event, this))"><div class="top_profile_name">'+i18n.music[lang]+'</div><div id="oldvk_top_play" class="oldvk-hide" onclick="cancelEvent(event); if (getAudioPlayer().isPlaying()) {getAudioPlayer().pause(); removeClass(this,\'active\')} else {getAudioPlayer().play(); addClass(this,\'active\')}" onmousedown="cancelEvent(event);"></div></a><span id="oldvk_talp"></span></div><div class="head_nav_item fl_r"><a id="oldvk_top_apps" class="top_nav_link" href="/apps" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">'+i18n.games[lang]+'</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_communities" class="top_nav_link" href="/search?c[section]=communities" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">'+i18n.communities[lang]+'</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_peoples" class="top_nav_link" href="/search?c[section]=people" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">'+i18n.peoples[lang]+'</div></a></div>';
+        var top_menu = '<div class="head_nav_item fl_r"><a id="oldvk_top_exit" class="top_nav_link" href="" onclick="if (checkEvent(event) === false) { window.Notifier && Notifier.lcSend(\'logged_off\'); location.href = this.href; return cancelEvent(event); }" onmousedown="tnActive(this)"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_help" class="top_nav_link" href="/support?act=home" onclick="return TopMenu.select(this, event);"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_music" class="top_nav_link" href="" onclick="return (checkKeyboardEvent(event) ? showAudioLayer(event, this) : false);" onmouseover="prepareAudioLayer()" onmousedown="return (checkKeyboardEvent(event) ? false : showAudioLayer(event, this))"><div class="top_profile_name">' + i18n.music[lang] + '</div><div id="oldvk_top_play" class="oldvk-hide" onclick="cancelEvent(event); if (getAudioPlayer().isPlaying()) {getAudioPlayer().pause(); removeClass(this,\'active\')} else {getAudioPlayer().play(); addClass(this,\'active\')}" onmousedown="cancelEvent(event);"></div></a><span id="oldvk_talp"></span></div><div class="head_nav_item fl_r"><a id="oldvk_top_apps" class="top_nav_link" href="/apps" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.games[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_communities" class="top_nav_link" href="/search?c[section]=communities" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.communities[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_peoples" class="top_nav_link" href="/search?c[section]=people" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.peoples[lang] + '</div></a></div>';
         document.arrive('#top_nav', {onceOnly: true, existing: true}, function () {
             this.innerHTML += top_menu;
             document.getElementById('oldvk_top_exit').firstElementChild.innerHTML = document.getElementById('top_logout_link').innerHTML.toLowerCase();
@@ -204,5 +191,37 @@ var LocalizedContent = {
             else
                 insertAfter(document.getElementById('l_ntf'), this.l_set);
         }
+        LocalizedContent.updateNotify()
+    },
+    updateNotify: function () {
+        var notifyCount = parseInt(document.getElementById('top_notify_count').innerHTML, 10);
+        if (notifyCount < 1) document.getElementById('oldvk-notify-wrap').classList.add('has_notify');
+        document.getElementById('oldvk-notify').innerHTML = notifyCount.toString();
     }
 };
+
+document.arrive('.page_cover', {existing: true}, function () {
+    if (options.optionCover) {
+        this.classList.add('adapted')
+    } else {
+        var page_actions = document.getElementsByClassName('group_actions_wrap')[0];
+        var nc = document.getElementById('narrow_column');
+        var page_block = document.createElement('div');
+        page_block.className = 'page_block page_photo';
+        var page_avatar_wrap = document.createElement('div');
+        page_avatar_wrap.className = 'page_avatar_wrap';
+        var page_avatar = document.createElement('div');
+        page_avatar.className = 'page_avatar';
+        page_avatar.id = 'page_avatar';
+        var page_avatar_a = document.getElementsByClassName('page_cover_image')[0];
+        page_avatar_a.className = '';
+        page_avatar_a.firstElementChild.className = 'page_avatar_img';
+        var temp = eval('('+page_avatar_a.getAttribute('onclick').match(/{.*}/)[0]+')').temp;
+        page_avatar_a.firstElementChild.setAttribute('src', temp.base+temp.x_[0]+'.jpg');
+        page_avatar.appendChild(page_avatar_a);
+        page_avatar_wrap.appendChild(page_avatar);
+        page_block.appendChild(page_avatar_wrap);
+        page_block.appendChild(page_actions);
+        nc.insertBefore(page_block, nc.firstChild)
+    }
+});

@@ -34,6 +34,7 @@
         "*://vk.com/*"
       ],
       "js": [
+        "lib/lib.js",
         "lib/arrive.min.js",
         "content/init.js"
       ],
@@ -47,7 +48,10 @@
         "*://vk.com/ads_rotate.php*",
         "*://vk.com/share.php*",
         "*://vk.com/adscreate*",
-        "*://vk.com/wkview.php*"
+        "*://vk.com/wkview.php*",
+        "*://vk.com/bugs",
+        "*://vk.com/bugs?*",
+        "*://vk.com/login.php*"
       ],
       "all_frames": true
     },
@@ -56,6 +60,7 @@
         "*://vk.com/*"
       ],
       "js": [
+        "lib/lib.js",
         "lib/arrive.min.js",
         "content/main.js"
       ],
@@ -68,12 +73,20 @@
         "*://vk.com/ads_rotate.php*",
         "*://vk.com/share.php*",
         "*://vk.com/adscreate*",
-        "*://vk.com/wkview.php*"
+        "*://vk.com/wkview.php*",
+        "*://vk.com/bugs",
+        "*://vk.com/bugs?*",
+        "*://vk.com/login.php*"
       ],
       "all_frames": true
     }
   ],
   "web_accessible_resources": [
-    "content/*.css"
-  ]
+    "content/*.css",
+    "content/injectEnd.js"
+  ],
+  "options_ui" : {
+    "page": "options.html",
+    "chrome_style": true
+  }
 }
