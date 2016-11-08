@@ -2,12 +2,11 @@
   "id": "oldvk@dasefern.com",
   "title": "Old Design VK",
   "name": "oldvk",
-  "version": "0.49.3",
+  "version": "0.50.1",
   "description": "An extension which brings back old design for VK",
   "author": "Kesantielu Dasefern",
   "homepage": "https://kesantielu.github.io/oldvk",
   "updateURL": "https://kesantielu.github.io/oldvk/update.rdf",
-  "updateLink": "https://kesantielu.github.io/oldvk/oldvk.xpi",
   "main": "init.js",
   "locales": {
     "ru": {
