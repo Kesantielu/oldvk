@@ -195,7 +195,7 @@ var LocalizedContent = {
     },
     updateNotify: function () {
         var notifyCount = parseInt(document.getElementById('top_notify_count').innerHTML, 10);
-        if (notifyCount < 1) document.getElementById('oldvk-notify-wrap').classList.add('has_notify');
+        if (notifyCount > 0) document.getElementById('oldvk-notify-wrap').classList.add('has_notify');
         document.getElementById('oldvk-notify').innerHTML = notifyCount.toString();
     }
 };
