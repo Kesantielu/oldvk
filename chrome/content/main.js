@@ -1,6 +1,7 @@
 var wide;
 
 function checkWide() {
+    if (!document.getElementById('narrow_column')) return;
     if (wide != (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0)) {
         wide = !wide;
         if (wide) {
@@ -40,7 +41,6 @@ injectEnd.src = chrome.extension.getURL('content/injectEnd.js');
 
 chrome.storage.local.get('enabled', function (item) {
     if (item.enabled) {
-        console.log('main.js');
         document.body.appendChild(injectEnd);
 
         initWide();

@@ -25,7 +25,7 @@ function listener(tabId, info, tab) {
             var apply = !!path.startsWith(style.match);
             Styles.push({css: style.css, apply: apply})
         });
-        chrome.tabs.sendMessage(tabId, {action: 'updating', css: Styles, info: info}, null)
+        chrome.tabs.sendMessage(tabId, {action: 'updating', css: Styles, path: path}, null)
     }
 }
 
