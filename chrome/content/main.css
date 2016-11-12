@@ -1591,13 +1591,14 @@ input.ui_search_field,
 
 .wall_module .media_desc {
     margin-bottom: 10px;
+    overflow: hidden;
+    max-width: 510px;
 }
 
 .wall_module .media_desc .lnk {
     font-size: 11px;
     display: block;
-    overflow: hidden;
-    float: left
+    width: 100%;
 }
 
 .wall_module .reply_image {
@@ -1614,11 +1615,12 @@ input.ui_search_field,
 
 .post_video_title {
     float: left;
+    width:75%
 }
 
 .post_video_views_count {
     float: right;
-    padding: 0 8px 0 5px;
+    padding: 0;
 }
 
 .wall_module .post_header .ui_actions_menu_icons {
@@ -6600,4 +6602,12 @@ head.oldvk-friends ~ body .wide_column_left .wide_column {
 
 #group_u_search_input_wrap .ui_search {
     width: 400px
+}
+
+.market_module .page_market_more_btn {
+    margin:0
+}
+
+.wall_audio_rows {
+    max-width: 510px;
 }
