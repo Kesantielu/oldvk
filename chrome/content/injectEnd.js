@@ -2,12 +2,16 @@ updateNarrow = function () {
 };
 updateLeftMenu = function () {
 };
-TopNotifier.tnCount = "oldvk-notify";
-TopNotifier.tnLink = "oldvk-notify-wrap";
-if (getAudioPlayer()._currentAudio)removeClass(ge("oldvk_top_play"), "oldvk-hide");
+
+if (typeof TopNotifier !== "undefined") {
+    TopNotifier.tnCount = "oldvk-notify";
+    TopNotifier.tnLink = "oldvk-notify-wrap";
+}
+
+if (getAudioPlayer()._currentAudio) removeClass(ge("oldvk_top_play"), "oldvk-hide");
 window.addEventListener("message", function (m) {
     if (getAudioPlayer()._isPlaying) addClass(ge("oldvk_top_play"), "active"); else removeClass(ge("oldvk_top_play"), "active");
-    if (typeof m.data == 'string' && m.data.split(":")[0] == "q_staudio_v10_pl" && getAudioPlayer()._currentAudio) removeClass(ge("oldvk_top_play"), "oldvk-hide");
+    if (typeof m.data == 'string' && m.data.split(":")[0] == "q_staudio_v20_pl" && getAudioPlayer()._currentAudio) removeClass(ge("oldvk_top_play"), "oldvk-hide");
     else if (m.data.type == 'UPD') {
         switch (m.data.text) {
             case 'friends':
@@ -15,8 +19,8 @@ window.addEventListener("message", function (m) {
                     Friends.showListHeader = function (e, s) {
                         var fleb = ge("friends_list_edit_btn");
                         var fldb = ge("friends_list_delete_btn");
-                        ge("friends_list_title").innerHTML = e;
-                        ge("friends_list_count").innerHTML = "";
+                        ge("friends_list_title").textContent = e;
+                        ge("friends_list_count").textContent = "";
                         addClass(geByClass1("friends_tabs"), "unshown");
 
                         removeClass(ge("friends_tab_list"), "unshown");
@@ -48,7 +52,7 @@ window.addEventListener("message", function (m) {
                                 show(fldb);
                             }
                         }
-                        if (arguments.length > 0 && arguments[0]=='subscribers') show('friends_search_input_wrap')
+                        if (arguments.length > 0 && arguments[0] == 'subscribers') show('friends_search_input_wrap')
 
                     };
                     eval('Friends.editListClient=' + Friends.editListClient.toString().replace(/narrow_column/g, 'ui_search_fltr'));
@@ -72,7 +76,6 @@ window.addEventListener("message", function (m) {
 });
 var sfi = setFavIcon;
 setFavIcon = function () {
-    console.log(arguments);
     if (arguments[0].search(/fav_logo\.ico/i) != -1) {
         arguments[0] = "/images/favicon.ico"
     }

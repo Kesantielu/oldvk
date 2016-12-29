@@ -27,8 +27,7 @@ head.oldvk-audios ~ body #stl_side {
 :lang(ru) #l_aud .left_label:before,
 :lang(ru) #l_vid .left_label:before,
 :lang(ru) #l_fav .left_label:before,
-:lang(ru) #l_sett .left_label:before
-{
+:lang(ru) #l_sett .left_label:before {
     content: "Мои "
 }
 
@@ -41,7 +40,7 @@ head.oldvk-audios ~ body #stl_side {
 :lang(uk) #l_aud .left_label:before,
 :lang(uk) #l_vid .left_label:before,
 :lang(uk) #l_fav .left_label:before,
-:lang(uk) #l_sett .left_label:before{
+:lang(uk) #l_sett .left_label:before {
     content: "Мої "
 }
 
@@ -89,8 +88,7 @@ head.oldvk-audios ~ body #stl_side {
 :lang(ru-ussr) #l_aud .left_label:before,
 :lang(ru-ussr) #l_vid .left_label:before,
 :lang(ru-ussr) #l_fav .left_label:before,
-:lang(ru-ussr) #l_sett .left_label:before
-{
+:lang(ru-ussr) #l_sett .left_label:before {
     content: "Мои "
 }
 
@@ -105,13 +103,19 @@ head.oldvk-audios ~ body #stl_side {
 :lang(ru-petr1708) #l_gr .left_label:before,
 :lang(ru-petr1708) #l_ph .left_label:before,
 :lang(ru-petr1708) #l_aud .left_label:before,
-:lang(ru-petr1708) #l_sett .left_label:before
-{
+:lang(ru-petr1708) #l_sett .left_label:before {
     content: "Мои "
 }
 
 :lang(ru-petr1708) #l_vid .left_label:before,
-:lang(ru-petr1708) #l_fav .left_label:before
-{
+:lang(ru-petr1708) #l_fav .left_label:before {
     content: "Мой "
+}
+
+:lang(ru) #feed_filters .ui_toggler:before {
+    content: "Показать по времени публикации"
+}
+
+#feed_filters .ui_toggler:before {
+    content: "..."
 }
