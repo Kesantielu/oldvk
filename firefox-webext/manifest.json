@@ -2,8 +2,9 @@
   "manifest_version": 2,
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
-  "version": "0.50.1",
+  "version": "0.51.0",
   "default_locale": "en",
+  "author": "Kesantielu Dasefern",
   "homepage_url": "https://kesantielu.github.io/oldvk",
   "icons": {
     "48": "oldvk-48.png",
@@ -26,12 +27,16 @@
       "events.js"
     ]
   },
+  "options_ui" : {
+    "page": "options.html"
+  },
   "content_scripts": [
     {
       "matches": [
         "*://vk.com/*"
       ],
       "js": [
+        "lib/lib.js",
         "lib/arrive.min.js",
         "content/init.js"
       ],
@@ -47,7 +52,10 @@
         "*://vk.com/adscreate*",
         "*://vk.com/wkview.php*",
         "*://vk.com/bugs",
-        "*://vk.com/bugs?*"
+        "*://vk.com/bugs?*",
+        "*://vk.com/login.php*",
+        "*://vk.com/blog",
+        "*://vk.com/blog?*"
       ],
       "all_frames": true
     },
@@ -56,7 +64,6 @@
         "*://vk.com/*"
       ],
       "js": [
-        "lib/arrive.min.js",
         "content/main.js"
       ],
       "exclude_matches": [
@@ -70,13 +77,18 @@
         "*://vk.com/adscreate*",
         "*://vk.com/wkview.php*",
         "*://vk.com/bugs",
-        "*://vk.com/bugs?*"
+        "*://vk.com/bugs?*",
+        "*://vk.com/login.php*",
+        "*://vk.com/blog",
+        "*://vk.com/blog?*"
       ],
       "all_frames": true
     }
   ],
   "web_accessible_resources": [
-    "content/*.css"
+    "content/*.css",
+    "content/injectStart.js",
+    "content/injectEnd.js"
   ],
   "applications": {
     "gecko": {

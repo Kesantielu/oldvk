@@ -16,74 +16,6 @@ head.oldvk-audios ~ body #stl_side {
     display: none !important
 }
 
-/* friends */
-
-head.oldvk-friends ~ body .wide_column_left .narrow_column_wrap {
-    float: right;
-    position: absolute;
-    right: 26px;
-    top: 351px;
-    z-index: 1;
-}
-
-head.oldvk-friends ~ body .narrow_column,
-head.oldvk-friends ~ body .narrow_column_wrap {
-    width: 152px;
-}
-
-head.oldvk-friends ~ body .wide_column_left .narrow_column_wrap .ui_rmenu {
-    border: 1px solid #DAE1E8;
-    border-top: none;
-}
-
-head.oldvk-friends ~ body .ui_search_fltr_sel:last-child {
-    padding-bottom: 0;
-}
-
-head.oldvk-friends ~ body .ui_rmenu {
-    padding: 10px;
-}
-
-head.oldvk-friends ~ body .ui_rmenu_item,
-head.oldvk-friends ~ body .ui_rmenu_subitem {
-    padding: 6px 6px 7px 10px;
-    border-radius: 0;
-    width: 134px;
-    margin: 0;
-    font-weight: normal;
-}
-
-head.oldvk-friends ~ body .ui_rmenu_item:hover {
-    font-weight: normal;
-}
-
-head.oldvk-friends ~ body .ui_rmenu_subitem.ui_rmenu_item_sel,
-head.oldvk-friends ~ body .ui_rmenu_subitem.ui_rmenu_item_sel:hover,
-head.oldvk-friends ~ body .ui_rmenu_item.ui_rmenu_item_sel,
-head.oldvk-friends ~ body .ui_rmenu_item.ui_rmenu_item_sel:hover,
-head.oldvk-friends ~ body .ui_rmenu_sliding .ui_rmenu_subitem.ui_rmenu_item_sel,
-head.oldvk-friends ~ body .ui_rmenu_sliding .ui_rmenu_item_sel {
-    padding-left: 10px;
-    font-weight: normal;
-}
-
-head.oldvk-friends ~ body .ui_tabs_header {
-    padding-top: 0
-}
-
-head.oldvk-friends ~ body .ui_calendar_icon {
-    margin: 0;
-    opacity: 1;
-}
-
-head.oldvk-friends ~ body #ui_rmenu_lists_list {
-    display: block !important;
-}
-
-head.oldvk-friends ~ body #ui_rmenu_lists {
-    display: none;
-}
-
 /* localize */
 
 :lang(ru) #l_nwsf .left_label:before,
@@ -95,8 +27,7 @@ head.oldvk-friends ~ body #ui_rmenu_lists {
 :lang(ru) #l_aud .left_label:before,
 :lang(ru) #l_vid .left_label:before,
 :lang(ru) #l_fav .left_label:before,
-:lang(ru) #l_sett .left_label:before
-{
+:lang(ru) #l_sett .left_label:before {
     content: "Мои "
 }
 
@@ -109,7 +40,7 @@ head.oldvk-friends ~ body #ui_rmenu_lists {
 :lang(uk) #l_aud .left_label:before,
 :lang(uk) #l_vid .left_label:before,
 :lang(uk) #l_fav .left_label:before,
-:lang(uk) #l_sett .left_label:before{
+:lang(uk) #l_sett .left_label:before {
     content: "Мої "
 }
 
@@ -157,8 +88,7 @@ head.oldvk-friends ~ body #ui_rmenu_lists {
 :lang(ru-ussr) #l_aud .left_label:before,
 :lang(ru-ussr) #l_vid .left_label:before,
 :lang(ru-ussr) #l_fav .left_label:before,
-:lang(ru-ussr) #l_sett .left_label:before
-{
+:lang(ru-ussr) #l_sett .left_label:before {
     content: "Мои "
 }
 
@@ -173,13 +103,19 @@ head.oldvk-friends ~ body #ui_rmenu_lists {
 :lang(ru-petr1708) #l_gr .left_label:before,
 :lang(ru-petr1708) #l_ph .left_label:before,
 :lang(ru-petr1708) #l_aud .left_label:before,
-:lang(ru-petr1708) #l_sett .left_label:before
-{
+:lang(ru-petr1708) #l_sett .left_label:before {
     content: "Мои "
 }
 
 :lang(ru-petr1708) #l_vid .left_label:before,
-:lang(ru-petr1708) #l_fav .left_label:before
-{
+:lang(ru-petr1708) #l_fav .left_label:before {
     content: "Мой "
+}
+
+:lang(ru) #feed_filters .ui_toggler:before {
+    content: "Показать по времени публикации"
+}
+
+#feed_filters .ui_toggler:before {
+    content: "..."
 }

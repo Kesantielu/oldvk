@@ -25,8 +25,12 @@ function listener(tabId, info, tab) {
             var apply = !!path.startsWith(style.match);
             Styles.push({css: style.css, apply: apply})
         });
-        chrome.tabs.sendMessage(tabId, {action: 'updating', css: Styles}, null)
+        chrome.tabs.sendMessage(tabId, {action: 'updating', css: Styles, path: path}, null)
     }
 }
 
 chrome.tabs.onUpdated.addListener(listener);
+
+chrome.runtime.onInstalled.addListener(function () {
+    chrome.storage.local.set({enabled: true})
+});
