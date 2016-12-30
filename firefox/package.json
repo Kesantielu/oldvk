@@ -2,11 +2,12 @@
   "id": "oldvk@dasefern.com",
   "title": "Old Design VK",
   "name": "oldvk",
-  "version": "0.50.1",
+  "version": "0.51.0",
   "description": "An extension which brings back old design for VK",
   "author": "Kesantielu Dasefern",
   "homepage": "https://kesantielu.github.io/oldvk",
   "updateURL": "https://kesantielu.github.io/oldvk/update.rdf",
+  "updateLink": "https://kesantielu.github.io/oldvk/firefox/oldvk-0.51.0.xpi",
   "main": "init.js",
   "locales": {
     "ru": {
@@ -21,6 +22,13 @@
       "description": "Enable or disable add-on",
       "type": "bool",
       "value": true
+    },
+    {
+      "name": "optionCover",
+      "title": "Adapted covers",
+      "description": "Use adapted community covers",
+      "type": "bool",
+      "value": false
     }
   ],
   "engines": {

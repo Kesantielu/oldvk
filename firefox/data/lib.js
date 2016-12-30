@@ -5,7 +5,7 @@ const styles = [
 
 const langMap = {0: 'ru', 1: 'uk', 2: 'be-tarask', 3: 'en-us', 97: 'kk', 114: 'be', 100: 'ru-petr1708', 777: 'ru-ussr'};
 
-var lang = 0;
+var lang, emoji;
 
 const i18n = {
     answers: {
@@ -28,11 +28,11 @@ const i18n = {
         100: 'изм.',
         777: 'корр.'
     },
-    peoples: {
+    people: {
         0: 'люди',
         1: 'люди',
         2: 'людзі',
-        3: 'peoples',
+        3: 'people',
         97: 'адамдар',
         114: 'людзі',
         100: 'персоны',
@@ -46,7 +46,7 @@ const i18n = {
         97: 'бірлестіктер',
         114: 'суполкі',
         100: 'общества',
-        777: 'объединения'
+        777: 'клубы'
     },
     music: {
         0: 'музыка',
@@ -67,6 +67,26 @@ const i18n = {
         114: 'гульні',
         100: 'потѣхи',
         777: 'отдых'
+    },
+    all_friends: {
+        0: 'Все друзья',
+        1: 'Усі друзі',
+        2: 'Усе сябры',
+        3: 'All friends',
+        97: 'Барлық достар',
+        114: 'Усе сябры',
+        100: 'Всѣ знакомцы',
+        777: 'Все товарищи'
+    },
+    settings: {
+        0: 'Настройки',
+        1: 'Налаштування',
+        2: 'Налады',
+        3: 'Settings',
+        97: 'Баптаулар',
+        114: 'Налады',
+        100: 'Настройки',
+        777: 'Настройки'
     }
 };
 
@@ -86,11 +106,53 @@ function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-function checkCSS(styles, path) {
+if (!Object.assign) {
+    Object.defineProperty(Object, 'assign', {
+        enumerable: false,
+        configurable: true,
+        writable: true,
+        value: function (target, firstSource) {
+            'use strict';
+            if (target === undefined || target === null) {
+                throw new TypeError('Cannot convert first argument to object');
+            }
+
+            var to = Object(target);
+            for (var i = 1; i < arguments.length; i++) {
+                var nextSource = arguments[i];
+                if (nextSource === undefined || nextSource === null) {
+                    continue;
+                }
+
+                var keysArray = Object.keys(Object(nextSource));
+                for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
+                    var nextKey = keysArray[nextIndex];
+                    var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+                    if (desc !== undefined && desc.enumerable) {
+                        to[nextKey] = nextSource[nextKey];
+                    }
+                }
+            }
+            return to;
+        }
+    });
+}
+
+function wait(condition, callback) {
+    if (typeof condition() !== "undefined") {
+        callback()
+    } else {
+        setTimeout(function () {
+            wait(condition, callback);
+        }, 0)
+    }
+}
+
+function checkCSS(styles) {
     var Styles = [];
     var url = document.createElement('a');
     url.href = window.location.href;
-    if (path == undefined) path = url.pathname.slice(1);
+    var path = url.pathname.slice(1);
     styles.forEach(function (style) {
         var apply = !!path.startsWith(style.match);
         Styles.push({css: style.css, apply: apply})
@@ -105,16 +167,22 @@ function updateCSS(styles) {
     })
 }
 
+function updating(path) {
+    switch (path) {
+        case 'friends':
+            window.postMessage({type: "UPD", text: path}, '*');
+            break;
+    }
+}
+
 var wide;
 var topStop = 3000;
 
 function initResize() {
 
     document.arrive('.page_post_sized_thumbs', {existing: true}, function () {
-        console.log('arrive',this.parentNode.id);
         var element = this;
         resizing(element, function () {
-            console.log('resizing',element.parentNode.id);
             Zoom.minus(element);
             Array.prototype.forEach.call(element.childNodes, function (node) {
                 Zoom.minus(node)
@@ -173,17 +241,14 @@ var Zoom = {
 };
 
 function checkWide() {
-    console.log('checkwide',wide);
     if (wide != (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0)) {
         wide = !wide;
         var thumbs;
-        console.info('wide',wide);
         if (wide) {
             document.getElementById('wide_column').classList.add('wide');
             document.getElementsByClassName('narrow_column_wrap')[0].style.position = 'absolute';
 
             thumbs = Array.prototype.slice.call(document.getElementsByClassName('oldvk-resized'));
-            console.log('thumbs',thumbs.length);
             thumbs.forEach(function (element) {
                 Zoom.plus(element);
                 Array.prototype.forEach.call(element.childNodes, function (node) {
@@ -204,7 +269,6 @@ function checkWide() {
             document.getElementsByClassName('narrow_column_wrap')[0].style.position = 'relative';
 
             thumbs = Array.prototype.slice.call(document.getElementsByClassName('page_post_sized_thumbs'));
-            console.log('thumbs',thumbs.length);
             thumbs.forEach(function (element) {
                 if ((element.getBoundingClientRect().top + document.body.scrollTop) <= topStop) {
                     Zoom.minus(element);

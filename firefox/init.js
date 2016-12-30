@@ -66,6 +66,7 @@ var options = {
     contentScriptFile: ['./arrive.min.js', './lib.js', './mainStart.js'],
     contentScriptWhen: 'start',
     contentStyleFile: ['./main.css', './local.css'],
+    contentScriptOptions: {inject: require('sdk/self').data.url('injectStart.js'), optionCover: prefs.optionCover},
     exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails.php|ads_rotate.php|share.php|adscreate$|adscreate\?|wkview.php|bugs$|bugs\?|q_frame.php|.*upload.php|login.php).*$/
 };
 
@@ -73,6 +74,7 @@ var options1 = {
     include: '*.vk.com',
     contentScriptFile: ['./arrive.min.js', './lib.js', './mainEnd.js'],
     contentScriptWhen: 'ready',
+    contentScriptOptions: {inject: require('sdk/self').data.url('injectEnd.js')},
     exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails.php|ads_rotate.php|share.php|adscreate$|adscreate\?|wkview.php|bugs$|bugs\?|q_frame.php|.*upload.php|login.php).*$/
 };
 
