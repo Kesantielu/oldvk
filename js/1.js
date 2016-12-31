@@ -11,3 +11,8 @@ function installF(aEvent)
   InstallTrigger.install(params);
   return false;
 }
+
+function installO() {
+  if (opr) opr.addons.installExtension('cjchggejabbldejlmlkbakoakdpooeij');
+  else location.href = "https://addons.opera.com/ru/extensions/details/staryi-dizain-vk-2";
+}
