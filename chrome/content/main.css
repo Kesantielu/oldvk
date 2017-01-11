@@ -1891,6 +1891,8 @@ input.text.ts_input {
 
 #profile_gift_send_btn {
     background: #ebeef2;
+    width: auto;
+    margin: 5px 10px 0;
 }
 
 #profile_gift_send_btn:hover {
@@ -7085,6 +7087,10 @@ img.feed_notif_img {
 .im-chat-input .emoji_tt_wrap.tt_down {
     bottom: 22px;
     right: -9px;
+}
+
+.page_media_graffiti_doc {
+    zoom: 0.66;
 }
 
 /* --- Временное решение проблем с альбомами −−− */

@@ -22,4 +22,4 @@ function restore() {
 document.addEventListener('DOMContentLoaded', restore);
 document.getElementById('save').addEventListener('click', save);
 document.getElementById('save').textContent = chrome.i18n.getMessage('save');
-document.getElementById('cover_label').textContent += chrome.i18n.getMessage('option_cover');
+document.getElementById('cover_label').innerHTML += chrome.i18n.getMessage('option_cover');
