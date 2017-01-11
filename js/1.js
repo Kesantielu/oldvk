@@ -16,3 +16,13 @@ function installO() {
   if (typeof opr !== 'undefined') opr.addons.installExtension('cjchggejabbldejlmlkbakoakdpooeij');
   else location.href = "https://addons.opera.com/ru/extensions/details/staryi-dizain-vk-2";
 }
+
+window.addEventListener('DOMContentLoaded',function(){
+  var a1 = document.getElementById('firefox-webext-link');
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function () {
+    console.log(xhr.responseText)
+  }
+  xhr.open('GET', 'updates.json', true);
+  xhr.send();
+})
