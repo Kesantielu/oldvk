@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded',function(){
   xhr2.onload = function() {
     var rdf = new DOMParser();
     var upd = rdf.parseFromString(xhr2.responseText,"text/xml");
-    console.log(upd);
+    console.log(upd.getElementsByTagName('em:version'));
   }
   xhr2.open('GET', 'update1.rdf', true);
   xhr2.send();
