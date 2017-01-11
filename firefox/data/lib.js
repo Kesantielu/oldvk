@@ -106,6 +106,14 @@ function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
+if (!Element.prototype.matches) {
+    Element.prototype.matches =
+        Element.prototype.matchesSelector ||
+        Element.prototype.webkitMatchesSelector ||
+        Element.prototype.mozMatchesSelector ||
+        Element.prototype.msMatchesSelector
+}
+
 if (!Object.assign) {
     Object.defineProperty(Object, 'assign', {
         enumerable: false,
@@ -137,6 +145,90 @@ if (!Object.assign) {
         }
     });
 }
+
+var KPP = {
+    _list: [],
+    _actions: [],
+    _addedTag: function (observer, mutations, tag, callback, once) {
+        for (var i = 0, l = mutations.length; i < l; i++) {
+            for (var j = 0, m = mutations[i].addedNodes.length; j < m; j++) {
+                if (mutations[i].addedNodes[j].tagName = tag) {
+                    callback();
+                    if (once) observer.disconnect();
+                }
+            }
+        }
+    },
+    _police: new MutationObserver(function (mutations) {
+        for (var i = 0, l = mutations.length; i < l; i++) {
+            for (var j = 0, m = mutations[i].addedNodes.length; j < m; j++) {
+                for (var k = KPP._list.length; k--;) {
+                    /*if (mutations[i].addedNodes[j].nodeType == 1 && mutations[i].addedNodes[j].matches(KPP._list[k])) {
+                     KPP._actions[k](mutations[i].addedNodes[j]);
+                     break;
+                     }*/ // Обрабатывает только существующие элементы до DOMContentLoaded
+
+                    if (mutations[i].addedNodes[j].nodeType == 1) {
+                        var n = mutations[i].addedNodes[j].querySelectorAll(KPP._list[k]);
+                        for (var o = 0, p = n.length; o < p; o++) {
+                            if (!n[o].KPPPassed) {
+                                KPP._actions[k](n[o]);
+                                n[o].KPPPassed = true;
+                            }
+                        }
+                        if (n.length > 0) break
+                    }
+
+                }
+            }
+        }
+    }),
+    head: function (callback) {
+        if (!document.head) {
+            var observer = new MutationObserver(function (mutations, observer) {
+                KPP._addedTag(observer, mutations, 'HEAD', callback, true)
+            });
+            observer.observe(document.documentElement, {childList: true});
+        } else callback();
+    },
+    body: function (callback) {
+        if (!document.body) {
+            var observer = new MutationObserver(function (mutations, observer) {
+                KPP._addedTag(observer, mutations, 'BODY', callback, true)
+            });
+            observer.observe(document.documentElement, {childList: true});
+        } else callback();
+    },
+    add: function (selector, callback) {
+        var q = document.querySelectorAll(selector);
+        if (q.length > 0) {
+            for (var i = q.length; i--;) {
+                callback(q[i]);
+            }
+        }
+        KPP._list.push(selector);
+        KPP._actions.push(callback);
+        KPP._police.observe(document.documentElement, {childList: true, subtree: true})
+    },
+    remove: function (selector) {
+        var s = KPP._list.indexOf(selector);
+        if (s != -1) {
+            KPP._list.splice(s, 1);
+            KPP._actions.splice(s, 1);
+            if (KPP._list.length < 1)
+                KPP._police.disconnect();
+            return true
+        }
+        return false
+    },
+    stop: function (full) {
+        KPP._police.disconnect();
+        if (full) {
+            KPP._list = [];
+            KPP._actions = [];
+        }
+    }
+};
 
 function wait(condition, callback) {
     if (typeof condition() !== "undefined") {
@@ -180,8 +272,8 @@ var topStop = 3000;
 
 function initResize() {
 
-    document.arrive('.page_post_sized_thumbs', {existing: true}, function () {
-        var element = this;
+    KPP.add('.page_post_sized_thumbs', function (e) {
+        var element = e;
         resizing(element, function () {
             Zoom.minus(element);
             Array.prototype.forEach.call(element.childNodes, function (node) {
@@ -191,8 +283,8 @@ function initResize() {
         })
     });
 
-    document.arrive('.page_gif_large', {existing: true}, function () {
-        var element = this;
+    KPP.add('.page_gif_large', function (e) {
+        var element = e;
         resizing(element, function () {
             Zoom.minus_d(element.getElementsByClassName('page_doc_photo_href')[0]);
             Zoom.minus(element.getElementsByClassName('page_doc_photo')[0]);
@@ -219,22 +311,18 @@ var Zoom = {
     factor: 0.66,
     factorFixed: 0.77,
     plus: function (element) {
-        //console.log('plus', element.parentNode.id);
         element.style.width = parseFloat(element.style.width) / Zoom.factor + 'px';
         element.style.height = parseFloat(element.style.height) / Zoom.factor + 'px';
     },
     minus: function (element) {
-        //console.log('minus', element.parentNode.id);
         element.style.width = parseFloat(element.style.width) * Zoom.factor + 'px';
         element.style.height = parseFloat(element.style.height) * Zoom.factor + 'px';
     },
     plus_d: function (element) {
-        //console.log('plus_d', element.parentNode.id);
         element.dataset.width = element.dataset.width / Zoom.factor;
         element.dataset.height = element.dataset.height / Zoom.factor
     },
     minus_d: function (element) {
-        //console.log('minus_d', element.parentNode.id);
         element.dataset.width = element.dataset.width * Zoom.factor;
         element.dataset.height = element.dataset.height * Zoom.factor
     }

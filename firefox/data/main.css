@@ -1891,6 +1891,8 @@ input.text.ts_input {
 
 #profile_gift_send_btn {
     background: #ebeef2;
+    width: auto;
+    margin: 5px 10px 0;
 }
 
 #profile_gift_send_btn:hover {
@@ -3502,6 +3504,7 @@ img.fc_contact_photo {
     right: 0;
     left: auto;
     bottom: 2px;
+    top: auto
 }
 
 .im-chat-input .im-chat-input--txt-wrap {
@@ -4518,9 +4521,8 @@ a.ts_search_link {
 }
 
 .page_square_photo {
-    width: 95px;
-    height: 95px;
-    margin-left: 4px;
+    zoom: 0.66;
+    width: 145px
 }
 
 .tt_black .tt_text {
@@ -5125,16 +5127,17 @@ div.submit_post_field ~ .placeholder .ph_input {
     order: 17;
 }
 
-#side_bar_inner ol .more_div {
+#side_bar_inner ol #l_spr {
     order: 18;
+}
+
+#side_bar_inner ol .more_div {
+    order: 19;
 }
 
 #side_bar_inner ol .l_comm {
-    order: 18;
+    order: 19;
 }
-
-/* === */
-/* ==||== */
 
 .wide_column h2.page_block_h2,
 .search_query_wrap {
@@ -6692,6 +6695,7 @@ head.oldvk-friends ~ body .wide_column_left .wide_column {
 
 .im-chat-input .im-chat-input--attach-label {
     background: url('data:image/gif;base64,R0lGODlhEAANAMQZAHGNrdjg6XWQsHKNrtvi6oefu3KOroaeuo6kvn+ZtnmUtJ+xyJ+xx3WRsaq7znGMrXeSsn2Xtq6+0ay90HaRsXiTs3qVtHiTsnuWtf///wAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABkALAAAAAAQAA0AAAVVYCZmzAOcwMOM7CJAV3xBwjISyNAoWO8rjQGCkKBULL4kxlKhFJHKqIVyUUpEE2UsGWFFktskS1v1VRwiRwVc7k0NBgq0F/Yxj9pDdI85BAp8SQUBIQA7') no-repeat center;
+    padding: 0;
 }
 
 .im-chat-input .im-chat-input--attach {
@@ -6739,7 +6743,7 @@ head.oldvk-friends ~ body .wide_column_left .wide_column {
     margin-left: 36px;
 }
 
-.media_selector .ms_item_more {
+.im-chat-input .im-chat-input--selector .ms_item_more{
     padding: 0
 }
 
@@ -7076,7 +7080,20 @@ img.feed_notif_img {
     margin: 0 0 5px;
 }
 
-/* --- Временное решение проблем с альбомами −−−> */
+.im-chat-input .im-chat-input--smile-wrap .emoji_smile {
+    padding: 0
+}
+
+.im-chat-input .emoji_tt_wrap.tt_down {
+    bottom: 22px;
+    right: -9px;
+}
+
+.page_media_graffiti_doc {
+    zoom: 0.66;
+}
+
+/* --- Временное решение проблем с альбомами −−− */
 
 .upload_btn_wrap {
     margin: 0 0 0 10px;
@@ -7096,32 +7113,4 @@ img.feed_notif_img {
     padding: 0 5px;
 }
 
-/* <−−− ||| −−− */
-
-/* Firefox -> */
-
-a.page_post_thumb_wrap,
-span.page_post_thumb_wrap {
-    margin: 0 3px 3px 0;
-}
-
-.wide a.page_post_thumb_wrap,
-.wide span.page_post_thumb_wrap {
-    margin: 0 4px 4px 0;
-}
-
-.wide .page_post_sized_thumbs a.page_post_thumb_last_column,
-.wide .page_post_sized_thumbs span.page_post_thumb_last_column {
-    margin-right: 0;
-}
-
-.wide .page_post_sized_thumbs a.page_post_thumb_last_row,
-.wide .page_post_sized_thumbs span.page_post_thumb_last_row {
-    margin-bottom: 0;
-}
-
-body.firefox #page_wrap {
-    overflow: inherit
-}
-
-/* <- Firefox */
+/* −−− ||| −−− */

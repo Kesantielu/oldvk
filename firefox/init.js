@@ -5,7 +5,6 @@ const {Panel} = require("sdk/panel");
 var _ = require("sdk/l10n").get;
 
 const {Cu} = require('chrome');
-Cu.import("resource://gre/modules/Console.jsm");
 
 var button = ToggleButton({
     id: 'oldvk-button',
@@ -63,16 +62,16 @@ function enableExt(state) {
 
 var options = {
     include: '*.vk.com',
-    contentScriptFile: ['./arrive.min.js', './lib.js', './mainStart.js'],
+    contentScriptFile: ['./lib.js', './mainStart.js'],
     contentScriptWhen: 'start',
-    contentStyleFile: ['./main.css', './local.css'],
+    contentStyleFile: ['./main.css', './local.css', './fox.css'],
     contentScriptOptions: {inject: require('sdk/self').data.url('injectStart.js'), optionCover: prefs.optionCover},
     exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails.php|ads_rotate.php|share.php|adscreate$|adscreate\?|wkview.php|bugs$|bugs\?|q_frame.php|.*upload.php|login.php).*$/
 };
 
 var options1 = {
     include: '*.vk.com',
-    contentScriptFile: ['./arrive.min.js', './lib.js', './mainEnd.js'],
+    contentScriptFile: ['./lib.js', './mainEnd.js'],
     contentScriptWhen: 'ready',
     contentScriptOptions: {inject: require('sdk/self').data.url('injectEnd.js')},
     exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails.php|ads_rotate.php|share.php|adscreate$|adscreate\?|wkview.php|bugs$|bugs\?|q_frame.php|.*upload.php|login.php).*$/

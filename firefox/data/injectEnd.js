@@ -8,11 +8,19 @@ if (typeof TopNotifier !== "undefined") {
     TopNotifier.tnLink = "oldvk-notify-wrap";
 }
 
-if (getAudioPlayer()._currentAudio) removeClass(ge("oldvk_top_play"), "oldvk-hide");
+if (typeof getAudioPlayer !== "undefined" && getAudioPlayer()._currentAudio) removeClass(ge("oldvk_top_play"), "oldvk-hide");
+
+if (typeof ap !== 'undefined' && ap.top !== 'undefined') {
+    ap.on(ap.top, AudioPlayer.EVENT_PLAY, function () {
+        addClass(ge("oldvk_top_play"), "active")
+    });
+    ap.on(ap.top, AudioPlayer.EVENT_PAUSE, function () {
+        removeClass(ge("oldvk_top_play"), "active")
+    })
+}
+
 window.addEventListener("message", function (m) {
-    if (getAudioPlayer()._isPlaying) addClass(ge("oldvk_top_play"), "active"); else removeClass(ge("oldvk_top_play"), "active");
-    if (typeof m.data == 'string' && m.data.split(":")[0] == "q_staudio_v20_pl" && getAudioPlayer()._currentAudio) removeClass(ge("oldvk_top_play"), "oldvk-hide");
-    else if (m.data.type == 'UPD') {
+    if (m.data.type == 'UPD') {
         switch (m.data.text) {
             case 'friends':
                 if (Friends) {

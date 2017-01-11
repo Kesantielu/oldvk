@@ -20,16 +20,12 @@ window.addEventListener('message', function (event) {
 }, false);
 
 
-document.arrive('head', {onceOnly: true, existing: true}, function () {
+KPP.head(function () {
     checkCSS(styles);
     document.head.appendChild(injectStart);
     initArrives();
     initResize();
     document.querySelector("link[rel*='icon']").href = "https://vk.com/images/favicon.ico";
-});
-
-window.addEventListener('beforeunload', function () {
-    Arrive.unbindAllArrive();
 });
 
 var LocalizedContent = {
@@ -48,16 +44,18 @@ var LocalizedContent = {
 
         this.l_set.id = 'l_sett';
         this.l_set.innerHTML = '<a href="/settings" class="left_row"><span class="left_fixer"><span class="left_label inl_bl" id="oldvk-settings">' + i18n.settings[lang] + '</span></span></a>';
-
-        document.arrive('#side_bar_inner', {onceOnly: true, existing: true}, function () {
+        KPP.add('#side_bar_inner', function () {
+            KPP.remove('#side_bar_inner');
             LocalizedContent.updateMenu();
         });
 
         var top_menu = '<div class="head_nav_item fl_r"><a id="oldvk_top_exit" class="top_nav_link" href="" onclick="if (checkEvent(event) === false) { window.Notifier && Notifier.lcSend(\'logged_off\'); location.href = this.href; return cancelEvent(event); }" onmousedown="tnActive(this)"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_help" class="top_nav_link" href="/support?act=home" onclick="return TopMenu.select(this, event);"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_music" class="top_nav_link" href="" onclick="return (checkKeyboardEvent(event) ? showAudioLayer(event, this) : false);" onmouseover="prepareAudioLayer()" onmousedown="return (checkKeyboardEvent(event) ? false : showAudioLayer(event, this))"><div class="top_profile_name">' + i18n.music[lang] + '</div><div id="oldvk_top_play" class="oldvk-hide" onclick="cancelEvent(event); if (getAudioPlayer().isPlaying()) {getAudioPlayer().pause(); removeClass(this,\'active\')} else {getAudioPlayer().play(); addClass(this,\'active\')}" onmousedown="cancelEvent(event);"></div></a><span id="oldvk_talp"></span></div><div class="head_nav_item fl_r"><a id="oldvk_top_apps" class="top_nav_link" href="/apps" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.games[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_communities" class="top_nav_link" href="/search?c[section]=communities" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.communities[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_peoples" class="top_nav_link" href="/search?c[section]=people" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.people[lang] + '</div></a></div>';
         var tmw = document.createElement('div');
+        tmw.id = "oldvk_top_menu";
         tmw.innerHTML = top_menu;
-        document.arrive('#top_nav', {onceOnly: true, existing: true}, function () {
-            this.appendChild(tmw);
+        KPP.add('#top_nav', function (element) {
+            KPP.remove('#top_nav');
+            if (!document.getElementById('oldvk_top_menu')) element.appendChild(tmw);
             var ote = document.getElementById('oldvk_top_exit');
             var tll = document.getElementById('top_logout_link');
             var oth = document.getElementById('oldvk_top_help');
@@ -75,9 +73,8 @@ var LocalizedContent = {
         })
     },
     updateMenu: function () {
-        if (!document.getElementById('l_ntf')) {
+        if (!document.getElementById('l_ntf'))
             insertAfter(document.getElementById('l_nwsf'), this.l_ntf);
-        }
         if (!document.getElementById('l_edit')) {
             var l_edit_b = document.getElementById('l_pr').getElementsByClassName('left_fixer')[0];
             l_edit_b.insertBefore(this.l_edit, l_edit_b.firstChild);
@@ -108,10 +105,9 @@ var LocalizedContent = {
 
 function initArrives() {
 
-    document.arrive('.page_cover', {existing: true}, function () {
-        console.info('cover', self.options.optionCover);
+    KPP.add('.page_cover', function (element) {
         if (self.options.optionCover) {
-            this.classList.add('adapted')
+            element.classList.add('adapted')
         } else {
             var page_actions = document.getElementsByClassName('group_actions_wrap')[0];
             var nc = document.getElementById('narrow_column');
@@ -129,7 +125,8 @@ function initArrives() {
         }
     });
 
-    document.arrive('#friends', {existing: true}, function () {
+    KPP.add('#friends', function (element) {
+        if (!options.enabled) return;
         var urr = document.getElementById('ui_rmenu_requests');
         if (urr) {
             urr.className = 'ui_tab';
@@ -138,7 +135,7 @@ function initArrives() {
             urr.setAttribute('onclick', urr.getAttribute('onclick').replace('Menu', 'Tab'));
             ftr.appendChild(urr);
             if (document.getElementById('friends_tab_online')) insertAfter(document.getElementById('friends_tab_online'), ftr);
-            if (this.classList.contains('friends_requests')) {
+            if (element.classList.contains('friends_requests')) {
                 urr.classList.add('ui_tab_sel');
                 document.getElementById('friends_tab_all').firstElementChild.classList.remove('ui_tab_sel')
             }
@@ -152,7 +149,7 @@ function initArrives() {
             urs.className = 'ui_rmenu_sep';
             if (document.getElementById('ui_rmenu_lists_list')) document.getElementById('ui_rmenu_lists_list').insertBefore(urs, document.getElementsByClassName('friends_create_list')[0])
         } else {
-            insertAfter(this.firstElementChild, document.getElementById('friends_import_block'));
+            insertAfter(element.firstElementChild, document.getElementById('friends_import_block'));
             var uhes = document.getElementsByClassName('ui_header_ext_search')[0];
             document.getElementById('friends_import_block').appendChild(uhes);
             uhes.className = 'friends_import_row clear_fix';
@@ -178,10 +175,10 @@ function initArrives() {
             fta.appendChild(fta_a);
             var ft_w = document.createElement('div');
             ft_w.className = 'friends_tabs_wrap ui_tabs_header ui_tabs';
-            this.insertBefore(ft_w, document.getElementById('friends_import_header'));
+            element.insertBefore(ft_w, document.getElementById('friends_import_header'));
             ft_w.appendChild(fta);
             ft_w.appendChild(document.getElementById('friends_import_header'));
-            this.insertBefore(document.getElementById('friends_filters_header'), document.getElementById('results'));
+            element.insertBefore(document.getElementById('friends_filters_header'), document.getElementById('results'));
             var sqw = document.getElementById('search_query_wrap');
             if (sqw) var ffb_top = sqw.clientHeight + sqw.offsetTop;
             var ffb = document.getElementById('friends_filters_block');
@@ -189,10 +186,9 @@ function initArrives() {
         }
     });
 
-    document.arrive('.im-chat-input--textarea', {existing: true}, function () {
+    KPP.add('.im-chat-input--textarea', function (chat) {
         var emoji_div = document.createElement('div');
         emoji_div.id = 'oldvk-emoji';
-        var chat = this;
         chat.appendChild(document.getElementsByClassName('im-chat-input--send')[0]);
         chat.appendChild(document.getElementsByClassName('im-chat-input--selector')[0]);
         wait(function () {
@@ -206,9 +202,11 @@ function initArrives() {
         var avatar1 = document.createElement('img');
         avatar1.src = document.getElementsByClassName('top_profile_img')[0].src;
         avatar1.className = 'oldvk-chat-avatar';
-        this.parentNode.insertBefore(avatar1, this);
-        document.arrive('.im-page--nav-photo .nim-peer--photo', {existing: true}, function () {
-            var avatars = this.getElementsByTagName('img');
+        chat.parentNode.insertBefore(avatar1, chat);
+
+        KPP.add('.im-page--nav-photo .nim-peer--photo', function (element) {
+            var avatars = element.getElementsByTagName('img');
+            console.log('avatars', avatars);
             var i;
             var tmp = chat.parentNode.getElementsByClassName('oldvk-chat-avatar-wrap');
             for (i = tmp.length; i--;) {
@@ -237,7 +235,7 @@ function initArrives() {
 
     });
 
-    document.arrive('#ui_rmenu_news_list', {existing: true}, function () {
+    KPP.add('#ui_rmenu_news_list', function (element) {
         var ont = document.createElement('ul');
         ont.id = 'oldvk-news-tabs';
         ont.className = 'ui_tabs ui_tabs_header clear_fix';
@@ -249,19 +247,19 @@ function initArrives() {
         uru.classList.add('ui_tab');
         urc.classList.add('ui_tab');
         urs.classList.add('ui_tab');
-        var tmp = this.parentNode.getElementsByClassName('ui_rmenu_item');
+        var tmp = element.parentNode.getElementsByClassName('ui_rmenu_item');
         for (var i = tmp.length; i--;) tmp[i].setAttribute('onclick', 'newsMenuTabs(this);' + tmp[i].getAttribute('onclick'));
-        tmp = this.parentNode.getElementsByClassName('ui_rmenu_subitem');
+        tmp = element.parentNode.getElementsByClassName('ui_rmenu_subitem');
         for (i = tmp.length; i--;) tmp[i].setAttribute('onclick', 'newsMenuTabs(this);' + tmp[i].getAttribute('onclick'));
         ont.appendChild(urn);
         ont.appendChild(uru);
         ont.appendChild(urc);
         ont.appendChild(urs);
-        this.parentNode.parentNode.insertBefore(ont, this.parentNode);
+        element.parentNode.parentNode.insertBefore(ont, element.parentNode);
         var urnl = document.getElementById('ui_rmenu_news_list');
         urnl.appendChild(document.getElementById('ui_rmenu_recommended'));
         urnl.appendChild(document.getElementById('ui_rmenu_articles'));
-        if (!(urn.classList.contains('ui_rmenu_item_sel') || document.querySelector('#ui_rmenu_news_list .ui_rmenu_item_sel'))) this.parentNode.classList.add('unshown');
+        if (!(urn.classList.contains('ui_rmenu_item_sel') || document.querySelector('#ui_rmenu_news_list .ui_rmenu_item_sel'))) element.parentNode.classList.add('unshown');
         var fali = document.getElementById('feed_add_list_icon');
         fali.classList.add('ui_rmenu_subitem');
         urnl.insertBefore(fali, urnl.firstChild);
@@ -269,8 +267,8 @@ function initArrives() {
         if (spb) document.getElementById('feed_filters').parentNode.insertBefore(spb, document.getElementById('feed_filters'));
     });
 
-    document.arrive('#ui_rmenu_communities_list', {existing: true}, function () {
-        this.parentNode.appendChild(this);
+    KPP.add('#ui_rmenu_communities_list', function (element) {
+        element.parentNode.appendChild(element);
         document.getElementById('ui_rmenu_communities').addEventListener('click', function () {
             setTimeout(function () {
                 document.getElementById('ui_rmenu_communities_list').style.display = 'block'
