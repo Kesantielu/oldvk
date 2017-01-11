@@ -1,3 +1,5 @@
+var isFirefox = typeof InstallTrigger !== 'undefined';
+
 const styles = [
     {css: 'audios', match: 'audios'},
     {css: 'friends', match: 'friends'}
@@ -14,9 +16,9 @@ if (!String.prototype.startsWith) {
         }
     });
 }
+
 function listener(tabId, info, tab) {
-    if (info.status == 'loading' && info.url) {
-        console.log(tabId,info);
+    if (info.status == isFirefox ? 'complete' : 'loading' && info.url) {
         var url = document.createElement('a');
         url.href = info.url;
         var path = url.pathname.slice(1);

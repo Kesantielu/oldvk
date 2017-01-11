@@ -4,12 +4,54 @@ function checkWide() {
     if (!document.getElementById('narrow_column')) return;
     if (wide != (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0)) {
         wide = !wide;
+        var thumbs;
         if (wide) {
             document.getElementById('wide_column').classList.add('wide');
             document.getElementsByClassName('narrow_column_wrap')[0].style.position = 'absolute';
+
+            if (isFirefox) {
+                thumbs = [].slice.call(document.getElementsByClassName('oldvk-resized'));
+                thumbs.forEach(function (element) {
+                    Zoom.plus(element);
+                    Array.prototype.forEach.call(element.childNodes, function (node) {
+                        Zoom.plus(node)
+                    });
+                    element.classList.remove('oldvk-resized')
+                });
+                thumbs = [].slice.call(document.getElementsByClassName('oldvk-resized-gif'));
+                thumbs.forEach(function (element) {
+                    Zoom.plus_d(element.getElementsByClassName('page_doc_photo_href')[0]);
+                    Zoom.plus(element.getElementsByClassName('page_doc_photo')[0]);
+                    Zoom.plus(element.getElementsByClassName('page_doc_photo_href')[0]);
+                    element.classList.remove('oldvk-resized-gif');
+                })
+            }
+
         } else {
             document.getElementById('wide_column').classList.remove('wide');
             document.getElementsByClassName('narrow_column_wrap')[0].style.position = 'relative';
+
+            if (isFirefox) {
+                thumbs = [].slice.call(document.getElementsByClassName('page_post_sized_thumbs'));
+                thumbs.forEach(function (element) {
+                    if ((element.getBoundingClientRect().top + document.body.scrollTop) <= topStop) {
+                        Zoom.minus(element);
+                        [].forEach.call(element.childNodes, function (node) {
+                            Zoom.minus(node)
+                        });
+                        element.classList.add('oldvk-resized')
+                    }
+                });
+                thumbs = Array.prototype.slice.call(document.getElementsByClassName('page_gif_large'));
+                thumbs.forEach(function (element) {
+                    if ((element.getBoundingClientRect().top + document.body.scrollTop) <= topStop) {
+                        Zoom.minus_d(element.getElementsByClassName('page_doc_photo_href')[0]);
+                        Zoom.minus(element.getElementsByClassName('page_doc_photo')[0]);
+                        Zoom.minus(element.getElementsByClassName('page_doc_photo_href')[0]);
+                        element.classList.add('oldvk-resized-gif');
+                    }
+                })
+            }
         }
     }
 }

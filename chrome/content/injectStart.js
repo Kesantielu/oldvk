@@ -11,10 +11,10 @@
 (function emojiwait() {
     if (typeof Emoji !== "undefined") {
         Emoji.curEmojiRecent = Emoji.emojiGetRecentFromStorage();
-        var emoji = Emoji.getRecentEmojiSorted().map(function(e){
-            return Emoji.getEmojiHTML(e,Emoji.codeToChr(e),true)
+        var emoji = Emoji.getRecentEmojiSorted().map(function (e) {
+            return Emoji.getEmojiHTML(e, Emoji.codeToChr(e), true)
         });
-        window.postMessage({type:"VK_EMOJI",text:{emoji:Emoji.getRecentEmojiSorted(),html:emoji}},"*");
+        window.postMessage({type: "VK_EMOJI", text: {emoji: Emoji.getRecentEmojiSorted(), html: emoji}}, "*");
     } else {
         setTimeout(function () {
             emojiwait()

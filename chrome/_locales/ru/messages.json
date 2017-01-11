@@ -8,7 +8,7 @@
     "description": ""
   },
   "styleVersion": {
-    "message": "Версия стиля",
+    "message": "Версия расширения",
     "description": ""
   },
   "updateStyle": {
@@ -33,6 +33,10 @@
   },
   "option_cover": {
     "message": "Использовать адаптированные обложки сообществ",
+    "description": ""
+  },
+  "enable": {
+    "message": "Включить или выключить расширение",
     "description": ""
   }
 }

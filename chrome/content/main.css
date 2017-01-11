@@ -3502,6 +3502,7 @@ img.fc_contact_photo {
     right: 0;
     left: auto;
     bottom: 2px;
+    top: auto
 }
 
 .im-chat-input .im-chat-input--txt-wrap {
@@ -5124,16 +5125,17 @@ div.submit_post_field ~ .placeholder .ph_input {
     order: 17;
 }
 
-#side_bar_inner ol .more_div {
+#side_bar_inner ol #l_spr {
     order: 18;
+}
+
+#side_bar_inner ol .more_div {
+    order: 19;
 }
 
 #side_bar_inner ol .l_comm {
-    order: 18;
+    order: 19;
 }
-
-/* === */
-/* ==||== */
 
 .wide_column h2.page_block_h2,
 .search_query_wrap {
@@ -6691,6 +6693,7 @@ head.oldvk-friends ~ body .wide_column_left .wide_column {
 
 .im-chat-input .im-chat-input--attach-label {
     background: url('data:image/gif;base64,R0lGODlhEAANAMQZAHGNrdjg6XWQsHKNrtvi6oefu3KOroaeuo6kvn+ZtnmUtJ+xyJ+xx3WRsaq7znGMrXeSsn2Xtq6+0ay90HaRsXiTs3qVtHiTsnuWtf///wAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABkALAAAAAAQAA0AAAVVYCZmzAOcwMOM7CJAV3xBwjISyNAoWO8rjQGCkKBULL4kxlKhFJHKqIVyUUpEE2UsGWFFktskS1v1VRwiRwVc7k0NBgq0F/Yxj9pDdI85BAp8SQUBIQA7') no-repeat center;
+    padding: 0;
 }
 
 .im-chat-input .im-chat-input--attach {
@@ -6738,7 +6741,7 @@ head.oldvk-friends ~ body .wide_column_left .wide_column {
     margin-left: 36px;
 }
 
-.media_selector .ms_item_more {
+.im-chat-input .im-chat-input--selector .ms_item_more{
     padding: 0
 }
 
@@ -7073,6 +7076,15 @@ img.feed_notif_img {
 
 .docs_action_icon {
     margin: 0 0 5px;
+}
+
+.im-chat-input .im-chat-input--smile-wrap .emoji_smile {
+    padding: 0
+}
+
+.im-chat-input .emoji_tt_wrap.tt_down {
+    bottom: 22px;
+    right: -9px;
 }
 
 /* --- Временное решение проблем с альбомами −−− */

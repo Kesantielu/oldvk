@@ -8,7 +8,7 @@
     "description":""
   },
   "styleVersion": {
-    "message": "Style version",
+    "message": "Extension version",
     "description": ""
   },
   "updateStyle": {
@@ -33,6 +33,10 @@
   },
   "option_cover": {
     "message": "Use adapted community covers",
+    "description": ""
+  },
+  "enable": {
+    "message": "Enable or disable extension",
     "description": ""
   }
 }
