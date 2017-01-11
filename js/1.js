@@ -19,7 +19,9 @@ function installO() {
 
 window.addEventListener('DOMContentLoaded',function(){
   var a1 = document.getElementById('firefox-webext-link');
+  var a2 = document.getElementById('firefox-old-link');
   var xhr = new XMLHttpRequest();
+  var xhr2 = new XMLHttpRequest();
   xhr.onload = function () {
     var upd = JSON.parse(xhr.responseText).addons['{6acba1db-bca7-4dc3-b20e-3230c4f5a54e}'].updates[0];
     a1.href = upd.update_link;
@@ -28,4 +30,13 @@ window.addEventListener('DOMContentLoaded',function(){
   }
   xhr.open('GET', 'updates.json', true);
   xhr.send();
+  
+  xhr2.onload = function() {
+    var rdf = new DOMParser();
+    var upd = parseFromString(xhr2.responseText,"text/xml");
+    console.log(upd);
+  }
+  xhr2.open('GET', 'update1.rdf', true);
+  xhr2.send();
+  
 })
