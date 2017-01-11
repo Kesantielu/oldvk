@@ -1,0 +1,23 @@
+a.page_post_thumb_wrap,
+span.page_post_thumb_wrap {
+    margin: 0 3px 3px 0;
+}
+
+.wide a.page_post_thumb_wrap,
+.wide span.page_post_thumb_wrap {
+    margin: 0 4px 4px 0;
+}
+
+.wide .page_post_sized_thumbs a.page_post_thumb_last_column,
+.wide .page_post_sized_thumbs span.page_post_thumb_last_column {
+    margin-right: 0;
+}
+
+.wide .page_post_sized_thumbs a.page_post_thumb_last_row,
+.wide .page_post_sized_thumbs span.page_post_thumb_last_row {
+    margin-bottom: 0;
+}
+
+body.firefox #page_wrap {
+    overflow: inherit
+}
