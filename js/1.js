@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded',function(){
   var a1 = document.getElementById('firefox-webext-link');
   var xhr = new XMLHttpRequest();
   xhr.onload = function () {
-    console.log(xhr.responseText)
+    console.log(JSON.parse(xhr.responseText))
   }
   xhr.open('GET', 'updates.json', true);
   xhr.send();
