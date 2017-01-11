@@ -11,6 +11,7 @@
                 <em:minVersion>28.0</em:minVersion>
                 <em:maxVersion>37.*</em:maxVersion>
                 <em:updateLink>https://kesantielu.github.io/oldvk/firefox-old/oldvk-0.51.2.xpi</em:updateLink>
+                <em:updateHash>sha256:5119ec05430113f73df36164bfb3d409d12a324b74806aaa994a27b542b7324c</em:updateHash>
               </Description>
             </em:targetApplication>
           </Description>
