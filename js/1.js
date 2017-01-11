@@ -34,7 +34,9 @@ window.addEventListener('DOMContentLoaded',function(){
   xhr2.onload = function() {
     var rdf = new DOMParser();
     var upd = rdf.parseFromString(xhr2.responseText,"text/xml");
-    console.log(upd.getElementsByTagName('em:version'));
+    a2.title = 'Версия ' + upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','version')[0].textContent;
+    a2.href = upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','updateLink')[0].textContent;
+    a2.setAttribute('hash',upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','updateHash')[0].textContent);
   }
   xhr2.open('GET', 'update1.rdf', true);
   xhr2.send();
