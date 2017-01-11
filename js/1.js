@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded',function(){
     var upd = JSON.parse(xhr.responseText).addons['{6acba1db-bca7-4dc3-b20e-3230c4f5a54e}'].updates[0];
     a1.href = upd.update_link;
     a1.setAttribute('hash',upd.update_hash);
-    a1.title = upd.version;
+    a1.title = 'Версия ' + upd.version;
   }
   xhr.open('GET', 'updates.json', true);
   xhr.send();
