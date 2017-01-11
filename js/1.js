@@ -20,8 +20,10 @@ function installO() {
 window.addEventListener('DOMContentLoaded',function(){
   var a1 = document.getElementById('firefox-webext-link');
   var a2 = document.getElementById('firefox-old-link');
+  var a3 = document.getElementById('firefox-link');
   var xhr = new XMLHttpRequest();
   var xhr2 = new XMLHttpRequest();
+  var xhr3 = new XMLHttpRequest();
   xhr.onload = function () {
     var upd = JSON.parse(xhr.responseText).addons['{6acba1db-bca7-4dc3-b20e-3230c4f5a54e}'].updates[0];
     a1.href = upd.update_link;
@@ -40,5 +42,15 @@ window.addEventListener('DOMContentLoaded',function(){
   }
   xhr2.open('GET', 'update1.rdf', true);
   xhr2.send();
+  
+  xhr3.onload = function() {
+    var rdf = new DOMParser();
+    var upd = rdf.parseFromString(xhr3.responseText,"text/xml");
+    a2.title = 'Версия ' + upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','version')[0].textContent;
+    a2.href = upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','updateLink')[0].textContent;
+    a2.setAttribute('hash',upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','updateHash')[0].textContent);
+  }
+  xhr3.open('GET', 'update.rdf', true);
+  xhr3.send();
   
 })
