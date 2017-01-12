@@ -3,7 +3,7 @@
     "{6acba1db-bca7-4dc3-b20e-3230c4f5a54e}": {
       "updates": [
         {
-          "version": "0.516",
+          "version": "0.517",
           "update_link": "https://kesantielu.github.io/oldvk/firefox-webext/oldvk-0.51.7-an+fx.xpi",
           "update_hash": "sha256:f03b92c95f76da76efcb7dac718e13fee0af5b7b03a5162bbb41e43ca03a4cd0"
         }
