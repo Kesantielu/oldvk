@@ -18,7 +18,7 @@ if (!String.prototype.startsWith) {
 }
 
 function listener(tabId, info, tab) {
-    if (info.status == isFirefox ? 'complete' : 'loading' && info.url) {
+    if (info.status = 'complete' && info.url) {
         var url = document.createElement('a');
         url.href = info.url;
         var path = url.pathname.slice(1);
@@ -33,6 +33,8 @@ function listener(tabId, info, tab) {
 
 chrome.tabs.onUpdated.addListener(listener);
 
-chrome.runtime.onInstalled.addListener(function () {
-    chrome.storage.local.set({enabled: true})
-});
+if (chrome.runtime.onInstalled) {
+    chrome.runtime.onInstalled.addListener(function () {
+        chrome.storage.local.set({enabled: true})
+    });
+}

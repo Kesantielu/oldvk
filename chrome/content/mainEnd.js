@@ -90,6 +90,9 @@ chrome.storage.local.get('enabled', function (item) {
         chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             if (request.action == 'updating') {
                 initWide();
+                setTimeout(function () {
+                    initWide()
+                },500); // Временное решение
             }
         });
 

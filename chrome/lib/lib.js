@@ -96,7 +96,7 @@ var KPP = {
                                 n[o].KPPPassed = true;
                             }
                         }
-                        if (n.length > 0) break
+                        //if (n.length > 0) break
                     }
 
                 }

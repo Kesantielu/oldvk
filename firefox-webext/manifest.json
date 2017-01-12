@@ -38,7 +38,7 @@
       "js": [
         "lib/lib.js",
         "lib/libfox.js",
-        "content/init.js"
+        "content/mainStart.js"
       ],
       "run_at": "document_start",
       "exclude_matches": [
@@ -64,7 +64,7 @@
         "*://vk.com/*"
       ],
       "js": [
-        "content/main.js"
+        "content/mainEnd.js"
       ],
       "exclude_matches": [
         "*://vk.com/notifier.php*",
