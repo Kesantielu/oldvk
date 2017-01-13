@@ -11,12 +11,27 @@ if (typeof TopNotifier !== "undefined") {
 if (typeof getAudioPlayer !== "undefined" && getAudioPlayer()._currentAudio) removeClass(ge("oldvk_top_play"), "oldvk-hide");
 
 if (typeof ap !== 'undefined' && ap.top !== 'undefined') {
-    ap.on(ap.top, AudioPlayer.EVENT_PLAY, function () {
-        addClass(ge("oldvk_top_play"), "active")
+    function titleSet(t) {
+        if (!t) return;
+        t = AudioUtils.asObject(t);
+        var s = document.createElement('span');
+        var title = geByClass1('top_audio_player_title');
+        title.textContent = t.performer;
+        s.textContent = t.title;
+        title.appendChild(s)
+    }
+    titleSet(ap.getCurrentAudio());
+    ap.on(ap.top, AudioPlayer.EVENT_PLAY, function (t) {
+        removeClass(ge("oldvk_top_play"), "oldvk-hide");
+        addClass(ge("oldvk_top_play"), "active");
+        titleSet(t)
     });
     ap.on(ap.top, AudioPlayer.EVENT_PAUSE, function () {
         removeClass(ge("oldvk_top_play"), "active")
-    })
+    });
+    ap.on(ap.top, AudioPlayer.EVENT_UPDATE, function (t) {
+        titleSet(t)
+    });
 }
 
 window.addEventListener("message", function (m) {

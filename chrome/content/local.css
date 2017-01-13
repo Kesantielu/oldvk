@@ -119,3 +119,49 @@ head.oldvk-audios ~ body #stl_side {
 #feed_filters .ui_toggler:before {
     content: "..."
 }
+
+/* Фильтр -> */
+
+#oldvk-filter-label:before,
+:lang(kk) #oldvk-filter-label:before {
+    content: "Фильтр";
+}
+
+:lang(uk) #oldvk-filter-label:before,
+:lang(be) #oldvk-filter-label:before {
+    content: "Фільтр";
+}
+
+:lang(be-tarask) #oldvk-filter-label:before {
+    content: "Фільтар";
+}
+
+:lang(en-us) #oldvk-filter-label:before {
+    content: "Filter";
+}
+
+:lang(ru-petr1708) #oldvk-filter-label:before {
+    content: "Фильтръ";
+}
+
+:lang(ru-ussr) #oldvk-filter-label:before {
+    content: "Выборка";
+}
+
+/* <- Фильтр */
+
+#oldvk-counter-sub:before {
+    content: "Подписчики"
+}
+
+.owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
+    content: "Мои подписчики"
+}
+
+#oldvk-counter-tag:before {
+    content: "Фотографии с "
+}
+
+.owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
+    content: "Фотографии со мной"
+}
