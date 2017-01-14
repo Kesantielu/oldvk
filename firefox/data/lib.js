@@ -162,23 +162,22 @@ var KPP = {
     _police: new MutationObserver(function (mutations) {
         for (var i = 0, l = mutations.length; i < l; i++) {
             for (var j = 0, m = mutations[i].addedNodes.length; j < m; j++) {
-                for (var k = KPP._list.length; k--;) {
-                    /*if (mutations[i].addedNodes[j].nodeType == 1 && mutations[i].addedNodes[j].matches(KPP._list[k])) {
-                     KPP._actions[k](mutations[i].addedNodes[j]);
-                     break;
-                     }*/ // Обрабатывает только существующие элементы до DOMContentLoaded
-
-                    if (mutations[i].addedNodes[j].nodeType == 1) {
-                        var n = mutations[i].addedNodes[j].querySelectorAll(KPP._list[k]);
-                        for (var o = 0, p = n.length; o < p; o++) {
-                            if (!n[o].KPPPassed) {
-                                KPP._actions[k](n[o]);
-                                n[o].KPPPassed = true;
+                if (mutations[i].addedNodes[j].nodeType == 1) {
+                    for (var k = KPP._list.length; k--;) {
+                        if (mutations[i].addedNodes[j].matches(KPP._list[k])) { // Обрабатывает только существующие элементы до DOMContentLoaded
+                            if (!mutations[i].addedNodes[j].KPPPassed)
+                                KPP._actions[k](mutations[i].addedNodes[j]);
+                        } else {
+                            var n = mutations[i].addedNodes[j].querySelectorAll(KPP._list[k]);
+                            for (var o = 0, p = n.length; o < p; o++) {
+                                if (!n[o].KPPPassed) {
+                                    KPP._actions[k](n[o]);
+                                    n[o].KPPPassed = true;
+                                }
                             }
                         }
                         //if (n.length > 0) break
                     }
-
                 }
             }
         }
@@ -229,6 +228,12 @@ var KPP = {
         }
     }
 };
+
+function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
 
 function wait(condition, callback) {
     if (typeof condition() !== "undefined") {

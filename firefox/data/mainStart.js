@@ -206,7 +206,6 @@ function initArrives() {
 
         KPP.add('.im-page--nav-photo .nim-peer--photo', function (element) {
             var avatars = element.getElementsByTagName('img');
-            console.log('avatars', avatars);
             var i;
             var tmp = chat.parentNode.getElementsByClassName('oldvk-chat-avatar-wrap');
             for (i = tmp.length; i--;) {
@@ -274,7 +273,77 @@ function initArrives() {
                 document.getElementById('ui_rmenu_communities_list').style.display = 'block'
             }, 200)
         })
-    })
+    });
 
+    KPP.add('#filter_form', function (element) {
+        var fl = document.createElement('div');
+        fl.id = 'oldvk-filter-label';
+        element.insertBefore(fl, document.getElementById('search_filters_block'))
+    });
+
+    KPP.add('#profile #wide_column', function (element) {
+
+        var name = element.getElementsByClassName('page_name')[0].textContent.split(' ');
+        if (name[name.length - 1].substr(name[name.length - 1].length - 1) == ')')
+            name.pop();
+        document.getElementById('title').textContent = name.shift() + ' ' + name.pop();
+        document.getElementById('header').style.display = 'block';
+
+        var sub = document.querySelector('.page_counter[onclick*="fans"]');
+        var tag = document.querySelector('.page_counter[href^="/tag"]');
+        if (sub || tag) {
+            var counters = document.createElement('div');
+            counters.id = 'oldvk-counters';
+            if (tag) {
+                var tag_c = document.createElement('a');
+                tag_c.className = 'oldvk-counter';
+                tag_c.id = 'oldvk-counter-tag';
+                var tag_cs = document.createElement('span');
+                tag_cs.textContent = tag.firstElementChild.textContent;
+                tag_cs.className = 'fl_r';
+                tag_c.setAttribute('onclick', tag.getAttribute('onclick'));
+                tag_c.setAttribute('href', tag.getAttribute('href'));
+                tag_c.appendChild(tag_cs);
+                counters.appendChild(tag_c)
+            }
+            if (sub) {
+                var sub_c = document.createElement('a');
+                sub_c.className = 'oldvk-counter';
+                sub_c.id = 'oldvk-counter-sub';
+                var sub_cs = document.createElement('span');
+                sub_cs.textContent = sub.firstElementChild.textContent;
+                sub_cs.className = 'fl_r';
+                sub_c.setAttribute('onclick', sub.getAttribute('onclick'));
+                sub_c.setAttribute('href', sub.getAttribute('href'));
+                sub_c.appendChild(sub_cs);
+                counters.appendChild(sub_c)
+            }
+            document.getElementsByClassName('page_photo')[0].appendChild(counters)
+        }
+    });
+
+    KPP.add('#profile_wall', function (element) {
+        var spb = document.getElementById('submit_post_box');
+        if (spb) insertAfter(element.firstElementChild, spb);
+        var pai = document.getElementsByClassName('page_actions_inner');
+        if (pai.length > 0) {
+            document.getElementsByClassName('narrow_column_wrap')[0].appendChild(pai[0])
+        }
+
+    });
+
+    KPP.add('#footer_wrap', function (element) {
+        KPP.remove('#footer_wrap');
+        element.appendChild(document.getElementsByClassName('left_menu_nav_wrap')[0])
+    });
+
+    KPP.add('.people_cell_img', function (element) {
+        var br = document.createElement('br');
+        var span = document.createElement('span');
+        span.textContent = decodeHtml(element.alt.split(' ').pop());
+        var a = element.parentNode.parentNode.querySelector('.people_cell_name a');
+        a.appendChild(br);
+        a.appendChild(span);
+    });
 }
 

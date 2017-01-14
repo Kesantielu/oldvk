@@ -42,4 +42,3 @@ function newsMenuTabs(element) {
         if (selected) selected.classList.remove('ui_rmenu_item_sel')
     }
 }
-
