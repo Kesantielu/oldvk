@@ -427,6 +427,10 @@ img.settings_bl_photo,
     padding: 6px 0 1px;
 }
 
+.page_actions_separator {
+    margin: 4px 0 0
+}
+
 .group_send_msg {
     margin-bottom: 6px;
 }
@@ -437,6 +441,7 @@ img.settings_bl_photo,
 
 .page_actions_inner {
     padding: 0;
+    border-top: none
 }
 
 .page_actions_wrap.page_extra_actions_wrap {
@@ -5089,7 +5094,7 @@ div.submit_post_field ~ .placeholder .ph_input {
 #group .narrow_column.fixed,
 #profile .narrow_column.fixed,
 #side_bar_inner {
-    position: absolute !important;
+    position: static !important;
 }
 
 #public .narrow_column.fixed,
@@ -7177,10 +7182,12 @@ h1#title {
     font-weight: bold;
 }
 
-.oldvk-counter {
+.oldvk-counter,
+#profile .page_actions_item {
     display: block;
     padding: 2px 6px;
     line-height: 170%;
+    height: auto;
 }
 
 .oldvk-counter:hover {
@@ -7268,6 +7275,22 @@ h1#title {
 
 .people_cell_name span {
     font-size: 0.9em
+}
+
+.ads_ads_box {
+    margin-left: -4px
+}
+
+#profile .page_actions_cont {
+    display: none
+}
+
+#profile .page_action_left {
+    width: 100%
+}
+
+#profile .page_actions_inner {
+    margin-top: 8px
 }
 
 /* --- Временное решение проблем с альбомами −−− */

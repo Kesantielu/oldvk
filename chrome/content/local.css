@@ -120,7 +120,8 @@ head.oldvk-audios ~ body #stl_side {
     content: "..."
 }
 
-/* Фильтр -> */
+/* Фильтр
+ */
 
 #oldvk-filter-label:before,
 :lang(kk) #oldvk-filter-label:before {
@@ -148,20 +149,142 @@ head.oldvk-audios ~ body #stl_side {
     content: "Выборка";
 }
 
-/* <- Фильтр */
+/* Подписчики
+ */
 
 #oldvk-counter-sub:before {
     content: "Подписчики"
 }
 
+:lang(ru-petr1708) #oldvk-counter-sub:before {
+    content: "Почитатели"
+}
+
+:lang(ru-ussr) #oldvk-counter-sub:before {
+    content: "Читатели"
+}
+
+:lang(en-us) #oldvk-counter-sub:before {
+    content: "Followers"
+}
+
+:lang(be-tarask) #oldvk-counter-sub:before {
+    content: "Падпісанты"
+}
+
+:lang(be) #oldvk-counter-sub:before {
+    content: "Падпісчыкі"
+}
+
+:lang(uk) #oldvk-counter-sub:before {
+    content: "Підписники"
+}
+
+:lang(kk) #oldvk-counter-sub:before {
+    content: "Жазылушылар"
+}
+
+/* Мои подписчики
+ */
+
 .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
     content: "Мои подписчики"
 }
+
+:lang(ru-petr1708) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
+    content: "Мои почитатели"
+}
+
+:lang(ru-ussr) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
+    content: "Мои читатели"
+}
+
+:lang(en-us) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
+    content: "My followers"
+}
+
+:lang(be-tarask) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
+    content: "Мае падпісанты"
+}
+
+:lang(be) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
+    content: "Мае падпісчыкі"
+}
+
+:lang(uk) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
+    content: "Мої підписники"
+}
+
+:lang(kk) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
+    content: "Жазылушыларым"
+}
+
+/* Фотографии с
+ */
 
 #oldvk-counter-tag:before {
     content: "Фотографии с "
 }
 
+:lang(ru-petr1708) #oldvk-counter-tag:before {
+    content: "Фотопортреты съ "
+}
+
+:lang(ru-ussr) #oldvk-counter-tag:before {
+    content: "Фотокарточки с "
+}
+
+:lang(en-us) #oldvk-counter-tag:before {
+    content: "Photos of "
+}
+
+:lang(be-tarask) #oldvk-counter-tag:before {
+    content: "Фатаздымкі з "
+}
+
+:lang(be) #oldvk-counter-tag:before {
+    content: "Фотаздымкі з "
+}
+
+:lang(uk) #oldvk-counter-tag:before {
+    content: "Фотографії з "
+}
+
+:lang(kk) #oldvk-counter-tag:before {
+    content: "Оны бар суреттер"
+}
+
+/* Фотографии со мной
+ */
+
 .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
     content: "Фотографии со мной"
+}
+
+:lang(ru-petr1708) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
+    content: "Мои фотопортреты"
+}
+
+:lang(ru-ussr) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
+    content: "Фотокарточки со мной"
+}
+
+:lang(en-us) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
+    content: "Photos of me"
+}
+
+:lang(be-tarask) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
+    content: "Фатаздымкі з мною"
+}
+
+:lang(be) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
+    content: "Фотаздымкі са мною"
+}
+
+:lang(uk) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
+    content: "Фотографії зi мною"
+}
+
+:lang(kk) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
+    content: "Мен бар суреттер"
 }

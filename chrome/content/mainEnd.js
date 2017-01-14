@@ -92,7 +92,7 @@ chrome.storage.local.get('enabled', function (item) {
                 initWide();
                 setTimeout(function () {
                     initWide()
-                },500); // Временное решение
+                }, 500); // TODO: Найти лучшее решение
             }
         });
 

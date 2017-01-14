@@ -20,6 +20,7 @@ if (typeof ap !== 'undefined' && ap.top !== 'undefined') {
         s.textContent = t.title;
         title.appendChild(s)
     }
+
     titleSet(ap.getCurrentAudio());
     ap.on(ap.top, AudioPlayer.EVENT_PLAY, function (t) {
         removeClass(ge("oldvk_top_play"), "oldvk-hide");

@@ -323,7 +323,7 @@ function initArrives() {
     KPP.add('#ui_rmenu_communities_list', function (element) {
         element.parentNode.appendChild(element);
         document.getElementById('ui_rmenu_communities').addEventListener('click', function () {
-            setTimeout(function () {
+            setTimeout(function () { // TODO: Найти лучшее решение
                 document.getElementById('ui_rmenu_communities_list').style.display = 'block'
             }, 200)
         })
@@ -335,7 +335,8 @@ function initArrives() {
         element.insertBefore(fl, document.getElementById('search_filters_block'))
     });
 
-    KPP.add('#profile', function (element) {
+    KPP.add('#profile #wide_column', function (element) {
+
         var name = element.getElementsByClassName('page_name')[0].textContent.split(' ');
         if (name[name.length - 1].substr(name[name.length - 1].length - 1) == ')')
             name.pop();
@@ -377,7 +378,12 @@ function initArrives() {
 
     KPP.add('#profile_wall', function (element) {
         var spb = document.getElementById('submit_post_box');
-        if (spb) insertAfter(element.firstElementChild, spb)
+        if (spb) insertAfter(element.firstElementChild, spb);
+        var pai = document.getElementsByClassName('page_actions_inner');
+        if (pai.length > 0) {
+            document.getElementsByClassName('narrow_column_wrap')[0].appendChild(pai[0])
+        }
+
     });
 
     KPP.add('#footer_wrap', function (element) {
@@ -385,16 +391,13 @@ function initArrives() {
         element.appendChild(document.getElementsByClassName('left_menu_nav_wrap')[0])
     });
 
-    KPP.add('#profile_friends', function (element) {
-        var pc = element.getElementsByClassName('people_cell');
-        for (var i = pc.length; i--;) {
-            var br = document.createElement('br');
-            var span = document.createElement('span');
-            span.textContent = decodeHtml(pc[i].querySelector('.people_cell_img').alt.split(' ').pop());
-            var a = pc[i].querySelector('.people_cell_name a');
-            a.appendChild(br);
-            a.appendChild(span);
-        }
+    KPP.add('.people_cell_img', function (element) {
+        var br = document.createElement('br');
+        var span = document.createElement('span');
+        span.textContent = decodeHtml(element.alt.split(' ').pop());
+        var a = element.parentNode.parentNode.querySelector('.people_cell_name a');
+        a.appendChild(br);
+        a.appendChild(span);
     });
 }
 
