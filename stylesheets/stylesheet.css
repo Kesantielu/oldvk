@@ -31,6 +31,12 @@ a.btn {
   cursor: pointer;
 }
 
+.btn.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.1);
+}
+
 .btn:hover {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
