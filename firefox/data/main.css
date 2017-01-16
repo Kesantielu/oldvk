@@ -2139,6 +2139,7 @@ input.text.ts_input {
     height: 40px;
     color: #e8eff7;
     padding: 0 8px;
+    white-space: normal;
 }
 
 .top_nav_link:hover,
@@ -4343,6 +4344,7 @@ input.ui_search_field:-ms-input-placeholder {
 }
 
 .im-dialog-select .im-dialog-select--btn {
+    -moz-box-sizing: content-box;
     box-sizing: content-box;
     transition: none !important;
     transform: none
