@@ -2139,6 +2139,7 @@ input.text.ts_input {
     height: 40px;
     color: #e8eff7;
     padding: 0 8px;
+    white-space: normal;
 }
 
 .top_nav_link:hover,
