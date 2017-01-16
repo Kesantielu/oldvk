@@ -27,3 +27,8 @@ body.firefox #page_wrap {
     height: 95px;
     margin-left: 5px;
 }
+
+.nim-dialog .nim-dialog--preview,
+.nim-dialog .nim-dialog--text-preview {
+	display: block !important;
+}

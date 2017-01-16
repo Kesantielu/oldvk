@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
-  "version": "0.520",
+  "version": "0.521",
   "default_locale": "en",
   "author": "Kesantielu Dasefern",
   "homepage_url": "https://kesantielu.github.io/oldvk",
@@ -54,7 +54,9 @@
 		"*://vk.com/blog",
         "*://vk.com/blog?*",
         "*://vk.com/q_frame.php*",
-        "*://vk.com/login.php*"
+        "*://vk.com/login.php*",
+        "*://vk.com/about*",
+        "*://vk.com/jobs*"
       ],
       "all_frames": true
     },
@@ -81,7 +83,9 @@
 		"*://vk.com/blog",
         "*://vk.com/blog?*",
         "*://vk.com/q_frame.php*",
-        "*://vk.com/login.php*"
+        "*://vk.com/login.php*",
+        "*://vk.com/about*",
+        "*://vk.com/jobs*"
       ],
       "all_frames": true
     }

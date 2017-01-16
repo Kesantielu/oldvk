@@ -21,3 +21,14 @@ span.page_post_thumb_wrap {
 body.firefox #page_wrap {
     overflow: inherit
 }
+
+.page_square_photo {
+    width: 95px;
+    height: 95px;
+    margin-left: 5px;
+}
+
+.nim-dialog .nim-dialog--preview,
+.nim-dialog .nim-dialog--text-preview {
+	display: block !important;
+}

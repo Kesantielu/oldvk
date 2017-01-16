@@ -327,6 +327,7 @@ function initArrives() {
         if (spb) insertAfter(element.firstElementChild, spb);
         var pai = document.getElementsByClassName('page_actions_inner');
         if (pai.length > 0) {
+            document.getElementsByClassName('page_actions_cont')[0].style.display = 'none';
             document.getElementsByClassName('narrow_column_wrap')[0].appendChild(pai[0])
         }
 
@@ -345,5 +346,16 @@ function initArrives() {
         a.appendChild(br);
         a.appendChild(span);
     });
+
+    function getFirstPhotoRow(pr) {
+        if (pr.previousElementSibling.classList.contains('photos_period_delimiter'))
+            return pr;
+        else return getFirstPhotoRow(pr.previousElementSibling)
+    }
+
+    KPP.add('.photos_row', function (element) {
+        if (document.getElementsByClassName('photos_period_delimiter').length > 0)
+            getFirstPhotoRow(element.parentElement).appendChild(element)
+    })
 }
 

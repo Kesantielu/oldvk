@@ -8,7 +8,8 @@ if (typeof TopNotifier !== "undefined") {
     TopNotifier.tnLink = "oldvk-notify-wrap";
 }
 
-if (typeof getAudioPlayer !== "undefined" && getAudioPlayer()._currentAudio) removeClass(ge("oldvk_top_play"), "oldvk-hide");
+if (typeof getAudioPlayer !== "undefined" && getAudioPlayer()._currentAudio)
+    removeClass(ge("oldvk_top_play"), "oldvk-hide");
 
 if (typeof ap !== 'undefined' && ap.top !== 'undefined') {
     function titleSet(t) {
