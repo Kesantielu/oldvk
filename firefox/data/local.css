@@ -7,11 +7,6 @@ head.oldvk-audios ~ body #side_bar {
     position: fixed;
 }
 
-head.oldvk-audios ~ body .narrow_column,
-head.oldvk-audios ~ body .narrow_column_wrap {
-    width: 176px;
-}
-
 head.oldvk-audios ~ body #stl_side {
     display: none !important
 }

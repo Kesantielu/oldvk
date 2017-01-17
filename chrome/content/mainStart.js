@@ -402,13 +402,13 @@ function initArrives() {
     });
 
     function getFirstPhotoRow(pr) {
-        if (pr.previousElementSibling.classList.contains('photos_period_delimiter'))
+        if (!pr.previousElementSibling || pr.previousElementSibling.classList.contains('photos_period_delimiter'))
             return pr;
         else return getFirstPhotoRow(pr.previousElementSibling)
     }
 
     KPP.add('.photos_row', function (element) {
-        if (document.getElementsByClassName('photos_period_delimiter').length > 0)
+        if (document.getElementsByClassName('photos_period_delimiter').length > 0 || document.getElementsByClassName('photos_row_wrap').length > 0)
             getFirstPhotoRow(element.parentElement).appendChild(element)
     })
 }
