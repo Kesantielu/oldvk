@@ -11,7 +11,7 @@
                 <em:minVersion>28.0</em:minVersion>
                 <em:maxVersion>37.*</em:maxVersion>
                 <em:updateLink>https://kesantielu.github.io/oldvk/firefox-old/oldvk-0.52.4.xpi</em:updateLink>
-                <em:updateHash>sha256:39fa7556bb3f7f1d9ee55d653fdcfc1267c665adb3db74f1d6430bb45c37785d</em:updateHash>
+                <em:updateHash>sha256:4aacd2e6a2016af4bb8ce41e5f50ccd428ff3fe4a4ca4a842d1ebd405eefa12a</em:updateHash>
               </Description>
             </em:targetApplication>
             <em:targetApplication>
@@ -20,7 +20,7 @@
                 <em:minVersion>25.0</em:minVersion>
                 <em:maxVersion>26.*</em:maxVersion>
                 <em:updateLink>https://kesantielu.github.io/oldvk/firefox-old/oldvk-0.52.4.xpi</em:updateLink>
-                <em:updateHash>sha256:39fa7556bb3f7f1d9ee55d653fdcfc1267c665adb3db74f1d6430bb45c37785d</em:updateHash>
+                <em:updateHash>sha256:4aacd2e6a2016af4bb8ce41e5f50ccd428ff3fe4a4ca4a842d1ebd405eefa12a</em:updateHash>
               </Description>
             </em:targetApplication>
           </Description>
