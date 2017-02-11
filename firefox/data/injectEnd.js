@@ -1,7 +1,7 @@
-updateNarrow = function () {
-};
-updateLeftMenu = function () {
-};
+updateNarrow = nothing;
+updateLeftMenu = nothing;
+
+document.querySelector("link[rel*='icon']").href = "https://vk.com/images/favicon.ico";
 
 if (typeof TopNotifier !== "undefined") {
     TopNotifier.tnCount = "oldvk-notify";
@@ -17,13 +17,15 @@ if (typeof ap !== 'undefined' && ap.top !== 'undefined') {
         t = AudioUtils.asObject(t);
         var s = document.createElement('span');
         var title = geByClass1('top_audio_player_title');
-        title.textContent = t.performer;
-        s.textContent = t.title;
+        title.textContent = decodeHtml(t.performer);
+        s.textContent = decodeHtml(t.title);
         title.appendChild(s)
     }
 
-    titleSet(ap.getCurrentAudio());
-    ap.on(ap.top, AudioPlayer.EVENT_PLAY, function (t) {
+    setTimeout(function () {
+        titleSet(ap.getCurrentAudio());
+    }, 200);
+    ap.on(ap.top, AudioPlayer.EVENT_PLAY, function (t) {/**/
         removeClass(ge("oldvk_top_play"), "oldvk-hide");
         addClass(ge("oldvk_top_play"), "active");
         titleSet(t)
@@ -32,6 +34,9 @@ if (typeof ap !== 'undefined' && ap.top !== 'undefined') {
         removeClass(ge("oldvk_top_play"), "active")
     });
     ap.on(ap.top, AudioPlayer.EVENT_UPDATE, function (t) {
+        titleSet(t)
+    });
+    ap.on(ap.top, AudioPlayer.EVENT_CAN_PLAY, function (t) {
         titleSet(t)
     });
 }

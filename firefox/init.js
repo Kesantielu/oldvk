@@ -65,7 +65,7 @@ var options = {
     contentScriptFile: ['./lib.js', './mainStart.js'],
     contentScriptWhen: 'start',
     contentStyleFile: ['./main.css', './local.css', './fox.css'],
-    contentScriptOptions: {inject: require('sdk/self').data.url('injectStart.js'), optionCover: prefs.optionCover},
+    contentScriptOptions: {inject: require('sdk/self').data.url('injectStart.js'), optionCover: prefs.optionCover, optionViewer: prefs.optionViewer},
     exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails.php|ads_rotate.php|share.php|adscreate$|adscreate\?|wkview.php|bugs$|bugs\?|q_frame.php|.*upload.php|login.php|about|jobs).*$/
 };
 

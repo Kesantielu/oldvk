@@ -2,12 +2,12 @@
   "id": "oldvk@dasefern.com",
   "title": "Old Design VK",
   "name": "oldvk",
-  "version": "0.52.2",
+  "version": "0.53.0",
   "description": "An extension which brings back old design for VK",
   "author": "Kesantielu Dasefern",
   "homepage": "https://kesantielu.github.io/oldvk",
   "updateURL": "https://kesantielu.github.io/oldvk/update.rdf",
-  "updateLink": "https://kesantielu.github.io/oldvk/firefox/oldvk-0.52.2-an+fx+sm.xpi",
+  "updateLink": "https://kesantielu.github.io/oldvk/firefox/oldvk-0.53.0-an+fx+sm.xpi",
   "main": "init.js",
   "locales": {
     "ru": {
@@ -27,6 +27,13 @@
       "name": "optionCover",
       "title": "Adapted covers",
       "description": "Use adapted community covers",
+      "type": "bool",
+      "value": false
+    },
+    {
+      "name": "optionViewer",
+      "title": "New photo viewer",
+      "description": "Use new photo viewer",
       "type": "bool",
       "value": false
     }

@@ -1,6 +1,10 @@
 var injectStart = document.createElement('script');
 injectStart.type = 'text/javascript';
 injectStart.src = self.options.inject;
+var injectOptions = document.createElement('script');
+injectOptions.type = 'text/javascript';
+injectOptions.text = 'var oldvk={};oldvk.options=' + JSON.stringify(self.options) + ';';
+console.log(prefs);
 
 window.addEventListener('message', function (event) {
     switch (event.data.type) {
@@ -19,13 +23,12 @@ window.addEventListener('message', function (event) {
     }
 }, false);
 
-
 KPP.head(function () {
     checkCSS(styles);
     document.head.appendChild(injectStart);
+    document.head.appendChild(injectOptions);
     initArrives();
     initResize();
-    document.querySelector("link[rel*='icon']").href = "https://vk.com/images/favicon.ico";
 });
 
 var LocalizedContent = {
@@ -85,6 +88,7 @@ var LocalizedContent = {
             else
                 insertAfter(document.getElementById('l_ntf'), this.l_set);
         }
+        document.querySelector('#l_ap .left_label').textContent = i18n.apps[lang];
         LocalizedContent.updateNotify()
     },
     updateNotify: function () {
@@ -118,8 +122,10 @@ function initArrives() {
             var page_avatar_a = document.getElementsByClassName('page_cover_image')[0];
             page_avatar_a.className = '';
             page_avatar_a.firstElementChild.className = 'page_avatar_img';
-            var temp = eval('(' + page_avatar_a.getAttribute('onclick').match(/{.*}/)[0] + ')').temp;
-            page_avatar_a.firstElementChild.setAttribute('src', temp.base + temp.x_[0] + '.jpg');
+            if (page_avatar_a.hasAttribute('onclick')) {
+                var temp = eval('(' + page_avatar_a.getAttribute('onclick').match(/{.*}/)[0] + ')').temp;
+                page_avatar_a.firstElementChild.setAttribute('src', temp.base + temp.x_[0] + '.jpg');
+            }
             nc.insertBefore(page_block, nc.firstChild);
             document.getElementById('page_avatar').appendChild(page_avatar_a)
         }
@@ -204,7 +210,7 @@ function initArrives() {
         avatar1.className = 'oldvk-chat-avatar';
         chat.parentNode.insertBefore(avatar1, chat);
 
-        KPP.add('.im-page--nav-photo .nim-peer--photo', function (element) {
+        KPP.add('.im-page--aside-photo .nim-peer--photo', function (element) {
             var avatars = element.getElementsByTagName('img');
             var i;
             var tmp = chat.parentNode.getElementsByClassName('oldvk-chat-avatar-wrap');
@@ -230,8 +236,11 @@ function initArrives() {
                 }
                 insertAfter(chat, wrap)
             }
+            var iphm = document.getElementsByClassName('im-page--header-more');
+            var ipchi = document.getElementsByClassName('im-page--chat-header-in');
+            if (iphm.length > 0)
+                document.getElementsByClassName('im-page--chat-header')[0].insertBefore(iphm[0], ipchi[0])
         });
-
     });
 
     KPP.add('#ui_rmenu_news_list', function (element) {
@@ -275,10 +284,10 @@ function initArrives() {
         })
     });
 
-    KPP.add('#filter_form', function (element) {
+    KPP.add('#search_filters_block', function (element) {
         var fl = document.createElement('div');
         fl.id = 'oldvk-filter-label';
-        element.insertBefore(fl, document.getElementById('search_filters_block'))
+        element.parentNode.insertBefore(fl, document.getElementById('search_filters_block'))
     });
 
     KPP.add('#profile #wide_column', function (element) {
@@ -338,13 +347,12 @@ function initArrives() {
         element.appendChild(document.getElementsByClassName('left_menu_nav_wrap')[0])
     });
 
-    KPP.add('.people_cell_img', function (element) {
+    KPP.add('.people_cell_name a', function (element) {
         var br = document.createElement('br');
         var span = document.createElement('span');
-        span.textContent = decodeHtml(element.alt.split(' ').pop());
-        var a = element.parentNode.parentNode.querySelector('.people_cell_name a');
-        a.appendChild(br);
-        a.appendChild(span);
+        span.textContent = decodeHtml(element.parentNode.parentNode.querySelector('img').alt.split(' ').pop());
+        element.appendChild(br);
+        element.appendChild(span);
     });
 
     function getFirstPhotoRow(pr) {
@@ -354,8 +362,17 @@ function initArrives() {
     }
 
     KPP.add('.photos_row', function (element) {
-        if (document.getElementsByClassName('photos_period_delimiter').length > 0 || document.getElementsByClassName('photos_row_wrap').length > 0)
-            getFirstPhotoRow(element.parentElement).appendChild(element)
-    })
+        if (document.getElementsByClassName('photos_period_delimiter').length > 0 || document.getElementsByClassName('photos_row_wrap').length > 0) {
+            getFirstPhotoRow(element.parentElement).appendChild(element);
+        }
+    });
+
+    if (!self.options.optionViewer) {
+        KPP.add('.pe_canvas', function (element) {
+            element.style.marginTop = element.parentNode.firstChild.offsetTop + 'px';
+            element.style.marginLeft = element.parentNode.firstChild.offsetLeft + 'px';
+            document.getElementsByClassName('pv_cont')[0].style.paddingLeft = '0'
+        })
+    }
 }
 

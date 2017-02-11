@@ -87,6 +87,16 @@ const i18n = {
         114: 'Налады',
         100: 'Настройки',
         777: 'Настройки'
+    },
+    apps: {
+        0: 'Приложения',
+        1: 'Додатки',
+        2: 'Праґрамы',
+        3: 'Apps',
+        97: 'Қосымшалар',
+        114: 'Дадаткі',
+        100: 'Аппликацiи',
+        777: 'Досуг и отдых'
     }
 };
 
@@ -146,6 +156,16 @@ if (!Object.assign) {
     });
 }
 
+function wait(condition, callback) {
+    if (typeof condition() !== "undefined") {
+        callback()
+    } else {
+        setTimeout(function () {
+            wait(condition, callback);
+        }, 0)
+    }
+}
+
 var KPP = {
     _list: [],
     _actions: [],
@@ -165,8 +185,10 @@ var KPP = {
                 if (mutations[i].addedNodes[j].nodeType == 1) {
                     for (var k = KPP._list.length; k--;) {
                         if (mutations[i].addedNodes[j].matches(KPP._list[k])) { // Обрабатывает только существующие элементы до DOMContentLoaded
-                            if (!mutations[i].addedNodes[j].KPPPassed)
+                            if (!mutations[i].addedNodes[j].KPPPassed) {
                                 KPP._actions[k](mutations[i].addedNodes[j]);
+                                mutations[i].addedNodes[j].KPPPassed = true;
+                            }
                         } else {
                             var n = mutations[i].addedNodes[j].querySelectorAll(KPP._list[k]);
                             for (var o = 0, p = n.length; o < p; o++) {
@@ -235,14 +257,11 @@ function decodeHtml(html) {
     return txt.value;
 }
 
-function wait(condition, callback) {
-    if (typeof condition() !== "undefined") {
-        callback()
-    } else {
-        setTimeout(function () {
-            wait(condition, callback);
-        }, 0)
-    }
+function updateCSS(styles) {
+    styles.forEach(function (style) {
+        if (style.apply) document.head.classList.add('oldvk-' + style.css);
+        else document.head.classList.remove('oldvk-' + style.css);
+    })
 }
 
 function checkCSS(styles) {
@@ -255,13 +274,6 @@ function checkCSS(styles) {
         Styles.push({css: style.css, apply: apply})
     });
     updateCSS(Styles)
-}
-
-function updateCSS(styles) {
-    styles.forEach(function (style) {
-        if (style.apply) document.head.classList.add('oldvk-' + style.css);
-        else document.head.classList.remove('oldvk-' + style.css);
-    })
 }
 
 function updating(path) {
