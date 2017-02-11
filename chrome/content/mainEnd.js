@@ -61,6 +61,7 @@ function initWide() {
     var wideApplicable = (contentID == "profile" || contentID == "group" || contentID == "public");
     wide = (document.getElementById('narrow_column') && wideApplicable) ? (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0) : true;
     if (wide && wideApplicable) {
+        console.timeEnd('B');
         document.getElementById('wide_column').classList.add('wide');
         document.getElementsByClassName('narrow_column_wrap')[0].style.position = 'absolute';
     }
@@ -81,24 +82,22 @@ var injectEnd = document.createElement('script');
 injectEnd.type = 'text/javascript';
 injectEnd.src = chrome.extension.getURL('content/injectEnd.js');
 
-chrome.storage.local.get('enabled', function (item) {
-    if (item.enabled) {
-        document.body.appendChild(injectEnd);
+if (options.enabled) {
+    document.body.appendChild(injectEnd);
 
-        initWide();
+    initWide();
 
-        chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-            if (request.action == 'updating') {
-                initWide();
-                setTimeout(function () {
-                    initWide()
-                }, 500); // TODO: Найти лучшее решение
-            }
-        });
+    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+        if (request.action == 'updating') {
+            initWide();
+            setTimeout(function () {
+                initWide()
+            }, 500); // TODO: Найти лучшее решение
+        }
+    });
 
-        var leftMenuObserver = new MutationObserver(function (m) {
-            LocalizedContent.updateMenu();
-        });
-        leftMenuObserver.observe(document.querySelector('#side_bar_inner ol'), {childList: true});
-    }
-});
+    var leftMenuObserver = new MutationObserver(function (m) {
+        LocalizedContent.updateMenu();
+    });
+    leftMenuObserver.observe(document.querySelector('#side_bar_inner ol'), {childList: true});
+}

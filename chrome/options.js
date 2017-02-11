@@ -1,6 +1,7 @@
 function save() {
     chrome.storage.local.set({
-        optionCover: document.getElementById('cover').checked
+        optionCover: document.getElementById('cover').checked,
+        optionViewer: document.getElementById('viewer').checked
     });
     document.getElementById('status').textContent = chrome.i18n.getMessage('saved');
     document.getElementById('status').classList.add('hide');
@@ -13,9 +14,11 @@ function save() {
 
 function restore() {
     chrome.storage.local.get({
-        optionCover: false
+        optionCover: false,
+        optionViewer: false
     }, function (items) {
         document.getElementById('cover').checked = items.optionCover;
+        document.getElementById('viewer').checked = items.optionViewer;
     })
 }
 
@@ -23,3 +26,4 @@ document.addEventListener('DOMContentLoaded', restore);
 document.getElementById('save').addEventListener('click', save);
 document.getElementById('save').textContent = chrome.i18n.getMessage('save');
 document.getElementById('cover_label').innerHTML += chrome.i18n.getMessage('option_cover');
+document.getElementById('viewer_label').innerHTML += chrome.i18n.getMessage('option_viewer');

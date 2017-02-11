@@ -38,5 +38,9 @@
   "enable": {
     "message": "Enable or disable extension",
     "description": ""
+  },
+  "option_viewer": {
+    "message": "Use new photo viewer",
+    "description": ""
   }
 }

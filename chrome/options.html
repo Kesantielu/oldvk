@@ -8,9 +8,15 @@
             margin-top: 10px
         }
 
-        #cover {
+        label.option {
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        label.option input {
             margin-right: 5px
         }
+
         #status {
             float: right;
             margin-top: 15px;
@@ -26,9 +32,11 @@
 </head>
 <body>
 
-<label id="cover_label"><input type="checkbox" id="cover"></label>
+<label id="cover_label" class="option"><input type="checkbox" id="cover"></label>
+<label id="viewer_label" class="option"><input type="checkbox" id="viewer"></label>
 
-<button id="save"></button><div id="status"></div>
+<button id="save"></button>
+<div id="status"></div>
 <script src="options.js"></script>
 </body>
 </html>

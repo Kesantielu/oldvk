@@ -2,11 +2,11 @@
   "manifest_version": 2,
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
-  "version": "0.522",
+  "version": "0.530",
   "default_locale": "en",
   "author": "Kesantielu Dasefern",
   "homepage_url": "https://kesantielu.github.io/oldvk",
-  "minimum_chrome_version": "29",
+  "minimum_chrome_version": "32",
   "icons": {
     "48": "oldvk-48.png",
     "64": "oldvk-64.png",
@@ -51,7 +51,7 @@
         "*://vk.com/bugs",
         "*://vk.com/bugs?*",
         "*://vk.com/login.php*",
-		"*://vk.com/blog",
+        "*://vk.com/blog",
         "*://vk.com/blog?*",
         "*://vk.com/q_frame.php*",
         "*://vk.com/login.php*",
@@ -67,6 +67,7 @@
       "js": [
         "content/mainEnd.js"
       ],
+      "run_at": "document_end",
       "exclude_matches": [
         "*://vk.com/notifier.php*",
         "*://vk.com/al_*.php*",
@@ -80,7 +81,7 @@
         "*://vk.com/bugs",
         "*://vk.com/bugs?*",
         "*://vk.com/login.php*",
-		"*://vk.com/blog",
+        "*://vk.com/blog",
         "*://vk.com/blog?*",
         "*://vk.com/q_frame.php*",
         "*://vk.com/login.php*",
@@ -95,7 +96,7 @@
     "content/injectStart.js",
     "content/injectEnd.js"
   ],
-  "options_ui" : {
+  "options_ui": {
     "page": "options.html",
     "chrome_style": true
   }

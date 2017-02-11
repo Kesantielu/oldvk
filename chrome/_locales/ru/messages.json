@@ -38,5 +38,9 @@
   "enable": {
     "message": "Включить или выключить расширение",
     "description": ""
+  },
+  "option_viewer": {
+    "message": "Использовать новый просмотрщик фотографий",
+    "description": ""
   }
 }
