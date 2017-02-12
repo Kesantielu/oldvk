@@ -186,14 +186,14 @@ waitVar('stManager', function () {
     }
 
     var a = stManager.add;
-     stManager.add = function () {
-     a.apply(this, arguments);
-     var keys = Object.keys(bindSF);
-     for (var i = keys.length; i--;) {
-     if (arguments[0].includes(keys[i]))
-     bindSF[keys[i]]()
-     }
-     }
+	stManager.add = function () {
+            a.apply(this, arguments);
+            var keys = Object.keys(bindSF);
+            for (var i = keys.length; i--;) {
+                if (arguments[0].indexOf(keys[i]) != -1)
+                    bindSF[keys[i]]()
+            }
+    }
 });
 
 function newsMenuTabs(element) {
