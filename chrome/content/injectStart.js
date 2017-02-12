@@ -1,3 +1,13 @@
+if (oldvk.fox) {
+    (function (history) {
+        var pushState = history.pushState;
+        history.pushState = function (state) {
+            window.postMessage({type: "PUSH_URL", text: arguments[2].slice(1)}, "*");
+            return pushState.apply(history, arguments);
+        }
+    })(window.history);
+}
+
 var nothing = function () {
 };
 
@@ -160,16 +170,30 @@ waitVar('StaticFiles', function () {
     }
 });
 
+console.time('inj');
+console.time('st');
+
+waitVar('Inj', function () {
+    console.timeEnd('inj')
+});
+
+
 waitVar('stManager', function () {
-    var a = stManager.add;
-    stManager.add = function () {
-        a.apply(this, arguments);
-        var keys = Object.keys(bindSF);
-        for (var i = keys.length; i--;) {
-            if (arguments[0].includes(keys[i]))
-                bindSF[keys[i]]()
-        }
+    console.timeEnd('st');
+
+    if (typeof vkopt !== 'undefined' && typeof Inj !== 'undefined') {
+        console.log(Inj.BeforeR);
     }
+
+    var a = stManager.add;
+     stManager.add = function () {
+     a.apply(this, arguments);
+     var keys = Object.keys(bindSF);
+     for (var i = keys.length; i--;) {
+     if (arguments[0].includes(keys[i]))
+     bindSF[keys[i]]()
+     }
+     }
 });
 
 function newsMenuTabs(element) {

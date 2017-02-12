@@ -5,50 +5,62 @@ const styles = [
 
 var lang, emoji;
 
-var options = {optionCover: false, optionViewer: false};
-
-var getOptions = new Promise(function (resolve) {
-    chrome.storage.local.get(function (items) {
-        Object.assign(options, items);
-        resolve();
-    });
-});
-
-var getHead = new Promise(function (resolve) {
-    KPP.head(function () {
-        resolve();
-    })
-});
+var options = isWebExt ? {optionCover: false, optionViewer: false} : self.options;
 
 var injectStart = document.createElement('script');
 injectStart.type = 'text/javascript';
-injectStart.src = chrome.extension.getURL('content/injectStart.js');
+injectStart.src = isWebExt ? chrome.extension.getURL('content/injectStart.js') : options.inject;
 
 var injectOptions = document.createElement('script');
 injectOptions.type = 'text/javascript';
+injectOptions.text = 'var oldvk={};oldvk.options=' + JSON.stringify(options) + ';' + (!isWebExt ? 'oldvk.fox=true;' : '');
 
-Promise.all([getOptions, getHead]).then(function () {
-        if (options.enabled) {
-            injectOptions.text = 'var oldvk={};oldvk.options=' + JSON.stringify(options) + ';';
-            document.head.appendChild(injectOptions);
-            document.head.appendChild(injectStart);
-            checkCSS(styles);
-            insertCSS('local');
-            insertCSS('main');
-            if (isFirefox)
-                insertCSS('fox');
-            chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-                if (request.action == 'updating') {
-                    updateCSS(request.css);
-                    updating(request.path)
-                }
-            });
-            initArrives();
-            if (isFirefox)
-                initResize()
-        }
+function init() {
+    document.head.appendChild(injectOptions);
+    document.head.appendChild(injectStart);
+    checkCSS(styles);
+    if (isWebExt) {
+        insertCSS('local');
+        insertCSS('main');
+        if (isFirefox)
+            insertCSS('fox');
+        chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+            if (request.action == 'updating') {
+                updateCSS(request.css);
+                updating(request.path)
+            }
+        });
     }
-);
+    initArrives();
+    if (isFirefox)
+        initResize()
+}
+
+if (isWebExt) {
+    var getOptions = new Promise(function (resolve) {
+        chrome.storage.local.get(function (items) {
+            Object.assign(options, items);
+            resolve();
+        });
+    });
+
+    var getHead = new Promise(function (resolve) {
+        KPP.head(function () {
+            resolve();
+        })
+    });
+
+    Promise.all([getOptions, getHead]).then(function () {
+            if (options.enabled)
+                init()
+        }
+    );
+
+} else {
+    KPP.head(function () {
+        init()
+    });
+}
 
 
 window.addEventListener('message', function (event) {
@@ -61,7 +73,11 @@ window.addEventListener('message', function (event) {
                 break;
             case 'VK_EMOJI':
                 emoji = event.data.text;
-                break
+                break;
+            case 'PUSH_URL':
+                checkCSS(styles, event.data.text);
+                initWide();
+                break;
         }
     }
 });
@@ -154,9 +170,7 @@ var LocalizedContent = {
             else
                 insertAfter(document.getElementById('l_ntf'), this.l_set);
         }
-
         document.querySelector('#l_ap .left_label').textContent = i18n.apps[lang];
-
         LocalizedContent.updateNotify()
     },
     updateNotify: function () {
