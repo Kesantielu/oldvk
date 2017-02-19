@@ -13,9 +13,9 @@ injectStart.src = isWebExt ? chrome.extension.getURL('content/injectStart.js') :
 
 var injectOptions = document.createElement('script');
 injectOptions.type = 'text/javascript';
-injectOptions.text = 'var oldvk={};oldvk.options=' + JSON.stringify(options) + ';' + (!isWebExt ? 'oldvk.fox=true;' : '');
 
 function init() {
+    injectOptions.text = 'var oldvk={};oldvk.options=' + JSON.stringify(options) + ';' + (!isWebExt ? 'oldvk.fox=true;' : '');
     document.head.appendChild(injectOptions);
     document.head.appendChild(injectStart);
     checkCSS(styles);

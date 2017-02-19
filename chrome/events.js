@@ -24,7 +24,7 @@ function listener(tabId, info, tab) {
         var path = url.pathname.slice(1);
         var Styles = [];
         styles.forEach(function (style) {
-            var apply = !!path.startsWith(style.match);
+            var apply = path.startsWith(style.match);
             Styles.push({css: style.css, apply: apply})
         });
         chrome.tabs.sendMessage(tabId, {action: 'updating', css: Styles, path: path}, null)

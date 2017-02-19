@@ -234,7 +234,8 @@ img.settings_bl_photo,
 .like_share_ava.wdd_imgs,
 .wddi_img,
 .group_box_image_wrap,
-.group_box_image_link {
+.group_box_image_link,
+.blst_img {
     border-radius: 0;
 }
 
@@ -8203,6 +8204,7 @@ h1 {
     padding: 0 25px 0 20px;
     border-left: 1px #eee solid;
     margin-top: -21px;
+    float: right
 }
 
 .pv_layer_wrap.oldvk .pv_author_block {
@@ -8485,7 +8487,6 @@ a.group_app_button:after {
 .group_u_photo_img,
 .apps_frtt_photo,
 .group_contact_image_wrap,
-.blst_img,
 .apps_feed_user_img,
 .friends_photo_img::after,
 .tickets_image__i,
