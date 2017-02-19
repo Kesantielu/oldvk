@@ -3,9 +3,9 @@
     "{6acba1db-bca7-4dc3-b20e-3230c4f5a54e}": {
       "updates": [
         {
-          "version": "0.530",
-          "update_link": "https://kesantielu.github.io/oldvk/firefox-webext/oldvk-0.53.0-an+fx.xpi",
-          "update_hash": "sha256:f5c7743f2bff1d6a4e7a9acebab31beef7fb1f4cb84e13ffce2c64a7ed4884fd"
+          "version": "0.533",
+          "update_link": "https://kesantielu.github.io/oldvk/firefox-webext/oldvk-0.53.3-an+fx.xpi",
+          "update_hash": "sha256:51d4d313e428373dd72b1c590faba598a2186eaceab355d018652a0be1a6d7a6"
         }
       ]
     }
