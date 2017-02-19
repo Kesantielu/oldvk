@@ -64,21 +64,19 @@ if (isWebExt) {
 
 
 window.addEventListener('message', function (event) {
-    if (event.source == window) {
-        switch (event.data.type) {
-            case 'VK_INFO':
-                lang = event.data.text.lang;
-                document.documentElement.setAttribute('lang', langMap[lang]);
-                LocalizedContent.init();
-                break;
-            case 'VK_EMOJI':
-                emoji = event.data.text;
-                break;
-            case 'PUSH_URL':
-                checkCSS(styles, event.data.text);
-                initWide();
-                break;
-        }
+    switch (event.data.type) {
+        case 'VK_INFO':
+            lang = event.data.text.lang;
+            document.documentElement.setAttribute('lang', langMap[lang]);
+            LocalizedContent.init();
+            break;
+        case 'VK_EMOJI':
+            emoji = event.data.text;
+            break;
+        case 'PUSH_URL':
+            checkCSS(styles, event.data.text);
+            initWide();
+            break;
     }
 });
 
