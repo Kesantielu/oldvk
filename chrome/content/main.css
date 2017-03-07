@@ -161,7 +161,8 @@ h5.post_author,
 .group_box_extra,
 #pv_tag_info,
 .page_preview_doc_photo_hint,
-.doc_size {
+.doc_size,
+.page_group_info {
     font-size: inherit;
     font-family: inherit;
 }
@@ -235,7 +236,9 @@ img.settings_bl_photo,
 .wddi_img,
 .group_box_image_wrap,
 .group_box_image_link,
-.blst_img {
+.blst_img,
+.page_group_image,
+.page_friend_reply_ava {
     border-radius: 0;
 }
 
@@ -1285,7 +1288,6 @@ h4.profile_online {
     background: #F7F7F7;
     border-color: #CCC;
     border-radius: 0;
-    overflow: hidden;
 }
 
 div.page_status_input {
@@ -1294,7 +1296,12 @@ div.page_status_input {
 
 .page_status_app,
 .page_status_audio {
-    margin: 5px 8px 0;
+    margin: 5px 8px;
+}
+
+.emoji_smile_wrap {
+    top: 3px;
+    right: 3px
 }
 
 .checkbox:before,
@@ -1318,13 +1325,10 @@ div.page_status_input {
     background-position: 0 -14px;
 }
 
-.page_status_audio,
-.page_status_app {
-    float: left;
-}
-
 .page_status_btn_save {
-    float: right;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }
 
 .profile_info_short {
@@ -4584,6 +4588,11 @@ input.ui_search_field:-ms-input-placeholder {
     line-height: 15px;
 }
 
+.im-mess.im-mess_fwd-top .im-mess_fwd .im_fwd_log_wrap,
+.im-mess.im-mess_fwd .im_fwd_log_wrap {
+    margin-top: 0
+}
+
 /* Конец правил для диалогов */
 
 .medadd_c_linkimg_big .medadd_c_linkhead {
@@ -7584,9 +7593,9 @@ a.fc_msgs_img,
 
 #photos_add_album_btn {
     position: absolute;
-    top: -97px;
+    /*top: -97px;*/
     font-weight: normal;
-    right: 2px;
+    right: 16px;
 }
 
 #photos_add_album_btn:hover,
@@ -8144,7 +8153,8 @@ h1 {
 }
 
 .pv_layer_wrap.oldvk .pv_cont {
-    width: 654px !important
+    width: 654px !important;
+    max-width: 1334px;
 }
 
 .pv_layer_wrap.oldvk #pv_photo {
@@ -8157,12 +8167,24 @@ h1 {
     align-items: center;
 }
 
+.pv_layer_wrap.oldvk .pv_cont.big #pv_photo {
+    max-height: none;
+}
+
+
 .pv_layer_wrap.oldvk #pv_tag_frame img,
 .pv_layer_wrap.oldvk #pv_photo img {
     max-width: 600px;
     max-height: 600px;
     width: auto !important;
     height: auto !important;
+}
+
+
+.pv_layer_wrap.oldvk .pv_cont.big #pv_tag_frame img,
+.pv_layer_wrap.oldvk .pv_cont.big #pv_photo img {
+    max-width: 1280px;
+    max-height: none;
 }
 
 .pv_layer_wrap.oldvk #pv_photo > img {
@@ -8180,6 +8202,7 @@ h1 {
 .pv_layer_wrap.oldvk #pv_narrow {
     height: auto !important;
     width: 436px !important;
+    /*width: 100% !important;*/
     border-left: none;
     min-height: 122px;
 }
@@ -8190,7 +8213,9 @@ h1 {
 }
 
 .pv_layer_wrap.oldvk .pv_cont .pv_narrow_column_wrap {
-    float: left
+    margin: 0 auto;
+    display: block;
+    width: 654px;
 }
 
 .pv_layer_wrap.oldvk #pv_narrow .ui_scroll_blocker,
@@ -8272,6 +8297,8 @@ h1 {
 .pv_layer_wrap.oldvk .pv_bottom_info {
     padding: 25px 25px 8px;
     min-height: 0;
+    margin: 0 auto;
+    max-width: 604px;
 }
 
 .pv_layer_wrap.oldvk .pv_like_count .counter_anim_wrap {
@@ -8402,6 +8429,25 @@ h1 {
     z-index: 1;
 }
 
+.pv_layer_wrap.oldvk .pv_fs_wrap .pv_fs_btn {
+    margin-bottom: 10px
+}
+
+.pv_layer_wrap.oldvk #pv_ss_btn {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAqCAYAAABcOxDuAAAABHNCSVQICAgIfAhkiAAAAZFJREFUSMftlb0vQ2EUxp+30bKL0cAgKj4Wi8RstAupxNSYxSSxMIivRgwGkz/BRphtWiQspIPBxKwf/CyncnP1bUurEblnObfvefq77z3vufeR2hVAEtgEcsAL8GzXG8Dgd2FxYBco4Y8SsA3EfRwXAHZKOpY0ZUsPko4k5SS9S0pKmpM0avUTSdPOuWKtXe7bTt6BVaCjiiYGpIGiafdqAYeAsgnXG2jTYqAVSZ9ox0R5IBGqARBac8CFlbZ80DsTrFWpfYHaetpKN+FapW/9lq+CsDBckpxzlcO9ttwbhsYslyr//c4EhicoDH20PPI5axa+35KGLed90FPLM9VGyRMpy2e+gxoD3qzxKw2M1HxgpAZqCQ8Cw78ExDy6FFAwbabea5qQdC5pMnC6R5KyksrW71lJE1YvSOpzzj3Ve6wu4NB264u3wPUl0N3o12rc4PfAq73rt0DGPovLPwI3cOO2gLO/Ac4BPa20n4WWAiPj+8/G59E3Z3w1wM0bX9BW/qbxhSMyvsj4IuNrt/F9ALsLkDxwHnoqAAAAAElFTkSuQmCC');
+    height: 20px;
+    width: 19px;
+}
+
+.pv_layer_wrap.oldvk #pv_ss_btn.minus {
+    background-position: 0 21px;
+}
+
+.pv_layer_wrap.oldvk .pv_narrow_column_cont {
+    float: left
+}
+
+
 /*
     ||−−||
  */
@@ -8462,6 +8508,11 @@ a.group_app_button:after {
 
 .groups_blocked_text {
     font-size: 120%
+}
+
+.feed_update_row .feedback_rphoto,
+.feed_wall_reply_row .feedback_rphoto {
+    margin-top: 0
 }
 
 /*

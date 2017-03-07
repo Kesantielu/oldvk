@@ -82,7 +82,7 @@ var injectEnd = document.createElement('script');
 injectEnd.type = 'text/javascript';
 injectEnd.src = isWebExt ? chrome.extension.getURL('content/injectEnd.js') : self.options.inject;
 
-if (options.enabled) {
+if (options.enabled || !isWebExt) {
     document.body.appendChild(injectEnd);
     initWide();
 

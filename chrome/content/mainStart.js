@@ -190,7 +190,6 @@ var LocalizedContent = {
 function initArrives() {
 
     KPP.add('.page_cover', function (element) {
-        if (!options.enabled) return;
         if (options.optionCover) {
             element.classList.add('adapted')
         } else {
@@ -213,7 +212,6 @@ function initArrives() {
     });
 
     KPP.add('#friends', function (element) {
-        if (!options.enabled) return;
         var urr = document.getElementById('ui_rmenu_requests');
         if (urr) {
             urr.className = 'ui_tab';
