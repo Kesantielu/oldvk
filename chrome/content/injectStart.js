@@ -44,6 +44,24 @@ function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
+function _getPhotoSize() {
+    if (localStorage.getItem('oldvk_pvLarge') != '1')
+        return 'x';
+
+    switch (cur.pvVeryBig) {
+        case 3:
+            return "w";
+            break;
+        case 2:
+        case 1:
+            return "z";
+            break;
+        default:
+            return "y"
+    }
+}
+
+
 function pvSwitch() {
     if (localStorage.getItem('oldvk_pvDark') != '1') {
         if (oldvk.options.optionViewer)
@@ -57,45 +75,56 @@ function pvSwitch() {
     }
 }
 
-function _pvSwitchSize() {
+function _pvResize() {
     function r() {
         cur.pvCont.style.removeProperty('width');
-        cur.pvPhoto.firstElementChild.style.removeProperty('width');
-        if (cur.pvTagFrame.firstElementChild)
-            cur.pvTagFrame.firstElementChild.style.removeProperty('width');
+        if (cur.pvPhoto.firstElementChild) {
+            cur.pvPhoto.firstElementChild.style.removeProperty('max-height');
+            cur.pvPhoto.firstElementChild.style.removeProperty('max-width');
+
+        }
+        if (cur.pvTagFrame.firstElementChild) {
+            cur.pvTagFrame.firstElementChild.style.removeProperty('max-height');
+            cur.pvTagFrame.firstElementChild.style.removeProperty('max-width');
+        }
     }
 
     if (localStorage.getItem('oldvk_pvLarge') != '1')
         return r();
-    var nw = cur.pvCurData.width;
-    var cw = document.documentElement.clientWidth;
-    if (nw > 600 && nw < cw - 54)
-        cur.pvCont.style.setProperty('width', nw + 50 + 'px', 'important');
-    else if (nw > 600) {
-        cur.pvCont.style.setProperty('width', cw - 4 + 'px', 'important');
-        cur.pvPhoto.firstElementChild.style.setProperty('width', cw - 54 + 'px', 'important');
-        if (cur.pvTagFrame.firstElementChild)
-            cur.pvTagFrame.firstElementChild.style.setProperty('width', cw - 54 + 'px', 'important');
 
-    } else if (nw > 0)
-        r()
+    var nw = cur.pvCurData.width,
+        nh = cur.pvCurData.height,
+        cw = Math.min(Math.max(document.documentElement.clientWidth, 800), 1334),
+        ch = Math.max(document.documentElement.clientHeight, 600);
+
+    if (cur.pvPhoto.firstElementChild) {
+        cur.pvPhoto.firstElementChild.style.setProperty('max-height', ch - 105 + 'px', 'important');
+        cur.pvPhoto.firstElementChild.style.setProperty('max-width', cw - 54 + 'px', 'important');
+    }
+    if (cur.pvTagFrame.firstElementChild) {
+        cur.pvTagFrame.firstElementChild.style.setProperty('max-height', ch - 105 + 'px', 'important');
+        cur.pvTagFrame.firstElementChild.style.setProperty('max-width', cw - 54 + 'px', 'important');
+    }
+
+    var ratio = Math.min((cw - 54) / nw, (ch - 105) / nh, 1);
+    cur.pvCont.style.setProperty('width', ratio * nw + 50 + 'px', 'important')
+
 }
 
 function pvSwitchSize() {
     if (localStorage.getItem('oldvk_pvLarge') != '1') {
         addClass(ge('pv_ss_btn'), 'minus');
         addClass(cur.pvCont, 'big');
-        Photoview.updatePhotoDimensions = function() {
-            _pvSwitchSize()
-        };
-        localStorage.setItem('oldvk_pvLarge', '1')
+        addEventListener('resize', _pvResize);
+        localStorage.setItem('oldvk_pvLarge', '1');
+        Photoview.show(false, cur.pvIndex);
     } else {
         removeClass(ge('pv_ss_btn'), 'minus');
         removeClass(cur.pvCont, 'big');
-        Photoview.updatePhotoDimensions = nothing;
+        removeEventListener('resize', _pvResize);
         localStorage.setItem('oldvk_pvLarge', '0')
     }
-    _pvSwitchSize()
+    _pvResize()
 }
 
 watchVar('vk', function (vk) {
@@ -127,8 +156,9 @@ watchVar('Photoview', function (Photoview) {
             }
 
             if (document.documentElement.clientWidth >= 800) {
-                var pv_ss_btn = ce('div', {classList: 'pv_fs_btn'});
-                pv_ss_btn.setAttribute('onmousedown', 'cancelEvent(event);pvSwitchSize();');
+                var pv_ss_btn = ce('div', {className: 'pv_fs_btn'});
+                pv_ss_btn.setAttribute('onclick', 'cancelEvent(event);');
+                pv_ss_btn.setAttribute('onmousedown', 'cancelEvent(event);cur.__mdEvent=event;pvSwitchSize();');
                 pv_ss_btn.appendChild(ce('div', {id: 'pv_ss_btn'}));
                 if (localStorage.getItem('oldvk_pvLarge') == '1') {
                     addClass(pv_ss_btn.firstElementChild, 'minus');
@@ -136,6 +166,8 @@ watchVar('Photoview', function (Photoview) {
                 }
                 cur.pvFSWrap.appendChild(pv_ss_btn);
             }
+
+            Photoview.getPhotoSize = _getPhotoSize;
 
         };
         Photoview.createLayer.oldvk = true;
@@ -160,10 +192,8 @@ watchVar('Photoview', function (Photoview) {
                 ds.apply(this, arguments);
                 if (cur.pvCanvas)
                     return;
-                while (cur.pvRightColumn.lastChild) {
-                    cur.pvRightColumn.removeChild(cur.pvRightColumn.lastChild);
-                }
-
+                if (geByClass1('pv_author_block', cur.pvRightColumn))
+                    cur.pvRightColumn.removeChild(geByClass1('pv_author_block', cur.pvRightColumn));
                 if (geByClass1('pv_author_block')) {
                     cur.pvRightColumn.appendChild(geByClass1('pv_author_block'));
                     insertAfter(ge('pv_author_name'), cur.pvAlbumName);
@@ -176,17 +206,16 @@ watchVar('Photoview', function (Photoview) {
                     cur.pvMoreActionsTooltip._opts.offset[1] = 12;
                     cur.pvMoreActionsTooltip._ttel = null;
                     cur.pvMoreActionsTooltip.build();
-                    cur.pvBottomActions.insertBefore(ge('pv_more_act_download'), geByClass1('pv_actions_more'));
+                    cur.pvBottomActions.insertBefore(ge('pv_more_act_download'), geByClass1('pv_actions_more'))
+
                     if (cur.pvBottomLike.firstChild)
                         cur.pvBottomLike.removeChild(cur.pvBottomLike.firstChild);
                     cur.pvBottomLike.appendChild(ge('pv_like'))
                 }
 
                 if (localStorage.getItem('oldvk_pvLarge') == '1') {
-                    Photoview.updatePhotoDimensions = function () {
-                        _pvSwitchSize()
-                    };
-                    _pvSwitchSize()
+                    addEventListener('resize', _pvResize);
+                    _pvResize()
                 }
             };
             Photoview.doShow.oldvk = true
@@ -212,10 +241,19 @@ watchVar('Photoview', function (Photoview) {
             var as = Photoview.afterShow;
             Photoview.afterShow = function () {
                 as.apply(this, arguments);
-                var w = cur.pvPhoto.firstElementChild.style.getPropertyValue('width');
-                cur.pvTagFrame.firstElementChild.style.setProperty('width', w, 'important');
+                var h = cur.pvPhoto.firstElementChild.style.getPropertyValue('max-height');
+                cur.pvTagFrame.firstElementChild.style.setProperty('max-height', h, 'important');
             };
             Photoview.afterShow.oldvk = true
+        }
+
+        if (!Photoview.hide.oldvk) {
+            var h = Photoview.hide;
+            Photoview.hide = function () {
+                removeEventListener('resize', _pvResize);
+                h.apply(this, arguments);
+            };
+            Photoview.hide.oldvk = true
         }
     }
 });
@@ -228,9 +266,10 @@ watchVar('Emoji', function (Emoji) {
     window.postMessage({type: "VK_EMOJI", text: {emoji: Emoji.getRecentEmojiSorted(), html: emoji}}, "*");
 });
 
-/*watchVar('AudioPlayer', function () {
-
- });*/
+watchVar('TopNotifier', function (TopNotifier) {
+    TopNotifier.tnCount = "oldvk-notify";
+    TopNotifier.tnLink = "oldvk-notify-wrap";
+});
 
 watchVar('SPE', function (SPE) {
     if (!SPE.init.oldvk) {

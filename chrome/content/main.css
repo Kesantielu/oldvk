@@ -7821,6 +7821,8 @@ h1 {
 
 .pva_period_fixed {
     font-weight: bold;
+    width: 599px;
+    background: rgba(255, 255, 255, 0.95);
 }
 
 #pv_box .box_title_wrap a {
@@ -8080,6 +8082,10 @@ h1 {
     margin: 3px 4px 0;
 }
 
+#pv_box.photos_is_albums_view {
+    width: 626px
+}
+
 /*
     Темный просмотрщик
  */
@@ -8171,20 +8177,22 @@ h1 {
     max-height: none;
 }
 
-
 .pv_layer_wrap.oldvk #pv_tag_frame img,
 .pv_layer_wrap.oldvk #pv_photo img {
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 604px;
+    max-height: 604px;
     width: auto !important;
     height: auto !important;
 }
-
 
 .pv_layer_wrap.oldvk .pv_cont.big #pv_tag_frame img,
 .pv_layer_wrap.oldvk .pv_cont.big #pv_photo img {
     max-width: 1280px;
     max-height: none;
+}
+
+.pv_layer_wrap.oldvk .pv_cont.big {
+    min-width: 654px;
 }
 
 .pv_layer_wrap.oldvk #pv_photo > img {
@@ -8446,7 +8454,6 @@ h1 {
 .pv_layer_wrap.oldvk .pv_narrow_column_cont {
     float: left
 }
-
 
 /*
     ||−−||

@@ -189,6 +189,11 @@ var LocalizedContent = {
 
 function initArrives() {
 
+    // KPP.add('#top_nav', function (element) {
+
+    // KPP.add('#side_bar_inner', function () {
+
+
     KPP.add('.page_cover', function (element) {
         if (options.optionCover) {
             element.classList.add('adapted')

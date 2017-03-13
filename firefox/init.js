@@ -17,9 +17,9 @@ var button = ToggleButton({
 });
 
 var panel = Panel({
-    width: 225,
+    width: 220,
     height: 130,
-    contentURL: './popup.html',
+    contentURL: './popup.html',	
     contentScriptFile: './popup.js',
     contentScriptOptions: {version: require('sdk/self').version},
     onHide: handleHide

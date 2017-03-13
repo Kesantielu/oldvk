@@ -19,7 +19,7 @@ span.page_post_thumb_wrap {
 }
 
 body.firefox #page_wrap {
-    overflow: inherit
+    /*overflow: inherit*/
 }
 
 .nim-dialog .nim-dialog--preview,

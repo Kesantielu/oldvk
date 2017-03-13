@@ -3,11 +3,6 @@ updateLeftMenu = nothing;
 
 document.querySelector("link[rel*='icon']").href = "https://vk.com/images/favicon.ico";
 
-if (typeof TopNotifier !== "undefined") {
-    TopNotifier.tnCount = "oldvk-notify";
-    TopNotifier.tnLink = "oldvk-notify-wrap";
-}
-
 if (typeof getAudioPlayer !== "undefined" && getAudioPlayer()._currentAudio)
     removeClass(ge("oldvk_top_play"), "oldvk-hide");
 
