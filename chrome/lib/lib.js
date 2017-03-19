@@ -2,6 +2,15 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 
 var isWebExt = typeof chrome !== 'undefined' && typeof chrome.extension !== 'undefined';
 
+var options = isWebExt ? {optionCover: false, optionViewer: false} : self.options;
+
+if (isFirefox && !isWebExt) {
+    self.port.on('options', function (o) {
+        Object.assign(options, o);
+        console.log(options)
+    })
+}
+
 if (!String.prototype.startsWith) {
     Object.defineProperty(String.prototype, 'startsWith', {
         enumerable: false,
@@ -74,7 +83,7 @@ var KPP = {
     _addedTag: function (observer, mutations, tag, callback, once) {
         for (var i = 0, l = mutations.length; i < l; i++) {
             for (var j = 0, m = mutations[i].addedNodes.length; j < m; j++) {
-                if (mutations[i].addedNodes[j].tagName = tag) {
+                if (mutations[i].addedNodes[j].tagName == tag ) {
                     callback();
                     if (once) observer.disconnect();
                 }
@@ -160,6 +169,84 @@ function decodeHtml(html) {
 }
 
 var topStop = 3000;
+
+function checkWide() {
+    if (!document.getElementById('narrow_column')) return;
+    if (wide != (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0)) {
+        wide = !wide;
+        var thumbs;
+        if (wide) {
+            document.getElementById('wide_column').classList.add('wide');
+            document.getElementsByClassName('narrow_column_wrap')[0].style.position = 'absolute';
+
+            if (isFirefox) {
+                thumbs = [].slice.call(document.getElementsByClassName('oldvk-resized'));
+                thumbs.forEach(function (element) {
+                    Zoom.plus(element);
+                    Array.prototype.forEach.call(element.childNodes, function (node) {
+                        Zoom.plus(node)
+                    });
+                    element.classList.remove('oldvk-resized')
+                });
+                thumbs = [].slice.call(document.getElementsByClassName('oldvk-resized-gif'));
+                thumbs.forEach(function (element) {
+                    Zoom.plus_d(element.getElementsByClassName('page_doc_photo_href')[0]);
+                    Zoom.plus(element.getElementsByClassName('page_doc_photo')[0]);
+                    Zoom.plus(element.getElementsByClassName('page_doc_photo_href')[0]);
+                    element.classList.remove('oldvk-resized-gif');
+                })
+            }
+
+        } else {
+            document.getElementById('wide_column').classList.remove('wide');
+            document.getElementsByClassName('narrow_column_wrap')[0].style.position = 'relative';
+
+            if (isFirefox) {
+                thumbs = [].slice.call(document.getElementsByClassName('page_post_sized_thumbs'));
+                thumbs.forEach(function (element) {
+                    if ((element.getBoundingClientRect().top + document.body.scrollTop) <= topStop) {
+                        Zoom.minus(element);
+                        [].forEach.call(element.childNodes, function (node) {
+                            Zoom.minus(node)
+                        });
+                        element.classList.add('oldvk-resized')
+                    }
+                });
+                thumbs = Array.prototype.slice.call(document.getElementsByClassName('page_gif_large'));
+                thumbs.forEach(function (element) {
+                    if ((element.getBoundingClientRect().top + document.body.scrollTop) <= topStop) {
+                        Zoom.minus_d(element.getElementsByClassName('page_doc_photo_href')[0]);
+                        Zoom.minus(element.getElementsByClassName('page_doc_photo')[0]);
+                        Zoom.minus(element.getElementsByClassName('page_doc_photo_href')[0]);
+                        element.classList.add('oldvk-resized-gif');
+                    }
+                })
+            }
+        }
+    }
+}
+
+function initWide() {
+    var contentID = document.getElementById('content').firstElementChild.id;
+    var wideApplicable = (contentID == "profile" || contentID == "group" || contentID == "public");
+    wide = (document.getElementById('narrow_column') && wideApplicable) ? (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0) : true;
+    if (wide && wideApplicable) {
+        console.timeEnd('B');
+        document.getElementById('wide_column').classList.add('wide');
+        document.getElementsByClassName('narrow_column_wrap')[0].style.position = 'absolute';
+    }
+    if (wideApplicable) {
+        window.addEventListener('scroll', checkWide);
+        window.addEventListener('resize', checkWide);
+        window.addEventListener('mousedown', checkWide);
+        window.addEventListener('load', checkWide)
+    } else {
+        window.removeEventListener('scroll', checkWide);
+        window.removeEventListener('resize', checkWide);
+        window.removeEventListener('mousedown', checkWide);
+        window.removeEventListener('load', checkWide)
+    }
+}
 
 function initResize() {
 

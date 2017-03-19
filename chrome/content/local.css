@@ -283,3 +283,15 @@ head.oldvk-audios ~ body #stl_side {
 :lang(kk) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
     content: "Мен бар суреттер"
 }
+
+/* Мне нравится
+ */
+
+:lang(ru) .wall_module .post_like_link {
+    text-transform: lowercase;
+}
+
+:lang(ru) .wall_module .post_like_link:before {
+    content: "Мне ";
+    text-transform: none;
+}

@@ -5,8 +5,6 @@ const styles = [
 
 var lang, emoji;
 
-var options = isWebExt ? {optionCover: false, optionViewer: false} : self.options;
-
 var injectStart = document.createElement('script');
 injectStart.type = 'text/javascript';
 injectStart.src = isWebExt ? chrome.extension.getURL('content/injectStart.js') : options.inject;
@@ -36,31 +34,32 @@ function init() {
         initResize()
 }
 
-if (isWebExt) {
-    var getOptions = new Promise(function (resolve) {
+
+var getOptions = new Promise(function (resolve) {
+    if (isWebExt) {
         chrome.storage.local.get(function (items) {
             Object.assign(options, items);
             resolve();
         });
-    });
-
-    var getHead = new Promise(function (resolve) {
-        KPP.head(function () {
+    } else {
+        self.port.on('options', function (o) {
+            Object.assign(options, o);
             resolve();
         })
-    });
+    }
+});
 
-    Promise.all([getOptions, getHead]).then(function () {
-            if (options.enabled)
-                init()
-        }
-    );
-
-} else {
+var getHead = new Promise(function (resolve) {
     KPP.head(function () {
-        init()
-    });
-}
+        resolve();
+    })
+});
+
+Promise.all([getOptions, getHead]).then(function () {
+        if (options.enabled)
+            init()
+    }
+);
 
 
 window.addEventListener('message', function (event) {
@@ -421,7 +420,14 @@ function initArrives() {
         var pai = document.getElementsByClassName('page_actions_inner');
         if (pai.length > 0) {
             document.getElementsByClassName('page_actions_cont')[0].style.display = 'none';
-            document.getElementsByClassName('narrow_column_wrap')[0].appendChild(pai[0])
+            document.getElementsByClassName('narrow_column_wrap')[0].appendChild(pai[0]);
+            var psgb = document.getElementById('profile_send_gift_btn');
+            var pgsb = document.getElementById('profile_gift_send_btn');
+            if (psgb && !pgsb) {
+                psgb.className = 'page_actions_item';
+                psgb.textContent = psgb.getElementsByClassName('profile_gift_text')[0].textContent;
+                pai[0].insertBefore(psgb, pai[0].firstChild)
+            }
         }
 
     });

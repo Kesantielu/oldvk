@@ -3,8 +3,10 @@ const {PageMod} = require('sdk/page-mod');
 var prefs = require('sdk/simple-prefs').prefs;
 const {Panel} = require("sdk/panel");
 var _ = require("sdk/l10n").get;
+const Prefs = require("sdk/preferences/service");
 
-const {Cu} = require('chrome');
+if (Prefs.has('dom.promise.enabled'))
+	Prefs.set('dom.promise.enabled', true);
 
 var button = ToggleButton({
     id: 'oldvk-button',
@@ -66,7 +68,10 @@ var options = {
     contentScriptWhen: 'start',
     contentStyleFile: ['./main.css', './local.css', './fox.css'],
     contentScriptOptions: {inject: require('sdk/self').data.url('injectStart.js'), optionCover: prefs.optionCover, optionViewer: prefs.optionViewer},
-    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails.php|ads_rotate.php|share.php|adscreate$|adscreate\?|wkview.php|bugs$|bugs\?|q_frame.php|.*upload.php|login.php|about|jobs).*$/
+	onAttach: function(page) {
+		page.port.emit('options', prefs)
+	},
+    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails.php|ads_rotate.php|share.php|adscreate$|adscreate\?|wkview.php|bugs$|bugs\?|q_frame.php|.*upload.php|login.php|about|jobs|.*\.svg).*$/
 };
 
 var options1 = {
@@ -74,7 +79,10 @@ var options1 = {
     contentScriptFile: ['./lib.js', './mainEnd.js'],
     contentScriptWhen: 'ready',
     contentScriptOptions: {inject: require('sdk/self').data.url('injectEnd.js')},
-    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails.php|ads_rotate.php|share.php|adscreate$|adscreate\?|wkview.php|bugs$|bugs\?|q_frame.php|.*upload.php|login.php|about|jobs).*$/
+	onAttach: function(page) {
+		page.port.emit('options', prefs)
+	},
+    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails.php|ads_rotate.php|share.php|adscreate$|adscreate\?|wkview.php|bugs$|bugs\?|q_frame.php|.*upload.php|login.php|about|jobs|.*\.svg).*$/
 };
 
 if (prefs['enabled']) {
