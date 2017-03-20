@@ -17,6 +17,12 @@ function installO() {
   else location.href = "https://addons.opera.com/ru/extensions/details/staryi-dizain-vk-2";
 }
 
+function installC() {
+  if (typeof chrome.webstore.install !== 'undefined') {
+    chrome.webstore.install()
+  } else location.href = "https://chrome.google.com/webstore/detail/enmbidembfifmcpbkknknhcpmmhnmgni";
+}
+
 window.addEventListener('DOMContentLoaded',function(){
   var a1 = document.getElementById('firefox-webext-link');
   var a2 = document.getElementById('firefox-old-link');
