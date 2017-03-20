@@ -18,7 +18,7 @@ function installO() {
 }
 
 function installC() {
-  if (typeof chrome.webstore.install !== 'undefined') {
+  if (typeof chrome !== 'undefined' && chrome.webstore.install) {
     chrome.webstore.install()
   } else location.href = "https://chrome.google.com/webstore/detail/enmbidembfifmcpbkknknhcpmmhnmgni";
 }
