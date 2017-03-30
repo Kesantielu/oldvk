@@ -19,7 +19,11 @@ span.page_post_thumb_wrap {
 }
 
 body.firefox #page_wrap {
-    /*overflow: inherit*/
+    overflow: inherit
+}
+
+body.firefox.layers_shown {
+	overflow: hidden
 }
 
 .nim-dialog .nim-dialog--preview,

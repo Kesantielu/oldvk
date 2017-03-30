@@ -83,7 +83,7 @@ var KPP = {
     _addedTag: function (observer, mutations, tag, callback, once) {
         for (var i = 0, l = mutations.length; i < l; i++) {
             for (var j = 0, m = mutations[i].addedNodes.length; j < m; j++) {
-                if (mutations[i].addedNodes[j].tagName == tag ) {
+                if (mutations[i].addedNodes[j].tagName === tag ) {
                     callback();
                     if (once) observer.disconnect();
                 }
@@ -93,7 +93,7 @@ var KPP = {
     _police: new MutationObserver(function (mutations) {
         for (var i = 0, l = mutations.length; i < l; i++) {
             for (var j = 0, m = mutations[i].addedNodes.length; j < m; j++) {
-                if (mutations[i].addedNodes[j].nodeType == 1) {
+                if (mutations[i].addedNodes[j].nodeType === 1) {
                     for (var k = KPP._list.length; k--;) {
                         if (mutations[i].addedNodes[j].matches(KPP._list[k])) { // Обрабатывает только существующие элементы до DOMContentLoaded
                             if (!mutations[i].addedNodes[j].KPPPassed) {
@@ -144,7 +144,7 @@ var KPP = {
     },
     remove: function (selector) {
         var s = KPP._list.indexOf(selector);
-        if (s != -1) {
+        if (s !== -1) {
             KPP._list.splice(s, 1);
             KPP._actions.splice(s, 1);
             if (KPP._list.length < 1)
@@ -172,7 +172,7 @@ var topStop = 3000;
 
 function checkWide() {
     if (!document.getElementById('narrow_column')) return;
-    if (wide != (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0)) {
+    if (wide !== (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0)) {
         wide = !wide;
         var thumbs;
         if (wide) {
@@ -228,7 +228,7 @@ function checkWide() {
 
 function initWide() {
     var contentID = document.getElementById('content').firstElementChild.id;
-    var wideApplicable = (contentID == "profile" || contentID == "group" || contentID == "public");
+    var wideApplicable = (contentID === "profile" || contentID === "group" || contentID === "public");
     wide = (document.getElementById('narrow_column') && wideApplicable) ? (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0) : true;
     if (wide && wideApplicable) {
         console.timeEnd('B');
@@ -276,10 +276,10 @@ function initResize() {
 function resizing(element, f) {
     wide = null;
     var contentID = document.getElementById('content').firstElementChild.id;
-    var wideApplicable = (contentID == "profile" || contentID == "group" || contentID == "public");
+    var wideApplicable = (contentID === "profile" || contentID === "group" || contentID === "public");
     if (!wideApplicable || element.classList.contains('oldvk-resized')) return;
     var nc = document.getElementById('narrow_column');
-    if (wide == null) wide = (nc && wideApplicable) ? (nc.getBoundingClientRect().bottom < 0) : true;
+    if (wide === null) wide = (nc && wideApplicable) ? (nc.getBoundingClientRect().bottom < 0) : true;
     if (!wide && wideApplicable && ((element.getBoundingClientRect().top + document.body.scrollTop) <= topStop)) {
         f();
     }

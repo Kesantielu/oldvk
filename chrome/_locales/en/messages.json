@@ -42,5 +42,9 @@
   "option_viewer": {
     "message": "Use new photo viewer",
     "description": ""
+  },
+  "option_font": {
+    "message": "Use large fonts",
+    "description": ""
   }
 }

@@ -1,7 +1,8 @@
 function save() {
     chrome.storage.local.set({
         optionCover: document.getElementById('cover').checked,
-        optionViewer: document.getElementById('viewer').checked
+        optionViewer: document.getElementById('viewer').checked,
+        optionFont: document.getElementById('font').checked
     });
     document.getElementById('status').textContent = chrome.i18n.getMessage('saved');
     document.getElementById('status').classList.add('hide');
@@ -15,10 +16,12 @@ function save() {
 function restore() {
     chrome.storage.local.get({
         optionCover: false,
-        optionViewer: false
+        optionViewer: false,
+        optionFont: false
     }, function (items) {
         document.getElementById('cover').checked = items.optionCover;
         document.getElementById('viewer').checked = items.optionViewer;
+        document.getElementById('font').checked = items.optionFont;
     })
 }
 
@@ -27,3 +30,4 @@ document.getElementById('save').addEventListener('click', save);
 document.getElementById('save').textContent = chrome.i18n.getMessage('save');
 document.getElementById('cover_label').innerHTML += chrome.i18n.getMessage('option_cover');
 document.getElementById('viewer_label').innerHTML += chrome.i18n.getMessage('option_viewer');
+document.getElementById('font_label').innerHTML += chrome.i18n.getMessage('option_font');

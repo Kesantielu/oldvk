@@ -10,7 +10,7 @@ if (options.enabled || !isWebExt) {
 
     if (isWebExt)
         chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-            if (request.action == 'updating') {
+            if (request.action === 'updating') {
                 initWide();
                 setTimeout(function () {
                     initWide()
@@ -23,4 +23,9 @@ if (options.enabled || !isWebExt) {
     });
     if (document.querySelector('#side_bar_inner ol'))
         leftMenuObserver.observe(document.querySelector('#side_bar_inner ol'), {childList: true});
+
+    var fw = document.getElementById('footer_wrap');
+    if (fw)
+        fw.appendChild(document.getElementsByClassName('left_menu_nav_wrap')[0])
+
 }

@@ -287,11 +287,33 @@ head.oldvk-audios ~ body #stl_side {
 /* Мне нравится
  */
 
-:lang(ru) .wall_module .post_like_link {
+:lang(ru) .wall_module .post_like_link,
+:lang(uk) .wall_module .post_like_link,
+:lang(be) .wall_module .post_like_link,
+:lang(be-tarask) .wall_module .post_like_link {
     text-transform: lowercase;
 }
 
-:lang(ru) .wall_module .post_like_link:before {
-    content: "Мне ";
+:lang(ru) .wall_module .post_like_link:before,
+:lang(uk) .wall_module .post_like_link:before,
+:lang(be) .wall_module .post_like_link:before,
+:lang(be-tarask) .wall_module .post_like_link:before,
+:lang(ru-petr1708) .wall_module .post_like_link,
+:lang(ru-ussr) .wall_module .post_like_link {
     text-transform: none;
+}
+
+:lang(ru) .wall_module .post_like_link:before,
+:lang(be) .wall_module .post_like_link:before,
+:lang(be-tarask) .wall_module .post_like_link:before {
+    content: "Мне ";
+}
+
+:lang(uk) .wall_module .post_like_link:before {
+    content: "Мені ";
+}
+
+:lang(ru-petr1708) .wall_module .post_like_link:before,
+:lang(ru-ussr) .wall_module .post_like_link:before{
+    content: none;
 }

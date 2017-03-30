@@ -67,7 +67,7 @@ var options = {
     contentScriptFile: ['./lib.js', './mainStart.js'],
     contentScriptWhen: 'start',
     contentStyleFile: ['./main.css', './local.css', './fox.css'],
-    contentScriptOptions: {inject: require('sdk/self').data.url('injectStart.js'), optionCover: prefs.optionCover, optionViewer: prefs.optionViewer},
+    contentScriptOptions: {inject: require('sdk/self').data.url('injectStart.js'), optionCover: prefs.optionCover, optionViewer: prefs.optionViewer, optionFont: prefs.optionFont},
 	onAttach: function(page) {
 		page.port.emit('options', prefs)
 	},

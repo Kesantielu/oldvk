@@ -42,5 +42,9 @@
   "option_viewer": {
     "message": "Использовать новый просмотрщик фотографий",
     "description": ""
+  },
+  "option_font": {
+    "message": "Использовать увеличенные шрифты",
+    "description": ""
   }
 }

@@ -23,7 +23,7 @@ function init() {
         if (isFirefox)
             insertCSS('fox');
         chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-            if (request.action == 'updating') {
+            if (request.action === 'updating') {
                 updateCSS(request.css);
                 updating(request.path)
             }
@@ -176,7 +176,7 @@ var LocalizedContent = {
         document.getElementById('oldvk-notify').textContent = notifyCount.toString();
     },
     l10n: function (key, callback) {
-        if (typeof lang != 'undefined') {
+        if (typeof lang !== 'undefined') {
             callback(i18n[key][lang])
         } else {
             setTimeout(function () {
@@ -192,6 +192,8 @@ function initArrives() {
 
     // KPP.add('#side_bar_inner', function () {
 
+    if (options.optionFont)
+        document.head.classList.add('oldvk-largefont');
 
     KPP.add('.page_cover', function (element) {
         if (options.optionCover) {
@@ -376,7 +378,7 @@ function initArrives() {
     KPP.add('#profile #wide_column', function (element) {
 
         var name = element.getElementsByClassName('page_name')[0].textContent.split(' ');
-        if (name[name.length - 1].substr(name[name.length - 1].length - 1) == ')')
+        if (name[name.length - 1].substr(name[name.length - 1].length - 1) === ')')
             name.pop();
         document.getElementById('title').textContent = name.shift() + ' ' + name.pop();
         document.getElementById('header').style.display = 'block';
@@ -430,11 +432,6 @@ function initArrives() {
             }
         }
 
-    });
-
-    KPP.add('#footer_wrap', function (element) {
-        KPP.remove('#footer_wrap');
-        element.appendChild(document.getElementsByClassName('left_menu_nav_wrap')[0])
     });
 
     KPP.add('.people_cell_name a', function (element) {
