@@ -195,7 +195,24 @@ h5.post_author,
 .button_light_gray button,
 .flat_button,
 #mv_box._has_chat .mv_recom_item,
-#mv_box._has_preparation .mv_recom_item {
+#mv_box._has_preparation .mv_recom_item,
+.ads_ad_domain.apps_only,
+.app_cat_link,
+.apps_cat_users,
+.apps_access_item_info,
+.apps_i_policy,
+.apps_i_group .apps_i_group_info,
+.apps_i_users, .apps_ss_playing,
+.apps_notification_row,
+#payments_box .payments_about_votes,
+.payments_about_votes,
+.payments_getvotes_amounts .radiobtn .payments_opt_amount,
+#video_title_albums,
+.apps_edit_actions,
+div.fc_clist_filter,
+#fc_clist_filter,
+#fc_clist_filter ~ .placeholder .ph_input,
+.apps_feed_info {
     font-size: inherit;
     font-family: inherit;
 }
@@ -283,7 +300,10 @@ img.settings_bl_photo,
 .mv_chat_reply_author_photo,
 .mv_chat_message_author_thumb_img,
 .mv_recom_item_thumb,
-.mv_recom_item_duration {
+.mv_recom_item_duration,
+.apps_access_icon,
+.apps_i_group .apps_i_group_photo img,
+.payments_box_votes .payments_summary_phumb {
     border-radius: 0;
 }
 
@@ -426,7 +446,7 @@ body.sf .left_count_wrap {
 .fave_module .wall_module .post_like_icon,
 .fave_module .wall_module .post_share_icon,
 .wl_post.wall_module .post_like_icon,
-.wl_post.fave_module .wall_module .post_share_icon,
+.wl_post.wall_module .post_share_icon,
 .pv_layer_wrap.oldvk .pv_like_icon {
     margin-top: 3px;
 }
@@ -1152,6 +1172,7 @@ h2.page_name {
     margin-right: 0;
     border-radius: 3px;
     color: #829BAF;
+    display: flex;
 }
 
 .post_like:hover,
@@ -1176,6 +1197,7 @@ h2.page_name {
 .wall_module .post_share_icon,
 .wall_module .feed_article_wrap .post_share_icon {
     background-position: 0 -21px;
+    order: 2
 }
 
 .wall_module .post_like_link,
@@ -1197,8 +1219,10 @@ h2.page_name {
     color: #7295b2;
 }
 
-.wall_module .post_share_count {
+.wall_module .post_share_count,
+.wk_cont .post_share .post_share_count {
     margin-left: 2px;
+    order: 3
 }
 
 .wall_module .post_like_count {
@@ -1238,10 +1262,6 @@ h2.page_name {
 
 .wall_module .post_views_count {
     margin-left: 4px;
-}
-
-.post_like {
-    display: flex;
 }
 
 .wall_module .reply_fakebox_wrap,
@@ -1305,12 +1325,34 @@ h2.page_name {
     color: #FFF;
 }
 
+.ui_tab_count.ui_tab_count_red {
+    font-weight: bold;
+    line-height: 14px;
+    height: 14px;
+    min-width: 14px;
+    border-radius: 3px;
+}
+
 .ui_tab,
 .ui_tabs .ui_tab,
 .ui_tab_sel,
 .ui_tabs .ui_tab_sel,
 .ui_tabs .ui_tab.ui_tab_sel {
     color: #45688E;
+}
+
+.ui_tab_group_item {
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+}
+
+.ui_tab_group_items {
+    padding: 0
+}
+
+.ui_tab_group_separator {
+    margin: 4px 10px
 }
 
 #page_wall_suggest {
@@ -1410,7 +1452,8 @@ h4.profile_online {
 }
 
 .no_rows {
-    font-size: 1.1em
+    font-size: 1.1em;
+    line-height: 140%;
 }
 
 .my_current_info,
@@ -1481,6 +1524,13 @@ div.page_status_input {
 .checkbox.on:before,
 .settings_narrow_row input[type=checkbox]:checked + label:before {
     background-position: 0 -14px;
+}
+
+.radiobtn:before {
+    background: url('data:image/gif;base64,R0lGODlhDgA4AMQAAAAAAP///7fAy9/k6sDK1a22wMPL1M/W3rvJ19rh6F+DpZyyxq/B0sfT3tfg6LDBz9/l6u/y9Ozv8efq7P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABQALAAAAAAOADgAAAX/ICVSEmES0jiWRBQEkZmK5fDewYCKhI3fOhLh90O1iLjYEIkzMZvHZ6z0DOx6zKDQh9PNhFHld3XaqcinMc3kgsnIXKAZiwxSXw4Gw3Ezth0KgQp8bksBDIIKDH2GiIIMEC9seIkNkVOGeQyWkil0LxCROQRrcS9eaG1iZ2BvrBQTBbIFE6yxBQcJCQeytSKxBrrCCQa0IgXBw8LFsAXKyrS4z8O8ztPDstfY0tq8sdoJxsjXzM3Jw8W+zdzV6iO3va/r8We3ubv05s/px+fKzN90IViwAIGwaPcQJDKIz1qCBYkWHHQIUdACAbpkJUz0AKM3hwMXdMxYa5wwARiJDxX4ZRKdMZbs8r2b9VJECAA7') no-repeat 0 0;
+    width: 15px;
+    margin: 0 5px 1px 0;
+    height: 14px;
 }
 
 .page_status_btn_save {
@@ -5062,14 +5112,18 @@ a.ts_search_link {
 }
 
 .page_block_header {
-    color: #45688e;
     padding: 3px 0 4px;
     border-bottom: 1px solid #dae1e8;
     background: none;
-    line-height: inherit;
     height: auto;
-    /*margin: 10px 15px 0;*/
-    margin: 5px 5px 0;
+    margin: 10px 15px 0;
+}
+
+.page_block_header,
+.page_block_sub_header,
+.page_block_header_inner {
+    color: #45688e;
+    line-height: inherit;
     font-weight: bold;
 }
 
@@ -6633,7 +6687,7 @@ body.mac .audio_rows_header.fixed {
 }
 
 .box_msg {
-    margin: -16px -14px 0
+    margin: -16px -14px 10px
 }
 
 .privacy_locked {
@@ -6792,6 +6846,11 @@ img.settings_bl_photo {
 
 #friends .ui_search_fltr_sel:last-child {
     padding-bottom: 0;
+}
+
+.ui_search_fltr_sel .radiobtn:last-child,
+.ui_search_fltr_last {
+    padding-bottom: 1px;
 }
 
 #friends #ui_rmenu_lists_list {
@@ -8035,8 +8094,18 @@ h1 {
     width: 100%;
 }
 
+.flat_button.ui_load_more_btn {
+    border-top: none;
+    padding: 10px 0;
+    background-color: #eff1f3;
+}
+
+.flat_button.ui_load_more_btn:hover {
+    background-color: #e9edf1;
+}
+
 .flat_button.ui_load_more_btn:active {
-    padding: 13px 0 14px;
+    padding: 11px 0 9px;
 }
 
 #pva_content_photos {
@@ -8726,7 +8795,7 @@ a.group_app_button:after {
 }
 
 .stories_feed_items_wrap {
-    padding: 10px 0;
+    padding: 10px 0 0;
 }
 
 .stories_feed_item:first-child {
@@ -8764,8 +8833,8 @@ a.group_app_button:after {
 }
 
 #videocat_header_updates:before,
-#videocat_header_featured:before{
-    content:"";
+#videocat_header_featured:before {
+    content: "";
     background-color: #668bb3;
     width: 28px;
     height: 28px;
@@ -8788,7 +8857,7 @@ a.group_app_button:after {
     font-weight: bold;
     line-height: 2.4em;
     color: #476586;
-    margin:0 0 8px;
+    margin: 0 0 8px;
 }
 
 .videocat_row .video_title {
@@ -8812,9 +8881,9 @@ a.group_app_button:after {
 
 .video_thumb_play {
     border-radius: 4px;
-    width:40px;
+    width: 40px;
     height: 39px;
-    background: rgba(0,0,0,.5)  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAASCAQAAADBVSe6AAAAhklEQVR4AXXRoQ5BcRTA4T+7TRDYZO0Gr6FqXkGQZO9wsyqSvYBos4mKKQQ2zcwkn2r8zznxS+f8ksrZWCH9b3IEO70cPgAvU8Uvfs9GGSNPE/UIYa0bI3cjtQhhpRUj2xjZx3hQ5vFtpiHl8KQfnTLXlHJ4NYjet9DOV7kZ5pItXVQ6udgfaNaRgFd+nJ0AAAAASUVORK5CYII=') no-repeat 14px 11px;
+    background: rgba(0, 0, 0, .5) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAASCAQAAADBVSe6AAAAhklEQVR4AXXRoQ5BcRTA4T+7TRDYZO0Gr6FqXkGQZO9wsyqSvYBos4mKKQQ2zcwkn2r8zznxS+f8ksrZWCH9b3IEO70cPgAvU8Uvfs9GGSNPE/UIYa0bI3cjtQhhpRUj2xjZx3hQ5vFtpiHl8KQfnTLXlHJ4NYjet9DOV7kZ5pItXVQ6udgfaNaRgFd+nJ0AAAAASUVORK5CYII=') no-repeat 14px 11px;
 }
 
 .video_thumb_play:active {
@@ -8841,7 +8910,7 @@ a.group_app_button:after {
 }
 
 .videocat_page_block .page_block_header {
-    padding:0;
+    padding: 0;
     margin: 0 5px;
     border: none;
     font-size: 1.1em
@@ -8852,12 +8921,12 @@ a.group_app_button:after {
 }
 
 .video_block_layout .videocat_row .video_cat_morebtn_wrap,
-.video_block_layout  .video_cat_morebtn_wrap{
+.video_block_layout .video_cat_morebtn_wrap {
     margin: 0;
     padding-right: 10px;
 }
 
-.video_block_layout  .video_cat_morebtn_wrap{
+.video_block_layout .video_cat_morebtn_wrap {
 
     padding-right: 0;
 }
@@ -8874,7 +8943,7 @@ a.group_app_button:after {
     background-color: #e9edf1;
 }
 
-.video_block_layout  .video_cat_morebtn_wrap .ui_load_more_btn:active {
+.video_block_layout .video_cat_morebtn_wrap .ui_load_more_btn:active {
     padding: 11px 10px 9px;
 }
 
@@ -8889,7 +8958,7 @@ a.group_app_button:after {
     margin-bottom: 10px
 }
 
-.video_block_layout>.videocat_row:last-child {
+.video_block_layout > .videocat_row:last-child {
     padding-bottom: 10px;
 }
 
@@ -8928,7 +8997,6 @@ a.group_app_button:after {
     width: 11px
 }
 
-
 .video_added #add .icon_added {
     background-position: -2px -129px;
 }
@@ -8941,9 +9009,8 @@ a.group_app_button:after {
     background-position: 0 -14px;
 }
 
-
 .video_thumb_duration {
-    background: rgba(0,0,0,.6);
+    background: rgba(0, 0, 0, .6);
 }
 
 .videocat_row_slider .video_item {
@@ -9038,7 +9105,6 @@ a.group_app_button:after {
     padding-top: 0
 }
 
-
 #video_main_tabs button {
     position: relative;
     right: 5px;
@@ -9051,7 +9117,7 @@ a.group_app_button:after {
 }
 
 .video_search_filters_wrap {
-    padding:10px
+    padding: 10px
 }
 
 #videocat_other_blocks #videocat_header_featured {
@@ -9074,13 +9140,13 @@ a.group_app_button:after {
     margin: -8px -3px 10px;
 }
 
-.ui_tabs.video_default_tabs .ui_tab{
+.ui_tabs.video_default_tabs .ui_tab {
     margin: 8px 3px 7px;
     border-radius: 2px;
     padding: 3px 8px 4px;
 }
 
-.ui_tabs.video_default_tabs .ui_tab:hover{
+.ui_tabs.video_default_tabs .ui_tab:hover {
     background: #e1e7ed;
 }
 
@@ -9098,7 +9164,7 @@ a.group_app_button:after {
 }
 
 .ui_tabs.video_default_tabs .ui_tab .ui_tab_count:empty {
-    display:none
+    display: none
 }
 
 .video_tab_actions_wrap {
@@ -9141,7 +9207,7 @@ a.group_app_button:after {
 }
 
 .video_upload_progress_wrap {
-    margin-bottom:20px
+    margin-bottom: 20px
 }
 
 .video_upload_progress_wrap,
@@ -9150,13 +9216,13 @@ a.group_app_button:after {
 }
 
 .video_upload_progress .video_upload_progress_cancel {
-    opacity:0.5;
+    opacity: 0.5;
     top: 8px;
     right: 5px
 }
 
 .video_upload_progress .video_upload_progress_text {
-    top:6px;
+    top: 6px;
 }
 
 .video_upload_tc_wrap .video_tc_slider {
@@ -9219,13 +9285,13 @@ a.group_app_button:after {
 
 .mv_like_count {
     margin: 0 4px;
-    order:3
+    order: 3
 }
 
 .mv_add_button .mv_plus_icon,
 #mv_pl_tt .mv_tt_add_playlist .mv_tt_plus_icon {
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIElEQVR42mNgQANti478h2EGQmCAFCNLEsI0VDwEgw4ArFumVPzi7TQAAAAASUVORK5CYII=')no-repeat;
-    opacity:0.5;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIElEQVR42mNgQANti478h2EGQmCAFCNLEsI0VDwEgw4ArFumVPzi7TQAAAAASUVORK5CYII=') no-repeat;
+    opacity: 0.5;
     top: 7px
 }
 
@@ -9233,12 +9299,11 @@ a.group_app_button:after {
     top: 2px
 }
 
-
 .mv_no_active:active {
     padding: 6px 14px 5px
 }
 
-.mv_add_button:active .mv_plus_icon{
+.mv_add_button:active .mv_plus_icon {
     top: 8px
 }
 
@@ -9285,7 +9350,7 @@ a.group_app_button:after {
 }
 
 #video_choose_box .media_check_btn_wrap.checked {
-    background-color: rgba(0,0,0,0.3)
+    background-color: rgba(0, 0, 0, 0.3)
 }
 
 .mv_chat_message_content {
@@ -9296,6 +9361,19 @@ a.group_app_button:after {
     padding: 1px 4px;
 }
 
+#video_albums_list {
+    margin: 0 -5px;
+}
+
+#video_title_albums {
+    line-height: inherit;
+    margin: 0 0 5px;
+}
+
+/*
+    Игры
+ */
+
 /*
     ||=Temp=||
  */
@@ -9304,13 +9382,10 @@ a.group_app_button:after {
 .feedback_img::after,
 .market_place_friend_badge,
 .market_item_owner_img,
-.payments_summary_phumb,
 .payments_transfer_to_photo,
 .groups_invite_img,
 .group_u_photo_img,
-.apps_frtt_photo,
 .group_contact_image_wrap,
-.apps_feed_user_img,
 .friends_photo_img::after,
 .tickets_image__i,
 .tu_thumb {

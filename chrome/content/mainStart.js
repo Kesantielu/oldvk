@@ -66,6 +66,8 @@ window.addEventListener('message', function (event) {
     switch (event.data.type) {
         case 'VK_INFO':
             lang = event.data.text.lang;
+            if (!langMap.hasOwnProperty(lang))
+                lang = 3;
             document.documentElement.setAttribute('lang', langMap[lang]);
             LocalizedContent.init();
             break;
@@ -461,6 +463,7 @@ function initArrives() {
             document.getElementsByClassName('pv_cont')[0].style.paddingLeft = '0'
         })
     }
+
 }
 
 function updating(path) {

@@ -71,7 +71,7 @@ var options = {
 	onAttach: function(page) {
 		page.port.emit('options', prefs)
 	},
-    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails.php|ads_rotate.php|share.php|adscreate$|adscreate\?|wkview.php|bugs$|bugs\?|q_frame.php|.*upload.php|login.php|about|jobs|.*\.svg).*$/
+    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails\.php|ads_rotate\.php|share\.php|adscreate$|adscreate\?|wkview\.php|bugs$|bugs\?|q_frame\.php|.*upload\.php|login\.php|about|jobs|.*\.svg|widget_.*\.php).*$/
 };
 
 var options1 = {
@@ -82,7 +82,7 @@ var options1 = {
 	onAttach: function(page) {
 		page.port.emit('options', prefs)
 	},
-    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails.php|ads_rotate.php|share.php|adscreate$|adscreate\?|wkview.php|bugs$|bugs\?|q_frame.php|.*upload.php|login.php|about|jobs|.*\.svg).*$/
+    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails\.php|ads_rotate\.php|share\.php|adscreate$|adscreate\?|wkview\.php|bugs$|bugs\?|q_frame\.php|.*upload\.php|login\.php|about|jobs|.*\.svg|widget_.*\.php).*$/
 };
 
 if (prefs['enabled']) {

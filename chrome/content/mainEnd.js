@@ -28,4 +28,8 @@ if (options.enabled || !isWebExt) {
     if (fw)
         fw.appendChild(document.getElementsByClassName('left_menu_nav_wrap')[0])
 
+    /*KPP.add('.apps_i_wrap', function (element) {
+        document.body.classList.remove('static_header')
+    })*/
+
 }
