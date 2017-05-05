@@ -46,5 +46,9 @@
   "option_font": {
     "message": "Use large fonts",
     "description": ""
+  },
+  "option_audio": {
+    "message": "Show audio album covers",
+    "description": ""
   }
 }

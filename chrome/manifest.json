@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
-  "version": "0.550",
+  "version": "0.561",
   "default_locale": "en",
   "author": "Kesantielu Dasefern",
   "homepage_url": "https://kesantielu.github.io/oldvk",

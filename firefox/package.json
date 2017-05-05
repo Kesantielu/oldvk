@@ -2,12 +2,12 @@
   "id": "oldvk@dasefern.com",
   "title": "Old Design VK",
   "name": "oldvk",
-  "version": "0.55.0",
+  "version": "0.56.1",
   "description": "An extension which brings back old design for VK",
   "author": "Kesantielu Dasefern",
   "homepage": "https://kesantielu.github.io/oldvk",
   "updateURL": "https://kesantielu.github.io/oldvk/update.rdf",
-  "updateLink": "https://kesantielu.github.io/oldvk/firefox/oldvk-0.55.0-an+fx+sm.xpi",
+  "updateLink": "https://kesantielu.github.io/oldvk/firefox/oldvk-0.56.1-an+fx+sm.xpi",
   "main": "init.js",
   "locales": {
     "ru": {
@@ -41,6 +41,13 @@
       "name": "optionFont",
       "title": "Large fonts",
       "description": "Use large fonts",
+      "type": "bool",
+      "value": false
+    },
+    {
+      "name": "optionAudio",
+      "title": "Audio Covers",
+      "description": "Show audio covers",
       "type": "bool",
       "value": false
     }

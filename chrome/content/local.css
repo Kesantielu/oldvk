@@ -1,18 +1,5 @@
 @charset "utf-8";
 
-/* audios */
-
-head.oldvk-audios ~ body #page_header_cont,
-head.oldvk-audios ~ body #side_bar {
-    position: fixed;
-}
-
-head.oldvk-audios ~ body #stl_side {
-    display: none !important
-}
-
-/* localize */
-
 :lang(ru) #l_nwsf .left_label:before,
 :lang(ru) #l_ntf .left_label:before,
 :lang(ru) #l_msg .left_label:before,
