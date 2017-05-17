@@ -12,7 +12,7 @@
                                 <em:minVersion>38.0</em:minVersion>
                                 <em:maxVersion>*</em:maxVersion>
                                 <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.56.4-an+fx+sm.xpi</em:updateLink>
-                                <em:updateHash>sha256:b9f35a1e89b2fb98ef4611e0aae6be50c4511dd2ede5e4f5c334094adab1b9a5</em:updateHash>
+                                <em:updateHash>sha256:7495aa60b16948956fabfb07171c9d62a5947a70e1fee575af99b69354c69715</em:updateHash>
                             </Description>
                         </em:targetApplication>
                         <em:targetApplication>
