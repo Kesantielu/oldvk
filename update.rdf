@@ -5,13 +5,13 @@
             <Seq>
                 <li>
                     <Description>
-                        <em:version>0.56.2</em:version>
+                        <em:version>0.56.4</em:version>
                         <em:targetApplication>
                             <Description>
                                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
                                 <em:minVersion>38.0</em:minVersion>
                                 <em:maxVersion>*</em:maxVersion>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.56.2-an+fx+sm.xpi</em:updateLink>
+                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.56.4-an+fx+sm.xpi</em:updateLink>
                                 <em:updateHash>sha256:b9f35a1e89b2fb98ef4611e0aae6be50c4511dd2ede5e4f5c334094adab1b9a5</em:updateHash>
                             </Description>
                         </em:targetApplication>
@@ -20,7 +20,7 @@
                                 <em:id>{aa3c5121-dab2-40e2-81ca-7ea25febc110}</em:id>
                                 <em:minVersion>38.0</em:minVersion>
                                 <em:maxVersion>*</em:maxVersion>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.56.2-an+fx+sm.xpi</em:updateLink>
+                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.56.4-an+fx+sm.xpi</em:updateLink>
                             </Description>
                         </em:targetApplication>
                         <em:targetApplication>
@@ -28,7 +28,7 @@
                                 <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
                                 <em:minVersion>2.35</em:minVersion>
                                 <em:maxVersion>*</em:maxVersion>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.56.2-an+fx+sm.xpi</em:updateLink>
+                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.56.4-an+fx+sm.xpi</em:updateLink>
                             </Description>
                         </em:targetApplication>
                         <em:targetApplication>
@@ -36,7 +36,7 @@
                                 <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
                                 <em:minVersion>27.1.0b1</em:minVersion>
                                 <em:maxVersion>*</em:maxVersion>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.56.2-an+fx+sm.xpi</em:updateLink>
+                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.56.4-an+fx+sm.xpi</em:updateLink>
                             </Description>
                         </em:targetApplication>
                     </Description>
