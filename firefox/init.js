@@ -1,12 +1,13 @@
-const {ToggleButton}  = require('sdk/ui/button/toggle');
+const {ToggleButton} = require('sdk/ui/button/toggle');
 const {PageMod} = require('sdk/page-mod');
 var prefs = require('sdk/simple-prefs').prefs;
+var opts = require('sdk/simple-storage').storage;
 const {Panel} = require("sdk/panel");
 var _ = require("sdk/l10n").get;
 const Prefs = require("sdk/preferences/service");
 
 if (Prefs.has('dom.promise.enabled'))
-	Prefs.set('dom.promise.enabled', true);
+    Prefs.set('dom.promise.enabled', true);
 
 var button = ToggleButton({
     id: 'oldvk-button',
@@ -21,7 +22,7 @@ var button = ToggleButton({
 var panel = Panel({
     width: 220,
     height: 130,
-    contentURL: './popup.html',	
+    contentURL: './popup.html',
     contentScriptFile: './popup.js',
     contentScriptOptions: {version: require('sdk/self').version},
     onHide: handleHide
@@ -67,10 +68,21 @@ var options = {
     contentScriptFile: ['./lib.js', './mainStart.js'],
     contentScriptWhen: 'start',
     contentStyleFile: ['./main.css', './local.css', './fox.css'],
-    contentScriptOptions: {inject: require('sdk/self').data.url('injectStart.js'), optionCover: prefs.optionCover, optionViewer: prefs.optionViewer, optionFont: prefs.optionFont, optionAudio: prefs.optionAudio},
-	onAttach: function(page) {
-		page.port.emit('options', prefs)
-	},
+    contentScriptOptions: {
+        inject: require('sdk/self').data.url('injectStart.js'),
+        optionCover: prefs.optionCover,
+        optionViewer: prefs.optionViewer,
+        optionFont: prefs.optionFont,
+        optionAudio: prefs.optionAudio
+    },
+    onAttach: function (page) {
+        page.port.emit('options', Object.assign(prefs, opts));
+        page.port.on('local', function (o) {
+            for (var opt in o)
+                if (o.hasOwnProperty(opt))
+                    opts[opt] = o[opt]
+        });
+    },
     exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails\.php|ads_rotate\.php|share\.php|adscreate$|adscreate\?|wkview\.php|bugs$|bugs\?|q_frame\.php|.*upload\.php|login\.php|about|jobs|.*\.svg|widget_.*\.php).*$/
 };
 
@@ -79,9 +91,9 @@ var options1 = {
     contentScriptFile: ['./lib.js', './mainEnd.js'],
     contentScriptWhen: 'ready',
     contentScriptOptions: {inject: require('sdk/self').data.url('injectEnd.js')},
-	onAttach: function(page) {
-		page.port.emit('options', prefs)
-	},
+    onAttach: function (page) {
+        page.port.emit('options', Object.assign(prefs, opts));
+    },
     exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails\.php|ads_rotate\.php|share\.php|adscreate$|adscreate\?|wkview\.php|bugs$|bugs\?|q_frame\.php|.*upload\.php|login\.php|about|jobs|.*\.svg|widget_.*\.php).*$/
 };
 

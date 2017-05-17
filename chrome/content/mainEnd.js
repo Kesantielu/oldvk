@@ -18,6 +18,7 @@ if (options.enabled || !isWebExt) {
             }
         });
 
+
     var leftMenuObserver = new MutationObserver(function (m) {
         LocalizedContent.updateMenu();
     });
@@ -25,11 +26,17 @@ if (options.enabled || !isWebExt) {
         leftMenuObserver.observe(document.querySelector('#side_bar_inner ol'), {childList: true});
 
     var fw = document.getElementById('footer_wrap');
-    if (fw)
-        fw.appendChild(document.getElementsByClassName('left_menu_nav_wrap')[0])
+    var lmnw = document.getElementsByClassName('left_menu_nav_wrap')[0];
+    if (fw && lmnw)
+        fw.appendChild(lmnw);
 
     KPP.add('.apps_i_wrap', function (element) {
         document.body.classList.remove('static_header')
-    })
+    });
+
+    if (!localStorage.oldvk_pvLarge)
+        localStorage.setItem('oldvk_pvLarge', options.oldvk_pvLarge);
+    if (!localStorage.oldvk_pvDark)
+        localStorage.setItem('oldvk_pvDark', options.oldvk_pvDark)
 
 }

@@ -79,6 +79,15 @@ window.addEventListener('message', function (event) {
             checkCSS(styles, event.data.text);
             initWide();
             break;
+        case 'RELOAD_VK_TOP':
+            LocalizedContent.init();
+            break;
+        case 'SAVE_OPTION':
+            if (isWebExt)
+                chrome.storage.local.set(event.data.opt);
+            else
+                self.port.emit('local', event.data.opt);
+            break;
     }
 });
 
@@ -134,8 +143,8 @@ var LocalizedContent = {
 
         this.l_set.id = 'l_sett';
         this.l_set.innerHTML = '<a href="/settings" class="left_row"><span class="left_fixer"><span class="left_label inl_bl" id="oldvk-settings">' + i18n.settings[lang] + '</span></span></a>';
-        KPP.add('#side_bar_inner', function () {
-            KPP.remove('#side_bar_inner');
+        KPP.add('#side_bar_inner ol', function () {
+            KPP.remove('#side_bar_inner ol');
             LocalizedContent.updateMenu();
         });
 

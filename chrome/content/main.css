@@ -218,6 +218,14 @@ div.fc_clist_filter,
 .video_playlist_item,
 .video_playlist_item .video_playlist_item_thumb_wrap,
 .video_playlist_item .video_playlist_item_thumb,
+.mention_tt_title,
+.quick_login .label,
+.big_text.selector_container td.selector input,
+.big_text .result_list ul li,
+.prefix_big_text .prefix_input,
+.join_other_phone,
+.join_no_code,
+.join_no_code a,
 h2 {
     font-size: inherit;
     font-family: inherit;
@@ -324,7 +332,11 @@ img.settings_bl_photo,
 #audio_layer_tt .ui_tabs .ui_tab,
 #audio_layer_tt .ui_tabs .ui_tab.ui_tab_sel,
 .ads_ad_box.redesign .ads_ad_photo_box,
-.friends_photo_img {
+.friends_photo_img,
+.big_text.selector_container table.selector_table,
+.big_text.selector_container.selector_focused.reverse table.selector_table,
+.prefix_big_text .prefix_input_border,
+.bd_img {
     border-radius: 0;
 }
 
@@ -671,6 +683,156 @@ body.sf .left_count_wrap {
 .page_list_module .cell_img {
     width: 32px;
     border-radius: 0;
+}
+
+.quick_login input.dark {
+    width: 136px;
+}
+
+.login_about_mobile,
+.bottom_row {
+    background: none;
+}
+
+.index_page #wrap2 {
+    width: 780px;
+    padding: 0;
+    margin-left: calc(50vw - 400px);
+}
+
+.index_page #wrap3 {
+    top: 40px;
+}
+
+.index_page .login_mobile_promo_wrap {
+    margin-right: 253px;
+}
+
+.index_rcolumn {
+    width: 253px;
+}
+
+.index_rcolumn .page_block {
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.index_rcolumn input.big_text {
+    margin-bottom: 10px;
+    width: 233px;
+}
+
+input.big_text {
+    height: 30px;
+    border-radius: 0;
+}
+
+.button_big_text.flat_button {
+    font-size: 1.1em;
+    line-height: 130%;
+    border-radius: 2px;
+}
+
+.index_rcolumn .flat_button {
+    margin-top: 0;
+    font-size: 1.1em;
+    line-height: 19px;
+    border-radius: 2px;
+}
+
+.index_rcolumn .forgot {
+    padding-top: 5px;
+}
+
+.hint_icon:after {
+    top: -2px
+}
+
+.ij_byear input {
+    width: 65px;
+}
+
+.ij_bday input {
+    width: 60px;
+}
+
+.ij_bmonth input {
+    width: 98px;
+}
+
+.ij_bday input.selector_input {
+    width: 34px !important
+}
+
+.ij_byear input,
+.ij_bday input,
+.ij_bmonth input {
+    border: none
+}
+
+.ij_bday, .ij_bmonth {
+    margin-right: 5px;
+}
+
+.index_page .index_footer_wrap {
+    padding: 15px;
+}
+
+.footer_bench {
+    padding-top: 0;
+}
+
+.index_rcolumn .index_login_button {
+    margin-right: 25px;
+}
+
+head.oldvk-not-logged ~ body #oldvk_top_communities,
+head.oldvk-not-logged ~ body #oldvk_top_music,
+head.oldvk-not-logged ~ body #oldvk_top_help,
+head.oldvk-not-logged ~ body #oldvk_top_exit {
+    display: none;
+}
+
+body.login_page #page_body,
+body.join_finish_page #page_body {
+    width: 781px !important;
+    padding-right: 5px;
+    margin-top: 0;
+}
+
+.login_page .page_block,
+.join_finish_page .page_block {
+    margin: 40px auto;
+}
+
+.login_page #footer_wrap {
+    padding: 15px 20px 15px 15px;
+    border-top: none;
+    width: 785px !important;
+}
+
+.prefix_big_text {
+    font-size: 1.2em;
+    height: 30px
+}
+
+.prefix_big_text .prefix_input {
+    padding: 6px;
+    height: 28px;
+}
+
+.prefix_big_text .prefix_input_prefix {
+    padding: 6px 0 6px 10px;
+    line-height: 17px;
+}
+
+.join_finish_row input.join_readonly,
+.join_readonly_wrap, .join_readonly_wrap.prefix_input_wrap {
+    margin-top: 1px
+}
+
+.join_no_code {
+    padding-top: 10px;
 }
 
 .cal_table,
@@ -1556,6 +1718,10 @@ div.page_status_input {
 
 .mention_tt_subscr_icon {
     display: none;
+}
+
+.mention_tt_title {
+    font-weight: bold;
 }
 
 .profile_info_full {
@@ -3157,12 +3323,6 @@ textarea.page_poll_export_code {
 .wl_head_wrap .post_date .post_link {;
     color: #777
 }
-
-.wk_subscribe_btn {
-    display: none;
-}
-
-/* отсутствует в старой версии */
 
 .wl_post_body_wrap {
     padding: 10px 23px;
@@ -6858,6 +7018,12 @@ head.oldvk-friends ~ body .wide_column_left .wide_column {
     border-radius: 0
 }
 
+.ui_search_suggester_shadow {
+    padding-left: 20px;
+    line-height: 26px;
+    margin-left: 0;
+}
+
 .search_row .img {
     overflow: visible;
 }
@@ -9699,7 +9865,8 @@ body.mac .audio_rows_header.fixed {
     padding: 16px 4px;
 }
 
-.audio_page_player .audio_page_player_btn .btn_icon {
+.audio_page_player .audio_page_player_btn .btn_icon,
+.audio_page_player .audio_page_player_btn.audio_page_player_btn_enabled .btn_icon {
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAOCAYAAABjLjEIAAADGklEQVRYR+WX30sUURTHv0eKgsjEICQN/4EI7AfSD8OIHgJpZw17CKpNEnrZWb0LQRA49O6ue0cIknJ9iFLCHckoeumXvURG1mOBYKgv/RB7iZI5MfuLUWfnjmu+1H3ce+495374nu+cJQRcmpBsJXQKGP5PhQV+tAPJefn/CCoLKSz6WmzY/QTUBJHAWkGtVZWakDNWQq8NUqtfTMQY2Dz/Y6GDmc4SsDsbS/gA8N2qrZX9aePiz9xPALS4/ALG9qBJ/wakclXpAAKw06+GiJF+A2AfgIm0Ednv9a7WK7LOXsQYgD0AngD8OhdHjQBOgGhy0f7dMpYUMzlI+VYi4qZMT2zc61JVuxX2XWdnwQhbST2bXBMyCaBz+d2rAV4ApAIcMdJZa3BW2oissJRmw9hQtVDt1FVfYdOpkd7oK3dd4XjqCDM9ADC18XPNgSWQ/Ap2t4hXu3hAcvLOWoloXUj0nSHwPS/47pyakE6xh4IoWqEkX0ghIc8TMMiEttEe/b5XvrAw2xg8DNC5wJAKF6kUVYyLyyFm+jiaiF7Ln5knoDmT0CdL3VECtCeztUAKC3PEBh9sqPxWaxiG7ZXAMIyKdwvVcwCerxukk1G56ZEZ/aUJcwhAGzFHMsnYYKG9vR5ZLiSXB6lEmPUoTci3YHy3kvpxvwNal3wKwpYipELRqi9PUCXlYJjdABtgPLOS+jG3GktAKqvd3B6kouR4lCbke2ZMjyb1Fl9IwnwI8K4lpqYC0NppHrYrOGvsKsPV4mYMzL2FWE3IKQI0v3ZzF+xVSynjLkNJA87kA9BXAo9nEvqFZcZ9m5mOAtgB8HAR0mqkDmDaSuj1Xo/y+nqF4qkbxHRZZdwqSPlWDTIC+Bp3WMh2Bm7l83m9ZR7ANmefCKfLgTRHzO2ZZOyxEhKjsTAChIS8SUCHF0QveH6qVg2TqhFAEykDoO4gkJhIrKrdVP0edF/V1nnFTADYq2prr5wqSKEu2USEFwEgMQENKwYtlXEHBeFviOv7ZznIxB2Kpy4R03UAn6yE7vhPcWlCvnQGTSJczfTod/4AWvbCSXYa4kEAAAAASUVORK5CYII=') no-repeat;
     width: 14px;
     height: 14px;
@@ -9720,12 +9887,14 @@ body.mac .audio_rows_header.fixed {
     line-height: 20px;
 }
 
-.audio_page_player .audio_page_player_shuffle .btn_icon {
+.audio_page_player .audio_page_player_shuffle .btn_icon,
+.audio_page_player .audio_page_player_shuffle.audio_page_player_btn_enabled .btn_icon {
     background-position: -17px 0;
     width: 15px;
 }
 
-.audio_page_player .audio_page_player_repeat .btn_icon {
+.audio_page_player .audio_page_player_repeat .btn_icon,
+.audio_page_player .audio_page_player_repeat.audio_page_player_btn_enabled .btn_icon {
     background-position: 0 1px;
     height: 15px;
     width: 15px;
@@ -9947,14 +10116,18 @@ body.mac .audio_rows_header.fixed {
     background: none
 }
 
+#audio_layer_tt .audio_page_layout .audio_search {
+    padding-top: 0;
+}
+
 .audio_page_layout .audio_section {
     padding: 0 3px
 }
 
 .audio_page_layout .has_friends_block .audio_page__rows_wrap {
-    padding-right: 13px;
+    padding-right: 10px;
     border-right: 0;
-    width: 424px;
+    width: 422px;
 }
 
 .audio_page_layout .audio_page__audio_rows_list {
@@ -10119,6 +10292,10 @@ body.mac .audio_rows_header.fixed {
 
 .audio_page_content_block_wrap {
     margin-top: 36px
+}
+
+#audio_layer_tt .audio_page_content_block_wrap {
+    margin-top: 0
 }
 
 .audio_section__playlists {
@@ -10297,6 +10474,7 @@ body.mac .audio_rows_header.fixed {
 .audio_page_layout .audio_recoms_blocks .recoms_special_block_subtitle,
 .audio_page_layout .audio_section__recoms .recoms_special_block_subtitle {
     font-size: 14px;
+    width: 418px;
 }
 
 .audio_page_layout .audio_recoms_blocks .recoms_special_block_title,
@@ -10305,9 +10483,7 @@ body.mac .audio_rows_header.fixed {
 }
 
 .audio_page_layout .audio_page_section_layout:not(.no_playlists).has_friends_block .audio_page_separator,
-.audio_page_layout .audio_page_section_layout:not(.no_playlists):not(.no_audios) .audio_page_separator,
-.audio_page_layout .audio_page_section_layout.has_friends_block.no_audios .audio_page_block__audios_empty,
-.audio_page_layout .audio_page_section_layout.no_playlists.no_audios .audio_page_block__audios_empty {
+.audio_page_layout .audio_page_section_layout:not(.no_playlists):not(.no_audios) .audio_page_separator {
     display: none !important
 }
 
@@ -10338,7 +10514,8 @@ body.mac .audio_rows_header.fixed {
 #audio_layer_tt .audio_page_player {
     top: 0;
     margin-left: 0;
-    width: 625px
+    width: 625px;
+    position: static;
 }
 
 #audio_layer_tt .audio_page_layout .audio_search {
@@ -10351,12 +10528,19 @@ body.mac .audio_rows_header.fixed {
     overflow: hidden;
 }
 
-.audio_feed_post.clear_fix:after,
 .audio_row_inner.clear_fix:after {
     clear: none
 }
 
+.audio_feed_post.clear_fix:after {
+    clear: left;
+}
+
 .audio_page__audio_rows_list {
+    width: 424px
+}
+
+#audio_layer_tt .audio_page__audio_rows_list {
     width: 428px
 }
 
@@ -10395,6 +10579,30 @@ body.mac .audio_rows_header.fixed {
 
 .audio_pl_edit_box .ape_audio_item_wrap .ape_attach {
     margin-top: 10px
+}
+
+.audio_page_layout .audio_section_global_search__audios_block {
+    padding: 5px
+}
+
+.audio_pl_snippet_follow:before {
+    content: none
+}
+
+.savefrom_vk_download.sf-audio-btn {
+    width: 12px !important;
+    height: 12px !important;
+    background-size: 12px !important;
+}
+
+.sf-bitrate-value {
+    right: 3px !important;
+    top: 22px !important;
+    font-size: 10px !important;
+}
+
+.audio_page_player .savefrom_vk_download {
+    margin-top: 4px !important;
 }
 
 /* −−− */

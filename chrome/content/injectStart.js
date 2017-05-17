@@ -24,9 +24,11 @@ function watchVar(variable, callback) {
         Object.defineProperty(window, variable, {
             get: function () {
                 return window['_oldvk_' + variable]
-            }, set: function (value) {
+            },
+            set: function (value) {
                 window['_oldvk_' + variable] = value;
-                if (callback) callback(window['_oldvk_' + variable]);
+                if (callback)
+                    callback(window['_oldvk_' + variable]);
             }, enumerable: true
         })
     } else {
@@ -67,11 +69,13 @@ function pvSwitch() {
         if (oldvk.options.optionViewer)
             addClass(cur.pvBox, 'oldvk-dark');
         addClass(layerBG, 'oldvk-dark');
-        localStorage.setItem('oldvk_pvDark', '1')
+        localStorage.setItem('oldvk_pvDark', '1');
+        window.postMessage({type: "SAVE_OPTION", opt: {oldvk_pvDark: 1}}, "*");
     } else {
         removeClass(cur.pvBox, 'oldvk-dark');
         removeClass(layerBG, 'oldvk-dark');
-        localStorage.setItem('oldvk_pvDark', '0')
+        localStorage.setItem('oldvk_pvDark', '0');
+        window.postMessage({type: "SAVE_OPTION", opt: {oldvk_pvDark: 0}}, "*");
     }
 }
 
@@ -117,18 +121,22 @@ function pvSwitchSize() {
         addClass(cur.pvCont, 'big');
         addEventListener('resize', _pvResize);
         localStorage.setItem('oldvk_pvLarge', '1');
+        window.postMessage({type: "SAVE_OPTION", opt: {oldvk_pvLarge: 1}}, "*");
         Photoview.show(false, cur.pvIndex);
     } else {
         removeClass(ge('pv_ss_btn'), 'minus');
         removeClass(cur.pvCont, 'big');
         removeEventListener('resize', _pvResize);
-        localStorage.setItem('oldvk_pvLarge', '0')
+        localStorage.setItem('oldvk_pvLarge', '0');
+        window.postMessage({type: "SAVE_OPTION", opt: {oldvk_pvLarge: 0}}, "*");
     }
     _pvResize()
 }
 
 watchVar('vk', function (vk) {
     window.postMessage({type: "VK_INFO", text: {lang: vk.lang}}, "*");
+    if (vk.id === 0)
+        document.head.classList.add('oldvk-not-logged');
 });
 
 watchVar('Photoview', function (Photoview) {
@@ -278,6 +286,19 @@ watchVar('SPE', function (SPE) {
         };
         SPE.init.oldvk = true
     }
+});
+
+watchVar('onLoginDone', function () {
+    if (!_oldvk_onLoginDone.oldvk) {
+        var o = _oldvk_onLoginDone;
+        _oldvk_onLoginDone = function () {
+            o.apply(this, arguments);
+            removeClass(document.head, 'oldvk-not-logged');
+            window.postMessage({type: "RELOAD_VK_TOP"}, "*");
+        };
+        _oldvk_onLoginDone.oldvk = true
+    }
+
 });
 
 /*var jsObserver = new MutationObserver(function (ms) {
