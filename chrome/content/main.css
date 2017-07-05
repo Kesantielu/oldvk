@@ -336,6 +336,9 @@ img.settings_bl_photo,
 .big_text.selector_container table.selector_table,
 .big_text.selector_container.selector_focused.reverse table.selector_table,
 .prefix_big_text .prefix_input_border,
+.submit_post_box .post_field_choose_image,
+.post_from_tt_image,
+.eltt,
 .bd_img {
     border-radius: 0;
 }
@@ -2744,11 +2747,6 @@ div:not(#wall_fixed) > .wall_module .replies_wrap {
     font-weight: normal;
 }
 
-.post_field_group,
-.post_field_user {
-    display: none;
-}
-
 .page_media_poll_wrap {
     border: none;
     padding: 0;
@@ -4734,7 +4732,7 @@ input.ui_search_field:-ms-input-placeholder {
 
 .im-page .im-page--dialogs-search .ui_search_field {
     border-left-width: 1px;
-    width: 304px;
+    flex: 0 1 304px;
     padding: 4px 20px 5px;
     line-height: 15px;
     height: auto
@@ -4789,6 +4787,7 @@ input.ui_search_field:-ms-input-placeholder {
     width: auto;
     float: right;
     height: 13px;
+    opacity: 1
 }
 
 .im-dialog-select .im-dialog-select--btn {
@@ -4848,6 +4847,10 @@ input.ui_search_field:-ms-input-placeholder {
 
 .ui_search_custom_ctrl {
     right: 0;
+}
+
+.im-page--dialogs-search .ui_search_custom_ctrl {
+    position: absolute;
 }
 
 .ui_search_custom_ctrl .tt_w {
@@ -5586,11 +5589,6 @@ div.submit_post_field ~ .placeholder .ph_input {
     right: 3px
 }
 
-.reply_box_open .post_field_group,
-.reply_box_open .post_field_user {
-    display: block
-}
-
 .reply_box_open .post_field_wrap,
 .reply_box_open .reply_field_wrap,
 .pv_cont .pv_reply_form.reply_box_open .reply_field_wrap {
@@ -5603,6 +5601,15 @@ div.submit_post_field ~ .placeholder .ph_input {
 
 .wall_module .reply_box_open .reply_field.submit_post_field {
     min-height: 32px;
+}
+
+.post_field_user_link {
+    height: 25px;
+    display: none;
+}
+
+.reply_box_open .post_field_user_link {
+    display: block
 }
 
 .wall_module .reply_form {
@@ -6502,11 +6509,14 @@ h4.subheader {
     width: 100%
 }
 
-.reply_box div.submit_post_field, .reply_box div.submit_post_field[contenteditable=true],
+.reply_box div.submit_post_field,
+.reply_box div.submit_post_field[contenteditable=true],
 .reply_box div.submit_post_field[contenteditable=true] ~ .placeholder .ph_input,
 .reply_box div.submit_post_field ~ .placeholder .ph_input,
 .pv_cont .pv_reply_form_wrap .reply_box .submit_post_field,
-.pv_cont .pv_reply_form_wrap .reply_box .submit_post_field ~ .placeholder .ph_input {
+.pv_cont .pv_reply_form_wrap .reply_box .submit_post_field ~ .placeholder .ph_input,
+.wl_reply_form_wrap .reply_box div.submit_post_field[contenteditable=true]~.placeholder .ph_input,
+.wl_reply_form_wrap .reply_box div.submit_post_field~.placeholder .ph_input {
     padding-left: 5px
 }
 
@@ -6665,6 +6675,7 @@ img.settings_bl_photo {
     height: 32px;
     width: 32px;
 }
+
 
 .market_module .page_market_items_wrap {
     margin-left: 0;
@@ -8513,14 +8524,6 @@ h1 {
     padding-bottom: 20px;
 }
 
-.pv_layer_wrap.oldvk .pv_reply_form_wrap .post_field_user {
-    display: none
-}
-
-.pv_layer_wrap.oldvk .pv_reply_form_wrap .reply_field_wrap {
-    margin-left: 0;
-}
-
 .pv_layer_wrap.oldvk .pv_reply_form_wrap .submit_post {
     padding-top: 10px
 }
@@ -8686,6 +8689,16 @@ a.group_app_button:after {
 .stories_feed_item {
     width: 50px;
     margin-right: 8px
+}
+
+.checkbox_pic {
+    margin-top: 4px;
+}
+
+.post_from_tt_row {
+
+    padding: 8px 10px;
+
 }
 
 /* Видео
