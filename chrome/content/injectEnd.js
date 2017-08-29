@@ -37,7 +37,7 @@ if (typeof ap !== 'undefined' && ap.top !== 'undefined') {
 }
 
 window.addEventListener("message", function (m) {
-    if (m.data.type == 'UPD') {
+    if (m.data.type === 'UPD') {
         switch (m.data.text) {
             case 'friends':
                 if (typeof Friends !== "undefined") {
@@ -77,7 +77,7 @@ window.addEventListener("message", function (m) {
                                 show(fldb);
                             }
                         }
-                        if (arguments.length > 0 && arguments[0] == 'subscribers') show('friends_search_input_wrap')
+                        if (arguments.length > 0 && arguments[0] === 'subscribers') show('friends_search_input_wrap')
 
                     };
                     eval('Friends.editListClient=' + Friends.editListClient.toString().replace(/narrow_column/g, 'ui_search_fltr'));
@@ -101,7 +101,7 @@ window.addEventListener("message", function (m) {
 });
 var sfi = setFavIcon;
 setFavIcon = function () {
-    if (arguments[0].search(/fav_logo\.ico/i) != -1) {
+    if (arguments[0].search(/fav_logo\.ico/i) !== -1) {
         arguments[0] = "/images/favicon.ico"
     }
     sfi.apply(this, arguments)

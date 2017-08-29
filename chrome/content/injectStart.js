@@ -289,7 +289,7 @@ watchVar('SPE', function (SPE) {
 });
 
 watchVar('onLoginDone', function () {
-    if (!_oldvk_onLoginDone.oldvk) {
+    if (typeof _oldvk_onLoginDone !== 'undefined' && !_oldvk_onLoginDone.oldvk) {
         var o = _oldvk_onLoginDone;
         _oldvk_onLoginDone = function () {
             o.apply(this, arguments);
@@ -300,6 +300,35 @@ watchVar('onLoginDone', function () {
     }
 
 });
+
+watchVar('AudioUtils', function (AudioUtils) {
+    if (!AudioUtils.getAudioFromEl.oldvk) {
+        var g = AudioUtils.getAudioFromEl;
+        AudioUtils.getAudioFromEl = function () {
+            var r = g.apply(this, arguments);
+            if (r.hasOwnProperty('withInlinePlayer'))
+                r.withInlinePlayer = true;
+            return r
+        };
+        AudioUtils.getAudioFromEl.oldvk = true
+    }
+});
+
+function _bind(variable, func, before, after) { // TODO
+    if (!variable[func].oldvk) {
+        var tmp = variable[func];
+        variable[func] = function () {
+            var args = arguments;
+            if (before)
+                args = before(arguments);
+            var r = tmp.apply(this, args);
+            if (after)
+                r = after(r);
+            return r
+        }
+    }
+    variable[func].oldvk = true
+}
 
 /*var jsObserver = new MutationObserver(function (ms) {
  ms.forEach(function (m) {
