@@ -1,13 +1,8 @@
-const styles = [
-    {css: 'audios', match: 'audios'},
-    {css: 'friends', match: 'friends'}
-];
-
 var lang, emoji;
 
 var injectStart = document.createElement('script');
 injectStart.type = 'text/javascript';
-injectStart.src = isWebExt ? chrome.extension.getURL('content/injectStart.js') : options.inject;
+injectStart.src = isWebExt ? browser.extension.getURL('content/injectStart.js') : options.inject;
 
 var injectOptions = document.createElement('script');
 injectOptions.type = 'text/javascript';
@@ -23,7 +18,7 @@ function init() {
         insertCSS('main');
         if (isFirefox)
             insertCSS('fox');
-        chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+        browser.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             if (request.action === 'updating') {
                 updateCSS(request.css);
                 updating(request.path)
@@ -38,7 +33,7 @@ function init() {
 
 var getOptions = new Promise(function (resolve) {
     if (isWebExt) {
-        chrome.storage.local.get(function (items) {
+        browser.storage.local.get(function (items) {
             Object.assign(options, items);
             resolve();
         });
@@ -84,7 +79,7 @@ window.addEventListener('message', function (event) {
             break;
         case 'SAVE_OPTION':
             if (isWebExt)
-                chrome.storage.local.set(event.data.opt);
+                browser.storage.local.set(event.data.opt);
             else
                 self.port.emit('local', event.data.opt);
             break;
@@ -92,7 +87,7 @@ window.addEventListener('message', function (event) {
 });
 
 function insertCSS(style) {
-    var css = chrome.extension.getURL('content/' + style + '.css');
+    var css = browser.extension.getURL('content/' + style + '.css');
     if (!document.getElementById('oldvk-style-' + style)) {
         var link = document.createElement('link');
         link.rel = 'stylesheet';
@@ -213,6 +208,9 @@ function initArrives() {
 
     if (options.optionFont)
         document.head.classList.add('oldvk-largefont');
+
+    if (options.optionIm)
+        document.head.classList.add('oldvk-im');
 
     KPP.add('.page_cover', function (element) {
         if (options.optionCover) {
@@ -345,6 +343,18 @@ function initArrives() {
             if (iphm.length > 0)
                 document.getElementsByClassName('im-page--chat-header')[0].insertBefore(iphm[0], ipchi[0])
         });
+
+        if (!options.optionIm) {
+            var ipma = document.querySelectorAll('.im-page--mess-actions .im-page-action');
+            console.log(ipma);
+            [].map.call(ipma, function (item) {
+                item.classList.add('flat_button')
+            });
+            document.getElementsByClassName('im-page-action_delete')[0].textContent = i18n.delete[lang];
+            document.getElementsByClassName('im-page-action_spam')[0].textContent = i18n.spam[lang];
+            //document.getElementsByClassName('im-send-btn').classList.add('flat_button')
+        }
+
     });
 
     KPP.add('#ui_rmenu_news_list', function (element) {
@@ -486,7 +496,13 @@ function initArrives() {
         if (ipch.length > 0)
             for (var i = 1; i < ipch.length; i++)
                 ipch[i].remove();
-        document.getElementsByClassName('im-page--chat-header')[0].appendChild(ipch[0])
+        document.getElementsByClassName('im-page--chat-header')[0].appendChild(ipch[0]);
+    });
+
+    KPP.add('#ui_rmenu_members_list', function (urml) {
+        var urel = document.getElementById('ui_rmenu_edit_list');
+        urel.parentNode.appendChild(urel);
+        urml.parentNode.appendChild(urml)
     })
 
 }

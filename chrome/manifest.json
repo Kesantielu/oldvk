@@ -25,6 +25,7 @@
   ],
   "background": {
     "scripts": [
+      "lib/lib.js",
       "events.js"
     ],
     "persistent": false

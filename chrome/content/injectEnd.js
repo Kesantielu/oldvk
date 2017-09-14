@@ -6,7 +6,7 @@ document.querySelector("link[rel*='icon']").href = "https://vk.com/images/favico
 if (typeof getAudioPlayer !== "undefined" && getAudioPlayer()._currentAudio)
     removeClass(ge("oldvk_top_play"), "oldvk-hide");
 
-if (typeof ap !== 'undefined' && ap.top !== 'undefined') {
+if (typeof ap !== 'undefined' && ap.top !== 'undefined') { //TODO: Переделать в watchVar
     function titleSet(t) {
         if (!t) return;
         t = AudioUtils.asObject(t);
@@ -92,12 +92,10 @@ window.addEventListener("message", function (m) {
                             ge('friends_filters_block').style.top = "247px";
                         }
                     }
-
                 }
                 break;
         }
     }
-
 });
 var sfi = setFavIcon;
 setFavIcon = function () {

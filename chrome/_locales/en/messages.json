@@ -50,5 +50,9 @@
   "option_audio": {
     "message": "Show audio album covers",
     "description": ""
+  },
+  "option_im": {
+    "message": "Show images on buttons instead of text in messages",
+    "description": ""
   }
 }

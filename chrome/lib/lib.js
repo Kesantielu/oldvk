@@ -1,6 +1,9 @@
+if (!window.browser)
+    window.browser = window.msBrowser || window.chrome;
+
 var isFirefox = typeof InstallTrigger !== 'undefined';
 
-var isWebExt = typeof chrome !== 'undefined' && typeof chrome.extension !== 'undefined';
+var isWebExt = typeof browser !== 'undefined' && typeof browser.extension !== 'undefined';
 
 var options = isWebExt ? {optionCover: false, optionViewer: false} : self.options;
 
@@ -83,7 +86,7 @@ var KPP = {
     _addedTag: function (observer, mutations, tag, callback, once) {
         for (var i = 0, l = mutations.length; i < l; i++) {
             for (var j = 0, m = mutations[i].addedNodes.length; j < m; j++) {
-                if (mutations[i].addedNodes[j].tagName === tag ) {
+                if (mutations[i].addedNodes[j].tagName === tag) {
                     callback();
                     if (once) observer.disconnect();
                 }
@@ -306,6 +309,11 @@ var Zoom = {
     }
 };
 
+const styles = [
+    {css: 'audios', match: 'audios'},
+    {css: 'friends', match: 'friends'}
+];
+
 const langMap = {0: 'ru', 1: 'uk', 2: 'be-tarask', 3: 'en-us', 97: 'kk', 114: 'be', 100: 'ru-petr1708', 777: 'ru-ussr'};
 
 const i18n = {
@@ -418,5 +426,25 @@ const i18n = {
         114: 'Відэазапісы',
         100: 'Синематографъ',
         777: 'Киноленты'
+    },
+    spam: {
+        0: 'Это спам',
+        1: 'Це спам',
+        2: 'Гэта спам',
+        3: 'Spam',
+        97: 'Бұл спам',
+        114: 'Гэта спам',
+        100: 'Сiе спамъ',
+        777: 'Это провокация'
+    },
+    delete: {
+        0: 'Удалить',
+        1: 'Видалити',
+        2: 'Выдаліць',
+        3: 'Delete',
+        97: 'Жою',
+        114: 'Выдаліць',
+        100: 'Сжечь',
+        777: 'Сжечь'
     }
 };

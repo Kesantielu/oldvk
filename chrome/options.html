@@ -8,9 +8,8 @@
             margin-top: 10px
         }
 
-        label.option {
+        #options > div {
             margin-bottom: 5px;
-            display: block;
         }
 
         label.option input {
@@ -27,18 +26,33 @@
             opacity: 0;
             transition: opacity 2s ease-in;
         }
-
     </style>
 </head>
 <body>
-
-<label id="cover_label" class="option"><input type="checkbox" id="cover"></label>
-<label id="viewer_label" class="option"><input type="checkbox" id="viewer"></label>
-<label id="font_label" class="option"><input type="checkbox" id="font"></label>
-<label id="audio_label" class="option"><input type="checkbox" id="audio"></label>
-
-<button id="save"></button>
-<div id="status"></div>
+<form id="options">
+    <div>
+        <input type="checkbox" id="cover" name="cover">
+        <label for="cover" id="cover_label" class="option"></label>
+    </div>
+    <div>
+        <input type="checkbox" id="viewer" name="viewer">
+        <label for="viewer" id="viewer_label" class="option"></label>
+    </div>
+    <div>
+        <input type="checkbox" id="font" name="font">
+        <label for="font" id="font_label" class="option"></label>
+    </div>
+    <div>
+        <input type="checkbox" id="audio" name="audio">
+        <label for="audio" id="audio_label" class="option"></label>
+    </div>
+    <div>
+        <input type="checkbox" id="im" name="im">
+        <label for="im" id="im_label" class="option"></label>
+    </div>
+    <button id="save"></button>
+    <div id="status"></div>
+</form>
 <script src="options.js"></script>
 </body>
 </html>

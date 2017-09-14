@@ -152,7 +152,7 @@ watchVar('Photoview', function (Photoview) {
                     addClass(cur.pvBox, 'oldvk-dark');
                 addClass(layerBG, 'oldvk-dark');
             }
-            if (!oldvk.options.optionViewer) {
+            if (!oldvk.options.optionViewer && cur.module !== 'marketplace') {
                 addClass(layerWrap, 'oldvk');
                 cur.pvImageWrap.insertBefore(cur.pvCounter, domFC(cur.pvImageWrap));
                 cur.pvRightColumn = ce('div', {id: 'pv_right_column'});
@@ -186,7 +186,7 @@ watchVar('Photoview', function (Photoview) {
             Photoview.show = function () {
                 s.apply(this, arguments);
                 if (arguments[0] !== "temp") {
-                    cur.pvCounter.textContent = getLang("photos_photo_num_of_N").replace("%s", cur.pvIndex + 1).replace(/%s|\{count}/, cur.pvData[cur.pvListId].length);
+                    cur.pvCounter.textContent = getLang("photos_photo_num_of_N").replace("%s", cur.pvIndex + 1).replace(/%s|{count}/, cur.pvData[cur.pvListId].length);
                 }
             };
             Photoview.show.oldvk = true
@@ -212,7 +212,7 @@ watchVar('Photoview', function (Photoview) {
                     cur.pvMoreActionsTooltip._opts.offset[1] = 12;
                     cur.pvMoreActionsTooltip._ttel = null;
                     cur.pvMoreActionsTooltip.build();
-                    cur.pvBottomActions.insertBefore(ge('pv_more_act_download'), geByClass1('pv_actions_more'))
+                    cur.pvBottomActions.insertBefore(ge('pv_more_act_download'), geByClass1('pv_actions_more'));
 
                     if (cur.pvBottomLike.firstChild)
                         cur.pvBottomLike.removeChild(cur.pvBottomLike.firstChild);
@@ -314,7 +314,7 @@ watchVar('AudioUtils', function (AudioUtils) {
     }
 });
 
-function _bind(variable, func, before, after) { // TODO
+function _bind(variable, func, before, after) { // TODO: Переписать функции с учетом этого
     if (!variable[func].oldvk) {
         var tmp = variable[func];
         variable[func] = function () {

@@ -1,22 +1,3 @@
-var isFirefox = typeof InstallTrigger !== 'undefined';
-
-const styles = [
-    {css: 'audios', match: 'audios'},
-    {css: 'friends', match: 'friends'}
-];
-
-if (!String.prototype.startsWith) {
-    Object.defineProperty(String.prototype, 'startsWith', {
-        enumerable: false,
-        configurable: false,
-        writable: false,
-        value: function (searchString, position) {
-            position = position || 0;
-            return this.lastIndexOf(searchString, position) === position;
-        }
-    });
-}
-
 function listener(tabId, info, tab) {
     if (info.status = 'complete' && info.url) {
         var url = document.createElement('a');
@@ -27,14 +8,14 @@ function listener(tabId, info, tab) {
             var apply = path.startsWith(style.match);
             Styles.push({css: style.css, apply: apply})
         });
-        chrome.tabs.sendMessage(tabId, {action: 'updating', css: Styles, path: path}, null)
+        browser.tabs.sendMessage(tabId, {action: 'updating', css: Styles, path: path}, null)
     }
 }
 
-chrome.tabs.onUpdated.addListener(listener);
+browser.tabs.onUpdated.addListener(listener);
 
-if (chrome.runtime.onInstalled) {
-    chrome.runtime.onInstalled.addListener(function () {
-        chrome.storage.local.set({enabled: true})
+if (browser.runtime.onInstalled) {
+    browser.runtime.onInstalled.addListener(function () {
+        browser.storage.local.set({enabled: true})
     });
 }

@@ -2,14 +2,14 @@ var wide;
 
 var injectEnd = document.createElement('script');
 injectEnd.type = 'text/javascript';
-injectEnd.src = isWebExt ? chrome.extension.getURL('content/injectEnd.js') : self.options.inject;
+injectEnd.src = isWebExt ? browser.extension.getURL('content/injectEnd.js') : self.options.inject;
 
 if (options.enabled || !isWebExt) {
     document.body.appendChild(injectEnd);
     initWide();
 
     if (isWebExt)
-        chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+        browser.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             if (request.action === 'updating') {
                 initWide();
                 setTimeout(function () {
