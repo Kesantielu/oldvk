@@ -314,6 +314,11 @@ watchVar('AudioUtils', function (AudioUtils) {
     }
 });
 
+watchVar('__leftMenu', function (__leftMenu) {
+    __leftMenu.handleUpdateRequest = nothing;
+    // TODO: Покопать дальше, функция срабатывает недостаточно рано
+});
+
 function _bind(variable, func, before, after) { // TODO: Переписать функции с учетом этого
     if (!variable[func].oldvk) {
         var tmp = variable[func];

@@ -23,6 +23,10 @@
     "message": "Support",
     "description": ""
   },
+  "options": {
+    "message": "Options",
+    "description": ""
+  },
   "save": {
     "message": "Save",
     "description": ""

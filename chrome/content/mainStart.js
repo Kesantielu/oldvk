@@ -380,7 +380,7 @@ function initArrives() {
         element.parentNode.parentNode.insertBefore(ont, element.parentNode);
         var urnl = document.getElementById('ui_rmenu_news_list');
         urnl.appendChild(document.getElementById('ui_rmenu_recommended'));
-        urnl.appendChild(document.getElementById('ui_rmenu_articles'));
+        //urnl.appendChild(document.getElementById('ui_rmenu_articles'));
         if (!(urn.classList.contains('ui_rmenu_item_sel') || document.querySelector('#ui_rmenu_news_list .ui_rmenu_item_sel'))) element.parentNode.classList.add('unshown');
         var fali = document.getElementById('feed_add_list_icon');
         fali.classList.add('ui_rmenu_subitem');
