@@ -230,6 +230,7 @@ function checkWide() {
 }
 
 function initWide() {
+    if (!document.getElementById('content')) return;
     var contentID = document.getElementById('content').firstElementChild.id;
     var wideApplicable = (contentID === "profile" || contentID === "group" || contentID === "public");
     wide = (document.getElementById('narrow_column') && wideApplicable) ? (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0) : true;
