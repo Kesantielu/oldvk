@@ -402,6 +402,7 @@ img.settings_bl_photo,
 .big.selector_container table.selector_table,
 input.dark,
 .page_actions_wrap,
+#marketplace .market_content .market_row .market_edit_actions,
 .bd_img {
     border-radius: 0;
 }
@@ -4984,7 +4985,7 @@ input.ui_search_field:-ms-input-placeholder {
 }
 
 .im-dialog-select .im-dialog-select--btn,
-#ui_rmenu_fav {
+.im-right-menu #ui_rmenu_fav {
     padding: 6px 16px 7px;
     margin: 0;
     font-size: inherit;
@@ -5013,7 +5014,7 @@ input.ui_search_field:-ms-input-placeholder {
     transform: none
 }
 
-#ui_rmenu_fav {
+.im-right-menu #ui_rmenu_fav {
     position: absolute;
     top: 45px;
     right: 60px;
@@ -5030,17 +5031,17 @@ head:not(.oldvk-im) ~ body .im-page--mess-actions_important .im-page-action_star
     background-color: #6383a8;
 }
 
-head.oldvk-im ~ body #ui_rmenu_fav span {
+head.oldvk-im ~ body .im-right-menu #ui_rmenu_fav span {
     display: none;
 }
 
 .im-dialog-select .im-dialog-select--btn:hover,
-#ui_rmenu_fav:hover {
+.im-right-menu #ui_rmenu_fav:hover {
     background-color: #6d8cb0;
 }
 
 .im-dialog-select .im-dialog-select--btn:active,
-#ui_rmenu_fav:active {
+.im-right-menu #ui_rmenu_fav:active {
     background-color: #5c7ca1;
     padding-top: 7px;
     padding-bottom: 6px;
@@ -11196,6 +11197,201 @@ a.groups_messages_block:before {
     Товары
 */
 
+#marketplace .market_search_wrap .ui_search_new {
+    margin: 5px 5px 0;
+}
+
+#marketplace .market_content .market_row.over .market_row_user {
+    margin-top: 0px;
+}
+
+#marketplace .market_content .market_row.over {
+    border-radius: 0
+}
+
+#marketplace .market_content .market_row .market_row_price {
+    font-weight: bold
+}
+
+#marketplace .market_content .market_row.over .market_row_price {
+    margin-bottom: 1px
+}
+
+#marketplace .market_content .market_row {
+    margin: 10px 20px;
+}
+
+#marketplace .market_content {
+    margin: 0 12px;
+}
+
+#marketplace .market_content .market_list {
+    margin: -10px -13px 11px -8px;
+}
+
+#marketplace .market_content .page_block_sub_header {
+    margin-left: 3px;
+    height: 45px
+}
+
+#marketplace .market_content .market_row_line:first-child {
+    margin-top: 10px;
+}
+
+#marketplace .market_content .market_row_line {
+    margin: 10px 2px 0;
+}
+
+#marketplace .market_content .market_row_line .market_row_info {
+    padding-top: 0px;
+}
+
+#marketplace .market_content .market_row_line .market_row_price {
+    font-weight: bold
+}
+
+#marketplace .market_content .market_row_line .ui_actions_menu {
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    border: none;
+    pointer-events: auto;
+    position: absolute;
+    left: 320px;
+    right: auto;
+    background: none;
+    top: 22px;
+}
+
+#marketplace .market_content .market_row_line .ui_actions_menu_icons {
+    display: none
+}
+
+#marketplace .market_content .market_row_line .market_row_name_line {
+    max-width: 280px;
+    white-space: normal;
+}
+
+#marketplace .market_content .market_row_line .marketplace_icons {
+    vertical-align: top;
+    padding-top: 2px;
+}
+
+.marketplace_frtt {
+    padding: 8px
+}
+
+.marketplace_frtt_users {
+    margin-top: 5px
+}
+
+.marketplace_frtt_photo {
+    border-radius: 2px
+}
+
+.market_item_title {
+    margin: 0 0 10px;
+    font-weight: 400;
+    font-size: 1.27em;
+}
+
+.market_item_price {
+    margin: 0 0 15px;
+    font-size: 1.45em;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.market_item_controls .flat_button {
+    font-size: 1.27em
+}
+
+.market_fav_btn.selected .market_fav_btn_icon {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAANCAYAAAB2HjRBAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFRJREFUeNqd0MsJACEMRdHbqa1MJ1Pqc0YQRIz5LC66yCEokqiWBu159fWfMC/BtEQVjspw36wMHB92eosHV2wNmPC2WR7cMRl4wkShhYnAG8aDE3fEV5YoKE/zIgAAAABJRU5ErkJggg==') 0 0;
+    margin-top: 1px;
+}
+
+.market_reply_form .reply_field_wrap {
+    margin: 0 79px;
+}
+
+.market_reply_form .post_field_user_link {
+    margin-left: 79px;
+}
+
+.market_reply_form.reply_box_open .reply_field_wrap {
+    margin-left: 116px;
+}
+
+.market_reply_form .submit_post_box .emoji_smile_wrap {
+    right: 82px;
+}
+
+.market_reply_cancel_button {
+    padding-right: 0;
+}
+
+.market_reply_form .submit_post {
+    padding: 5px 79px
+}
+
+.market_comments_summary {
+    font-weight: bold;
+    color: #45688E;
+    padding: 5px 0
+}
+
+.market_item_photo_container {
+    background-color: #FFF
+}
+
+.market_edit_item_box .result_list li.disabled:first-child {
+    border-top: none
+}
+
+#marketplace .market_search_wrap .ui_search_new {
+    margin: 10px 5px 5px;
+}
+
+.market_place_box_tabs {
+    font-weight: normal;
+    font-size: 11px;
+    background: #FFF;
+    padding: 11px 10px 0;
+    border-bottom: solid 1px #597DA3;
+}
+
+#marketplace > h2:first-child /* temp */
+{
+    display: none
+}
+
+.market_place_box_tabs .ui_tab {
+    height: 13px;
+    line-height: 13px;
+    padding: 5px 10px;
+    border-radius: 4px 4px 0 0;
+    margin-right: 5px;
+    color: #2B587A;
+}
+
+.market_place_box_tabs .ui_tab:hover {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background: #E1E7ED;
+}
+
+.market_place_box_tabs .ui_tab.ui_tab_sel {
+    padding: 5px 10px;
+    background: #597DA3;
+    border-radius: 4px 4px 0 0;
+    color: #FFF;
+}
+
+#marketplace .market_change_view.market_change_view_tabs .marketplace_icons {
+    margin-top: 0
+}
+
 /*
     Статьи
 */
@@ -11500,7 +11696,6 @@ a.groups_messages_block:before {
 
 .feedback_img::after,
 .market_place_friend_badge,
-.market_item_owner_img,
 .payments_transfer_to_photo,
 .groups_invite_img,
 .group_contact_image_wrap,
