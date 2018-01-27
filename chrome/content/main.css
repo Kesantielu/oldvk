@@ -265,6 +265,11 @@ div.fc_clist_filter,
 .piechart_table,
 .stats_community_messages_info_caption,
 .stats_community_messages_info_title,
+.market_row_name,
+.market_row_price,
+.market_row_new_badge,
+.market_album_section .page_block_sub_header,
+.market_album_legend,
 h2 {
     font-size: inherit;
     font-family: inherit;
@@ -404,6 +409,9 @@ input.dark,
 .page_actions_wrap,
 #marketplace .market_content .market_row .market_edit_actions,
 .big.selector_container.selector_focused table.selector_table,
+.flat_button.ui_load_more_btn,
+.page_market_item_narrow_img,
+.page_media_link_desc_td,
 .bd_img {
     border-radius: 0;
 }
@@ -6102,6 +6110,9 @@ div.submit_post_field ~ .placeholder .ph_input {
 
 .ui_search_fltr_control {
     line-height: inherit;
+    padding: 5px 16px 5px;
+    background-position: right 12px;
+    margin-right: 8px;
 }
 
 .selector_container td.selector_dropdown {
@@ -6707,6 +6718,23 @@ h4.subheader {
 
 .page_block_h2.page_info_header_tabs {
     display: none
+}
+
+.group_info_block {
+    display: block;
+}
+
+#page_info_wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+#page_info_wrap #wall_fixed {
+    order: 3
+}
+
+.wk_table.wk_table_fixed {
+    max-width: 397px
 }
 
 .group_friends_text {
@@ -11426,6 +11454,77 @@ head.oldvk-market ~ body .search_filters_wrap:hover .ui_filters_block {
     right: 83px;
     top: 94px;
     z-index: 1;
+}
+
+.market_module .page_market_items_wrap .page_market_item_img {
+    width: 125px;
+    height: 125px;
+}
+
+.market_module .page_market_items_wrap .page_market_item,
+.market_module .page_market_items_wrap .page_market_item_title {
+    width: 125px;
+}
+
+.market_module .page_market_items_wrap .page_market_item {
+    margin: 10px 10px 10px 0;
+}
+
+.market_module .page_market_items_wrap .page_market_item:last-child {
+    margin-right: 0
+}
+
+#market #market_search_wrap {
+    padding: 10px 15px;
+}
+
+.market_content {
+    padding: 0 15px;
+}
+
+#market #market_search_wrap .page_block_header_extra {
+    padding-top: 10px;
+}
+
+.market_list {
+    margin: 0;
+}
+
+#market_add_album_btn {
+    margin-right: 10px
+}
+
+.market_album_photo_img,
+.market_album_block,
+.market_album_photo {
+    width: 285px;
+}
+
+.market_album_photo {
+    height: 160px
+}
+
+.market_albums_wrap {
+    margin-top: 0
+}
+
+.market_albums_overview .market_albums_wrap {
+    max-height: 220px;
+}
+
+.market_albums_loadmore #ui_albums_load_more {
+    margin: 0 0 15px;
+}
+
+.page_market_item_narrow + .page_market_item_narrow,
+.page_market_item_narrow + .page_market_item_narrow:hover,
+.page_market_item_narrow:hover + .page_market_item_narrow,
+.page_market_item_narrow:hover + .page_market_item_narrow:hover {
+    margin-top: 8px;
+}
+
+.narrow_column .market_module .page_market_items_wrap {
+    padding: 8px 8px 0;
 }
 
 /*
