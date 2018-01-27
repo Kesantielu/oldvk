@@ -403,6 +403,7 @@ img.settings_bl_photo,
 input.dark,
 .page_actions_wrap,
 #marketplace .market_content .market_row .market_edit_actions,
+.big.selector_container.selector_focused table.selector_table,
 .bd_img {
     border-radius: 0;
 }
@@ -6096,7 +6097,7 @@ div.submit_post_field ~ .placeholder .ph_input {
 }
 
 .big .result_list ul li {
-    padding: 2px 0 4px 5px;
+    padding: 3px 0 4px 5px;
 }
 
 .ui_search_fltr_control {
@@ -11197,10 +11198,6 @@ a.groups_messages_block:before {
     Товары
 */
 
-#marketplace .market_search_wrap .ui_search_new {
-    margin: 5px 5px 0;
-}
-
 #marketplace .market_content .market_row.over .market_row_user {
     margin-top: 0px;
 }
@@ -11350,10 +11347,10 @@ a.groups_messages_block:before {
 }
 
 #marketplace .market_search_wrap .ui_search_new {
-    margin: 10px 5px 5px;
+    margin: 10px 55px 5px 5px;
 }
 
-.market_place_box_tabs {
+#marketplace .ui_tabs {
     font-weight: normal;
     font-size: 11px;
     background: #FFF;
@@ -11361,12 +11358,11 @@ a.groups_messages_block:before {
     border-bottom: solid 1px #597DA3;
 }
 
-#marketplace > h2:first-child /* temp */
-{
+#marketplace > h2:first-child {
     display: none
 }
 
-.market_place_box_tabs .ui_tab {
+#marketplace .ui_tabs .ui_tab {
     height: 13px;
     line-height: 13px;
     padding: 5px 10px;
@@ -11375,21 +11371,61 @@ a.groups_messages_block:before {
     color: #2B587A;
 }
 
-.market_place_box_tabs .ui_tab:hover {
+#marketplace .ui_tabs .ui_tab:hover {
     padding: 5px 10px;
     margin-right: 5px;
     background: #E1E7ED;
 }
 
-.market_place_box_tabs .ui_tab.ui_tab_sel {
+#marketplace .ui_tabs .ui_tab.ui_tab_sel {
     padding: 5px 10px;
     background: #597DA3;
     border-radius: 4px 4px 0 0;
     color: #FFF;
 }
 
+#marketplace .market_search_wrap .market_place_search_tabs {
+    padding: 11px 10px 0;
+    margin: 0
+}
+
 #marketplace .market_change_view.market_change_view_tabs .marketplace_icons {
     margin-top: 0
+}
+
+head.oldvk-market ~ body .search_filters_wrap .ui_filters_block {
+    position: absolute;
+    right: -11px;
+    top: 47px;
+    z-index: 4;
+    display: none
+}
+
+head.oldvk-market ~ body .search_filters_wrap {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important
+}
+
+head.oldvk-market ~ body .search_filters_wrap:before {
+    position: absolute;
+    padding: 17px 0 7px;
+    color: #45688e;
+    cursor: pointer;
+    z-index: 1;
+    right: 0
+}
+
+head.oldvk-market ~ body .search_filters_wrap:hover .ui_filters_block {
+    display: block
+}
+
+#search_by_friends_toogle {
+    position: absolute;
+    right: 83px;
+    top: 94px;
+    z-index: 1;
 }
 
 /*

@@ -106,28 +106,36 @@
  */
 
 #oldvk-filter-label:before,
-:lang(kk) #oldvk-filter-label:before {
+:lang(kk) #oldvk-filter-label:before,
+head.oldvk-market ~ body .search_filters_wrap:before,
+:lang(kk) head.oldvk-market ~ body .search_filters_wrap:before {
     content: "Фильтр";
 }
 
 :lang(uk) #oldvk-filter-label:before,
-:lang(be) #oldvk-filter-label:before {
+:lang(be) #oldvk-filter-label:before,
+:lang(uk) head.oldvk-market ~ body .search_filters_wrap:before,
+:lang(be) head.oldvk-market ~ body .search_filters_wrap:before {
     content: "Фільтр";
 }
 
-:lang(be-tarask) #oldvk-filter-label:before {
+:lang(be-tarask) #oldvk-filter-label:before,
+:lang(be-tarask) head.oldvk-market ~ body .search_filters_wrap:before {
     content: "Фільтар";
 }
 
-:lang(en-us) #oldvk-filter-label:before {
+:lang(en-us) #oldvk-filter-label:before,
+:lang(en-us) head.oldvk-market ~ body .search_filters_wrap:before {
     content: "Filter";
 }
 
-:lang(ru-petr1708) #oldvk-filter-label:before {
+:lang(ru-petr1708) #oldvk-filter-label:before,
+:lang(ru-petr1708) head.oldvk-market ~ body .search_filters_wrap:before {
     content: "Фильтръ";
 }
 
-:lang(ru-ussr) #oldvk-filter-label:before {
+:lang(ru-ussr) #oldvk-filter-label:before,
+:lang(ru-ussr) head.oldvk-market ~ body .search_filters_wrap:before {
     content: "Выборка";
 }
 
