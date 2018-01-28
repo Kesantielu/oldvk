@@ -1396,6 +1396,10 @@ h2.page_name {
     padding: 6px 0;
 }
 
+.tt_w .wall_module .reply .reply_wrap {
+    padding: 6px
+}
+
 .wide .wall_module .tt_w .reply .reply_wrap,
 .big_wall .wall_module .tt_w .reply .reply_wrap {
     padding: 10px;
@@ -1407,6 +1411,10 @@ h2.page_name {
 
 .tt_w.fw_reply_tt {
     box-shadow: none;
+}
+
+.tt_w.tt_default {
+    margin-left: calc(50vw - 404px);
 }
 
 .wide .wall_module .reply .reply_wrap,
@@ -5938,7 +5946,11 @@ div.submit_post_field ~ .placeholder .ph_input {
     border-bottom: none;
 }
 
-.top_notify_cont .feedback_img {
+.top_notify_cont .feedback_img,
+.ui_photo_grid_1,
+.ui_photo_grid_2,
+.ui_photo_grid_3,
+.ui_photo_grid_4 {
     border-radius: 2px;
 }
 
@@ -6632,6 +6644,7 @@ h4.subheader {
 #top_notify_wrap {
     font-weight: normal;
     left: 110px;
+    font-size: 11px;
 }
 
 .top_notify_cont .feedback_rphoto {
@@ -7413,9 +7426,9 @@ head.oldvk-friends ~ body .wide_column_left .wide_column {
     background: none;
 }
 
-.ui_header_ext_search {
+.ui_header_ext_search,
+.feedback_sticky_row {
     line-height: inherit;
-
 }
 
 #groups_create_btn {

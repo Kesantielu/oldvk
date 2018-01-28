@@ -272,9 +272,9 @@ watchVar('Emoji', function (Emoji) {
     window.postMessage({type: "VK_EMOJI", text: {emoji: Emoji.getRecentEmojiSorted(), html: emoji}}, "*");
 });
 
-watchVar('TopNotifier', function (TopNotifier) {
-    TopNotifier.tnCount = "oldvk-notify";
-    TopNotifier.tnLink = "oldvk-notify-wrap";
+watchVar('TopNotifierCur', function (TopNotifierCur) {
+    TopNotifierCur.count = "oldvk-notify";
+   // TopNotifierCur.link = "oldvk-notify-wrap";
 });
 
 watchVar('SPE', function (SPE) {
