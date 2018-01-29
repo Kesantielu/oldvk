@@ -38,5 +38,10 @@ window.onload = isWebExt ? function () {
             document.getElementById("title-wrap").classList.remove("disabled");
         else
             document.getElementById("title-wrap").classList.add("disabled")
-    }
+    };
+
+    document.getElementById("options").addEventListener("click", function () {
+        self.port.emit("openPrefs");
+    })
+
 };

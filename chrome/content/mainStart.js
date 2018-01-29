@@ -346,7 +346,6 @@ function initArrives() {
 
         if (!options.optionIm) {
             var ipma = document.querySelectorAll('.im-page--mess-actions .im-page-action');
-            console.log(ipma);
             [].map.call(ipma, function (item) {
                 item.classList.add('flat_button')
             });
@@ -504,7 +503,6 @@ function initArrives() {
         urel.parentNode.appendChild(urel);
         urml.parentNode.appendChild(urml)
     })
-
 }
 
 function updating(path) {

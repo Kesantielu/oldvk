@@ -5,6 +5,8 @@ var opts = require('sdk/simple-storage').storage;
 const {Panel} = require("sdk/panel");
 var _ = require("sdk/l10n").get;
 const Prefs = require("sdk/preferences/service");
+const {open} = require('sdk/preferences/utils');
+var self = require('sdk/self');
 
 if (Prefs.has('dom.promise.enabled'))
     Prefs.set('dom.promise.enabled', true);
@@ -21,10 +23,10 @@ var button = ToggleButton({
 
 var panel = Panel({
     width: 220,
-    height: 130,
+    height: 140,
     contentURL: './popup.html',
     contentScriptFile: './popup.js',
-    contentScriptOptions: {version: require('sdk/self').version},
+    contentScriptOptions: {version: self.version},
     onHide: handleHide
 });
 
@@ -69,7 +71,7 @@ var options = {
     contentScriptWhen: 'start',
     contentStyleFile: ['./main.css', './local.css', './fox.css'],
     contentScriptOptions: {
-        inject: require('sdk/self').data.url('injectStart.js'),
+        inject: self.data.url('injectStart.js'),
         optionCover: prefs.optionCover,
         optionViewer: prefs.optionViewer,
         optionFont: prefs.optionFont,
@@ -90,7 +92,7 @@ var options1 = {
     include: '*.vk.com',
     contentScriptFile: ['./lib.js', './mainEnd.js'],
     contentScriptWhen: 'ready',
-    contentScriptOptions: {inject: require('sdk/self').data.url('injectEnd.js')},
+    contentScriptOptions: {inject: self.data.url('injectEnd.js')},
     onAttach: function (page) {
         page.port.emit('options', Object.assign(prefs, opts));
     },
@@ -101,3 +103,7 @@ if (prefs['enabled']) {
     vkPage = PageMod(options);
     vkPage1 = PageMod(options1);
 }
+
+panel.port.on('openPrefs', function () {
+    open({id: self.id});
+});

@@ -274,7 +274,7 @@ watchVar('Emoji', function (Emoji) {
 
 watchVar('TopNotifierCur', function (TopNotifierCur) {
     TopNotifierCur.count = "oldvk-notify";
-   // TopNotifierCur.link = "oldvk-notify-wrap";
+    TopNotifierCur.link = "oldvk-notify-wrap";
 });
 
 watchVar('SPE', function (SPE) {

@@ -270,6 +270,7 @@ div.fc_clist_filter,
 .market_row_new_badge,
 .market_album_section .page_block_sub_header,
 .market_album_legend,
+.post_author_data,
 h2 {
     font-size: inherit;
     font-family: inherit;
@@ -1413,10 +1414,6 @@ h2.page_name {
     box-shadow: none;
 }
 
-.tt_w.tt_default {
-    margin-left: calc(50vw - 404px);
-}
-
 .wide .wall_module .reply .reply_wrap,
 .big_wall .wall_module .reply .reply_wrap {
     padding: 10px 0 11px;
@@ -2194,6 +2191,10 @@ input.ui_search_field,
 .wall_module .copy_author {
     font-weight: bold;
     color: #2B587A
+}
+
+.post_author_data .eltt_content {
+    padding: 10px 10px 0;
 }
 
 .wall_post_source_icon {
@@ -3807,6 +3808,10 @@ img.fc_contact_photo {
     position: fixed;
 }
 
+.body_im .side_bar {
+    overflow: visible;
+}
+
 .search_filters_minimized_text {
     font-size: inherit;
     background: none;
@@ -5300,20 +5305,27 @@ a.ts_contact:last-child {
 }
 
 .ts_contact_title_wrap {
-    display: block;
     line-height: 140%;
 }
 
+.ts_contact_title_wrap.is_verified {
+    max-width: 115px;
+}
+
 .ts_contact_name {
-    line-height: 30px;
+    line-height: 15px;
     padding: 0 0 0 8px;
     white-space: nowrap;
     display: block;
-    width: 133px;
+    width: 146px;
     text-overflow: ellipsis;
     overflow: hidden;
     font-weight: normal;
     height: 30px;
+}
+
+.ts_search_link .ts_contact_name {
+    line-height: 30px;
 }
 
 .ts_contact_photo,
@@ -6174,9 +6186,17 @@ div.submit_post_field ~ .placeholder .ph_input {
     color: #999b9f
 }
 
-.page_verified {
+.page_verified,
+.ts_cont_wrap .page_verified {
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAALCAYAAACksgdhAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAOUlEQVR42mNgIBLsOnTmPwgzkKqBaI3oGghqwqsBmwlEaUCWIOgkbAqI8gPJGsgOJWwaGUgBxGgAALZ2utCtGzDMAAAAAElFTkSuQmCC') no-repeat;
+}
+
+.page_verified {
     padding: 0 16px 0 0;
+}
+
+.ts_cont_wrap .page_verified {
+
 }
 
 .ui_ownblock {
@@ -6729,7 +6749,8 @@ h4.subheader {
     padding: 2px 6px;
 }
 
-.page_block_h2.page_info_header_tabs {
+.page_block_h2.page_info_header_tabs,
+.group_info_block.wiki {
     display: none
 }
 
@@ -7807,7 +7828,7 @@ img.feed_notif_img {
 }
 
 .ui_rmenu_item_sel .feed_filter_icon {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAcCAYAAAC6YTVCAAAACXBI…mpwZCGnAFRAM+DcSkiP/kJKPhpukVEIeSomkVEIviSnsAR4qlmE4tIOsAAAAASUVORK5CYII=');
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAcCAYAAAC6YTVCAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAVklEQVR42mP4//8/AxYMA9jkGBiGqSZSAfmaRoMcjya8eAhoaiAxRTTAdBOrsQHdeQ3EaMDmpwZCGnAFRAM+DcSkiP/kJKPhpukVEIeSomkVEIviSnsAR4qlmE4tIOsAAAAASUVORK5CYII=');
 }
 
 .feed_search_shown .feed_search_wrap {
@@ -9685,27 +9706,29 @@ a.group_app_button:after {
     width: 627px;
 }
 
-.static_header #page_header_cont .back {
+body.static_header #page_header_cont .back {
     box-shadow: none
 }
 
-.static_header #page_body {
+body.static_header #page_body {
     width: 1024px !important;
 }
 
-.static_header #page_layout, .static_header #page_header, .static_header #page_wrap {
+body.static_header #page_layout,
+body.static_header #page_header,
+body.static_header #page_wrap {
     width: 1183px !important;
 }
 
-.static_header #page_wrap {
+body.static_header #page_wrap {
     margin-left: calc(50vw - 600px);
 }
 
-.static_header .top_audio_player {
+body.static_header .top_audio_player {
     margin-left: 575px;
 }
 
-.static_header #page_header_cont {
+body.static_header #page_header_cont {
     width: 1178px;
 }
 
@@ -11469,6 +11492,10 @@ head.oldvk-market ~ body .search_filters_wrap:hover .ui_filters_block {
     z-index: 1;
 }
 
+#search_by_friends_toogle .ui_toggler_label {
+    float: left
+}
+
 .market_module .page_market_items_wrap .page_market_item_img {
     width: 125px;
     height: 125px;
@@ -11768,7 +11795,7 @@ head.oldvk-market ~ body .search_filters_wrap:hover .ui_filters_block {
  */
 
 .stats_flash_wrap {
-    width: 100%
+    width: 597px
 }
 
 #stats_cont, .stats_cont {
@@ -11856,4 +11883,3 @@ head.oldvk-market ~ body .search_filters_wrap:hover .ui_filters_block {
 .wl_post .ui_actions_menu_wrap {
     top: 0
 }
-
