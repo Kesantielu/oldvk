@@ -8,7 +8,7 @@ var isWebExt = typeof browser !== 'undefined' && typeof browser.extension !== 'u
 window.onload = isWebExt ? function () {
     document.title = browser.i18n.getMessage("appName");
     document.getElementById("version_number").textContent = browser.runtime.getManifest().version;
-    document.querySelectorAll('[data-l10n-id]').forEach(function (item) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-l10n-id]'), function (item) {
         item.textContent = browser.i18n.getMessage(item.dataset.l10nId)
     });
     browser.storage.local.get("enabled", function (item) {

@@ -182,6 +182,11 @@ var LocalizedContent = {
         document.querySelector('#l_ap .left_label').textContent = i18n.apps[lang];
         document.querySelector('#l_aud .left_label').textContent = i18n.audios[lang];
         document.querySelector('#l_vid .left_label').textContent = i18n.videos[lang];
+        var apm = document.querySelector('#l_apm > .left_row');
+        apm.removeAttribute('onclick');
+        apm.addEventListener('click', function (e) {
+            e.stopImmediatePropagation();
+        });
         LocalizedContent.updateNotify()
     },
     updateNotify: function () {
@@ -327,7 +332,7 @@ function initArrives() {
             if (avatars.length < 3) {
                 for (i = avatars.length; i--;) {
                     avatars[i].className = 'oldvk-chat-avatar oldvk-chat-avatar-2';
-                    insertAfter(chat, avatars[i].cloneNode(false))
+                    insertAfter(chat, avatars[i].cloneNode(false));
                 }
             } else {
                 var wrap = document.createElement('div');
@@ -341,11 +346,12 @@ function initArrives() {
             var iphm = document.getElementsByClassName('im-page--header-more');
             var ipchi = document.getElementsByClassName('im-page--chat-header-in');
             if (iphm.length > 0)
-                document.getElementsByClassName('im-page--chat-header')[0].insertBefore(iphm[0], ipchi[0])
+                document.getElementsByClassName('im-page--chat-header')[0].insertBefore(iphm[0], ipchi[0]);
         });
 
         if (!options.optionIm) {
             var ipma = document.querySelectorAll('.im-page--mess-actions .im-page-action');
+            console.log(ipma);
             [].map.call(ipma, function (item) {
                 item.classList.add('flat_button')
             });
@@ -356,7 +362,7 @@ function initArrives() {
 
     });
 
-    KPP.add('#ui_rmenu_news_list', function (element) {
+    KPP.add('body:not(.blog_page) #ui_rmenu_news_list', function (element) {
         var ont = document.createElement('ul');
         ont.id = 'oldvk-news-tabs';
         ont.className = 'ui_tabs ui_tabs_header clear_fix';
@@ -502,7 +508,12 @@ function initArrives() {
         var urel = document.getElementById('ui_rmenu_edit_list');
         urel.parentNode.appendChild(urel);
         urml.parentNode.appendChild(urml)
-    })
+    });
+
+    KPP.add('#ui_rmenu_arhive', function (ura) {
+        var urel = document.getElementById('ui_rmenu_news');
+        insertAfter(urel, ura)
+    });
 }
 
 function updating(path) {

@@ -156,12 +156,13 @@ watchVar('Photoview', function (Photoview) {
                 addClass(layerWrap, 'oldvk');
                 cur.pvImageWrap.insertBefore(cur.pvCounter, domFC(cur.pvImageWrap));
                 cur.pvRightColumn = ce('div', {id: 'pv_right_column'});
-                cur.pvNarrowColumnWrap.appendChild(cur.pvRightColumn);
+                if (cur.pvNarrowColumnWrap)
+                    cur.pvNarrowColumnWrap.appendChild(cur.pvRightColumn);
                 cur.pvPhotoDate = ce('div', {id: 'pv_bottom_info_date'});
                 cur.pvBottomLeft.appendChild(cur.pvPhotoDate);
                 cur.pvBottomLike = ce('div', {id: 'pv_bottom_info_like'});
                 cur.pvBottomLeft.appendChild(cur.pvBottomLike);
-                if (document.documentElement.clientWidth >= 800) {
+                if (document.documentElement.clientWidth >= 800 && cur.pvFSWrap) {
                     var pv_ss_btn = ce('div', {className: 'pv_fs_btn'});
                     pv_ss_btn.setAttribute('onclick', 'cancelEvent(event);');
                     pv_ss_btn.setAttribute('onmousedown', 'cancelEvent(event);cur.__mdEvent=event;pvSwitchSize();');
