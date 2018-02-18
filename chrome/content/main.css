@@ -288,6 +288,18 @@ div.fc_clist_filter,
 .blog_entry_author_name,
 .blog_entry_author_info,
 .blog_entry_date,
+.im-aside-notice,
+.stories_author_name,
+.stories_date,
+.blog_follow_msg,
+.blog_followed_state,
+.blog_email_settings_label,
+.blog_email_settings_labeled,
+.blog_arhive_year,
+.blog_arhive_date,
+.blog_arhive_author,
+.blog_cat_name,
+.im-page .nim-conversation-search-row .nim-dialog--name,
 h2 {
     font-size: inherit;
     font-family: inherit;
@@ -442,14 +454,24 @@ input.dark,
 .payments_money_transfer_amount_wrap,
 .payments_money_transfer_comment,
 .box_controls,
-.bd_img,
 .faq_search_form,
 .help_tile__title:after,
 .help_table_categories .ui_rmenu_item,
 .tu_thumb,
 .tickets_image__i,
 .blst_last,
-.blog_entry_author_ava {
+.blog_entry_author_ava,
+.im-page.im-page_classic.im-page_group .im-group-online .im-group-online--inner,
+.im-aside-notice,
+.apps_i_groups .apps_i_groups_images .apps_i_groups_image_a,
+.stories_author,
+.stories_hide_animation_el,
+.stories_item_cont_wrap,
+.stories_photo,
+.stories_preview,
+.stories_video,
+#top_notify_wrap,
+.bd_img {
     border-radius: 0;
 }
 
@@ -2643,6 +2665,28 @@ body.mac #page_header_cont {
     border-radius: 3px;
 }
 
+.nim-peer.nim-peer_search .nim-peer--photo .im_grid > img,
+.nim-peer.nim-peer_search .nim-peer--photo > img {
+    border-radius: 3px;
+}
+
+.nim-peer.nim-peer_search .nim-peer--photo {
+    margin-bottom: 0
+}
+
+.nim-peer.nim-peer_search.online:after {
+    left: 44px;
+    top: 24px
+}
+
+.nim-peer.nim-peer_search.online:after {
+    border: none
+}
+
+.nim-peer.nim-peer_search.online.mobile:after {
+    height: 11px
+}
+
 .nim-peer .nim-peer--photo {
     margin-bottom: 0;
 }
@@ -4775,7 +4819,10 @@ input.ui_search_field:-ms-input-placeholder {
     padding: 0;
 }
 
-.nim-peer.online.mobile:after {
+.nim-peer.online.mobile:after,
+.im-create .im-creation--item .olist_item_photo_wrap.online.mobile:after,
+.nim-peer.nim-peer_search.online.mobile:after,
+.nim-peer.nim-peer_smaller.online.mobile:after {
     background: url('data:image/gif;base64,R0lGODlhBwALAMQeAAAAAAgICBAQEBgYGCEhISkpKTExMTk5OUJCQkpKSlJSUlpaWmNjY2tra3Nzc3t7e4SEhIyMjJSUlJycnKWlpa2trbW1tb29vcbGxs7OztbW1t7e3ufn5+/v7/f395K6RSH5BAkAAB8ALAAAAAAHAAsAAAUe4CeK1qdZKHpaV5te44XCoszGr5uea5qlKsuqpwoBADs=') no-repeat 0 center;
     padding-left: 10px;
     background-color: transparent !important;
@@ -4848,7 +4895,8 @@ input.ui_search_field:-ms-input-placeholder {
 .nim-dialog:not(.nim-dialog_deleted).nim-dialog_unread.nim-dialog_classic + .im-page--messages-search,
 .nim-dialog:not(.nim-dialog_deleted).nim-dialog_unread.nim-dialog_classic + .nim-dialog,
 .nim-dialog:not(.nim-dialog_deleted):hover + .im-page--messages-search,
-.nim-dialog:not(.nim-dialog_deleted):hover + .nim-dialog {
+.nim-dialog:not(.nim-dialog_deleted):hover + .nim-dialog,
+.nim-dialog .nim-dialog--content {
     border-top: solid 1px #dae1e8;
 }
 
@@ -5307,9 +5355,28 @@ head.oldvk-im ~ body .im-right-menu #ui_rmenu_fav span {
     color: #2b587a;
 }
 
-.im-page .im-search-results-head {
+.im-page_classic.im-page .im-search-results-head {
     font-weight: bold;
     color: #45688e;
+    padding-left: 15px;
+}
+
+.im-page .nim-conversation-search-row.nim-csr_classic {
+    padding-left: 15px;
+    border-top: solid 1px #dae1e8
+}
+
+.im-page .nim-conversation-search-row.nim-csr_classic:first-child {
+    border-top-color: transparent;
+}
+
+.im-page .nim-conversation-search-row .nim-dialog--content {
+    margin-left: -15px;
+    border-top: none
+}
+
+.nim-dialog .nim-dialog--photo {
+    padding-right: 10px;
 }
 
 /* Конец правил для диалогов */
@@ -5810,6 +5877,21 @@ a.groups_messages_block {
 
 a.groups_messages_block:hover {
     background-color: #E1E7ED;
+}
+
+a.groups_messages_block .ui_rmenu_count {
+    margin: -2px 0 0;
+    border-radius: 2px;
+    padding: 1px 4px;
+    background: #d1d9e0;
+    color: #5b6e85;
+    height: auto;
+    line-height: 15px;
+    font-size: 0.9em;
+}
+
+a.groups_messages_block .ui_rmenu_count:before {
+    content: "+"
 }
 
 .chat_tab_imgcont.online:after {
@@ -6708,6 +6790,10 @@ h4.subheader {
     display: none;
 }
 
+#l_ntf:hover #oldvk-notify-wrap {
+    display: block
+}
+
 .im-prebody img {
     border-radius: 2px;
     width: 32px;
@@ -6755,6 +6841,7 @@ h4.subheader {
     font-weight: normal;
     left: 110px;
     font-size: 11px;
+    border: 1px solid #c5d0db;
 }
 
 .top_notify_cont .feedback_rphoto {
@@ -6855,8 +6942,11 @@ h4.subheader {
 
 #page_info_wrap #wall_fixed {
     order: 3;
-    border-top: 1px solid #e7e8ec;
-    margin-top: 5px;
+}
+
+#page_info_wrap #wall_fixed ~ .group_info_block.info {
+    border-bottom: 1px solid #e7e8ec;
+    padding-bottom: 5px;
 }
 
 .wk_table.wk_table_fixed {
@@ -9233,6 +9323,16 @@ a.group_app_button:after {
     padding: 8px 10px;
 }
 
+.stories_button.stories_actions {
+    top: auto
+}
+
+.stories_author_photo,
+.stories_button,
+.stories_send_form {
+    border-radius: 2px;
+}
+
 /* Видео
  */
 
@@ -11367,6 +11467,67 @@ a.groups_messages_block:before {
     font-size: 18px;
 }
 
+.im-page.im-page_classic.im-page_group .im-group-online .im-group-online--inner,
+.im-page.im-page_classic.im-page_group .im-group-online {
+    background: none;
+}
+
+.im-page.im-page_classic.im-page_group .im-group-online {
+    padding-bottom: 0;
+}
+
+.im-page.im-page_classic.im-page_group .im-group-online .im-group-online--inner {
+    padding: 10px;
+    box-shadow: none;
+}
+
+.im-aside-notice {
+    box-shadow: none;
+    margin: 0;
+}
+
+.im-page_group .im-page--dialogs {
+    padding-top: 114px;
+}
+
+.im-group-online--toggler .ui_toggler:after,
+.im-group-online--toggler .ui_toggler.on:after {
+    content: '';
+    width: 13px;
+    height: 13px;
+    border: 1px solid #b4bfcc;
+    background-color: #fff;
+    top: -3px;
+    padding: 0
+}
+
+.im-group-online--toggler .ui_toggler {
+    background-color: #ced7e0;
+    width: 28px;
+}
+
+.im-group-online--toggler .ui_toggler.on:after {
+    left: 13px
+}
+
+.apps_group_catalog_rows.apps_group_catalog_rows_catalog .apps_catalog_row .apps_catalog_row_info {
+    width: 400px;
+}
+
+.apps_catalog_label,
+.apps_group_catalog_rows .apps_catalog_row .apps_catalog_row_info .apps_catalog_label_new,
+.apps_group_catalog_rows .apps_catalog_row .apps_catalog_row_info .apps_catalog_label_widget {
+    border-radius: 2px;
+}
+
+.apps_group_catalog_rows .apps_catalog_row .apps_catalog_row_info .apps_catalog_row_name a.apps_catalog_row_name_link {
+    font-weight: bold
+}
+
+.apps_group_catalog_rows .apps_catalog_row .apps_catalog_row_info .apps_catalog_row_desc {
+    margin: 5px 0
+}
+
 /*
     Товары
 */
@@ -12384,13 +12545,18 @@ body.blog_page .side_bar {
 
 .blog_entry_text,
 .blog_entry_text_wrap .wk_text {
-    line-height: inherit;
+    line-height: 1.5;
     font-size: 1.09em
 }
 
 .blog_entry_title {
     color: #45668e;
     font-size: 1.3636em
+}
+
+.blog_entry_with_pagination .blog_entry_title {
+    color: #000;
+    font-size: 1.6em
 }
 
 .blog_entry_author_info_short {
@@ -12408,7 +12574,15 @@ body.blog_page .side_bar {
 
 .blog_cat_name {
     line-height: inherit;
-    font-size: 1.09em;
+    background: #597DA3;
+    padding: 3px 5px;
+    border-radius: 2px;
+}
+
+.blog_cat_name a {
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .blog_entry_author_info {
@@ -12438,6 +12612,68 @@ body.blog_page .side_bar {
 
 .blog_nav_link_ic {
     top: 4px
+}
+
+.blog_entry_cont {
+    padding: 10px 5px;
+}
+
+.blog_right_menu_nav {
+    margin-top: 0
+}
+
+.blog_links {
+    padding: 5px;
+    display: flex;
+    justify-content: space-around
+}
+
+.blog_link {
+    margin-bottom: 10px
+}
+
+.blog_right_list_title {
+    display: none
+}
+
+#blog_follow_btn {
+    margin: 4px auto 0;
+    width: auto;
+    right: 5px;
+    position: absolute;
+}
+
+#blog_follow_descr {
+    float: left;
+    width: 60%;
+}
+
+.blog_email_settings_label,
+.blog_email_settings_labeled {
+    letter-spacing: normal
+}
+
+.blog_arhive_title {
+    font-size: 1.09em
+}
+
+.blog_arhive_item:last-child {
+    border-bottom: none
+}
+
+.blog_arhive_wrap {
+    padding: 0 5px;
+}
+
+.blog_follow_msg {
+    line-height: 1.5;
+    heighT: 32px
+}
+
+.blog_followed_state {
+    line-height: 3;
+    margin-top: 0;
+    text-align: right;
 }
 
 /*

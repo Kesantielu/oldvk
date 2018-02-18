@@ -129,7 +129,7 @@ var LocalizedContent = {
 
     init: function () {
         this.l_ntf.id = 'l_ntf';
-        this.l_ntf.innerHTML = '<a href="/feed?section=notifications" class="left_row" onclick="return nav.go(this, event, {noback: true, params: {_ref: \'left_nav\'}});" onmouseover="TopNotifier.preload(); if (!TopNotifier.shown()) {ntf = setTimeout(function(){TopNotifier.show(event)},2000)}" onmouseout="clearTimeout(ntf);"><span class="left_fixer"><span class="left_count_wrap fl_r" id="oldvk-notify-wrap" onmouseover="TopNotifier.preload()" onclick="TopNotifier.show(event);"><span class="inl_bl left_count" id="oldvk-notify"></span></span><span class="left_label inl_bl">' + i18n.answers[lang] + '</span></span></a>';
+        this.l_ntf.innerHTML = '<a href="/feed?section=notifications" class="left_row" onclick="return nav.go(this, event, {noback: true, params: {_ref: \'left_nav\'}});" onmouseover="TopNotifier.preload();"><span class="left_fixer"><span class="left_count_wrap fl_r" id="oldvk-notify-wrap" onmouseover="TopNotifier.preload()" onclick="TopNotifier.show(event);TopNotifier.setCount(\'\',true)"><span class="inl_bl left_count" id="oldvk-notify"></span></span><span class="left_label inl_bl">' + i18n.answers[lang] + '</span></span></a>';
 
         this.l_edit.id = 'l_edit';
         this.l_edit.classList.add('fl_r');
@@ -191,8 +191,10 @@ var LocalizedContent = {
     },
     updateNotify: function () {
         var notifyCount = parseInt(document.getElementById('top_notify_count').textContent, 10);
-        if (notifyCount > 0) document.getElementById('oldvk-notify-wrap').classList.add('has_notify');
-        document.getElementById('oldvk-notify').textContent = notifyCount.toString();
+        if (notifyCount > 0) {
+            document.getElementById('oldvk-notify-wrap').classList.add('has_notify');
+            document.getElementById('oldvk-notify').textContent = notifyCount.toString()
+        }
     },
     l10n: function (key, callback) {
         if (typeof lang !== 'undefined') {
@@ -351,13 +353,11 @@ function initArrives() {
 
         if (!options.optionIm) {
             var ipma = document.querySelectorAll('.im-page--mess-actions .im-page-action');
-            console.log(ipma);
             [].map.call(ipma, function (item) {
                 item.classList.add('flat_button')
             });
             document.getElementsByClassName('im-page-action_delete')[0].textContent = i18n.delete[lang];
             document.getElementsByClassName('im-page-action_spam')[0].textContent = i18n.spam[lang];
-            //document.getElementsByClassName('im-send-btn').classList.add('flat_button')
         }
 
     });
@@ -496,7 +496,7 @@ function initArrives() {
         })
     }
 
-    KPP.add('.im-page--members', function (element) {
+    KPP.add('.im-page--members', function () {
         var ipch = document.querySelectorAll('.im-page--members');
         if (ipch.length > 0)
             for (var i = 1; i < ipch.length; i++)
@@ -514,6 +514,18 @@ function initArrives() {
         var urel = document.getElementById('ui_rmenu_news');
         insertAfter(urel, ura)
     });
+
+    KPP.add('.im-right-menu', function (irm) {
+        var ian = irm.getElementsByClassName('im-aside-notice');
+        var ipd = document.getElementsByClassName('im-page--dialogs')[0];
+        var id = document.getElementById('im_dialogs');
+        if (ian.length > 0)
+            for (var i = 0; i < ian.length; i++)
+                ipd.insertBefore(ian[i], id)
+        var igodn = document.getElementById('im-group-online-disabled-notice');
+        if (igodn)
+            ipd.insertBefore(igodn, id)
+    })
 }
 
 function updating(path) {
