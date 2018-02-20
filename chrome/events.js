@@ -1,14 +1,16 @@
 function listener(tabId, info, tab) {
-    if (info.status = 'complete' && info.url) {
+    if (info.status === isFirefox ? 'complete' : 'loading' && info.url) {
         var url = document.createElement('a');
         url.href = info.url;
-        var path = url.pathname.slice(1);
-        var Styles = [];
-        styles.forEach(function (style) {
-            var apply = path.startsWith(style.match);
-            Styles.push({css: style.css, apply: apply})
-        });
-        browser.tabs.sendMessage(tabId, {action: 'updating', css: Styles, path: path}, null)
+        if (url.hostname === 'vk.com' || url.hostname.endsWith('.vk.com')) {
+            var path = url.pathname.slice(1);
+            var Styles = [];
+            styles.forEach(function (style) {
+                var apply = path.startsWith(style.match);
+                Styles.push({css: style.css, apply: apply})
+            });
+            browser.tabs.sendMessage(tabId, {action: 'updating', css: Styles, path: path}, null)
+        }
     }
 }
 

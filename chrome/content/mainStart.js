@@ -2,7 +2,7 @@ var lang, emoji;
 
 var injectStart = document.createElement('script');
 injectStart.type = 'text/javascript';
-injectStart.src = isWebExt ? browser.extension.getURL('content/injectStart.js') : options.inject;
+injectStart.src = isWebExt ? browser.runtime.getURL('content/injectStart.js') : options.inject;
 
 var injectOptions = document.createElement('script');
 injectOptions.type = 'text/javascript';
@@ -87,7 +87,7 @@ window.addEventListener('message', function (event) {
 });
 
 function insertCSS(style) {
-    var css = browser.extension.getURL('content/' + style + '.css');
+    var css = browser.runtime.getURL('content/' + style + '.css');
     if (!document.getElementById('oldvk-style-' + style)) {
         var link = document.createElement('link');
         link.rel = 'stylesheet';
@@ -182,11 +182,6 @@ var LocalizedContent = {
         document.querySelector('#l_ap .left_label').textContent = i18n.apps[lang];
         document.querySelector('#l_aud .left_label').textContent = i18n.audios[lang];
         document.querySelector('#l_vid .left_label').textContent = i18n.videos[lang];
-        var apm = document.querySelector('#l_apm > .left_row');
-        apm.removeAttribute('onclick');
-        apm.addEventListener('click', function (e) {
-            e.stopImmediatePropagation();
-        });
         LocalizedContent.updateNotify()
     },
     updateNotify: function () {
@@ -334,7 +329,7 @@ function initArrives() {
             if (avatars.length < 3) {
                 for (i = avatars.length; i--;) {
                     avatars[i].className = 'oldvk-chat-avatar oldvk-chat-avatar-2';
-                    insertAfter(chat, avatars[i].cloneNode(false));
+                    insertAfter(chat, avatars[i].cloneNode(false))
                 }
             } else {
                 var wrap = document.createElement('div');
@@ -348,7 +343,7 @@ function initArrives() {
             var iphm = document.getElementsByClassName('im-page--header-more');
             var ipchi = document.getElementsByClassName('im-page--chat-header-in');
             if (iphm.length > 0)
-                document.getElementsByClassName('im-page--chat-header')[0].insertBefore(iphm[0], ipchi[0]);
+                document.getElementsByClassName('im-page--chat-header')[0].insertBefore(iphm[0], ipchi[0])
         });
 
         if (!options.optionIm) {
