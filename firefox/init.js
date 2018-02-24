@@ -2,10 +2,10 @@ const {ToggleButton} = require('sdk/ui/button/toggle');
 const {PageMod} = require('sdk/page-mod');
 var prefs = require('sdk/simple-prefs').prefs;
 var opts = require('sdk/simple-storage').storage;
-const {Panel} = require("sdk/panel");
-var _ = require("sdk/l10n").get;
-const Prefs = require("sdk/preferences/service");
-const {open} = require('sdk/preferences/utils');
+const {Panel} = require('sdk/panel');
+var _ = require('sdk/l10n').get;
+const Prefs = require('sdk/preferences/service');
+const {getMostRecentBrowserWindow} = require('sdk/window/utils');
 var self = require('sdk/self');
 
 if (Prefs.has('dom.promise.enabled'))
@@ -105,5 +105,5 @@ if (prefs['enabled']) {
 }
 
 panel.port.on('openPrefs', function () {
-    open({id: self.id});
+    getMostRecentBrowserWindow().BrowserOpenAddonsMgr('addons://detail/' + self.id + '/preferences');
 });
