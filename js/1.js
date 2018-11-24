@@ -27,6 +27,7 @@ window.addEventListener('DOMContentLoaded',function(){
   var a1 = document.getElementById('firefox-webext-link');
   var a2 = document.getElementById('firefox-old-link');
   var a3 = document.getElementById('firefox-link');
+  var a4 = document.getElementById('palemoon-link');
   var xhr = new XMLHttpRequest();
   var xhr2 = new XMLHttpRequest();
   var xhr3 = new XMLHttpRequest();
@@ -52,9 +53,12 @@ window.addEventListener('DOMContentLoaded',function(){
   xhr3.onload = function() {
     var rdf = new DOMParser();
     var upd = rdf.parseFromString(xhr3.responseText,"text/xml");
-    a3.title = 'Версия ' + upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','version')[0].textContent;
+    a3.title = 'Версия (больше не обновляется)' + upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','version')[0].textContent;
     a3.href = upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','updateLink')[0].textContent;
     a3.setAttribute('hash',upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','updateHash')[0].textContent);
+    a4.title = 'Версия ' + upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','version')[1].textContent;
+    a4.href = upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','updateLink')[1].textContent;
+    a4.setAttribute('hash',upd.getElementsByTagNameNS('http://www.mozilla.org/2004/em-rdf#','updateHash')[1].textContent);
   }
   xhr3.open('GET', 'update.rdf', true);
   xhr3.send();
