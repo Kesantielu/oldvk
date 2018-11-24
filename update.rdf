@@ -31,12 +31,14 @@
                                 <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.58.3-an+fx+sm.xpi</em:updateLink>
                             </Description>
                         </em:targetApplication>
+                        <em:version>0.59.0</em:version>
                         <em:targetApplication>
                             <Description>
                                 <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
                                 <em:minVersion>27.1.0b1</em:minVersion>
                                 <em:maxVersion>*</em:maxVersion>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.58.3-an+fx+sm.xpi</em:updateLink>
+                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.59.0-u.xpi</em:updateLink>
+                                <em:updateHash>sha256:3720c6feb1daa3f94e54c51868ac54d1da7f4c7e777ce1b11ef0d384b8431f76</em:updateHash>
                             </Description>
                         </em:targetApplication>
                     </Description>
