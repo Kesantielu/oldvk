@@ -31,7 +31,11 @@
                                 <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.58.3-an+fx+sm.xpi</em:updateLink>
                             </Description>
                         </em:targetApplication>
-                        <em:version>0.59.0</em:version>
+                    </Description>
+                </li>
+                <li>
+                    <Description>
+                        <em:version>0.59.0</em:version>                        
                         <em:targetApplication>
                             <Description>
                                 <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
