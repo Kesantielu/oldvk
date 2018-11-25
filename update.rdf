@@ -18,15 +18,6 @@
                         </em:targetApplication>
                         <em:targetApplication>
                             <Description>
-                                <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-                                <em:minVersion>48.0</em:minVersion>
-                                <em:maxVersion>56.*</em:maxVersion>
-                                <em:strictCompatibility>true</em:strictCompatibility>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox-webext/oldvk-0.59.0-an+fx.xpi</em:updateLink>
-                            </Description>
-                        </em:targetApplication>
-                        <em:targetApplication>
-                            <Description>
                                 <em:id>{aa3c5121-dab2-40e2-81ca-7ea25febc110}</em:id>
                                 <em:minVersion>38.0</em:minVersion>
                                 <em:maxVersion>47.*</em:maxVersion>
@@ -65,6 +56,31 @@
                                 <em:strictCompatibility>true</em:strictCompatibility>
                                 <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-0.58.3-an+fx+sm.xpi</em:updateLink>
                             </Description>
+                        </em:targetApplication>
+                    </Description>
+                </li>
+                <li>
+                    <Description>
+                        <em:version>0.57.2</em:version>
+                        <em:targetApplication>
+                          <Description>
+                            <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+                            <em:minVersion>28.0</em:minVersion>
+                            <em:maxVersion>37.*</em:maxVersion>
+                            <em:strictCompatibility>true</em:strictCompatibility>
+                            <em:updateLink>https://kesantielu.github.io/oldvk/firefox-old/oldvk-0.57.2.xpi</em:updateLink>
+                            <em:updateHash>sha256:e28f5992f0bb724e4ae82cd399790732f896f2258b032db0c39e23e290d980fa</em:updateHash>
+                          </Description>
+                        </em:targetApplication>
+                        <em:targetApplication>
+                          <Description>
+                            <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
+                            <em:minVersion>25.0</em:minVersion>
+                            <em:maxVersion>26.*</em:maxVersion>
+                            <em:strictCompatibility>true</em:strictCompatibility>
+                            <em:updateLink>https://kesantielu.github.io/oldvk/firefox-old/oldvk-0.57.2.xpi</em:updateLink>
+                            <em:updateHash>sha256:e28f5992f0bb724e4ae82cd399790732f896f2258b032db0c39e23e290d980fa</em:updateHash>
+                          </Description>
                         </em:targetApplication>
                     </Description>
                 </li>
