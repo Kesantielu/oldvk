@@ -111,7 +111,6 @@ setFavIcon = function () {
     if (arguments[0].search(/fav_im\.ico/i) !== -1)
         arguments[0] = fav_im;
     sfi.apply(this, arguments);
-    console.log(icoNode.href);
     icoNode.href = icoNode.href.replace(/\?\d+$/, '')
 };
 

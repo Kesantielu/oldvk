@@ -217,7 +217,7 @@ watchVar('Photoview', function (Photoview) {
 
                     if (cur.pvBottomLike.firstChild)
                         cur.pvBottomLike.removeChild(cur.pvBottomLike.firstChild);
-                    cur.pvBottomLike.appendChild(ge('pv_like'))
+                    cur.pvBottomLike.appendChild(document.querySelector('.pv_narrow_column_wrap .like_wrap'))
                 }
 
                 if (localStorage.getItem('oldvk_pvLarge') === '1') {

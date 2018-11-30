@@ -4,10 +4,10 @@ function listener(tabId, info, tab) {
         url.href = info.url;
         if (url.hostname === 'vk.com' || url.hostname.endsWith('.vk.com')) {
             var path = url.pathname.slice(1);
-            var Styles = [];
+            var Styles = {};
             styles.forEach(function (style) {
                 var apply = path.startsWith(style.match);
-                Styles.push({css: style.css, apply: apply})
+                Styles[style.css] = Styles[style.css] || apply
             });
             browser.tabs.sendMessage(tabId, {action: 'updating', css: Styles, path: path}, null)
         }

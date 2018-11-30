@@ -279,40 +279,55 @@ head.oldvk-market ~ body .search_filters_wrap:before,
     content: "Мен бар суреттер"
 }
 
-/* Мне нравится
- */
-
-:lang(ru) .wall_module .post_like_link,
-:lang(uk) .wall_module .post_like_link,
-:lang(be) .wall_module .post_like_link,
-:lang(be-tarask) .wall_module .post_like_link {
-    text-transform: lowercase;
-}
-
-:lang(ru) .wall_module .post_like_link:before,
-:lang(uk) .wall_module .post_like_link:before,
-:lang(be) .wall_module .post_like_link:before,
-:lang(be-tarask) .wall_module .post_like_link:before,
-:lang(ru-petr1708) .wall_module .post_like_link,
-:lang(ru-ussr) .wall_module .post_like_link {
-    text-transform: none;
-}
-
-:lang(ru) .wall_module .post_like_link:before,
-:lang(be) .wall_module .post_like_link:before,
-:lang(be-tarask) .wall_module .post_like_link:before {
-    content: "Мне ";
-}
-
-:lang(uk) .wall_module .post_like_link:before {
-    content: "Мені ";
-}
-
-:lang(ru-petr1708) .wall_module .post_like_link:before,
-:lang(ru-ussr) .wall_module .post_like_link:before{
-    content: none;
-}
 
 :lang(en-us) .top_home_link .top_home_logo {
     background: url('data:image/gif;base64,R0lGODlhkQAqAOYRAExtkUxukk1ukk1vk05vk05wk05wlE9wlE9xlVBxlWeEpMnT3u/y9fr7/P////X3+d7l7IWet1ByllFzlvf4+srU34qhuvL09+Lo7rrI1vT2+Pz9/c/X4X+ZtHKKpmaEo/7+/uXp7lFyln+Vrq++zpepvVFzl9vh6P7+/3KNq+nt8V9+n/b3+eLn7FBwk1Jzl4GXr9/k6+fr8LLB0P39/lJ0mE9wk93j6eXq7/v8/aSzxezv81N1mdff59HZ4s3X4VZ4m15/olZ3m5mtw1x5mm6IpczW4fj5+3yTrVR2mlh2mOzw81V3m1R2m3uSrb7L2VV3nFZ4nFBxlM3W4Fd2l9ng52B8nFVzlp2vwubq74uiu1Z4nZOmvO3w9IqguWJ/oOru8ld5nVFwlIygt8PO2vn6/L7K11h6nUxskEtrj0pqjk5ukld5nlh6nmKCpVh6n3SRr3KOrqS3yll7n5+yyOTp71x9oVp8n1l7oJmuxVl8oPj6+1p8oJ2xxqK2ynWSsCwAAAAAkQAqAAAH/oAAgoOEhYaHiImKi4yNjo+QiQGTlJWWl5iZmpucnZ6foKGaAqSlpqeoqaqrrK2ur7CxsrO0tba3uLmwA7y9vr/AwcLDxMXGx8jJysMEzc7P0NHS09TV1tfY2drb1AXe3+Dh4uPk5ebn6Onq6+zlBu/w8fLz9PX29/j5+vv8/fYHAAMKHEiwoMGDCBMqXMiwocODCCJKnEixosWLGDNq3Mixo8ePIEOKHEmypMmOCVKqXMmy5UoFCxg0cODgAYQILnPq3Mmzp8+fQHtKGEq0KNEJFGgqrTCBqIULSpViMJpBw4aoU41q3cq1q9evYMOKHSuBQ1SaHYgC8HDWgYai/h9AtA1Btq7du3i5itjLt2/fEW0r9CWQNCqDviTaOijht7Hjx5AjS55MuTJfE5gza9Zc4MRZFCk0qzirIvMKFm1buNjMurXr17Bjy55NO/OL27hz64bRlkPuGGdl4J7RloYH3ciTK1/OvLnz59Bz15hOvbp1GzfaWqCO42yM6SlytNWBwLr58+jTq1/Pvr3799YBn92xYjpUrDV49GjrgwD8/wAGKKB6PBRo4IEI8oCAD239AEQQckXFghBDtMUAEQlmqOGGHHbo4YcghvhhETS01YMRiv1wRFtI5CfiizDGKCOHSdRo44041vgCcYr1yJ8EOQYp5JBEFmnkkUgm/pmkEkv46CRNNzCh5JRUVmmlkU1kqeWWXGrJgxMoPOnkE1B0aeaZaKap5ppstqkmE3DGKeeccpqQmJg+PhEFnXz26eefgAYq6KCEEirFFGLKUFhbTwBR6KOQRiqpn1FUaumlmGZKRRVOngCAFSH0SEKmpJZq6qmopqrqqqyyysQVC/iIRRRJWJFFj1q0quuuvPZa6hbABivssMRuAQUBXHShmBfANvHFrW2BUey01FZr7bXYZpttGNx26+234Hb7ghhjkKFCGTThoEC3TBBhxopKbTDFGeHWa++9+Oar77789htuFC8QgEYaaqiBBhPeRkEAwQUXvIa/EEcs8cTd6LJh8cUYZ6zxxhx37PHHIIcs8sgkd9zGySinrPLKLLfs8sswxyzzzDTX7LIbb+Ss88489+zzz0AHLfTQRBdt9NE+BwEH0kw37fTTUEetcxxyzGH11VhnrfXWXHft9ddghy322GRvTUcddpSt9tpst+3223PcAYEDdOBh991456333nz37fffgAcu+OCE550HTWVEoMfijDfu+OOQRy755JRXbvnlmGfOeAd7KNUAHXbwIfropJdu+umop6766qy37vrrr9vRB7pn1eEHHEHArvvuvPfu++5u/OEHBngWb/zxyCev/PLIBwIAOw==')
+}
+
+/* Мне нравится
+ */
+
+.post_info > .like_wrap .like_btn.like:before {
+    font-weight: normal;
+    padding-right: 4px;
+    font-size: 10px;
+    color: #829baf;
+    transition: color 100ms ease-in-out;
+    line-height: 16px;
+}
+
+.post_info > .like_wrap .like_btns:hover .like_btn.like:before {
+    color: #2f5879;
+}
+
+:lang(ru) .post_info > .like_wrap .like_btn.like:before {
+    content: "Мне нравится"
+}
+
+:lang(uk) .post_info > .like_wrap .like_btn.like:before {
+    content: "Мені подобається"
+}
+
+:lang(en-us) .post_info > .like_wrap .like_btn.like:before {
+    content: "Like"
+}
+
+:lang(be) .post_info > .like_wrap .like_btn.like:before {
+    content: "Мне падабаецца"
+}
+
+:lang(kk) .post_info > .like_wrap .like_btn.like:before {
+    content: "Ұнатамын"
+}
+
+:lang(be-tarask) .post_info > .like_wrap .like_btn.like:before {
+    content: "Мне падабаецца"
+}
+
+:lang(ru-petr1708) .post_info > .like_wrap .like_btn.like:before {
+    content: "Мнѣ по нраву"
+}
+
+:lang(ru-ussr) .post_info > .like_wrap .like_btn.like:before {
+    content: "Одобряю"
 }

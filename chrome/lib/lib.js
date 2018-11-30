@@ -325,10 +325,11 @@ var Zoom = {
 };
 
 const styles = [
-    {css: 'audios', match: 'audios'},
+    {css: 'audios', match: 'audio'},
     {css: 'friends', match: 'friends'},
     {css: 'market', match: 'market'},
-    {css: 'support', match: 'support'}
+    {css: 'support', match: 'support'},
+    {css: 'audios', match: 'artist'}
 ];
 
 const langMap = {0: 'ru', 1: 'uk', 2: 'be-tarask', 3: 'en-us', 97: 'kk', 114: 'be', 100: 'ru-petr1708', 777: 'ru-ussr'};

@@ -98,21 +98,21 @@ function insertCSS(style) {
     }
 }
 
-function updateCSS(styles) {
-    styles.forEach(function (style) {
-        if (style.apply) document.head.classList.add('oldvk-' + style.css);
-        else document.head.classList.remove('oldvk-' + style.css);
-    })
+function updateCSS(Styles) {
+    for (var style in Styles) {
+        if (Styles.hasOwnProperty(style) && Styles[style]) document.head.classList.add('oldvk-' + style);
+        else document.head.classList.remove('oldvk-' + style);
+    }
 }
 
 function checkCSS(styles) {
-    var Styles = [];
+    var Styles = {};
     var url = document.createElement('a');
     url.href = window.location.href;
     var path = url.pathname.slice(1);
     styles.forEach(function (style) {
         var apply = path.startsWith(style.match);
-        Styles.push({css: style.css, apply: apply})
+        Styles[style.css] = Styles[style.css] || apply
     });
     updateCSS(Styles)
 }
@@ -516,11 +516,11 @@ function initArrives() {
         var id = document.getElementById('im_dialogs');
         if (ian.length > 0)
             for (var i = 0; i < ian.length; i++)
-                ipd.insertBefore(ian[i], id)
+                ipd.insertBefore(ian[i], id);
         var igodn = document.getElementById('im-group-online-disabled-notice');
         if (igodn)
             ipd.insertBefore(igodn, id)
-    })
+    });
 }
 
 function updating(path) {
