@@ -85,7 +85,7 @@ var options = {
                     opts[opt] = o[opt]
         });
     },
-    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails\.php|ads_rotate\.php|share\.php|adscreate$|adscreate\?|wkview\.php|bugs$|bugs\?|q_frame\.php|.*upload\.php|login\.php|about|jobs|.*\.svg|widget_.*\.php).*$/
+    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails\.php|ads_rotate\.php|share\.php|like\.php|adscreate$|adscreate\?|wkview\.php|bugs$|bugs\?|q_frame\.php|.*upload\.php|login\.php|about|jobs|.*\.svg|widget_.*\.php|data_protection\/).*$/
 };
 
 var options1 = {
@@ -96,7 +96,7 @@ var options1 = {
     onAttach: function (page) {
         page.port.emit('options', Object.assign(prefs, opts));
     },
-    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails\.php|ads_rotate\.php|share\.php|adscreate$|adscreate\?|wkview\.php|bugs$|bugs\?|q_frame\.php|.*upload\.php|login\.php|about|jobs|.*\.svg|widget_.*\.php).*$/
+    exclude: /^.*vk\.com\/(notifier\.php|al_.*\.php|dev\/|apps\?act=manage|upload_fails\.php|ads_rotate\.php|share\.php|like\.php|adscreate$|adscreate\?|wkview\.php|bugs$|bugs\?|q_frame\.php|.*upload\.php|login\.php|about|jobs|.*\.svg|widget_.*\.php|data_protection\/).*$/
 };
 
 if (prefs['enabled']) {
