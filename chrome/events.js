@@ -17,7 +17,20 @@ function listener(tabId, info, tab) {
 browser.tabs.onUpdated.addListener(listener);
 
 if (browser.runtime.onInstalled) {
-    browser.runtime.onInstalled.addListener(function () {
-        browser.storage.local.set({enabled: true})
+    browser.runtime.onInstalled.addListener(function (details) {
+        if (details.reason === 'update') {
+            var uiLang = typeof chrome.i18n.getUILanguage !== 'undefined' ? chrome.i18n.getUILanguage() : "en";
+            var notes = new XMLHttpRequest();
+            notes.responseType = 'json';
+            notes.onload = function () {
+                browser.notifications.create('update-note', notes.response[uiLang], function () {
+                })
+            };
+            notes.open('GET', browser.runtime.getURL('release.json'));
+            notes.send();
+        }
+        if (details.reason === 'install') {
+            browser.storage.local.set({enabled: true})
+        }
     });
 }

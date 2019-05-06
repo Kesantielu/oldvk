@@ -58,5 +58,9 @@
   "option_im": {
     "message": "Show images on buttons instead of text in messages",
     "description": ""
+  },
+  "option_date": {
+    "message": "Show post date on top",
+    "description": ""
   }
 }

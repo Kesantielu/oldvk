@@ -7,15 +7,22 @@ injectStart.src = isWebExt ? browser.runtime.getURL('content/injectStart.js') : 
 var injectOptions = document.createElement('script');
 injectOptions.type = 'text/javascript';
 
+// API: oldvkAPI.registerOption
+
+chrome.runtime.sendMessage({greeting: "hello"});
+
 function init() {
+
     injectOptions.text = 'var oldvk={};oldvk.options=' + JSON.stringify(options) + ';' + (!isWebExt ? 'oldvk.fox=true;' : '');
     document.head.appendChild(injectOptions);
     document.head.appendChild(injectStart);
-    headOptions();
+    // API: oldvkAPI.injectStart
+    headOptions(); // API: oldvkAPI.headOption
     checkCSS(styles);
     if (isWebExt) {
         insertCSS('local');
         insertCSS('main');
+        // API: oldvkAPI.insertCSS
         if (isFirefox)
             insertCSS('fox');
         browser.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -26,8 +33,6 @@ function init() {
         });
     }
     initArrives();
-    if (isFirefox)
-        initResize()
 }
 
 
@@ -119,7 +124,9 @@ function checkCSS(styles) {
 
 function headOptions() {
     if (options.optionAudio)
-        document.head.classList.add('oldvk-option-audio')
+        document.head.classList.add('oldvk-option-audio');
+    if (options.optionDate)
+        document.head.classList.add('oldvk-option-date');
 }
 
 var LocalizedContent = {
@@ -182,6 +189,7 @@ var LocalizedContent = {
         document.querySelector('#l_ap .left_label').textContent = i18n.apps[lang];
         document.querySelector('#l_aud .left_label').textContent = i18n.audios[lang];
         document.querySelector('#l_vid .left_label').textContent = i18n.videos[lang];
+        document.querySelector('#l_vid .left_row').setAttribute('href', '/videos');
         LocalizedContent.updateNotify()
     },
     updateNotify: function () {
@@ -203,6 +211,8 @@ var LocalizedContent = {
 };
 
 function initArrives() {
+
+    // API: oldvkAPI.registerArrive
 
     // KPP.add('#top_nav', function (element) {
 
@@ -430,6 +440,7 @@ function initArrives() {
                 counters.appendChild(tag_c)
             }
             if (sub) {
+                console.log(sub);
                 var sub_c = document.createElement('a');
                 sub_c.className = 'oldvk-counter';
                 sub_c.id = 'oldvk-counter-sub';
@@ -437,7 +448,8 @@ function initArrives() {
                 sub_cs.textContent = sub.firstElementChild.textContent;
                 sub_cs.className = 'fl_r';
                 sub_c.setAttribute('onclick', sub.getAttribute('onclick'));
-                sub_c.setAttribute('href', sub.getAttribute('href'));
+                var sub_a = document.querySelector('.page_counter[href$="section=all"]');
+                sub_c.setAttribute('href', sub_a.getAttribute('href').replace('all', 'subscribers'));
                 sub_c.appendChild(sub_cs);
                 counters.appendChild(sub_c)
             }
@@ -445,9 +457,12 @@ function initArrives() {
         }
     });
 
-    KPP.add('#profile_wall', function (element) {
+    KPP.add('#profile_wall, #public_wall, #group_wall', function (element) {
         var spb = document.getElementById('submit_post_box');
         if (spb) insertAfter(element.firstElementChild, spb);
+    });
+
+    KPP.add('#profile .page_actions_inner', function (element) {
         var pai = document.getElementsByClassName('page_actions_inner');
         if (pai.length > 0) {
             document.getElementsByClassName('page_actions_cont')[0].style.display = 'none';
@@ -460,7 +475,6 @@ function initArrives() {
                 pai[0].insertBefore(psgb, pai[0].firstChild)
             }
         }
-
     });
 
     KPP.add('.people_cell_name a', function (element) {
@@ -521,6 +535,68 @@ function initArrives() {
         if (igodn)
             ipd.insertBefore(igodn, id)
     });
+
+    // Перенос даты поста вниз
+
+    if (!options.optionDate)
+        KPP.add('.post', function (post) {
+            var pd = post.getElementsByClassName('post_date')[0];
+            var wt = post.getElementsByClassName('wall_text')[0];
+            var pfl = post.getElementsByClassName('post_full_like')[0];
+            var lw = post.getElementsByClassName('like_wrap')[0];
+            if (pd && pfl) {
+                pfl.insertBefore(pd, pfl.firstElementChild);
+                pd.style.outline = '1px #F55 dashed';
+            } else if (pd && wt) {
+                if (lw)
+                    lw.insertBefore(pd, lw.firstChild);
+                else
+                    wt.parentElement.appendChild(pd)
+            }
+        });
+
+    // Обработка изображений для расширения стены
+
+    KPP.add('.wall_posts .page_post_sized_thumbs:not(.oldvk-thumb-narrow), .wall_posts .page_album_thumb_wrap:not(.oldvk-thumb-narrow)', function (thumb) {
+        var top = thumb.getBoundingClientRect().top + document.documentElement.scrollTop;
+        if (top < topStop) {
+            var factor = thumb.matches('.post_fixed .page_post_sized_thumbs, .post_fixed .page_album_thumb_wrap') ? 0.77 : 0.66;
+            var narrow = thumb.cloneNode(true);
+            narrow.classList.add('oldvk-thumb-narrow');
+            insertAfter(thumb, narrow);
+            resizeNarrow(narrow, factor + 0.01);
+            thumb.classList.add('oldvk-thumb-wide');
+
+            if (narrow.childElementCount > 0) {
+                [].slice.call(narrow.children).forEach(function (child) {
+                    if (child.tagName === 'A' || child.classList.contains('page_doc_photo'))
+                        resizeNarrow(child, factor)
+                })
+            }
+        }
+    });
+
+    KPP.add('.wall_posts .page_doc_photo_href:not(.oldvk-thumb-narrow)', function (gif) {
+        var top = gif.getBoundingClientRect().top + document.documentElement.scrollTop;
+        if (top < topStop) {
+            var factor = gif.matches('.post_fixed .page_doc_photo_href') ? 0.77 : 0.66;
+            var narrow = gif.cloneNode(true);
+            narrow.classList.add('oldvk-thumb-narrow');
+            gif.parentElement.insertBefore(narrow, gif);
+            resizeNarrow(narrow.getElementsByClassName('page_doc_photo')[0], factor);
+            resizeNarrow(narrow, factor);
+            gif.classList.add('oldvk-thumb-wide');
+        }
+    });
+}
+
+function resizeNarrow(element, factor) {
+    element.style.width = Math.floor(element.clientWidth * factor) + 'px';
+    element.style.height = Math.floor(element.clientHeight * factor) + 'px';
+    if (element.classList.contains('page_doc_photo_href')) {
+        element.dataset.width = Math.floor(element.dataset.width * factor).toString();
+        element.dataset.height = Math.floor(element.dataset.height * factor).toString()
+    }
 }
 
 function updating(path) {

@@ -6,10 +6,14 @@ if (!window.browser)
     window.browser = window.msBrowser || window.chrome;
 
 var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+var labels = document.querySelectorAll('label.option');
 var options = {};
 
-document.getElementById('options').addEventListener('submit', function (e) {
-    e.preventDefault();
+Array.prototype.forEach.call(document.querySelectorAll('[data-l10n-id]'), function (item) {
+    item.textContent = browser.i18n.getMessage(item.dataset.l10nId)
+});
+
+function submitOptions() {
     [].map.call(checkboxes, function (item) {
         options['option' + flUpperCase(item.id)] = item.checked
     });
@@ -21,6 +25,10 @@ document.getElementById('options').addEventListener('submit', function (e) {
         status.textContent = '';
         status.classList.remove('hide')
     }, 1500)
+}
+
+[].map.call(checkboxes, function (checkbox) {
+    checkbox.addEventListener('change', submitOptions)
 });
 
 browser.storage.local.get(function (items) {
@@ -28,10 +36,4 @@ browser.storage.local.get(function (items) {
     [].map.call(checkboxes, function (item) {
         item.checked = options['option' + flUpperCase(item.id)]
     });
-});
-
-document.getElementById('save').textContent = browser.i18n.getMessage('save');
-var labels = document.querySelectorAll('label.option');
-[].map.call(labels, function (label) {
-    label.textContent = browser.i18n.getMessage('option_' + label.getAttribute('for'))
 });

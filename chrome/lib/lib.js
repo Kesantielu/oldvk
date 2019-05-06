@@ -10,7 +10,6 @@ var options = isWebExt ? {optionCover: false, optionViewer: false} : self.option
 if (isFirefox && !isWebExt) {
     self.port.on('options', function (o) {
         Object.assign(options, o);
-        console.log(options)
     })
 }
 
@@ -83,6 +82,7 @@ if (!Object.assign) {
         }
     });
 }
+
 
 function wait(condition, callback) {
     if (typeof condition() !== "undefined") {
@@ -185,146 +185,40 @@ function decodeHtml(html) {
     return txt.value;
 }
 
-var topStop = 3000;
+function isValidJson(json) {
+    try {
+        JSON.parse(json);
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
 
-function checkWide() {
-    if (!document.getElementById('narrow_column')) return;
-    if (wide !== (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0)) {
-        wide = !wide;
-        var thumbs;
-        if (wide) {
-            document.getElementById('wide_column').classList.add('wide');
-            document.getElementsByClassName('narrow_column_wrap')[0].style.position = 'absolute';
+function isInArray(value, array) {
+    return array.indexOf(value) > -1;
+}
 
-            if (isFirefox) {
-                thumbs = [].slice.call(document.getElementsByClassName('oldvk-resized'));
-                thumbs.forEach(function (element) {
-                    Zoom.plus(element);
-                    Array.prototype.forEach.call(element.childNodes, function (node) {
-                        Zoom.plus(node)
-                    });
-                    element.classList.remove('oldvk-resized')
-                });
-                thumbs = [].slice.call(document.getElementsByClassName('oldvk-resized-gif'));
-                thumbs.forEach(function (element) {
-                    Zoom.plus_d(element.getElementsByClassName('page_doc_photo_href')[0]);
-                    Zoom.plus(element.getElementsByClassName('page_doc_photo')[0]);
-                    Zoom.plus(element.getElementsByClassName('page_doc_photo_href')[0]);
-                    element.classList.remove('oldvk-resized-gif');
-                })
-            }
-
-        } else {
-            document.getElementById('wide_column').classList.remove('wide');
-            document.getElementsByClassName('narrow_column_wrap')[0].style.position = 'relative';
-
-            if (isFirefox) {
-                thumbs = [].slice.call(document.getElementsByClassName('page_post_sized_thumbs'));
-                thumbs.forEach(function (element) {
-                    if ((element.getBoundingClientRect().top + document.body.scrollTop) <= topStop) {
-                        Zoom.minus(element);
-                        [].forEach.call(element.childNodes, function (node) {
-                            Zoom.minus(node)
-                        });
-                        element.classList.add('oldvk-resized')
-                    }
-                });
-                thumbs = Array.prototype.slice.call(document.getElementsByClassName('page_gif_large'));
-                thumbs.forEach(function (element) {
-                    if ((element.getBoundingClientRect().top + document.body.scrollTop) <= topStop) {
-                        Zoom.minus_d(element.getElementsByClassName('page_doc_photo_href')[0]);
-                        Zoom.minus(element.getElementsByClassName('page_doc_photo')[0]);
-                        Zoom.minus(element.getElementsByClassName('page_doc_photo_href')[0]);
-                        element.classList.add('oldvk-resized-gif');
-                    }
-                })
-            }
+if (!Object.isEmpty) {
+    Object.defineProperty(Object, 'isEmpty', {
+        configurable: true,
+        value: function (obj) {
+            if (obj === undefined || obj === null || obj.constructor !== Object) {
+                throw new TypeError('Is not object');
+            } else
+                return Object.keys(obj).length === 0
         }
-    }
-}
-
-function initWide() {
-    if (!document.getElementById('content')) return;
-    var contentID = document.getElementById('content').firstElementChild.id;
-    var wideApplicable = (contentID === "profile" || contentID === "group" || contentID === "public");
-    wide = (document.getElementById('narrow_column') && wideApplicable) ? (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0) : true;
-    if (wide && wideApplicable) {
-        console.timeEnd('B');
-        document.getElementById('wide_column').classList.add('wide');
-        document.getElementsByClassName('narrow_column_wrap')[0].style.position = 'absolute';
-    }
-    if (wideApplicable) {
-        window.addEventListener('scroll', checkWide);
-        window.addEventListener('resize', checkWide);
-        window.addEventListener('mousedown', checkWide);
-        window.addEventListener('load', checkWide)
-    } else {
-        window.removeEventListener('scroll', checkWide);
-        window.removeEventListener('resize', checkWide);
-        window.removeEventListener('mousedown', checkWide);
-        window.removeEventListener('load', checkWide)
-    }
-}
-
-function initResize() {
-
-    KPP.add('.page_post_sized_thumbs', function (e) {
-        var element = e;
-        resizing(element, function () {
-            Zoom.minus(element);
-            Array.prototype.forEach.call(element.childNodes, function (node) {
-                Zoom.minus(node)
-            });
-            element.classList.add('oldvk-resized');
-        })
     });
-
-    KPP.add('.page_gif_large', function (e) {
-        var element = e;
-        resizing(element, function () {
-            Zoom.minus_d(element.getElementsByClassName('page_doc_photo_href')[0]);
-            Zoom.minus(element.getElementsByClassName('page_doc_photo')[0]);
-            Zoom.minus(element.getElementsByClassName('page_doc_photo_href')[0]);
-            element.classList.add('oldvk-resized-gif');
-        });
-    })
-
 }
 
-function resizing(element, f) {
-    wide = null;
-    var contentID = document.getElementById('content').firstElementChild.id;
-    var wideApplicable = (contentID === "profile" || contentID === "group" || contentID === "public");
-    if (!wideApplicable || element.classList.contains('oldvk-resized')) return;
-    var nc = document.getElementById('narrow_column');
-    if (wide === null) wide = (nc && wideApplicable) ? (nc.getBoundingClientRect().bottom < 0) : true;
-    if (!wide && wideApplicable && ((element.getBoundingClientRect().top + document.body.scrollTop) <= topStop)) {
-        f();
-    }
+var topStop = 4000;
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var Zoom = {
-    factor: 0.66,
-    factorFixed: 0.77,
-    plus: function (element) {
-        element.style.width = parseFloat(element.style.width) / Zoom.factor + 'px';
-        element.style.height = parseFloat(element.style.height) / Zoom.factor + 'px';
-    },
-    minus: function (element) {
-        element.style.width = parseFloat(element.style.width) * Zoom.factor + 'px';
-        element.style.height = parseFloat(element.style.height) * Zoom.factor + 'px';
-    },
-    plus_d: function (element) {
-        element.dataset.width = element.dataset.width / Zoom.factor;
-        element.dataset.height = element.dataset.height / Zoom.factor
-    },
-    minus_d: function (element) {
-        element.dataset.width = element.dataset.width * Zoom.factor;
-        element.dataset.height = element.dataset.height * Zoom.factor
-    }
-};
-
-const styles = [
+var styles = [
     {css: 'audios', match: 'audio'},
     {css: 'friends', match: 'friends'},
     {css: 'market', match: 'market'},
@@ -332,9 +226,9 @@ const styles = [
     {css: 'audios', match: 'artist'}
 ];
 
-const langMap = {0: 'ru', 1: 'uk', 2: 'be-tarask', 3: 'en-us', 97: 'kk', 114: 'be', 100: 'ru-petr1708', 777: 'ru-ussr'};
+var langMap = {0: 'ru', 1: 'uk', 2: 'be-tarask', 3: 'en-us', 97: 'kk', 114: 'be', 100: 'ru-petr1708', 777: 'ru-ussr'};
 
-const i18n = {
+var i18n = {
     answers: {
         0: 'Ответы',
         1: 'Відповіді',

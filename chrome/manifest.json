@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
-  "version": "0.591",
+  "version": "0.600",
   "default_locale": "en",
   "author": "Kesantielu Dasefern",
   "homepage_url": "https://kesantielu.github.io/oldvk",
@@ -20,7 +20,8 @@
     "*://*.vk.com/",
     "*://vk.com/",
     "tabs",
-    "storage"
+    "storage",
+    "notifications"
   ],
   "background": {
     "scripts": [
@@ -36,6 +37,7 @@
       ],
       "js": [
         "lib/lib.js",
+        "lib/api.js",
         "content/mainStart.js"
       ],
       "run_at": "document_start",
