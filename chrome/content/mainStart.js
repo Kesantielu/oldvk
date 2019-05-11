@@ -1,3 +1,5 @@
+console.time('A1');
+
 var lang, emoji;
 
 var injectStart = document.createElement('script');
@@ -6,10 +8,6 @@ injectStart.src = isWebExt ? browser.runtime.getURL('content/injectStart.js') : 
 
 var injectOptions = document.createElement('script');
 injectOptions.type = 'text/javascript';
-
-// API: oldvkAPI.registerOption
-
-chrome.runtime.sendMessage({greeting: "hello"});
 
 function init() {
 
@@ -22,7 +20,6 @@ function init() {
     if (isWebExt) {
         insertCSS('local');
         insertCSS('main');
-        // API: oldvkAPI.insertCSS
         if (isFirefox)
             insertCSS('fox');
         browser.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -150,7 +147,7 @@ var LocalizedContent = {
             LocalizedContent.updateMenu();
         });
 
-        var top_menu = '<div class="head_nav_item fl_r"><a id="oldvk_top_exit" class="top_nav_link" href="" onclick="if (checkEvent(event) === false) { window.Notifier && Notifier.lcSend(\'logged_off\'); location.href = this.href; return cancelEvent(event); }" onmousedown="tnActive(this)"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_help" class="top_nav_link" href="/support?act=home" onclick="return TopMenu.select(this, event);"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_music" class="top_nav_link" href="" onclick="return (checkKeyboardEvent(event) ? AudioUtils.getLayer().toggle() : false);" onmouseover="AudioLayer.prepare()" onmousedown="return (checkKeyboardEvent(event) ? false : AudioUtils.getLayer().toggle(),cancelEvent(event))"><div class="top_profile_name">' + i18n.music[lang] + '</div><div id="oldvk_top_play" class="oldvk-hide" onclick="cancelEvent(event); if (getAudioPlayer().isPlaying()) {getAudioPlayer().pause(); removeClass(this,\'active\')} else {getAudioPlayer().play(); addClass(this,\'active\')}" onmousedown="cancelEvent(event);"></div></a><span id="oldvk_talp"></span></div><div class="head_nav_item fl_r"><a id="oldvk_top_apps" class="top_nav_link" href="/apps" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.games[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_communities" class="top_nav_link" href="/search?c[section]=communities" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.communities[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_peoples" class="top_nav_link" href="/search?c[section]=people" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.people[lang] + '</div></a></div>';
+        var top_menu = '<div class="head_nav_item fl_r"><a id="oldvk_top_exit" class="top_nav_link" href="" onclick="if (checkEvent(event) === false) { window.Notifier && Notifier.lcSend(\'logged_off\'); location.href = this.href; return cancelEvent(event); }" onmousedown="tnActive(this)"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_help" class="top_nav_link" href="/support?act=home" onclick="return TopMenu.select(this, event);"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_music" class="top_nav_link" href="" onclick="return (checkKeyboardEvent(event) ? AudioUtils.getLayer().toggle() : false);" onmouseover="AudioLayer.prepare()" onmousedown="return (checkKeyboardEvent(event) ? false : AudioUtils.getLayer().toggle(),cancelEvent(event))"><div class="top_profile_name">' + i18n.music[lang] + '</div><div id="oldvk_top_play" class="oldvk-hide" onclick="cancelEvent(event); if (getAudioPlayer().isPlaying()) {getAudioPlayer().pause(); removeClass(this,\'active\')} else {getAudioPlayer().play(); addClass(this,\'active\')}" onmousedown="cancelEvent(event);"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_apps" class="top_nav_link" href="/apps" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.games[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_communities" class="top_nav_link" href="/search?c[section]=communities" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.communities[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_peoples" class="top_nav_link" href="/search?c[section]=people" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.people[lang] + '</div></a></div>';
         var tmw = document.createElement('div');
         tmw.id = "oldvk_top_menu";
         tmw.innerHTML = top_menu;
@@ -166,11 +163,10 @@ var LocalizedContent = {
                 ote.href = tll.href;
             }
             if (oth && tsl) oth.firstElementChild.textContent = tsl.textContent.toLowerCase();
-            if (document.getElementById('oldvk_talp')) {
-                document.getElementById('top_audio_layer_place').remove();
-
-                document.getElementById('oldvk_talp').id = 'top_audio_layer_place';
-            }
+            var otm = document.getElementById('oldvk_top_music');
+            var talp = document.getElementById('top_audio_layer_place')
+            if (otm && talp)
+                insertAfter(otm, talp);
         })
     },
     updateMenu: function () {
@@ -440,7 +436,6 @@ function initArrives() {
                 counters.appendChild(tag_c)
             }
             if (sub) {
-                console.log(sub);
                 var sub_c = document.createElement('a');
                 sub_c.className = 'oldvk-counter';
                 sub_c.id = 'oldvk-counter-sub';
@@ -560,7 +555,7 @@ function initArrives() {
     KPP.add('.wall_posts .page_post_sized_thumbs:not(.oldvk-thumb-narrow), .wall_posts .page_album_thumb_wrap:not(.oldvk-thumb-narrow)', function (thumb) {
         var top = thumb.getBoundingClientRect().top + document.documentElement.scrollTop;
         if (top < topStop) {
-            var factor = thumb.matches('.post_fixed .page_post_sized_thumbs, .post_fixed .page_album_thumb_wrap') ? 0.77 : 0.66;
+            var factor = thumb.matches('.wall_module:not(#profile_wall) .post_fixed .page_post_sized_thumbs, .wall_module:not(#profile_wall) .post_fixed .page_album_thumb_wrap') ? 0.77 : 0.66;
             var narrow = thumb.cloneNode(true);
             narrow.classList.add('oldvk-thumb-narrow');
             insertAfter(thumb, narrow);
@@ -579,7 +574,7 @@ function initArrives() {
     KPP.add('.wall_posts .page_doc_photo_href:not(.oldvk-thumb-narrow)', function (gif) {
         var top = gif.getBoundingClientRect().top + document.documentElement.scrollTop;
         if (top < topStop) {
-            var factor = gif.matches('.post_fixed .page_doc_photo_href') ? 0.77 : 0.66;
+            var factor = gif.matches('.wall_module:not(#profile_wall) .post_fixed .page_doc_photo_href') ? 0.77 : 0.66;
             var narrow = gif.cloneNode(true);
             narrow.classList.add('oldvk-thumb-narrow');
             gif.parentElement.insertBefore(narrow, gif);
@@ -595,7 +590,8 @@ function resizeNarrow(element, factor) {
     element.style.height = Math.floor(element.clientHeight * factor) + 'px';
     if (element.classList.contains('page_doc_photo_href')) {
         element.dataset.width = Math.floor(element.dataset.width * factor).toString();
-        element.dataset.height = Math.floor(element.dataset.height * factor).toString()
+        element.dataset.height = Math.floor(element.dataset.height * factor).toString();
+        element.dataset.preview = '2'
     }
 }
 
