@@ -1,5 +1,3 @@
-console.time('A1');
-
 var lang, emoji;
 
 var injectStart = document.createElement('script');
@@ -415,8 +413,10 @@ function initArrives() {
         var name = element.getElementsByClassName('page_name')[0].textContent.split(' ');
         if (name[name.length - 1].substr(name[name.length - 1].length - 1) === ')')
             name.pop();
-        document.getElementById('title').textContent = name.shift() + ' ' + name.pop();
-        document.getElementById('header').style.display = 'block';
+        var title = document.createElement('div');
+        title.id = 'oldvk_profile_title';
+        title.textContent = name.shift() + ' ' + name.pop();
+        document.getElementById('wrap1').insertBefore(title, document.getElementById('content'));
 
         var sub = document.querySelector('.page_counter[onclick*="fans"]');
         var tag = document.querySelector('.page_counter[href^="/tag"]');

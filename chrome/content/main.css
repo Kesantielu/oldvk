@@ -8519,9 +8519,13 @@ img.feed_notif_img {
     right: -9px;
 }
 
-h1#title {
-    color: #607387;
+#oldvk_profile_title {
     font-weight: bold;
+    font-size: 11px;
+    padding: 7px 10px;
+    line-height: 140%;
+    color: #607387;
+    background: #e9edf1;
 }
 
 .oldvk-counter,
