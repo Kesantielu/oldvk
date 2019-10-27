@@ -320,7 +320,30 @@ watchVar('__leftMenu', function (__leftMenu) {
     // TODO: Покопать дальше, функция срабатывает недостаточно рано
 });
 
-function _bind(variable, func, before, after) { // TODO: Переписать функции с учетом этого
+watchVar('ap', function (ap) {
+    if (ap.top && ap.top._updateTitle) {
+        ap.top._updateTitle = function (t) {
+            if (!t) return;
+            t = AudioUtils.asObject(t);
+            var s = document.createElement('span');
+            var title = geByClass1('top_audio_player_title');
+            title.textContent = decodeHtml(t.performer);
+            s.textContent = decodeHtml(t.title);
+            title.appendChild(s)
+        }
+    }
+    if (ap.top) {
+        ap.on(ap.top, "start", function () {
+            removeClass(ge("oldvk_top_play"), "oldvk-hide");
+            addClass(ge("oldvk_top_play"), "active");
+        });
+        ap.on(ap.top, "pause", function () {
+            removeClass(ge("oldvk_top_play"), "active")
+        })
+    }
+});
+
+/*function _bind(variable, func, before, after) { // TODO: Переписать функции с учетом этого
     if (!variable[func].oldvk) {
         var tmp = variable[func];
         variable[func] = function () {
@@ -356,12 +379,10 @@ function newsMenuTabs(element) {
         document.getElementById('submit_post_box').classList.remove('unshown');
         var selected = document.querySelector('#ui_rmenu_news_list .ui_rmenu_item_sel');
         if (selected) selected.classList.remove('ui_rmenu_item_sel')
-    }
-    else if (element.classList.contains('ui_tab')) {
+    } else if (element.classList.contains('ui_tab')) {
         document.getElementById('feed_rmenu').classList.add('unshown');
         document.getElementById('submit_post_box').classList.add('unshown')
-    }
-    else {
+    } else {
         selected = document.querySelector('#oldvk-news-tabs .ui_rmenu_item_sel');
         if (selected) selected.classList.remove('ui_rmenu_item_sel')
     }

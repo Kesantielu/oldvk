@@ -13,36 +13,6 @@ else
 if (typeof getAudioPlayer !== "undefined" && getAudioPlayer()._currentAudio)
     removeClass(ge("oldvk_top_play"), "oldvk-hide");
 
-if (typeof ap !== 'undefined' && ap.top !== 'undefined') { //TODO: Переделать в watchVar
-    function titleSet(t) {
-        if (!t) return;
-        t = AudioUtils.asObject(t);
-        var s = document.createElement('span');
-        var title = geByClass1('top_audio_player_title');
-        title.textContent = decodeHtml(t.performer);
-        s.textContent = decodeHtml(t.title);
-        title.appendChild(s)
-    }
-
-    setTimeout(function () {
-        titleSet(ap.getCurrentAudio());
-    }, 200);
-    ap.on(ap.top, AudioPlayer.EVENT_PLAY, function (t) {/**/
-        removeClass(ge("oldvk_top_play"), "oldvk-hide");
-        addClass(ge("oldvk_top_play"), "active");
-        titleSet(t)
-    });
-    ap.on(ap.top, AudioPlayer.EVENT_PAUSE, function () {
-        removeClass(ge("oldvk_top_play"), "active")
-    });
-    ap.on(ap.top, AudioPlayer.EVENT_UPDATE, function (t) {
-        titleSet(t)
-    });
-    ap.on(ap.top, AudioPlayer.EVENT_CAN_PLAY, function (t) {
-        titleSet(t)
-    });
-}
-
 window.addEventListener("message", function (m) {
     if (m.data.type === 'UPD') {
         switch (m.data.text) {
@@ -60,8 +30,7 @@ window.addEventListener("message", function (m) {
                         if (s < 25) {
                             removeClass(fldb, "unshown");
                             show(fldb)
-                        }
-                        else {
+                        } else {
                             addClass(fldb, "unshown");
                             hide(fldb)
                         }
