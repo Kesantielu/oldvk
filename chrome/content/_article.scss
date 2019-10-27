@@ -1,0 +1,238 @@
+.copy_quote .article_snippet,
+.wall_post_cont .article_snippet {
+    margin-top: 10px;
+}
+
+.wide_column:not(.wide) .article_snippet .article_snippet__deleted_text {
+    font-size: 16px;
+    margin-bottom: 16px;
+    margin-left: 26px
+}
+
+.article_snippet .article_snippet__deleted_text {
+    margin-left: 30px
+}
+
+.wide_column:not(.wide) .article_snippet .article_snippet__deleted_text:before {
+    margin-left: -26px
+}
+
+.wide_column:not(.wide) .article_snippet .article_snippet__title {
+    font-size: 20px;
+}
+
+.wide_column:not(.wide) .article_snippet .article_snippet__author {
+    font-size: 12px;
+}
+
+.wide_column:not(.wide) .article_snippet .article_snippet__read_btn {
+    margin-top: 16px;
+}
+
+.article_snippet .article_snippet__read_btn {
+    background-color: #fff;
+    font-size: 12px;
+    padding: 5px 12px 6px 28px;
+    background-position: 5px 0;
+}
+
+.article_snippet .article_snippet__read_btn:active {
+    padding: 6px 12px 5px 28px;
+    background-position: 5px 1px;
+}
+
+.article_layer .article_layer__footer .article_layer__footer_button:before {
+    width: 24px;
+    height: 24px;
+    top: 1px;
+    background-size: 24px;
+}
+
+.article_layer .article_layer__footer .article_layer__footer_button {
+    font-size: 12px;
+}
+
+.article_layer .article_layer__footer .article_layer__footer_info {
+    color: #999
+}
+
+.article_layer .article_layer__header .article_layer__header_owner_name {
+    font-size: 13px;
+}
+
+.article_layer.article_layer__hover_left .article_layer__up {
+    background-color: #dce2e8;
+    opacity: 1;
+}
+
+.article_layer .article_layer__up {
+    opacity: 0.5;
+}
+
+.article_layer .article_layer__back {
+    color: #466a94;
+    padding: 5px 0 0 20px;
+    margin: 8px 0 0 19px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAtCAYAAABxsjF3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Qzk5Nzg2N0Y2Q0FFMTFFNkI3Q0JBNTY5NjlEMzc0NUEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Qzk5Nzg2ODA2Q0FFMTFFNkI3Q0JBNTY5NjlEMzc0NUEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDOTk3ODY3RDZDQUUxMUU2QjdDQkE1Njk2OUQzNzQ1QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDOTk3ODY3RTZDQUUxMUU2QjdDQkE1Njk2OUQzNzQ1QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkBuhpgAAACnSURBVHja7JVJDoAgDEXpv5ueRZdeRJfexcth2BgSGX5LujGSwAL6PlMHiTEGa0MYaD7wvB4xdTWcQy0BtMCeABij2hoYsGYDFiwJyLTsJi+5zk3kYx72ww7wkIchDRbwObZGILdFaZIBXw/WEiitgTGqiaK3S+s0fzwrcjYFq8oNC3arpOnObAWBFVRVSd9/1mYVsOFnCknTnRkBaHKW+rXdMsktwABsql6AcRGE3AAAAABJRU5ErkJggg==') no-repeat 0 -26px;
+}
+
+.fave_articles {
+    padding: 0 5px;
+}
+
+.fave_article_item_cover {
+    width: 150px
+}
+
+.fave_article_item_cont {
+    margin-left: 160px;
+}
+
+.fave_article_item_title {
+    color: $link-color;
+}
+
+.fave_article_item_caption {
+    line-height: 18px;
+    margin-top: 3px;
+}
+
+.fave_article_item_remove {
+    background: url('data:image/gif;base64,R0lGODlhCwALAJEAAP///0VojgAAAAAAACH5BAkAAAMALAAAAAALAAsAAAIZ3GKJFq3e4omI2nfTlNo65kHUJi6boh1GAQA7') no-repeat 50%;
+    background-size: 11px;
+    top: 10px;
+}
+
+.article_ed_layer .article_ed_layer__header .article_ed_layer__list {
+    color: #2a5885;
+}
+
+.article_ed_layer .article_ed_layer__header .article_ed_layer__list,
+.article_ed_layer .article_ed_layer__header .article_ed_layer__publish {
+    margin-left: 15px;
+    padding-right: 0;
+    background-image: none !important;
+}
+
+.article_ed_layer .article_ed_layer__header .article_ed_layer__list:hover,
+.article_ed_layer .article_ed_layer__header .article_ed_layer__publish:hover {
+    text-decoration: underline;
+}
+
+.article_ed_layer .article_ed_layer__header .article_ed_layer__top_labels > div:not(.eltt) {
+    font-weight: bold;
+}
+
+.eltt.eltt_fancy {
+    border-radius: 0 !important;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .32) !important;
+    border: 1px solid #c0cad5 !important;
+}
+
+.eltt.eltt_fancy_actions {
+    padding: 0;
+    width: 180px
+}
+
+.eltt .eltt_fancy_action {
+    padding: 5px 0 5px 10px;
+
+}
+
+.eltt .eltt_fancy_action.radiobtn:before {
+    padding-top: 0
+}
+
+.eltt .eltt_fancy_action.radiobtn.on:before {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAANCAYAAAB2HjRBAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFRJREFUeNqd0MsJACEMRdHbqa1MJ1Pqc0YQRIz5LC66yCEokqiWBu159fWfMC/BtEQVjspw36wMHB92eosHV2wNmPC2WR7cMRl4wkShhYnAG8aDE3fEV5YoKE/zIgAAAABJRU5ErkJggg==') 50% no-repeat;
+    padding-right: 5px
+}
+
+.article_ed_layer .article_ed_layer__publish_settings {
+    padding: 15px
+}
+
+.article_ed_layer .article_ed_layer__publish_settings .article_ed_layer__publish_settings_header {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 0 0 4px;
+    color: #45688E
+}
+
+.article_ed_layer .article_ed_layer__publish_settings .article_ed_layer__publish_settings_subheader {
+    padding: 15px 0 10px;
+}
+
+.article_ed_layer .article_ed_layer__publish_settings .article_ed_layer__publish_settings_ofm,
+.article_ed_layer .article_ed_layer__publish_settings .article_ed_layer__publish_settings_footer,
+.article_ed_layer .article_ed_layer__publish_settings .article_ed_layer__publish_settings_attach,
+.article_ed_layer .article_ed_layer__publish_settings .article_ed_layer__publish_settings_published_text {
+    margin-top: 15px
+}
+
+.article_ed_layer .article_ed_layer__publish_settings .article_ed_layer__publish_settings_delete {
+    bottom: 21px
+}
+
+.article_ed_layer__articles_list_tt_content .ui_tabs {
+    background-color: #F7F7F7;
+    padding: 6px 10px;
+}
+
+.article_ed_layer__articles_list_tt_content .ui_tab,
+.article_ed_layer__articles_list_tt_content .ui_tab:hover {
+    padding: 3px 8px 4px;
+    margin: 8px 5px 7px;
+    border-radius: 2px;
+}
+
+.article_ed_layer__articles_list_tt_content .ui_tab:hover {
+    background-color: #E1E7ED
+}
+
+.article_ed_layer__articles_list_tt_content .ui_tab.ui_tab_sel {
+    color: #FFF;
+    background-color: #597DA3;
+}
+
+.article_ed_layer__top_labels .eltt.eltt_bottom.eltt_arrow_size_normal > .eltt_arrow_back .eltt_arrow {
+    border-bottom-color: #F7F7F7
+}
+
+.article_ed_layer .article_ed_layer__list_item {
+    border-top: 1px solid #e7e8ec;
+}
+
+.article_ed_layer .article_ed_layer__list_item.article_ed_layer__list_item_current {
+    background-color: #f0f2f5;
+}
+
+.article_ed_layer .article_ed_layer__list_item:not(.article_ed_layer__list_item_current):hover {
+    background-color: #fafbfc;
+}
+
+.article_ed_layer .article_ed_layer__list_item:first-child {
+    margin-top: 0
+}
+
+.article_ed_layer .article_ed_layer__list_item .article_ed_layer__list_item_title {
+    color: $link-color;
+    font-size: 12px;
+    font-weight: bold
+}
+
+.article_ed_layer .article_ed_layer__list_item .article_ed_layer__list_item_delete {
+    background: url('data:image/gif;base64,R0lGODlhCwALAIABAGuNsf///yH5BAEAAAEALAAAAAALAAsAAAIZTGCJBq3e4omI2nfTlNo65kHUJi6boh1GAQA7') no-repeat 0 0;
+    width: 11px;
+    height: 11px;
+    right: 19px;
+    top: 17px
+
+}
+
+.article_ed_layer .article_ed_layer__articles_list_tt_content .article_ed_layer__list_new {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADJJREFUeNpjSGhYwICGzwDxfyiNIseARfF/JExHxWfQFODCZxiIVAjGJJs8SEKD6BgEAMw17LCgQbHFAAAAAElFTkSuQmCC') no-repeat;
+    width: 11px;
+    height: 11px;
+    top: 18px;
+}

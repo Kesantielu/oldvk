@@ -1,0 +1,304 @@
+#marketplace .market_content .market_row.over .market_row_user {
+    margin-top: 0
+}
+
+#marketplace .market_content .market_row.over {
+    border-radius: 0
+}
+
+#marketplace .market_content .market_row .market_row_price {
+    font-weight: bold
+}
+
+#marketplace .market_content .market_row.over .market_row_price {
+    margin-bottom: 1px
+}
+
+#marketplace .market_content .market_row {
+    margin: 10px 20px;
+}
+
+#marketplace .market_content {
+    margin: 0 12px;
+}
+
+#marketplace .market_content .market_list {
+    margin: -10px -13px 11px -8px;
+}
+
+#marketplace .market_content .page_block_sub_header {
+    margin-left: 3px;
+    height: 45px
+}
+
+#marketplace .market_content .market_row_line:first-child {
+    margin-top: 10px;
+}
+
+#marketplace .market_content .market_row_line {
+    margin: 10px 2px 0;
+}
+
+#marketplace .market_content .market_row_line .market_row_info {
+    padding-top: 0;
+}
+
+#marketplace .market_content .market_row_line .market_row_price {
+    font-weight: bold
+}
+
+#marketplace .market_content .market_row_line .ui_actions_menu {
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    border: none;
+    pointer-events: auto;
+    position: absolute;
+    left: 320px;
+    right: auto;
+    background: none;
+    top: 22px;
+}
+
+#marketplace .market_content .market_row_line .ui_actions_menu_icons {
+    display: none
+}
+
+#marketplace .market_content .market_row_line .market_row_name_line {
+    max-width: 280px;
+    white-space: normal;
+}
+
+#marketplace .market_content .market_row_line .marketplace_icons {
+    vertical-align: top;
+    padding-top: 2px;
+}
+
+.marketplace_frtt {
+    padding: 8px
+}
+
+.marketplace_frtt_users {
+    margin-top: 5px
+}
+
+.marketplace_frtt_photo {
+    border-radius: 2px
+}
+
+.market_item_title {
+    margin: 0 0 10px;
+    font-weight: 400;
+    font-size: 1.27em;
+}
+
+.market_item_price {
+    margin: 0 0 15px;
+    font-size: 1.45em;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.market_item_controls .flat_button {
+    font-size: 1.27em
+}
+
+.market_fav_btn.selected .market_fav_btn_icon {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAANCAYAAAB2HjRBAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFRJREFUeNqd0MsJACEMRdHbqa1MJ1Pqc0YQRIz5LC66yCEokqiWBu159fWfMC/BtEQVjspw36wMHB92eosHV2wNmPC2WR7cMRl4wkShhYnAG8aDE3fEV5YoKE/zIgAAAABJRU5ErkJggg==') 0 0;
+    margin-top: 1px;
+}
+
+.market_reply_form .reply_field_wrap {
+    margin: 0 79px;
+}
+
+.market_reply_form .post_field_user_link {
+    margin-left: 79px;
+}
+
+.market_reply_form.reply_box_open .reply_field_wrap {
+    margin-left: 116px;
+}
+
+.market_reply_form .submit_post_box .emoji_smile_wrap {
+    right: 82px;
+}
+
+.market_reply_cancel_button {
+    padding-right: 0;
+}
+
+.market_reply_form .submit_post {
+    padding: 5px 79px
+}
+
+.market_comments_summary {
+    font-weight: bold;
+    color: #45688E;
+    padding: 5px 0
+}
+
+.market_item_photo_container {
+    background-color: #FFF
+}
+
+.market_edit_item_box .result_list li.disabled:first-child {
+    border-top: none
+}
+
+#marketplace .market_search_wrap .ui_search_new {
+    margin: 10px 55px 5px 5px;
+}
+
+#marketplace .ui_tabs {
+    font-weight: normal;
+    font-size: 11px;
+    background: #FFF;
+    padding: 11px 10px 0;
+    border-bottom: solid 1px #597DA3;
+}
+
+#marketplace > h2:first-child {
+    display: none
+}
+
+#marketplace .ui_tabs .ui_tab {
+    height: 13px;
+    line-height: 13px;
+    padding: 5px 10px;
+    border-radius: 4px 4px 0 0;
+    margin-right: 5px;
+    color: $link-color;
+}
+
+#marketplace .ui_tabs .ui_tab:hover {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background: #E1E7ED;
+}
+
+#marketplace .ui_tabs .ui_tab.ui_tab_sel {
+    padding: 5px 10px;
+    background: #597DA3;
+    border-radius: 4px 4px 0 0;
+    color: #FFF;
+}
+
+#marketplace .market_search_wrap .market_place_search_tabs {
+    padding: 11px 10px 0;
+    margin: 0
+}
+
+#marketplace .market_change_view.market_change_view_tabs .marketplace_icons {
+    margin-top: 0
+}
+
+head.oldvk-market ~ body .search_filters_wrap .ui_filters_block {
+    position: absolute;
+    right: -11px;
+    top: 47px;
+    z-index: 4;
+    display: none
+}
+
+head.oldvk-market ~ body .search_filters_wrap {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important
+}
+
+head.oldvk-market ~ body .search_filters_wrap:before {
+    position: absolute;
+    padding: 17px 0 7px;
+    color: #45688e;
+    cursor: pointer;
+    z-index: 1;
+    right: 0
+}
+
+head.oldvk-market ~ body .search_filters_wrap:hover .ui_filters_block {
+    display: block
+}
+
+#search_by_friends_toogle {
+    position: absolute;
+    right: 83px;
+    top: 94px;
+    z-index: 1;
+}
+
+#search_by_friends_toogle .ui_toggler_label {
+    float: left
+}
+
+.market_module .page_market_items_wrap .page_market_item_img {
+    width: 125px;
+    height: 125px;
+}
+
+.market_module .page_market_items_wrap .page_market_item,
+.market_module .page_market_items_wrap .page_market_item_title {
+    width: 125px;
+}
+
+.market_module .page_market_items_wrap .page_market_item {
+    margin: 10px 10px 10px 0;
+}
+
+.market_module .page_market_items_wrap .page_market_item:last-child {
+    margin-right: 0
+}
+
+#market #market_search_wrap {
+    padding: 10px 15px;
+}
+
+.market_content {
+    padding: 0 15px;
+}
+
+#market #market_search_wrap .page_block_header_extra {
+    padding-top: 10px;
+}
+
+.market_list {
+    margin: 0;
+}
+
+#market_add_album_btn {
+    margin-right: 10px
+}
+
+.market_album_photo_img,
+.market_album_block,
+.market_album_photo {
+    width: 285px;
+}
+
+.market_album_photo {
+    height: 160px
+}
+
+.market_albums_wrap {
+    margin-top: 0
+}
+
+.market_albums_overview .market_albums_wrap {
+    max-height: 220px;
+}
+
+.market_albums_loadmore #ui_albums_load_more {
+    margin: 0 0 15px;
+}
+
+.page_market_item_narrow + .page_market_item_narrow,
+.page_market_item_narrow + .page_market_item_narrow:hover,
+.page_market_item_narrow:hover + .page_market_item_narrow,
+.page_market_item_narrow:hover + .page_market_item_narrow:hover {
+    margin-top: 8px;
+}
+
+.narrow_column .market_module .page_market_items_wrap {
+    padding: 8px 8px 0;
+}

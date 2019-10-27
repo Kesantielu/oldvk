@@ -1,0 +1,142 @@
+body.blog_page .side_bar {
+    display: block !important
+}
+
+.blog_first_image_wrap {
+    margin: 0;
+    padding-bottom: 10px;
+
+}
+
+.blog_entry_text,
+.blog_entry_text_wrap .wk_text {
+    line-height: 1.5;
+    font-size: 1.09em
+}
+
+.blog_entry_title {
+    color: #45668e;
+    font-size: 1.3636em
+}
+
+.blog_entry_with_pagination .blog_entry_title {
+    color: #000;
+    font-size: 1.6em
+}
+
+.blog_entry_author_info_short {
+    line-height: inherit
+}
+
+.blog_more_but {
+    margin-top: 10px
+}
+
+.blog_entry_like_widget {
+    padding: 10px 0;
+    margin: 0 5px;
+}
+
+.blog_cat_name {
+    line-height: inherit;
+    background: #597DA3;
+    padding: 3px 5px;
+    border-radius: 2px;
+}
+
+.blog_cat_name a {
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.blog_entry_author_info {
+    padding-top: 0
+}
+
+.blog_entry_head {
+    margin-bottom: 20px;
+}
+
+.blog_entry_text .article, .blog_entry_text_wrap .article, .blog_post_text .article {
+    margin-top: 5px;
+    line-height: 1.45em;
+}
+
+.blog_entry_with_pagination .blog_entry_like_widget {
+    padding-bottom: 10px;
+}
+
+.blog_entry_nav {
+    padding: 15px 0 10px !important;
+}
+
+.blog_nav_link {
+    font-size: 1.09em;
+}
+
+.blog_nav_link_ic {
+    top: 4px
+}
+
+.blog_entry_cont {
+    padding: 10px 5px;
+}
+
+.blog_right_menu_nav {
+    margin-top: 0
+}
+
+.blog_links {
+    padding: 5px;
+    display: flex;
+    justify-content: space-around
+}
+
+.blog_link {
+    margin-bottom: 10px
+}
+
+.blog_right_list_title {
+    display: none
+}
+
+#blog_follow_btn {
+    margin: 4px auto 0;
+    width: auto;
+    right: 5px;
+    position: absolute;
+}
+
+#blog_follow_descr {
+    float: left;
+    width: 60%;
+}
+
+.blog_email_settings_label,
+.blog_email_settings_labeled {
+    letter-spacing: normal
+}
+
+.blog_arhive_title {
+    font-size: 1.09em
+}
+
+.blog_arhive_item:last-child {
+    border-bottom: none
+}
+
+.blog_arhive_wrap {
+    padding: 0 5px;
+}
+
+.blog_follow_msg {
+    line-height: 1.5;
+    heighT: 32px
+}
+
+.blog_followed_state {
+    line-height: 3;
+    margin-top: 0;
+    text-align: right;
+}

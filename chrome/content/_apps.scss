@@ -1,0 +1,403 @@
+.apps_recent_block .page_block_h2 {
+    margin: -10px -10px 0;
+    width: 627px;
+}
+
+body.static_header #page_header_cont .back {
+    box-shadow: none
+}
+
+body.static_header #page_body {
+    width: 1024px !important;
+}
+
+body.static_header #page_layout,
+body.static_header #page_header,
+body.static_header #page_wrap {
+    width: 1183px !important;
+}
+
+body.static_header #page_wrap {
+    margin: 0 auto 0 calc(50vw - 600px);
+}
+
+body.static_header .top_audio_player {
+    margin-left: 575px;
+}
+
+body.static_header #page_header_cont {
+    width: 1178px;
+}
+
+.apps_recent_row {
+    width: 75px;
+    height: 75px;
+    background-size: 75px 75px;
+    margin: 0 13px 12px 0;
+}
+
+.apps_recent_apps_wrap {
+    padding: 15px 5px;
+    height: 192px;
+}
+
+.apps_recent_block {
+    width: 274px;
+    height: 247px;
+}
+
+.apps_feed_block {
+    width: 333px;
+    top: 25px;
+    height: 222px;
+}
+
+.apps_feed_block .page_block_header_inner {
+    font-size: 1.2em;
+    padding-top: 15px;
+}
+
+.apps_recent_apps_wrap .apps_recent_all {
+    width: 251px;
+    left: auto;
+}
+
+.apps_cat_header_link:after {
+    height: 10px
+}
+
+#apps_top_tabs .ui_tab {
+    font-weight: bold;
+    color: #45688E;
+    border-radius: 2px;
+    padding: 3px 8px 4px;
+    margin: 8px 5px 7px;
+}
+
+#apps_top_tabs .ui_tab.ui_tab_sel {
+    color: #FFF
+}
+
+#apps_header .ui_tabs_header {
+    padding: 5px 0 0;
+    border-bottom: none
+}
+
+#apps_header .ui_tab_group {
+    padding-bottom: 4px !important
+}
+
+#apps_header .ui_tab_group:before {
+    content: none
+}
+
+#apps_search {
+    padding: 5px;
+    background: #FFF
+}
+
+#apps_content {
+    padding: 10px 5px
+}
+
+.apps_featured_slider {
+    height: 236px;
+    width: 597px;
+    padding: 0
+}
+
+.apps_featured_next,
+.apps_featured_prev {
+    width: 80px
+}
+
+.apps_featured_thumb,
+.ads_ad_photo_box.big_app {
+    height: 236px;
+    width: 420px;
+    line-height: 234px;
+    font-size: inherit;
+    border-radius: 3px;
+}
+
+.ads_ad_box.ver.repeat_ver.size_site.big_app,
+.ads_ad_box2.ver.repeat_ver.size_site.big_app,
+.ads_ad_photo.ver.big_app,
+.apps_featured_thumb > img,
+.ads_ad_big_app_info_box {
+    width: 420px
+}
+
+.ads_ad_photo.ver.big_app {
+    max-width: 420px
+}
+
+.apps_featured_next:before,
+.apps_featured_prev:before {
+    border-radius: 4px
+}
+
+.apps_featured_thumb_descr,
+.ads_ad_description.big_app {
+    text-shadow: rgba(0, 0, 0, 0.6) 0 0 4px;
+    font-size: 1.1em;
+    line-height: 1.5em;
+}
+
+.apps_featured_thumb_title,
+.ads_ad_title.big_app {
+    font-size: 1.3em;
+    text-shadow: rgba(0, 0, 0, 0.6) 0 0 4px;
+    margin-bottom: 5px;
+}
+
+.apps_featured_thumb_play_btn,
+.ads_ad_play {
+    font-size: 1.1em;
+    padding: 6px 21px 7px;
+}
+
+.apps_featured_thumb_play_btn:active {
+    padding: 7px 21px 6px;
+}
+
+.apps_featured_thumb_gradient {
+    height: 105px
+}
+
+.apps_featured_thumbs {
+    left: -339px
+}
+
+.apps_frtt_photo {
+    border-radius: 2px
+}
+
+.ads_ad_big_app_info_box.big_app .ads_ad_play:active {
+    padding-top: 7px;
+    padding-bottom: 6px;
+}
+
+#apps_after .page_block_header_inner {
+    font-size: 1.2em
+}
+
+#apps_after .page_block_header_extra_left {
+    display: none
+}
+
+.apps_cat_wrap {
+    margin: 0 -22px 0 5px;
+}
+
+.ads_ad_title.apps_only,
+.app_link {
+    font-weight: bold;
+    color: #45688e;
+}
+
+.ads_ad_title_box.app_in_news,
+.ads_ad_title_box.apps_only,
+.ads_ad_title_box.groups_only,
+.app_cat_name {
+    padding-top: 7px;
+}
+
+.ads_ad_domain.apps_only {
+    color: #999;
+    padding-top: 3px;
+}
+
+.apps_cat_row {
+    margin-right: 14px;
+}
+
+.apps_frtt_box {
+    padding: 10px 10px 3px
+}
+
+#apps_after .page_block_header,
+#apps_header .page_block_header {
+    border-bottom: none;
+    margin: 5px 5px 0;
+}
+
+.apps_cat_wrap .apps_cat_row:nth-child(-n+5) {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.apps_catalog_layout .apps_cat_wrap .apps_cat_row {
+    display: none;
+}
+
+.apps_catalog_layout .apps_cat_wrap .apps_cat_row:nth-child(-n+4) {
+    display: block;
+}
+
+.ads_ad_text_box {
+    text-align: left;
+}
+
+#apps_after .ui_load_more_btn {
+    width: 597px;
+    margin: 15px 5px 10px;
+}
+
+.apps_collections_wrap {
+    margin-bottom: 10px
+}
+
+.apps_collections_row {
+    margin: 10px 27px;
+}
+
+.apps_feed_wrap {
+    padding: 10px 0 0;
+    height: 182px;
+}
+
+.apps_feed_block .page_block_sub_header {
+    padding: 0;
+    height: 30px;
+}
+
+#apps_recent_notifications_black_list > .header_side_link {
+    margin-right: 0;
+    margin-top: 5px;
+}
+
+.apps_notifications_wrap .apps_notifications_wrap_inner {
+    height: 222px;
+}
+
+.apps_notifications_wrap .apps_notifications_wrap_inner.ui_scroll_container .ui_scroll_content {
+    padding: 0 10px 0 5px;
+}
+
+.apps_notification_info {
+    margin: 0 8px 0 60px;
+}
+
+.app_actions_menu_wrap {
+    top: auto
+}
+
+.app_actions_menu_wrap .ui_actions_menu_item {
+    height: 25px;
+    line-height: 25px;
+}
+
+.apps_options_bar {
+    margin: -10px -10px 0;
+    width: calc(100% + 20px);
+}
+
+.payments_getvotes_method_opt {
+    font-size: 1.1em
+}
+
+.payments_summary_cont {
+    margin-top: 0;
+    line-height: 25px;
+}
+
+.apps_main .app_container {
+    max-width: 1000px
+}
+
+#apps_i_slider_outer {
+    margin: 15px auto 0;
+}
+
+.apps_main .apps_i_wrap {
+    margin: -10px;
+}
+
+.apps_main .apps_i_panel {
+    padding: 15px;
+}
+
+.apps_main .apps_i_icon {
+    top: 15px;
+    left: 15px;
+}
+
+.apps_main .apps_i_buttons {
+    top: 15px;
+    right: 15px;
+}
+
+.apps_main .apps_i_description_content {
+    margin-top: 15px;
+}
+
+.apps_ss_friend {
+    border-radius: 2px
+}
+
+.apps_feed_user_photo img {
+    border-radius: 3px
+}
+
+.apps_feed_row {
+    margin: 0 15px 15px 0;
+}
+
+.apps_feed_wrap .ui_scroll_bar_container {
+    right: 0
+}
+
+.apps_notifications_wrap .apps_notifications_wrap_inner .ui_scroll_bar_container {
+    right: 4px
+}
+
+.apps_main .apps_i_content {
+    padding: 0 15px
+}
+
+.apps_frtt_level {
+    font-size: 0.8em;
+    bottom: 1px;
+    right: 1px;
+    border-radius: 5px;
+    border: none;
+}
+
+.apps_main .apps_i_slider_outer, .apps_main .apps_i_slider_slide, .apps_main .apps_promo_video_thumb {
+    width: 597px;
+    height: 370px
+}
+
+.apps_main .apps_i_slider_slide {
+    line-height: 370px;
+}
+
+.apps_main .apps_i_slider_slide > img {
+
+    max-width: 597px;
+    max-height: 370px;
+}
+
+.apps_recent_block.eight_games {
+    width: 308px
+}
+
+.apps_recent_block.eight_games .apps_recent_apps_wrap,
+.apps_recent_block.eight_games .apps_notifications_wrap,
+.apps_recent_block.eight_games .apps_notifications_wrap_inner {
+    height: 312px
+}
+
+.apps_recent_block.eight_games {
+    height: 367px;
+}
+
+.apps_recent_block.eight_games .apps_recent_apps_wrap .apps_recent_all {
+    width: 284px;
+}
+
+.apps_feed_block.eight_games {
+    height: 342px;
+    width: 295px;
+}

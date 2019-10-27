@@ -1,92 +1,22 @@
-@charset "utf-8";
-
-:lang(ru) #l_nwsf .left_label:before,
-:lang(ru) #l_ntf .left_label:before,
-:lang(ru) #l_msg .left_label:before,
-:lang(ru) #l_fr .left_label:before,
-:lang(ru) #l_gr .left_label:before,
-:lang(ru) #l_ph .left_label:before,
-:lang(ru) #l_aud .left_label:before,
-:lang(ru) #l_vid .left_label:before,
-:lang(ru) #l_fav .left_label:before,
-:lang(ru) #l_sett .left_label:before {
-    content: "Мои "
+@mixin genlang($selectors, $default, $langmap) {
+    @each $selector in $selectors {
+        @if ($default) {
+            #{$selector} {content: $default}
+        }
+        @each $name, $lang in $langmap {
+            :lang(#{$name}) #{$selector} {content: $lang}
+        }
+    }
 }
 
-:lang(uk) #l_nwsf .left_label:before,
-:lang(uk) #l_ntf .left_label:before,
-:lang(uk) #l_msg .left_label:before,
-:lang(uk) #l_fr .left_label:before,
-:lang(uk) #l_gr .left_label:before,
-:lang(uk) #l_ph .left_label:before,
-:lang(uk) #l_aud .left_label:before,
-:lang(uk) #l_vid .left_label:before,
-:lang(uk) #l_fav .left_label:before,
-:lang(uk) #l_sett .left_label:before {
-    content: "Мої "
-}
-
-:lang(be) #l_nwsf .left_label:before,
-:lang(be) #l_ntf .left_label:before,
-:lang(be) #l_msg .left_label:before,
-:lang(be) #l_fr .left_label:before,
-:lang(be) #l_gr .left_label:before,
-:lang(be) #l_ph .left_label:before,
-:lang(be) #l_aud .left_label:before,
-:lang(be) #l_vid .left_label:before,
-:lang(be) #l_fav .left_label:before,
-:lang(be) #l_sett .left_label:before,
-:lang(be-tarask) #l_nwsf .left_label:before,
-:lang(be-tarask) #l_ntf .left_label:before,
-:lang(be-tarask) #l_msg .left_label:before,
-:lang(be-tarask) #l_fr .left_label:before,
-:lang(be-tarask) #l_gr .left_label:before,
-:lang(be-tarask) #l_ph .left_label:before,
-:lang(be-tarask) #l_aud .left_label:before,
-:lang(be-tarask) #l_vid .left_label:before,
-:lang(be-tarask) #l_fav .left_label:before,
-:lang(be-tarask) #l_sett .left_label:before {
-    content: "Мае "
-}
-
-:lang(en-us) #l_nwsf .left_label:before,
-:lang(en-us) #l_ntf .left_label:before,
-:lang(en-us) #l_msg .left_label:before,
-:lang(en-us) #l_fr .left_label:before,
-:lang(en-us) #l_gr .left_label:before,
-:lang(en-us) #l_ph .left_label:before,
-:lang(en-us) #l_aud .left_label:before,
-:lang(en-us) #l_vid .left_label:before,
-:lang(en-us) #l_fav .left_label:before,
-:lang(en-us) #l_sett .left_label:before {
-    content: "My "
-}
-
-:lang(ru-ussr) #l_ntf .left_label:before,
-:lang(ru-ussr) #l_msg .left_label:before,
-:lang(ru-ussr) #l_fr .left_label:before,
-:lang(ru-ussr) #l_gr .left_label:before,
-:lang(ru-ussr) #l_ph .left_label:before,
-:lang(ru-ussr) #l_aud .left_label:before,
-:lang(ru-ussr) #l_vid .left_label:before,
-:lang(ru-ussr) #l_fav .left_label:before,
-:lang(ru-ussr) #l_sett .left_label:before {
-    content: "Мои "
+@each $lang, $my in ("ru":"Мои ", "uk":"Мої ", "be":"Мае ", "be-tarask":"Мае ", "en-us":"My ", "ru-ussr":"Мои ", "ru-petr1708":"Мои ") {
+    @each $left-id in (#l_nwsf, #l_ntf, #l_msg, #l_fr, #l_gr, #l_ph, #l_aud, #l_vid, #l_fav, #l_sett) {
+        :lang(#{$lang}) #{$left-id} .left_label:before {content: $my}
+    }
 }
 
 :lang(ru-ussr) #l_nwsf .left_label:before {
     content: "Моё "
-}
-
-:lang(ru-petr1708) #l_nwsf .left_label:before,
-:lang(ru-petr1708) #l_ntf .left_label:before,
-:lang(ru-petr1708) #l_msg .left_label:before,
-:lang(ru-petr1708) #l_fr .left_label:before,
-:lang(ru-petr1708) #l_gr .left_label:before,
-:lang(ru-petr1708) #l_ph .left_label:before,
-:lang(ru-petr1708) #l_aud .left_label:before,
-:lang(ru-petr1708) #l_sett .left_label:before {
-    content: "Мои "
 }
 
 :lang(ru-petr1708) #l_vid .left_label:before,
@@ -102,190 +32,19 @@
     content: "..."
 }
 
-/* Фильтр
- */
+@include genlang(("#oldvk-filter-label:before", "head.oldvk-market ~ body .search_filters_wrap:before"), "Фильтр", ("uk":"Фільтр", "be":"Фільтр", "be-tarask":"Фільтар", "en-us":"Filter", "ru-petr1708":"Фильтръ", "ru-ussr":"Выборка"));
 
-#oldvk-filter-label:before,
-:lang(kk) #oldvk-filter-label:before,
-head.oldvk-market ~ body .search_filters_wrap:before,
-:lang(kk) head.oldvk-market ~ body .search_filters_wrap:before {
-    content: "Фильтр";
-}
+@include genlang("#oldvk-counter-sub:before", "Подписчики", ("uk":"Підписники", "be":"Падпісчыкі", "be-tarask":"Падпісанты", "en-us":"Followers", "ru-petr1708":"Почитатели", "ru-ussr":"Читатели", "kk":"Жазылушылар"));
 
-:lang(uk) #oldvk-filter-label:before,
-:lang(be) #oldvk-filter-label:before,
-:lang(uk) head.oldvk-market ~ body .search_filters_wrap:before,
-:lang(be) head.oldvk-market ~ body .search_filters_wrap:before {
-    content: "Фільтр";
-}
+@include genlang(".owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before", "Мои подписчики", ("uk":"Мої підписники", "be":"Мае падпісчыкі", "be-tarask":"Мае падпісанты", "en-us":"My followers", "ru-petr1708":"Мои почитатели", "ru-ussr":"Мои читатели", "kk":"Жазылушыларым"));
 
-:lang(be-tarask) #oldvk-filter-label:before,
-:lang(be-tarask) head.oldvk-market ~ body .search_filters_wrap:before {
-    content: "Фільтар";
-}
+@include genlang("#oldvk-counter-tag:before", "Фотографии с ", ("uk":"Фотографії з ", "be":"Фотаздымкі з ", "be-tarask":"Фатаздымкі з ", "en-us":"Photos of ", "ru-petr1708":"Фотопортреты съ ", "ru-ussr":"Фотокарточки с ", "kk":"Оны бар суреттер"));
 
-:lang(en-us) #oldvk-filter-label:before,
-:lang(en-us) head.oldvk-market ~ body .search_filters_wrap:before {
-    content: "Filter";
-}
-
-:lang(ru-petr1708) #oldvk-filter-label:before,
-:lang(ru-petr1708) head.oldvk-market ~ body .search_filters_wrap:before {
-    content: "Фильтръ";
-}
-
-:lang(ru-ussr) #oldvk-filter-label:before,
-:lang(ru-ussr) head.oldvk-market ~ body .search_filters_wrap:before {
-    content: "Выборка";
-}
-
-/* Подписчики
- */
-
-#oldvk-counter-sub:before {
-    content: "Подписчики"
-}
-
-:lang(ru-petr1708) #oldvk-counter-sub:before {
-    content: "Почитатели"
-}
-
-:lang(ru-ussr) #oldvk-counter-sub:before {
-    content: "Читатели"
-}
-
-:lang(en-us) #oldvk-counter-sub:before {
-    content: "Followers"
-}
-
-:lang(be-tarask) #oldvk-counter-sub:before {
-    content: "Падпісанты"
-}
-
-:lang(be) #oldvk-counter-sub:before {
-    content: "Падпісчыкі"
-}
-
-:lang(uk) #oldvk-counter-sub:before {
-    content: "Підписники"
-}
-
-:lang(kk) #oldvk-counter-sub:before {
-    content: "Жазылушылар"
-}
-
-/* Мои подписчики
- */
-
-.owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
-    content: "Мои подписчики"
-}
-
-:lang(ru-petr1708) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
-    content: "Мои почитатели"
-}
-
-:lang(ru-ussr) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
-    content: "Мои читатели"
-}
-
-:lang(en-us) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
-    content: "My followers"
-}
-
-:lang(be-tarask) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
-    content: "Мае падпісанты"
-}
-
-:lang(be) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
-    content: "Мае падпісчыкі"
-}
-
-:lang(uk) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
-    content: "Мої підписники"
-}
-
-:lang(kk) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-sub:before {
-    content: "Жазылушыларым"
-}
-
-/* Фотографии с
- */
-
-#oldvk-counter-tag:before {
-    content: "Фотографии с "
-}
-
-:lang(ru-petr1708) #oldvk-counter-tag:before {
-    content: "Фотопортреты съ "
-}
-
-:lang(ru-ussr) #oldvk-counter-tag:before {
-    content: "Фотокарточки с "
-}
-
-:lang(en-us) #oldvk-counter-tag:before {
-    content: "Photos of "
-}
-
-:lang(be-tarask) #oldvk-counter-tag:before {
-    content: "Фатаздымкі з "
-}
-
-:lang(be) #oldvk-counter-tag:before {
-    content: "Фотаздымкі з "
-}
-
-:lang(uk) #oldvk-counter-tag:before {
-    content: "Фотографії з "
-}
-
-:lang(kk) #oldvk-counter-tag:before {
-    content: "Оны бар суреттер"
-}
-
-/* Фотографии со мной
- */
-
-.owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
-    content: "Фотографии со мной"
-}
-
-:lang(ru-petr1708) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
-    content: "Мои фотопортреты"
-}
-
-:lang(ru-ussr) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
-    content: "Фотокарточки со мной"
-}
-
-:lang(en-us) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
-    content: "Photos of me"
-}
-
-:lang(be-tarask) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
-    content: "Фатаздымкі з мною"
-}
-
-:lang(be) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
-    content: "Фотаздымкі са мною"
-}
-
-:lang(uk) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
-    content: "Фотографії зi мною"
-}
-
-:lang(kk) .owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before {
-    content: "Мен бар суреттер"
-}
-
+@include genlang(".owner_photo_wrap ~ #oldvk-counters #oldvk-counter-tag:before", "Фотографии со мной", ("uk":"Фотографії зi мною", "be":"Фотаздымкі са мною", "be-tarask":"Фатаздымкі з мною", "en-us":"Photos of me", "ru-petr1708":"Мои фотопортреты", "ru-ussr":"Фотокарточки со мной", "kk":"Мен бар суреттер"));
 
 :lang(en-us) .top_home_link .top_home_logo {
     background: url('data:image/gif;base64,R0lGODlhkQAqAOYRAExtkUxukk1ukk1vk05vk05wk05wlE9wlE9xlVBxlWeEpMnT3u/y9fr7/P////X3+d7l7IWet1ByllFzlvf4+srU34qhuvL09+Lo7rrI1vT2+Pz9/c/X4X+ZtHKKpmaEo/7+/uXp7lFyln+Vrq++zpepvVFzl9vh6P7+/3KNq+nt8V9+n/b3+eLn7FBwk1Jzl4GXr9/k6+fr8LLB0P39/lJ0mE9wk93j6eXq7/v8/aSzxezv81N1mdff59HZ4s3X4VZ4m15/olZ3m5mtw1x5mm6IpczW4fj5+3yTrVR2mlh2mOzw81V3m1R2m3uSrb7L2VV3nFZ4nFBxlM3W4Fd2l9ng52B8nFVzlp2vwubq74uiu1Z4nZOmvO3w9IqguWJ/oOru8ld5nVFwlIygt8PO2vn6/L7K11h6nUxskEtrj0pqjk5ukld5nlh6nmKCpVh6n3SRr3KOrqS3yll7n5+yyOTp71x9oVp8n1l7oJmuxVl8oPj6+1p8oJ2xxqK2ynWSsCwAAAAAkQAqAAAH/oAAgoOEhYaHiImKi4yNjo+QiQGTlJWWl5iZmpucnZ6foKGaAqSlpqeoqaqrrK2ur7CxsrO0tba3uLmwA7y9vr/AwcLDxMXGx8jJysMEzc7P0NHS09TV1tfY2drb1AXe3+Dh4uPk5ebn6Onq6+zlBu/w8fLz9PX29/j5+vv8/fYHAAMKHEiwoMGDCBMqXMiwocODCCJKnEixosWLGDNq3Mixo8ePIEOKHEmypMmOCVKqXMmy5UoFCxg0cODgAYQILnPq3Mmzp8+fQHtKGEq0KNEJFGgqrTCBqIULSpViMJpBw4aoU41q3cq1q9evYMOKHSuBQ1SaHYgC8HDWgYai/h9AtA1Btq7du3i5itjLt2/fEW0r9CWQNCqDviTaOijht7Hjx5AjS55MuTJfE5gza9Zc4MRZFCk0qzirIvMKFm1buNjMurXr17Bjy55NO/OL27hz64bRlkPuGGdl4J7RloYH3ciTK1/OvLnz59Bz15hOvbp1GzfaWqCO42yM6SlytNWBwLr58+jTq1/Pvr3799YBn92xYjpUrDV49GjrgwD8/wAGKKB6PBRo4IEI8oCAD239AEQQckXFghBDtMUAEQlmqOGGHHbo4YcghvhhETS01YMRiv1wRFtI5CfiizDGKCOHSdRo44041vgCcYr1yJ8EOQYp5JBEFmnkkUgm/pmkEkv46CRNNzCh5JRUVmmlkU1kqeWWXGrJgxMoPOnkE1B0aeaZaKap5ppstqkmE3DGKeeccpqQmJg+PhEFnXz26eefgAYq6KCEEirFFGLKUFhbTwBR6KOQRiqpn1FUaumlmGZKRRVOngCAFSH0SEKmpJZq6qmopqrqqqyyysQVC/iIRRRJWJFFj1q0quuuvPZa6hbABivssMRuAQUBXHShmBfANvHFrW2BUey01FZr7bXYZpttGNx26+234Hb7ghhjkKFCGTThoEC3TBBhxopKbTDFGeHWa++9+Oar77789htuFC8QgEYaaqiBBhPeRkEAwQUXvIa/EEcs8cTd6LJh8cUYZ6zxxhx37PHHIIcs8sgkd9zGySinrPLKLLfs8sswxyzzzDTX7LIbb+Ss88489+zzz0AHLfTQRBdt9NE+BwEH0kw37fTTUEetcxxyzGH11VhnrfXWXHft9ddghy322GRvTUcddpSt9tpst+3223PcAYEDdOBh991456333nz37fffgAcu+OCE550HTWVEoMfijDfu+OOQRy755JRXbvnlmGfOeAd7KNUAHXbwIfropJdu+umop6766qy37vrrr9vRB7pn1eEHHEHArvvuvPfu++5u/OEHBngWb/zxyCev/PLIBwIAOw==')
 }
-
-/* Мне нравится
- */
 
 .post_info > .like_wrap .like_btn.like:before {
     font-weight: normal;
@@ -300,34 +59,4 @@ head.oldvk-market ~ body .search_filters_wrap:before,
     color: #2f5879;
 }
 
-:lang(ru) .post_info > .like_wrap .like_btn.like:before {
-    content: "Мне нравится"
-}
-
-:lang(uk) .post_info > .like_wrap .like_btn.like:before {
-    content: "Мені подобається"
-}
-
-:lang(en-us) .post_info > .like_wrap .like_btn.like:before {
-    content: "Like"
-}
-
-:lang(be) .post_info > .like_wrap .like_btn.like:before {
-    content: "Мне падабаецца"
-}
-
-:lang(kk) .post_info > .like_wrap .like_btn.like:before {
-    content: "Ұнатамын"
-}
-
-:lang(be-tarask) .post_info > .like_wrap .like_btn.like:before {
-    content: "Мне падабаецца"
-}
-
-:lang(ru-petr1708) .post_info > .like_wrap .like_btn.like:before {
-    content: "Мнѣ по нраву"
-}
-
-:lang(ru-ussr) .post_info > .like_wrap .like_btn.like:before {
-    content: "Одобряю"
-}
+@include genlang(".post_info > .like_wrap .like_btn.like:before", null, ("ru":"Мне нравится", "uk":"Мені подобається", "be":"Мне падабаецца", "be-tarask":"Мне падабаецца", "en-us":"Like", "ru-petr1708":"Мнѣ по нраву", "ru-ussr":"Одобряю", "kk":"Ұнатамын"));
