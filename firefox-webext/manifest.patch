@@ -8,7 +8,7 @@
 +  "options_page": "options.html",
 +  "applications": {
 +    "gecko": {
-+      "id": "{dfae3164-d056-4475-9608-6d52a3cab5c1}",
++      "id": "{6acba1db-bca7-4dc3-b20e-3230c4f5a54e}",
 +      "strict_min_version": "48.0"
 +    }
 +  }
