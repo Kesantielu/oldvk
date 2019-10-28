@@ -1,0 +1,14 @@
+--- manifest.json	2019-10-28 15:10:08.071597400 +0600
++++ manifest.json	2019-10-28 15:11:27.668661800 +0600
+@@ -5 +5 @@
+-  "version": "0.600",
++  "version": "0.60.0",
+@@ -109 +109,7 @@
+-  "options_page": "options.html"
++  "options_page": "options.html",
++  "applications": {
++    "gecko": {
++      "id": "{dfae3164-d056-4475-9608-6d52a3cab5c1}",
++      "strict_min_version": "48.0"
++    }
++  }
