@@ -1,0 +1,270 @@
+.bookmark_page_item .online.mobile:after {
+    @include online-mobile-after
+}
+
+.bookmarks_rows_group,
+.bookmarks_rows_user {
+    padding: 5px 0 0;
+}
+
+.bookmark_block .ui_search {
+    margin: 5px
+}
+
+.bookmark_page_item {
+    padding: 0 10px 10px;
+    height: auto
+}
+
+.bookmarks_rows_user {
+    .bookmark_online {
+        padding-bottom: 25px
+    }
+
+    .bookmark_page_item__name {
+        white-space: nowrap;
+        margin: 5px -9px 0;
+    }
+}
+
+.bookmark_page_item__name {
+    font-weight: bold;
+}
+
+.bookmark_rows_mini {
+    .bookmarks_row {
+        padding: 10px 5px;
+    }
+
+    @at-root .bookmark_tag,
+    & .bookmark_tag {
+        padding: 4px 6px;
+        margin: 0 5px 5px 0;
+        background-color: #e4ebf1;
+        color: #0b5588;
+        border-radius: 2px;
+        content: none;
+
+        &:first-child {
+            padding-left: 6px;
+        }
+    }
+
+    .ui_actions_menu_icons {
+        top: 5px;
+        right: 15px;
+    }
+}
+
+.bookmark_tag:first-child:before {
+    content: none;
+}
+
+.bookmarks_row:after {
+    left: 5px;
+    right: 5px;
+}
+
+.bookmarks_actions_menu,
+.page_block .bookmarks_row_type_link .bookmarks_actions_menu {
+    top: 0;
+    position: absolute;
+    right: 0
+}
+
+.bookmarks_actions_menu .ui_actions_menu_icons {
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    right: 4px;
+}
+
+.bookmark_footer {
+    background: none;
+    padding: 5px 0 0 0;
+    border-top: none;
+    border-bottom: 1px solid #edeef2;
+}
+
+.bookmark_block:last-child .bookmark_footer {
+    border-bottom: none;
+}
+
+.bookmark_tag_menu_item[data-tagged="1"]:before {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAMCAYAAAC9QufkAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFJJREFUeNqdz8EJACEMBdHp1Fa2E0v9roIgYkziYdBDHiFIIlP5qv76C/MTTEu8wtEz3DcrA/v9x1s8uGJrwIS3zfLgjsnAEyYKLUwE3jAenLgBI25pVfSfTYAAAAAASUVORK5CYII=') no-repeat 50% / contain;
+    left: 5px;
+    top: 5px;
+}
+
+.bookmark_tag_menu_item_new:after {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADJJREFUeNpjSGhYwICGzwDxfyiNIseARfF/JExHxWfQFODCZxiIVAjGJJs8SEKD6BgEAMw17LCgQbHFAAAAAElFTkSuQmCC') no-repeat 50%;
+    left: 5px;
+    top: 5px;
+    width: 11px;
+    height: 11px;
+}
+
+.bookmarks_actions_menu .ui_actions_menu_sublist .ui_actions_menu_item {
+    padding-left: 20px
+}
+
+.bookmarks_actions_menu .ui_actions_menu_sublist,
+.bookmarks_actions_menu .ui_actions_menu_item_sublist {
+    margin: 0 -1px -1px
+}
+
+.bookmarks_row.bookmarks_row_padded {
+    padding: 5px 0;
+}
+
+.bookmarks_row_type_link .media_desc {
+    margin-bottom: 0
+}
+
+.bookmark_page_item .bookmark_page_item__actions .ui_actions_menu_icons {
+    background: rgba(0, 0, 0, 0.5) url('data:image/gif;base64,R0lGODlhBwAHAIABAP///////yH5BAEAAAEALAAAAAAHAAcAAAIMBIKmsWrIXnLxuDMLADs=') no-repeat center;
+    border: none;
+    top: 6px;
+    right: 12px;
+    border-radius: 3px;
+    width: 7px;
+    height: 7px;
+    padding: 3px;
+}
+
+.bookmark_page_item .online:after,
+.bookmark_page_item .online.mobile:after,
+.bookmark_page_item.bookmark_page_item_small .online:after,
+.bookmark_page_item.bookmark_page_item_small .online.mobile:after {
+    bottom: -32px;
+    border: none;
+    height: 11px;
+    width: 30px
+}
+
+.bookmark_page_item {
+    .online:after {
+        right: 35px;
+
+        &.mobile:after {
+            right: 30px
+        }
+    }
+
+    &.bookmark_page_item_small {
+        &:after {
+            right: 9px
+        }
+
+        &.mobile:after {
+            right: 4px
+        }
+    }
+}
+
+.bookmarks_rows_user .bookmark_online .ui_zoom_wrap {
+    overflow: visible
+}
+
+.bookmark_page_item.bookmark_page_item_small {
+    padding: 0 6px 6px;
+    height: 65px;
+
+    .bookmark_page_item__name,
+    .bookmark_page_item__name > a {
+        color: #2b587a;
+        margin: 5px -5px 0
+    }
+
+    &.bookmark_online {
+        height: 80px
+    }
+}
+
+%bookmarks-tag-btn {
+    margin: 2px 0 0 6px;
+    opacity: 0.4;
+    width: 12px;
+    height: 12px;
+
+    &:active {
+        margin-top: 3px;
+    }
+}
+
+.bookmarks_tag_edit_btn {
+    @extend %bookmarks-tag-btn;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGhJREFUeNpj+P//PwMhnNCw4D8QnwGxiVUMw2dIUQzGJCnG6SRcirFqwKcYQwMhxSgagJK1QHwWiP/gUgzXAJQ8AaWlgPggLsVgDUBJc6iJr2A24QtqkIKpSG4+QSgiQRpeQzWZE5NMADlvj4nAHiewAAAAAElFTkSuQmCC') no-repeat
+}
+
+.bookmarks_tag_delete_btn {
+    @extend %bookmarks-tag-btn;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAERJREFUeNpj+P//PwMIxzfM/w9jI2NkcbgADKMrRBZHEUCWwCbOgEsCmwFYrcSmEEUxLg3I8qSbTLSbKQoNvOFMSgwCAFz/RSWrGUHcAAAAAElFTkSuQmCC') no-repeat
+}
+
+.bookmarks_right_menu_button {
+    display: inline-block;
+    padding: 0;
+    height: 20px;
+    width: 20px;
+    margin: 8px 5px 7px;
+    overflow: hidden;
+
+    button {
+        text-indent: -1000px;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADJJREFUeNpjSGhYwICGzwDxfyiNIseARfF/JExHxWfQFODCZxiIVAjGJJs8SEKD6BgEAMw17LCgQbHFAAAAAElFTkSuQmCC') no-repeat center;
+        padding: 3px 10px 4px;
+        opacity: 0.5;
+
+        &:active {
+            padding-top: 4px
+        }
+    }
+
+    button.flat_button.secondary {
+        background-color: transparent;
+
+        &:hover {
+            background-color: #d8dfe8;
+        }
+    }
+
+    &:hover button {
+        opacity: 1
+    }
+}
+
+.bookmarks_pages {
+    margin-top: 10px;
+
+    .line_cell {
+        float: left
+    }
+
+    .module {
+        border-left: none
+    }
+
+    .header_top .header_label {
+        background: none
+    }
+
+    .module_header {
+        border-bottom: 1px solid #dae1e8;
+    }
+}
+
+#ui_rmenu_user ~ .ui_rmenu_sep {
+    display: none;
+}
+
+#ui_rmenu_tags_dropdown_list .ui_rmenu_item_sel {
+    .bookmarks_tag_edit_btn {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAC4jAAAuIwF4pT92AAAARElEQVR42mNgIAL8h4AzDCQo/k+Upv9YwHBTXAvEZ4H4DzGKT0BpKSA+SEixOdTAVzCbCIX1VCQnnyAmJl9DNZkTE/MAOgPFePRKujcAAAAASUVORK5CYII=') no-repeat
+    }
+
+    .bookmarks_tag_delete_btn {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAC4jAAAuIwF4pT92AAAANUlEQVR42mNggIL/QMCABWCI/0cCeMX/YwH4xLFKYFWIzUq8CvFpIFohyU6gXmgQE/5ExSAARhgi7Ma7QQsAAAAASUVORK5CYII=') no-repeat
+    }
+}
+

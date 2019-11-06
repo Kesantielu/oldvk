@@ -325,11 +325,22 @@ watchVar('ap', function (ap) {
         ap.top._updateTitle = function (t) {
             if (!t) return;
             t = AudioUtils.asObject(t);
-            var s = document.createElement('span');
-            var title = geByClass1('top_audio_player_title');
-            title.textContent = decodeHtml(t.performer);
-            s.textContent = decodeHtml(t.title);
-            title.appendChild(s)
+            var title = document.createElement('div');
+            var performer = document.createElement('div');
+            performer.classList.add('oldvk-performer');
+            title.classList.add('oldvk-title');
+            var wrap = geByClass1('top_audio_player_title');
+            wrap.textContent = '';
+            performer.textContent = decodeHtml(t.performer);
+            title.textContent = decodeHtml(t.title);
+            wrap.appendChild(performer);
+            wrap.appendChild(title);
+            title.style.transitionDuration = title.clientWidth / 170 * 2 + 's';
+            performer.style.transitionDuration = performer.clientWidth / 170 * 2 + 's';
+            if (title.clientWidth <= 170)
+                title.classList.add('oldvk-no-scroll');
+            if (performer.clientWidth <= 170)
+                performer.classList.add('oldvk-no-scroll')
         }
     }
     if (ap.top) {

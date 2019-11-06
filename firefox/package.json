@@ -2,7 +2,7 @@
   "id": "oldvk@dasefern.com",
   "title": "Old Design VK",
   "name": "oldvk",
-  "version": "0.59.1",
+  "version": "0.60.0",
   "description": "An extension which brings back old design for VK",
   "author": "Kesantielu Dasefern",
   "homepage": "https://kesantielu.github.io/oldvk",
@@ -54,6 +54,13 @@
       "name": "optionIm",
       "title": "Images on buttons",
       "description": "Show images on buttons instead of text in messages",
+      "type": "bool",
+      "value": false
+    },
+	{
+      "name": "optionDate",
+      "title": "Show post date on top",
+      "description": "Show post date on top of post",
       "type": "bool",
       "value": false
     }

@@ -8,12 +8,10 @@ var injectOptions = document.createElement('script');
 injectOptions.type = 'text/javascript';
 
 function init() {
-
     injectOptions.text = 'var oldvk={};oldvk.options=' + JSON.stringify(options) + ';' + (!isWebExt ? 'oldvk.fox=true;' : '');
     document.head.appendChild(injectOptions);
     document.head.appendChild(injectStart);
-    // API: oldvkAPI.injectStart
-    headOptions(); // API: oldvkAPI.headOption
+    headOptions();
     checkCSS(styles);
     if (isWebExt) {
         insertCSS('local');
@@ -56,7 +54,6 @@ Promise.all([getOptions, getHead]).then(function () {
             init()
     }
 );
-
 
 window.addEventListener('message', function (event) {
     switch (event.data.type) {
@@ -120,8 +117,15 @@ function checkCSS(styles) {
 function headOptions() {
     if (options.optionAudio)
         document.head.classList.add('oldvk-option-audio');
+
     if (options.optionDate)
         document.head.classList.add('oldvk-option-date');
+
+    if (options.optionFont)
+        document.head.classList.add('oldvk-largefont');
+
+    if (options.optionIm)
+        document.head.classList.add('oldvk-im');
 }
 
 var LocalizedContent = {
@@ -183,6 +187,7 @@ var LocalizedContent = {
         document.querySelector('#l_ap .left_label').textContent = i18n.apps[lang];
         document.querySelector('#l_aud .left_label').textContent = i18n.audios[lang];
         document.querySelector('#l_vid .left_label').textContent = i18n.videos[lang];
+        document.querySelector('#l_gr .left_label').textContent = i18n.groups[lang];
         document.querySelector('#l_vid .left_row').setAttribute('href', '/videos');
         LocalizedContent.updateNotify()
     },
@@ -206,17 +211,9 @@ var LocalizedContent = {
 
 function initArrives() {
 
-    // API: oldvkAPI.registerArrive
-
     // KPP.add('#top_nav', function (element) {
 
     // KPP.add('#side_bar_inner', function () {
-
-    if (options.optionFont)
-        document.head.classList.add('oldvk-largefont');
-
-    if (options.optionIm)
-        document.head.classList.add('oldvk-im');
 
     KPP.add('.page_cover', function (element) {
         if (options.optionCover) {
@@ -330,20 +327,19 @@ function initArrives() {
                 tmp[i].remove();
             }
 
-            if (avatars.length < 3) {
-                for (i = avatars.length; i--;) {
-                    avatars[i].className = 'oldvk-chat-avatar oldvk-chat-avatar-2';
-                    insertAfter(chat, avatars[i].cloneNode(false))
-                }
-            } else {
-                var wrap = document.createElement('div');
-                wrap.className = 'oldvk-chat-avatar-wrap';
-                for (i = avatars.length; i--;) {
-                    avatars[i].className = 'oldvk-chat-avatar-small oldvk-chat-avatar-2';
-                    wrap.appendChild(avatars[i].cloneNode(false))
-                }
-                insertAfter(chat, wrap)
+            var wrap = document.createElement('div');
+            wrap.className = 'oldvk-chat-avatar-wrap';
+
+            for (i = avatars.length; i--;) {
+                avatars[i].className = 'oldvk-chat-avatar-2' + ' oldvk-chat-avatar' + (avatars.length >= 3 ? '-small' : '');
+                wrap.appendChild(avatars[i].cloneNode(false))
             }
+
+            insertAfter(chat, wrap);
+
+            if (avatars.length === 1 && document.getElementsByClassName('_im_page_peer_online')[0].textContent === 'online')
+                wrap.classList.add('online');
+
             var iphm = document.getElementsByClassName('im-page--header-more');
             var ipchi = document.getElementsByClassName('im-page--chat-header-in');
             if (iphm.length > 0)
@@ -358,7 +354,6 @@ function initArrives() {
             document.getElementsByClassName('im-page-action_delete')[0].textContent = i18n.delete[lang];
             document.getElementsByClassName('im-page-action_spam')[0].textContent = i18n.spam[lang];
         }
-
     });
 
     KPP.add('body:not(.blog_page) #ui_rmenu_news_list', function (element) {
@@ -457,18 +452,15 @@ function initArrives() {
         if (spb) insertAfter(element.firstElementChild, spb);
     });
 
-    KPP.add('#profile .page_actions_inner', function (element) {
-        var pai = document.getElementsByClassName('page_actions_inner');
-        if (pai.length > 0) {
-            document.getElementsByClassName('page_actions_cont')[0].style.display = 'none';
-            document.getElementsByClassName('narrow_column_wrap')[0].appendChild(pai[0]);
-            var psgb = document.getElementById('profile_send_gift_btn');
-            var pgsb = document.getElementById('profile_gift_send_btn');
-            if (psgb && !pgsb) {
-                psgb.className = 'page_actions_item';
-                psgb.textContent = psgb.getElementsByClassName('profile_gift_text')[0].textContent;
-                pai[0].insertBefore(psgb, pai[0].firstChild)
-            }
+    KPP.add('#profile .page_extra_actions_wrap .page_actions_inner', function (element) {
+        document.getElementsByClassName('page_actions_cont')[0].style.display = 'none';
+        document.getElementsByClassName('narrow_column_wrap')[0].appendChild(element);
+        var psgb = document.getElementById('profile_send_gift_btn');
+        var pgsb = document.getElementById('profile_gift_send_btn');
+        if (psgb && !pgsb) {
+            psgb.className = 'page_actions_item';
+            psgb.textContent = psgb.getElementsByClassName('profile_gift_text')[0].textContent;
+            element.insertBefore(psgb, element.firstChild)
         }
     });
 
@@ -556,6 +548,8 @@ function initArrives() {
         var top = thumb.getBoundingClientRect().top + document.documentElement.scrollTop;
         if (top < topStop) {
             var factor = thumb.matches('.wall_module:not(#profile_wall) .post_fixed .page_post_sized_thumbs, .wall_module:not(#profile_wall) .post_fixed .page_album_thumb_wrap') ? 0.77 : 0.66;
+            if (thumb.matches('.replies_list_deep .page_post_sized_thumbs'))
+                factor = 0.615;
             var narrow = thumb.cloneNode(true);
             narrow.classList.add('oldvk-thumb-narrow');
             insertAfter(thumb, narrow);
@@ -571,15 +565,15 @@ function initArrives() {
         }
     });
 
-    KPP.add('.wall_posts .page_doc_photo_href:not(.oldvk-thumb-narrow)', function (gif) {
+    KPP.add('.wall_posts .page_gif_large:not(.oldvk-thumb-narrow)', function (gif) {
         var top = gif.getBoundingClientRect().top + document.documentElement.scrollTop;
         if (top < topStop) {
-            var factor = gif.matches('.wall_module:not(#profile_wall) .post_fixed .page_doc_photo_href') ? 0.77 : 0.66;
+            var factor = gif.matches('.wall_module:not(#profile_wall) .post_fixed .page_gif_large') ? 0.77 : 0.66;
             var narrow = gif.cloneNode(true);
             narrow.classList.add('oldvk-thumb-narrow');
             gif.parentElement.insertBefore(narrow, gif);
             resizeNarrow(narrow.getElementsByClassName('page_doc_photo')[0], factor);
-            resizeNarrow(narrow, factor);
+            resizeNarrow(narrow.getElementsByClassName('page_doc_photo_href')[0], factor);
             gif.classList.add('oldvk-thumb-wide');
         }
     });
@@ -591,7 +585,6 @@ function resizeNarrow(element, factor) {
     if (element.classList.contains('page_doc_photo_href')) {
         element.dataset.width = Math.floor(element.dataset.width * factor).toString();
         element.dataset.height = Math.floor(element.dataset.height * factor).toString();
-        element.dataset.preview = '2'
     }
 }
 

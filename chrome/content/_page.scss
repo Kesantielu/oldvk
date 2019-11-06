@@ -1,0 +1,52 @@
+#group_section_menu .module_body .ui_gallery .ui_gallery_item {
+    &:first-child {
+        margin-left: 0
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    .groups_menu_item {
+        .groups_menu_item_title {
+            margin-top: 5px;
+            width: 94px;
+        }
+
+        .groups_menu_item_image {
+            height: 71px;
+            width: 104px;
+        }
+    }
+}
+
+#group_section_menu .module_body {
+    padding: 10px 0 10px
+}
+
+.group_friends.followers_hidden {
+    &.no_friends {
+        padding: 0 6px 10px;
+    }
+
+    .group_friends_text .group_friends_count {
+        color: #777;
+        font-weight: bold
+    }
+}
+
+.group_friends_image {
+    margin-right: 0
+}
+
+.friends_dropdown__list_item .friends_dropdown__list_image {
+    border-radius: 3px
+}
+
+.friends_dropdown__list_content .ui_scroll_content {
+    padding: 0
+}
+
+.photo_tooltip .photo_tooltip__name {
+    padding: 10px
+}

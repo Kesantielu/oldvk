@@ -223,7 +223,9 @@ var styles = [
     {css: 'friends', match: 'friends'},
     {css: 'market', match: 'market'},
     {css: 'support', match: 'support'},
-    {css: 'audios', match: 'artist'}
+    {css: 'audios', match: 'artist'},
+    {css: 'audios', match: 'music'},
+    {css: 'audios', match: 'podcasts'}
 ];
 
 var langMap = {0: 'ru', 1: 'uk', 2: 'be-tarask', 3: 'en-us', 97: 'kk', 114: 'be', 100: 'ru-petr1708', 777: 'ru-ussr'};
@@ -338,6 +340,16 @@ var i18n = {
         114: 'Відэазапісы',
         100: 'Синематографъ',
         777: 'Киноленты'
+    },
+    groups: {
+        0: 'Группы',
+        1: 'Групи',
+        2: 'Групы',
+        3: 'Groups',
+        97: 'Топтарым',
+        114: 'Групы',
+        100: 'Общества',
+        777: 'Клубы'
     },
     spam: {
         0: 'Это спам',
