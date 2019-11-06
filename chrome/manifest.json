@@ -6,7 +6,7 @@
   "default_locale": "en",
   "author": "Kesantielu Dasefern",
   "homepage_url": "https://kesantielu.github.io/oldvk",
-  "minimum_chrome_version": "32",
+  "minimum_chrome_version": "42",
   "icons": {
     "48": "oldvk-48.png",
     "64": "oldvk-64.png",
