@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    {% if site.google_analytics %}
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ site.google_analytics }}');
+      </script>
+    {% endif %}
+    <meta charset="UTF-8">
+    {% seo title=false %}
+	<title>{{ site.shortname }} — {{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <meta property="og:image" content="https://kesantielu.github.io/oldvk/oldvk-200.png">
+    <link rel="shortcut icon" href="oldvk-48.png">
+	<script type="text/javascript" src="index.js"></script>
+  </head>
+  <body>
+    <header class="page-header" role="banner">
+      <h1 class="project-name">{{ page.shortname | default: site.shortname }}</h1>
+      <h2 class="project-tagline">Старый дизайн ВКонтакте. Версия {{ page.version }}</h2>
+	  <h3>Выберите версию браузера:</h3>
+	  <a id="chrome-link" class="btn" onclick="installC();" href="#">{{ page.chrome }}</a>
+	  <a id="opera-link" class="btn" href="#">{{ page.crx }}</a>
+	  <a id="firefox-webext-link" class="btn" onclick="return installF(e);" href="#">{{ page.xpi }}</a> 
+	  <a id="firefox-link" class="btn" onclick="return installF(e);" href="#">{{ page.jpm }}</a>
+    </header>
+    <main id="content" class="main-content" role="main">
+      {{ content }}
+      <footer class="site-footer">
+        <span class="site-footer-credits"></span>
+      </footer>
+    </main>
+  </body>
+</html>
