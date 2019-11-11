@@ -5669,7 +5669,7 @@ a.groups_messages_block .ui_rmenu_count:before {
 .submit_post_box div.submit_post_field {
     border: 1px solid #c0cad5;
     margin-left: 0;
-    padding: 3px 5px !important;
+    padding: 3px 5px;
 }
 
 .wall_module .reply_field.submit_post_field {
@@ -6111,6 +6111,10 @@ div.submit_post_field ~ .placeholder .ph_input {
 
 .ui_ownblock {
     padding: 0;
+
+    &:after {
+        content: none;
+    }
 }
 
 .ui_ownblock ~ .ui_rmenu_sep {
@@ -6129,11 +6133,6 @@ div.submit_post_field ~ .placeholder .ph_input {
     &:hover {
         text-decoration: underline;
     }
-
-    :after {
-        content: none;
-    }
-
 }
 
 .ui_ownblock_img,
@@ -7621,6 +7620,10 @@ head.oldvk-friends ~ body .wide_column_left .wide_column {
 .feed_updates .wall_module .wall_text {
     margin-left: 0;
     padding-bottom: 0
+}
+
+.feed_topics_list {
+    display: block;
 }
 
 #groups_filters_wrap,

@@ -74,14 +74,16 @@ window.addEventListener("message", function (m) {
         }
     }
 });
-var sfi = setFavIcon;
-setFavIcon = function () {
-    if (arguments[0].search(/fav_logo\.ico/i) !== -1)
-        arguments[0] = fav_logo;
-    if (arguments[0].search(/fav_im\.ico/i) !== -1)
-        arguments[0] = fav_im;
-    sfi.apply(this, arguments);
-    icoNode.href = icoNode.href.replace(/\?\d+$/, '')
-};
+if (typeof setFavIcon !== 'undefined') {
+    var sfi = setFavIcon;
+    setFavIcon = function () {
+        if (arguments[0].search(/fav_logo\.ico/i) !== -1)
+            arguments[0] = fav_logo;
+        if (arguments[0].search(/fav_im\.ico/i) !== -1)
+            arguments[0] = fav_im;
+        sfi.apply(this, arguments);
+        icoNode.href = icoNode.href.replace(/\?\d+$/, '')
+    }
+}
 
 window.postMessage({type: "UPD", text: window.location.pathname.slice(1)}, '*');
