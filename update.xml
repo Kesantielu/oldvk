@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='hmnclekioganjaggbpekjengjpjiobad'>
-    <updatecheck codebase='https://kesantielu.github.io/oldvk/chrome-crx/oldvk-0.60.1.crx' version='0.601' />
+	<updatecheck codebase="https://kesantielu.github.io/oldvk/chrome-crx/oldvk-0.60.1.crx" version="0.601" prodversionmin="64.0.3242" />
+    <updatecheck codebase='https://kesantielu.github.io/oldvk/chrome-crx/oldvk-0.60.1-2.crx' version='0.601' />
   </app>
 </gupdate>
