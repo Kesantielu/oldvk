@@ -1,8 +1,5 @@
 --- manifest.json	2019-10-28 15:10:08.071597400 +0600
 +++ manifest.json	2019-10-28 15:11:27.668661800 +0600
-@@ -5 +5 @@
--  "version": "0.601",
-+  "version": "0.60.1",
 @@ -109 +109,7 @@
 -  "options_page": "options.html"
 +  "options_page": "options.html",
