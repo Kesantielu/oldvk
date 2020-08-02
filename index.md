@@ -4,6 +4,7 @@ layout: index
 version: "60"
 chrome: Google Chrome, Yandex Browser
 crx: Opera, Chromium
+crx2: Chromium <60
 xpi: Mozilla Firefox 48+
 jpm: Pale Moon 28+, Mozilla Firefox 45-47
 ---

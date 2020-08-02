@@ -19,6 +19,7 @@ function installC() {
 window.addEventListener('DOMContentLoaded', function() {
   var a1 = document.getElementById('firefox-webext-link');
   var a2 = document.getElementById('opera-link');
+  var a21 = document.getElementById('crx2-link');
   var a3 = document.getElementById('firefox-link');
   
   if (typeof a1 !== 'undefined') {
@@ -33,13 +34,15 @@ window.addEventListener('DOMContentLoaded', function() {
     xhr1.send();
   }
   
-  if (typeof a2 !== 'undefined') {
+  if (typeof a2 !== 'undefined' && typeof a21 !== 'undefined') {
     var xhr2 = new XMLHttpRequest();
     xhr2.onload = function() {
       var xml = new DOMParser();
       var upd = xml.parseFromString(xhr2.responseText, "text/xml");
       a2.title = 'Версия ' + upd.getElementsByTagName('updatecheck')[0].getAttribute('version');
       a2.href = upd.getElementsByTagName('updatecheck')[0].getAttribute('codebase');
+	  a21.title = 'Версия ' + upd.getElementsByTagName('updatecheck')[1].getAttribute('version');
+      a21.href = upd.getElementsByTagName('updatecheck')[1].getAttribute('codebase');
     }
     xhr2.open('GET', 'update.xml', true);
     xhr2.send();
