@@ -1,8 +1,9 @@
---- manifest.json	2019-10-28 15:10:08.071597400 +0600
-+++ manifest.json	2019-10-28 15:11:27.668661800 +0600
-@@ -109 +109,7 @@
+--- manifest.json	2020-03-29 10:53:23.442417400 +0600
++++ manifest.json	2020-04-12 00:36:08.469932800 +0600
+@@ -9 +8,0 @@
+-  "minimum_chrome_version": "42",
+@@ -107 +106,7 @@
 -  "options_page": "options.html"
-+  "options_page": "options.html",
 +  "applications": {
 +    "gecko": {
 +      "id": "{6acba1db-bca7-4dc3-b20e-3230c4f5a54e}",
