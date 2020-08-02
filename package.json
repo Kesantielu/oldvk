@@ -1,0 +1,10 @@
+{
+  "name": "oldvk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "postcss-prefix-selector": "^1.7.2",
+    "web-ext": "^5.0.0"
+  }
+}
