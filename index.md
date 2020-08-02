@@ -1,7 +1,7 @@
 ---
 title: Старый дизайн ВКонтакте
 layout: index
-version: "0.60"
+version: "60"
 chrome: Google Chrome, Yandex Browser
 crx: Opera, Chromium
 xpi: Mozilla Firefox 48+
@@ -9,6 +9,10 @@ jpm: Pale Moon 28+, Mozilla Firefox 45-47
 ---
 
 ## Что нового {#relnotes}
+
+### Версия 60.4 от 02.08.2020 {#v604}
+- Исправлены аудиозаписи
+- Новая нумерация версий
 
 ### Версия 0.60.3 от 17.07.2020 {#v0603}
 - Восстановлена работа расширения
