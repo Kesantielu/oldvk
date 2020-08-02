@@ -182,7 +182,7 @@
     overflow: hidden;
 }
 
-.deep_active .replies .replies_next,
+#{$exclude-dir} .deep_active .replies .replies_next,
 .deep_active .wl_replies .replies_next,
 .wall_module .wr_header {
     display: block;
@@ -343,6 +343,11 @@
 .deep_active .post_replies_header,
 .deep_active.wall_module .post_replies_header {
     padding: 5px 0 0;
+}
+
+.deep_active.wl_post .post_replies_header,
+.deep_active.wall_module.wl_post .post_replies_header {
+    padding: 10px 23px 0;
 }
 
 .post_replies_reorder {

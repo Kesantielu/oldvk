@@ -16,7 +16,7 @@ window.onload = isWebExt ? function () {
         if (!item.enabled)
             document.getElementById("title-wrap").classList.add("disabled");
     });
-    document.getElementById("enabled").title = browser.i18n.getMessage("enabled");
+    document.getElementById("enabled").title = browser.i18n.getMessage("enable");
     document.getElementById("enabled").onchange = function () {
         browser.storage.local.set({enabled: this.checked});
         if (this.checked)
@@ -39,7 +39,6 @@ window.onload = isWebExt ? function () {
         else
             document.getElementById("title-wrap").classList.add("disabled")
     };
-
     document.getElementById("options").addEventListener("click", function () {
         self.port.emit("openPrefs");
     })
