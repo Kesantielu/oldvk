@@ -2,11 +2,11 @@
   "manifest_version": 2,
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
-  "version": "60.4",
+  "version": "61.0",
   "default_locale": "en",
   "author": "Kesantielu Dasefern",
   "homepage_url": "https://kesantielu.github.io/oldvk",
-  "minimum_chrome_version": "42",
+  "minimum_chrome_version": "45",
   "icons": {
     "48": "oldvk-48.png",
     "64": "oldvk-64.png",
