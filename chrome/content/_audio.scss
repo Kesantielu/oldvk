@@ -10,8 +10,8 @@
 }
 
 #{$exclude-dir} .audio_page_player_wrap {
-    height: 36px;
-    width: 607px;
+    height: 36px !important;
+    width: 607px !important;
     margin-top: -10px
 }
 
@@ -388,10 +388,6 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
             }
         }
 
-        &_next .icon {
-            background-position: -15px 0;
-        }
-
         &_next,
         &_prev {
             padding: 18px 4px;
@@ -401,6 +397,10 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
                 background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAKCAYAAABFXiVrAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFxJREFUeNq9k8EJwDAMAz1iZ+koXfjaQAPByE770eMIKEEHxgkgVo7zYtDlzznhJRIyl4VZlnNRSiFDytIDurwoZZfLwqWUnzK6vLoo+SAr8cqsY7QviH31HZ/6BgoQWRnP/vgbAAAAAElFTkSuQmCC') no-repeat;
                 width: 12px
             }
+        }
+
+        &_next .icon {
+            background-position: -15px 0;
         }
 
         &_track_wrap {
@@ -695,6 +695,7 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
 .audio_friend_name_now {
     width: 115px;
     line-height: 1.36em;
+    color: $link-color
 }
 
 .audio_catalog_performers .audio_catalog_performer_thumb {
@@ -1882,6 +1883,10 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
         margin-top: 49px
     }
 
+    &__audio_friends .ui_search_new .ui_search_input_inner {
+        height: 25px
+    }
+
 }
 
 #{$exclude-dir} .CatalogBlock__header {
@@ -1903,4 +1908,8 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
 
 .BannerItem {
     background-color: #F0F1F2;
+}
+
+.post:not(.post_fr_likes):not(.postponed):not(.post_copy) .post_info .audio_pl_snippet2:last-child {
+    margin-bottom: 0
 }

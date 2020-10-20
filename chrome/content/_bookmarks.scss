@@ -1,5 +1,6 @@
 .bookmark_page_item .online.mobile:after {
-    @include online-mobile-after
+    @include online-mobile-after;
+    right: 31px
 }
 
 .bookmarks_rows_group,
@@ -268,3 +269,8 @@
     }
 }
 
+.bookmarks_privacy {
+    color: #777777;
+    margin-bottom: 0 !important;
+    padding: 10px 20px 0;
+}

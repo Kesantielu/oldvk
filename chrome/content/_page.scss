@@ -50,3 +50,12 @@
 .photo_tooltip .photo_tooltip__name {
     padding: 10px
 }
+
+.page_photo.page_action_menu_groups .page_actions_item .ui_rmenu_count {
+    margin: 0
+}
+
+.page_menu_group_notifications .ui_rmenu_count.grey {
+    border-radius: 2px;
+    transition: background-color 200ms linear, color 200ms linear;
+}

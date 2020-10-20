@@ -135,7 +135,7 @@ var LocalizedContent = {
 
     init: function () {
         this.l_ntf.id = 'l_ntf';
-        this.l_ntf.innerHTML = '<a href="/feed?section=notifications" class="left_row" onclick="return nav.go(this, event, {noback: true, params: {_ref: \'left_nav\'}});" onmouseover="TopNotifier.preload();"><span class="left_fixer"><span class="left_count_wrap fl_r" id="oldvk-notify-wrap" onmouseover="TopNotifier.preload()" onclick="TopNotifier.show(event);TopNotifier.setCount(\'\',true)"><span class="inl_bl left_count" id="oldvk-notify"></span></span><span class="left_label inl_bl">' + i18n.answers[lang] + '</span></span></a>';
+        this.l_ntf.innerHTML = '<a href="/feed?section=notifications" class="left_row" onclick="return nav.go(this, event, {noback: true, params: {_ref: \'left_nav\'}});" onmouseover="TopNotifier.preload();"><span class="left_label inl_bl">' + i18n.answers[lang] + '</span><span class="left_count_wrap fl_r" id="oldvk-notify-wrap" onmouseover="TopNotifier.preload()" onclick="TopNotifier.show(event);TopNotifier.setCount(\'\',true)"><span class="inl_bl left_count" id="oldvk-notify"></span></span></a>';
 
         this.l_edit.id = 'l_edit';
         this.l_edit.classList.add('fl_r');
@@ -143,7 +143,7 @@ var LocalizedContent = {
         this.l_edit.textContent = i18n.edit[lang];
 
         this.l_set.id = 'l_sett';
-        this.l_set.innerHTML = '<a href="/settings" class="left_row"><span class="left_fixer"><span class="left_label inl_bl" id="oldvk-settings">' + i18n.settings[lang] + '</span></span></a>';
+        this.l_set.innerHTML = '<a href="/settings" class="left_row"><span class="left_label inl_bl" id="oldvk-settings">' + i18n.settings[lang] + '</span></a>';
         KPP.add('#side_bar_inner ol', function () {
             KPP.remove('#side_bar_inner ol');
             LocalizedContent.updateMenu();
@@ -175,8 +175,8 @@ var LocalizedContent = {
         if (!document.getElementById('l_ntf'))
             insertAfter(document.getElementById('l_nwsf'), this.l_ntf);
         if (!document.getElementById('l_edit')) {
-            var l_edit_b = document.getElementById('l_pr').getElementsByClassName('left_fixer')[0];
-            l_edit_b.insertBefore(this.l_edit, l_edit_b.firstChild);
+            var l_edit_parent = document.querySelector('#l_pr a.left_row');
+            l_edit_parent.appendChild(this.l_edit)
         }
         if (!document.getElementById('l_sett')) {
             if (document.getElementById('l_fav'))
@@ -188,6 +188,7 @@ var LocalizedContent = {
         document.querySelector('#l_aud .left_label').textContent = i18n.audios[lang];
         document.querySelector('#l_vid .left_label').textContent = i18n.videos[lang];
         document.querySelector('#l_gr .left_label').textContent = i18n.groups[lang];
+        document.querySelector('#l_msg .left_label').textContent = i18n.messages[lang];
         document.querySelector('#l_vid .left_row').setAttribute('href', '/videos');
         LocalizedContent.updateNotify()
     },
@@ -405,7 +406,7 @@ function initArrives() {
 
     KPP.add('#profile #wide_column', function (element) {
 
-        var name = element.getElementsByClassName('page_name')[0].textContent.split(' ');
+        var name = element.getElementsByClassName('page_name')[0].childNodes[0].textContent.split(' ');
         if (name[name.length - 1].substr(name[name.length - 1].length - 1) === ')')
             name.pop();
         var title = document.createElement('div');

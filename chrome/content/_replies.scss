@@ -164,7 +164,7 @@
     border-top-color: #e9edf1;
 }
 
-.wide .deep_active .replies_wrap_deep .reply_img,
+.wide .deep_active .replies .replies_wrap_deep .reply_img,
 .deep_active.wall_module .wl_replies_block_wrap .replies_wrap_deep .reply_img,
 .big_wall .deep_active .replies .replies_wrap_deep .reply_img,
 #main_feed .wall_module .replies_wrap_deep .reply_img {
@@ -393,4 +393,14 @@
 
 .progress_inline {
     width: 497px
+}
+
+.replies_short_text_deep__separator {
+    margin: 0 4px;
+    background: none;
+    width: auto;
+    height: auto;
+    &:after {
+        content: "|";
+    }
 }

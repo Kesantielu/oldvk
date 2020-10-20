@@ -401,3 +401,8 @@ body.static_header #page_header_cont {
     height: 342px;
     width: 295px;
 }
+
+.AppLeftMenuWithNotify:before {
+    left: -5px;
+    top: 7px;
+}

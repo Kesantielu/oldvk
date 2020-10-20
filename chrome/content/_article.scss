@@ -3,7 +3,7 @@
     margin-top: 10px;
 }
 
-.wide_column:not(.wide) .article_snippet .article_snippet__deleted_text {
+#{$not-wide} .article_snippet .article_snippet__deleted_text {
     font-size: 16px;
     margin-bottom: 16px;
     margin-left: 26px
@@ -17,28 +17,37 @@
     margin-left: -26px
 }
 
-.wide_column:not(.wide) .article_snippet .article_snippet__title {
-    font-size: 20px;
+.article_snippet .article_snippet__title {
+    font-size: 24px;
+
+    #{$not-wide} & {
+        font-size: 20px;
+    }
+
 }
 
-.wide_column:not(.wide) .article_snippet .article_snippet__author {
+#{$not-wide} .article_snippet .article_snippet__author {
     font-size: 12px;
 }
 
-.wide_column:not(.wide) .article_snippet .article_snippet__read_btn {
+#{$not-wide} .article_snippet .article_snippet__read_btn {
     margin-top: 16px;
 }
 
-.article_snippet .article_snippet__read_btn {
-    background-color: #fff;
+.article_snippet .article_snippet__action_btn_text {
     font-size: 12px;
-    padding: 5px 12px 6px 28px;
-    background-position: 5px 0;
+    color: #333;
 }
 
-.article_snippet .article_snippet__read_btn:active {
-    padding: 6px 12px 5px 28px;
-    background-position: 5px 1px;
+.article_snippet .article_snippet__action_btn {
+    background-color: #fff;
+    font-size: 12px;
+    padding: 6px 16px 7px;
+    margin-top: 20px;
+
+    &:active {
+        padding: 7px 16px 6px;
+    }
 }
 
 .article_layer .article_layer__footer .article_layer__footer_button:before {
