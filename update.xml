@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='hmnclekioganjaggbpekjengjpjiobad'>
-	<updatecheck codebase='https://kesantielu.github.io/oldvk/chrome-crx/oldvk-60.7.crx' version='60.7' prodversionmin='64.0.3242' />
+	<updatecheck codebase='https://kesantielu.github.io/oldvk/chrome-crx/oldvk-60.8.crx' version='60.8' prodversionmin='64.0.3242' />
   </app>
   <app appid='hmnclekioganjaggbpekjengjpjiobad'>
-    <updatecheck codebase='https://kesantielu.github.io/oldvk/chrome-crx/oldvk-60.7-2.crx' version='60.7' />
+    <updatecheck codebase='https://kesantielu.github.io/oldvk/chrome-crx/oldvk-60.8-2.crx' version='60.8' />
   </app>
 </gupdate>
