@@ -15,8 +15,10 @@ var button = ToggleButton({
     id: 'oldvk-button',
     label: _('appName'),
     icon: {
-        "16": './oldvk-16.png',
-        "32": './oldvk-32.png'
+        "18": './oldvk-18.png',
+        "32": './oldvk-32.png',
+        "36": './oldvk-36.png',
+        "64": './oldvk-64.png'
     },
     onChange: handleChange
 });
