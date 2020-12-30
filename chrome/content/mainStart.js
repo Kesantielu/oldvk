@@ -330,6 +330,8 @@ function initArrives() {
 
             var wrap = document.createElement('div');
             wrap.className = 'oldvk-chat-avatar-wrap';
+            if (avatars.length === 2)
+                wrap.classList.add('wide');
 
             for (i = avatars.length; i--;) {
                 avatars[i].className = 'oldvk-chat-avatar-2' + ' oldvk-chat-avatar' + (avatars.length >= 3 ? '-small' : '');
@@ -342,9 +344,12 @@ function initArrives() {
                 wrap.classList.add('online');
 
             var iphm = document.getElementsByClassName('im-page--header-more');
+            var iphc = document.getElementsByClassName('im-page--header-call');
             var ipchi = document.getElementsByClassName('im-page--chat-header-in');
             if (iphm.length > 0)
                 document.getElementsByClassName('im-page--chat-header')[0].insertBefore(iphm[0], ipchi[0])
+            if (iphc.length > 0)
+                document.getElementsByClassName('im-page--chat-header')[0].insertBefore(iphc[0], ipchi[0])
         });
 
         if (!options.optionIm) {
@@ -460,7 +465,7 @@ function initArrives() {
         var pgsb = document.getElementById('profile_gift_send_btn');
         if (psgb && !pgsb) {
             psgb.className = 'page_actions_item';
-            psgb.textContent = psgb.getElementsByClassName('profile_gift_text')[0].textContent;
+            psgb.textContent = psgb.getElementsByClassName('profile_side_text')[0].textContent;
             element.insertBefore(psgb, element.firstChild)
         }
     });
@@ -577,6 +582,14 @@ function initArrives() {
             resizeNarrow(narrow.getElementsByClassName('page_doc_photo_href')[0], factor);
             gif.classList.add('oldvk-thumb-wide');
         }
+    });
+
+    // Пункт меню «Понравилось»
+
+    KPP.add('#ui_rmenu_likes', function (likes) {
+        var menu = document.getElementById('ui_rmenu_news_list');
+        if (menu)
+            menu.appendChild(likes)
     });
 }
 

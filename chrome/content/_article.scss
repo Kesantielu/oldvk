@@ -21,7 +21,7 @@
     font-size: 24px;
 
     #{$not-wide} & {
-        font-size: 20px;
+        font-size: 14px;
     }
 
 }
@@ -165,7 +165,7 @@
     font-weight: bold;
     font-size: 12px;
     padding: 0 0 4px;
-    color: #45688E
+    color: $header-color
 }
 
 .article_ed_layer .article_ed_layer__publish_settings .article_ed_layer__publish_settings_subheader {

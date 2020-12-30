@@ -49,7 +49,7 @@
 .stories_feed_title {
     padding: 10px 0 0;
     font-weight: bold;
-    color: #45688E;
+    color: $header-color;
 }
 
 .stories_feed_items_wrap {
@@ -107,4 +107,9 @@
 
 .eltt.post_author_data {
     font-size: 11px;
+}
+
+.page_block.stories_feed_wrap {
+    margin-bottom:10px;
+    padding: 0 5px
 }

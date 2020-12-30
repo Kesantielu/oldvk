@@ -22,11 +22,20 @@
     box-shadow: none
 }
 
+.media_voting_footer_button {
+    @extend .flat_button
+}
+
 .media_voting_question {
     font-size: 11px !important;
-    color: #45688e;
+    color: $header-color;
     line-height: 140% !important;
     padding: 4px 0 2px;
+
+    .media_voting_bg_photo &,
+    .media_voting_bg_gradient & {
+        color: #FFF
+    }
 }
 
 .media_voting_header {
@@ -131,10 +140,13 @@
 }
 
 .media_voting_option_bar {
-    height: 15px;
+    height: 0;
     background: #dae1e8;
     position: static;
     margin-top: 0;
+    .media_voting_voted & {
+        height: 15px;
+    }
 }
 
 .media_voting_option_percent {

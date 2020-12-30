@@ -48,7 +48,7 @@
     margin: 0 0 10px;
     font-weight: bold;
     border-bottom: 1px #dae1e8 solid;
-    color: #45688e;
+    color: $header-color;
     border-top: none;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .stats_community_messages_info_title {
-    color: #45688e;
+    color: $header-color;
     font-weight: bold;
 }
 

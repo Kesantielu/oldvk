@@ -134,7 +134,7 @@
 
 .market_comments_summary {
     font-weight: bold;
-    color: #45688E;
+    color: $header-color;
     padding: 5px 0
 }
 
@@ -211,7 +211,7 @@ head.oldvk-market ~ body .search_filters_wrap {
 head.oldvk-market ~ body .search_filters_wrap:before {
     position: absolute;
     padding: 17px 0 7px;
-    color: #45688e;
+    color: $header-color;
     cursor: pointer;
     z-index: 1;
     right: 0

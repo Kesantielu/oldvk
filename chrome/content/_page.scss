@@ -59,3 +59,37 @@
     border-radius: 2px;
     transition: background-color 200ms linear, color 200ms linear;
 }
+
+.DonutWallInfo {
+    background-size: 50px 50px;
+    background-position: 20px 20px;
+    --group-wall-donut-icon-size: 50px;
+
+    &__title {
+        color: $header-color;
+        font-weight: bold;
+    }
+
+    &__text {
+        line-height: inherit;
+    }
+}
+
+.PageGroupMenu___marketBadgeNew.PageGroupMenu___marketBadgeNew--show {
+    margin-top: 0;
+    vertical-align: middle;
+}
+
+.stories_groups_block_stories_empty .page_module_upload {
+    color: $link-color
+}
+
+.DonutModule__title {
+    font-weight: bold;
+    color: $header-color;
+    font-size: 1.1em
+}
+
+.wall_module .post.Post--with_closed_comments_donut {
+    padding-bottom: 0
+}

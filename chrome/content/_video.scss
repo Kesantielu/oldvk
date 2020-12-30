@@ -1,11 +1,7 @@
-#video_block_header {
-    margin: 0 -10px;
-}
-
 .video_search_input.ui_search.ui_search_new {
     padding: 13px 352px 12px 16px;
-    margin: 0;
-    border-bottom: 1px solid #dae1e8;
+    margin: 0 -10px;
+    border-bottom: 1px solid $border-line-color;
 }
 
 #videocat_header_updates:before,
@@ -48,7 +44,7 @@
 .videocat_featured_video.videocat_featured_big,
 .videocat_autoplay_video_wrap {
     width: 398px;
-    height: 224px;
+    height: 222px;
     margin: 0 0 10px
 }
 
@@ -67,9 +63,10 @@
     background-position: 14px 12px;
 }
 
-.videocat_featured_playlist, .videocat_featured_video {
+.videocat_featured_playlist,
+.videocat_featured_video {
     width: 192px;
-    height: 109px;
+    height: 108px;
 }
 
 .videocat_featured {
@@ -88,7 +85,6 @@
 
 .videocat_page_block .page_block_header {
     padding: 0;
-    margin: 0 5px;
     border: none;
     font-size: 1.1em
 }
@@ -289,10 +285,11 @@
 
 #video_main_tabs button {
     position: relative;
-    top: 39px;
+    top: 40px;
     z-index: 4;
     padding: 6px 8px;
     margin-right: 5px;
+    margin-top: -2px
 }
 
 #video_block_header .ui_search_sugg_list {
@@ -320,7 +317,7 @@
 
 .ui_tabs.video_default_tabs {
     background: none;
-    margin: -8px -3px 10px;
+    margin: 0 7px 10px;
 }
 
 .ui_tabs.video_default_tabs .ui_tab {
@@ -417,7 +414,12 @@
     padding: 0 15px
 }
 
+#mv_comments_header {
+    margin: 0 15px;
+}
+
 .mv_comments_summary {
+    @extend %h2;
     margin: 0 15px
 }
 
@@ -540,14 +542,14 @@
 }
 
 .video_playlist_item {
-    height: 202px;
-    width: 293px;
-    margin-bottom: 10px;
+    height: 200px;
+    width: 290px;
+    margin: 0 5px 10px 0;
 }
 
-.video_playlist_item .video_playlist_item_thumb {
-    height: 163px;
-    width: 293px;
+.VideoPlaylistItem__thumb {
+    height: 161px;
+    width: 290px;
 }
 
 .video_playlist_item .video_playlist_item_counter_text {
@@ -556,6 +558,11 @@
 
 .video_playlist_item .video_playlist_item_play {
     top: 63px
+}
+
+.mv_actions_block {
+    margin: 0 15px 15px;
+    border-bottom: 1px solid $border-line-color;
 }
 
 .mv_actions_block .like_button_label,
@@ -638,9 +645,111 @@
 
 .videocat_page_block .page_block_header_inner {
     border-bottom: 1px solid #dae1e8;
-    padding-bottom: 5px
+    padding-bottom: 5px;
+    padding-left: 10px
 }
 
 .mv_reply_cancel_button {
     margin-right: 0
+}
+
+.ShortVideoStub {
+    padding: 0;
+
+    &:before {
+        content: "";
+        background: url('data:image/gif;base64,R0lGODlhCwALAJEAAP///0VojgAAAAAAACH5BAkAAAMALAAAAAALAAsAAAIZ3GKJFq3e4omI2nfTlNo65kHUJi6boh1GAQA7') no-repeat right top;
+        display: block;
+        width: 11px;
+        height: 11px;
+        position: absolute;
+        right: 0;
+        padding: 5px;
+        opacity: 0;
+        cursor: pointer;
+        transition: opacity 200ms linear;
+    }
+
+    &:hover::before {
+        opacity: 0.7
+    }
+
+    &__title {
+        color: $header-color;
+        font-weight: bold;
+
+        br {
+            content: "";
+
+            &:after {
+                content: " ";
+            }
+        }
+    }
+
+    &__title,
+    &__text {
+        line-height: inherit
+    }
+
+    &__links {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    &__row {
+        flex: 50%;
+
+        &:first-child {
+            margin-right: 10px
+        }
+
+        & + & {
+            margin-top: 0;
+        }
+    }
+}
+
+.ShortVideoTagList {
+    &__title {
+        @extend %h2;
+        line-height: inherit;
+    }
+
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.ShortVideoTagListItem {
+    box-sizing: border-box;
+    flex: 50%;
+    padding: 5px;
+
+    &__title {
+        color: $link-color
+    }
+}
+
+.ShortVideoPost,
+.ShortVideoPage .page_block_h2 {
+    box-shadow: none;
+}
+
+.ShortVideoPost {
+    padding: 10px 5px;
+    &__author {
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    &__avatar {
+        margin-right: 10px;
+    }
+}
+
+.VideoLayerInfo__author,
+.VerticalVideoLayerInfo__author {
+    margin: 0 15px 15px
 }

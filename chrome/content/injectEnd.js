@@ -114,13 +114,13 @@ if (typeof setFavIcon !== 'undefined') {
 if (typeof setDocumentTitle !== 'undefined') {
     var sdt = setDocumentTitle;
     setDocumentTitle = function () {
-        if (cur.module === 'im')
+        if (typeof cur !== 'undefined' && cur.module === 'im')
             arguments[0] = oldvk_i18n.messages[vk.lang];
         sdt.apply(this, arguments);
     }
 }
 
-if (cur.module === 'im')
+if (typeof cur !== 'undefined' && cur.module === 'im')
     document.getElementsByTagName('title')[0].textContent = oldvk_i18n.messages[vk.lang];
 
 window.postMessage({type: "UPD", text: window.location.pathname.slice(1)}, '*');

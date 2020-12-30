@@ -253,7 +253,7 @@ head.oldvk-support ~ body #wrap3 {
 .tickets_header_title {
     font-weight: bold;
     font-size: 1.09em;
-    color: #45688E;
+    color: $header-color;
 }
 
 .tickets_header,
@@ -328,7 +328,8 @@ head.oldvk-support ~ body #wrap3 {
 }
 
 .blst_last {
-    width: 190px
+    width: 190px;
+    padding: 5px 10px;
 }
 
 .blst_thumb {
@@ -347,7 +348,7 @@ head.oldvk-support ~ body #wrap3 {
 .bt_title {
     font-weight: bold;
     font-size: 1.09em;
-    color: #45688E;
+    color: $header-color;
     line-height: inherit;
     height: auto
 }
@@ -367,7 +368,7 @@ a.bp_date {
 }
 
 .bp_bottom {
-    margin-top: 4px;
+    margin-top: 6px;
     line-height: inherit
 }
 
@@ -379,4 +380,16 @@ a.bp_date {
 
 .bp_thumb.online {
     padding-bottom: 18px;
+}
+
+.bt_rows {
+    padding: 0 5px
+}
+
+.bp_post {
+    padding: 10px 0
+}
+
+.blst_info {
+    padding: 5px 10px 0 0;
 }

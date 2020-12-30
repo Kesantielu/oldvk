@@ -10,7 +10,7 @@
 }
 
 #{$exclude-dir} .audio_page_player_wrap {
-    height: 36px !important;
+    height: 26px !important;
     width: 607px !important;
     margin-top: -10px
 }
@@ -302,7 +302,7 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
 .audio_page__sort_dd {
     .idd_arrow {
         padding-left: 5px;
-        padding-bottom: 5px;
+        padding-bottom: 10px;
 
         &.idd_header {
             width: calc(100% - 12px);
@@ -749,7 +749,7 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
 
     .audio_page__audio_rows_list {
         margin: 0;
-        min-height: 78px;
+        // min-height: 78px;
     }
 
     .audio_friends_fixed {
@@ -774,7 +774,6 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
         padding: 10px;
         border-bottom: 1px solid $border-line-color;
         background-color: #F7F7F7;
-        margin-right: -10px;
         width: 156px;
         border-left: 1px solid $border-line-color;
 
@@ -1051,9 +1050,9 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
         }
 
         .ui_tabs {
-            margin-top: -47px;
+            margin-top: -39px;
             margin-right: -20px;
-            font-weight: normal
+            font-weight: normal;
         }
     }
 
@@ -1182,9 +1181,12 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
     margin-top: 0
 }
 
-.audio_page_content_block_wrap .page_block_header {
-    margin-left: 5px;
-    padding-top: 10px
+.audio_page_content_block_wrap {
+    margin-top: 10px;
+
+    .page_block_header {
+        padding-top: 10px
+    }
 }
 
 .audio_feed_post.clear_fix:after {
@@ -1299,7 +1301,13 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
         margin-top: 0;
         right: 15px;
         position: static;
-        padding-bottom: 5px
+        padding-bottom: 5px;
+
+        &_arrow,
+        &:after {
+            margin-top: 3px;
+            background-image: $arrow-right;
+        }
     }
 
     .audio_block {
@@ -1366,7 +1374,7 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
     }
 
     .top_audio_player_title {
-        color: #45688E;
+        color: $header-color;
         transition: none;
         line-height: 1.3em;
         white-space: nowrap;
@@ -1440,7 +1448,7 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
     &__play {
         border-radius: 2px;
         line-height: 16px;
-        background-color: #45688e;
+        background-color: $header-color;
         color: #FFF
     }
 
@@ -1691,6 +1699,10 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAGnRFWHRTb2Z0d2FyZQBQYWludC5ORVQgdjMuNS4xMUfzQjcAAAAySURBVHjaY+ietaIeiP/jwfUM////Z8CjsB4kD1aEQ2E9TA6uCE1hPbI4HCArRFYAwgDaLXc3xck6cgAAAABJRU5ErkJggg==') no-repeat 50%
 }
 
+.audio_pl_snippet2 .audio_pl_snippet__artist_link {
+    display: inline
+}
+
 ._playlist_page_content_block {
     box-shadow: none;
     margin-top: 0
@@ -1810,7 +1822,7 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
 
 .CatalogSection {
     background: none;
-    padding: 10px 0 0;
+    padding: 0;
     margin: 0;
 
     &:before {
@@ -1823,7 +1835,7 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
 
     &__stickyColumn {
         position: absolute;
-        top: 88px;
+        top: 84px;
         background: #f7f7f7;
         border-left: 1px solid $border-line-color;
         border-bottom: 1px solid $border-line-color;
@@ -1842,6 +1854,10 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
 
     &__for_you .CatalogBlock--divided:first-child {
         width: 427px
+    }
+
+    &__friends_updates {
+        margin-top: 10px
     }
 }
 
@@ -1863,11 +1879,14 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
 
     &__header {
         margin: 0 0 10px;
-        width: auto
+        width: auto;
+        line-height: inherit;
     }
 
     &__title {
+        @extend %h2;
         width: 100%;
+        font-size: 11px
     }
 
     &__leftColumn {
@@ -1886,7 +1905,6 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
     &__audio_friends .ui_search_new .ui_search_input_inner {
         height: 25px
     }
-
 }
 
 #{$exclude-dir} .CatalogBlock__header {
@@ -1912,4 +1930,25 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
 
 .post:not(.post_fr_likes):not(.postponed):not(.post_copy) .post_info .audio_pl_snippet2:last-child {
     margin-bottom: 0
+}
+
+.audio_restriction_box .box_body {
+    padding: 15px
+}
+
+.audio_restriction_box__title {
+    color: $header-color;
+    font-weight: bold;
+}
+
+.LinkSnippet {
+    align-items: flex-start;
+    &__text {
+        padding-bottom: 5px
+    }
+}
+
+.CatalogSection__friends_updates .CatalogBlock__list .audio_page__audio_list_block,
+.CatalogSection__friends_updates .CatalogBlock__list ._audio_page__playlists {
+    margin-top: -30px
 }

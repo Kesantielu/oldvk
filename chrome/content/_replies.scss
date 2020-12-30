@@ -19,7 +19,7 @@
 
     .reply_box_photo {
         top: 0 !important;
-        right: 26px !important;
+        right: 24px !important;
     }
 }
 
@@ -30,9 +30,24 @@
     color: $gray-color;
 }
 
-.deep_active .replies .reply_fakebox_container .reply_fake_more_attaches {
+.deep_active .replies .reply_fakebox_container .reply_fake_more_attaches,
+.deep_active .wl_replies_block_wrap .reply_fakebox_container .reply_fake_more_attaches,
+.deep_active.wall_module .replies .reply_fakebox_container .reply_fake_more_attaches,
+.deep_active.wall_module .wl_replies_block_wrap .reply_fakebox_container .reply_fake_more_attaches {
     top: 0 !important;
-    right: 49px !important
+    right: 48px !important;
+    background-size: 16px;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+}
+
+.deep_active .replies .reply_fakebox_container .reply_fake_more_attaches,
+.deep_active .wl_replies_block_wrap .reply_fakebox_container .reply_fake_more_attaches,
+.deep_active.wall_module .replies .reply_fakebox_container .reply_fake_more_attaches,
+.deep_active.wall_module .wl_replies_block_wrap .reply_fakebox_container .reply_fake_more_attaches,
+.ms_items_more_wrap.ms_items_more_wrap_vector .ms_item_more_label {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='m0 0h24v24h-24z'/%3E%3Cpath d='m20.0291094 15.0279907-5.384726 5.2303888c-2.5877049 2.513536-6.71408829 2.4838066-9.26530792-.0667538-2.6116233-2.6109485-2.61217034-6.8446794-.00122186-9.4563027.00760974-.0076117.01523784-.015205.02288425-.0227799l8.06657363-7.99110563c1.7601202-1.7436532 4.6004898-1.73030402 6.344143.02981623.0091252.00921136.0182104.01846224.0272554.02775238 1.7500823 1.79751906 1.7306631 4.66777042-.0435807 6.44144506l-8.1308667 8.12825806c-.8479169.8476448-2.20023168.9147308-3.12787932.1551687l-.1337127-.1094846c-.8947528-.7326277-1.02618115-2.0518803-.29355343-2.9466331.03855837-.047091.0791516-.0924786.12166404-.1360332l5.46733261-5.60136864' stroke='%237b94b7' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.8'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .deep_active .submit_post_field {
@@ -71,16 +86,37 @@
     margin-left: 29px !important;
 }
 
-.deep_active .reply_box_more_attaches {
+.deep_active .replies .reply_box_more_attaches,
+.deep_active .wl_replies_block_wrap .reply_box_more_attaches,
+.deep_active.wall_module .replies .reply_box_more_attaches,
+.deep_active.wall_module .wl_replies_block_wrap .reply_box_more_attaches {
     top: auto !important;
     bottom: -26px !important;
     right: 48px !important;
+    width: 24px;
+    height: 24px
+}
+
+.deep_active .replies .reply_box_more_attaches:before,
+.deep_active .wl_replies_block_wrap .reply_box_more_attaches:before,
+.deep_active.wall_module .replies .reply_box_more_attaches:before,
+.deep_active.wall_module .wl_replies_block_wrap .reply_box_more_attaches:before {
+    width: 24px;
+    height: 24px;
+    background-size: 16px;
+    cursor: pointer;
+    background-position: center;
+    top: 0
 }
 
 .wall_module .reply_box_photo {
     top: auto;
     bottom: -26px;
-    right: 26px
+    right: 24px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpj+P//PwMlmIHqBiRWL4oB4rdA/B8NfwLiDJwGACWZgDg5u2Xln8pJ2/5XT9mOgqsmb/uf07r6H1BNJkgt3AAgRxOI9ycBbchuXYWhER0DDfmfBHHNCSA2YUitX7q/pG8T2AZCmpFdU9q/6X96w7JtDCDNxGpExyW9G/8z4FHQA/MnkD0VlzqcBqCHNqkG/KPUAFC89yBFMeleyO9cC09EBV3r/pNsALEYZMBjCgy4w1AxcaslkHGfDM33yyduMac4NwIATr7B2qD5r+0AAAAASUVORK5CYII=');
+    background-size: 16px;
+    width: 24px;
+    height: 24px;
 }
 
 .replies .submit_post_box .emoji_smile_wrap,
@@ -167,7 +203,11 @@
 .wide .deep_active .replies .replies_wrap_deep .reply_img,
 .deep_active.wall_module .wl_replies_block_wrap .replies_wrap_deep .reply_img,
 .big_wall .deep_active .replies .replies_wrap_deep .reply_img,
-#main_feed .wall_module .replies_wrap_deep .reply_img {
+#main_feed .wall_module .replies_wrap_deep .reply_img,
+.deep_active .replies .replies_wrap_deep .reply:not(.reply_tt) .reply_img,
+.deep_active .wl_replies_block_wrap .replies_wrap_deep .reply:not(.reply_tt) .reply_img,
+.deep_active.wall_module .replies .replies_wrap_deep .reply:not(.reply_tt) .reply_img,
+.deep_active.wall_module .wl_replies_block_wrap .replies_wrap_deep .reply:not(.reply_tt) .reply_img {
     width: 32px;
     height: 32px
 }
@@ -185,26 +225,7 @@
 #{$exclude-dir} .deep_active .replies .replies_next,
 .deep_active .wl_replies .replies_next,
 .wall_module .wr_header {
-    display: block;
-    color: #6a7989;
-    height: 13px;
-    padding: 9px 0 8px;
-    background: #eff1f3;
-    text-align: center;
-    margin: 5px 0 !important;
-    line-height: inherit;
-}
-
-.deep_active .replies .replies_next:hover,
-.deep_active .wl_replies .replies_next:hover,
-.deep_active .wr_header:hover {
-    background-color: #e9edf1;
-}
-
-.deep_active .replies .replies_next:active,
-.deep_active .wl_replies .replies_next:active,
-.deep_active .wr_header:active {
-    padding: 10px 0 7px;
+    @extend %button-next
 }
 
 .deep_active .replies .replies_prev,
@@ -232,9 +253,13 @@
 }
 
 .deep_active .replies .replies_wrap_deep .reply,
-.deep_active.wall_module .wl_replies_block_wrap .replies_wrap_deep .reply {
+.deep_active.wall_module .wl_replies_block_wrap .replies_wrap_deep .reply,
+.deep_active .replies .replies_wrap_deep .reply:not(.reply_tt),
+.deep_active .wl_replies_block_wrap .replies_wrap_deep .reply:not(.reply_tt),
+.deep_active.wall_module .replies .replies_wrap_deep .reply:not(.reply_tt),
+.deep_active.wall_module .wl_replies_block_wrap .replies_wrap_deep .reply:not(.reply_tt) {
     padding-left: 0;
-    margin-left: 0
+    margin-left: 0;
 }
 
 .deep_active .replies .replies_wrap_deep .reply_image,
@@ -256,7 +281,7 @@
 .deep_active .post_replies_count,
 .deep_active.wall_module .post_replies_count {
     font-size: inherit;
-    color: #45688e;
+    color: $header-color;
     border-top: none;
     font-weight: bold;
     border-bottom: 1px solid #DAE1E8;
@@ -400,6 +425,7 @@
     background: none;
     width: auto;
     height: auto;
+
     &:after {
         content: "|";
     }
