@@ -93,3 +93,38 @@
 .wall_module .post.Post--with_closed_comments_donut {
     padding-bottom: 0
 }
+
+.ProfileActions {
+    .page_actions_expanded {
+        .page_actions_item {
+            color: $link-color;
+            margin: 0;
+
+            &:hover,
+            &:active {
+                background-color: $background-hover !important;
+            }
+
+            &:before {
+                display: none
+            }
+        }
+
+        @at-root .page_photo#{&} {
+            margin-top: 0
+        }
+    }
+
+    .PageActionItem__icon {
+        display: none;
+    }
+}
+
+#submit_post_box:not(.shown):not(.own_field) .SitpostingEntrypoint {
+    display: none
+}
+
+.SitpostingEntrypoint {
+    margin-top: 3px;
+    margin-right: 5px;
+}

@@ -327,7 +327,7 @@
 }
 
 .ui_tabs.video_default_tabs .ui_tab:hover {
-    background: #e1e7ed;
+    background: $background-hover;
 }
 
 .ui_tabs.video_default_tabs .ui_tab.ui_tab_sel {
@@ -358,7 +358,7 @@
 }
 
 .video_item_info {
-    color: $gray-color
+    color: $gray-color-7
 }
 
 .video_subtitle {
@@ -619,7 +619,7 @@
 .mv_actions_block .like_btn:not(.like):after,
 .mv_actions_private_panel .like_btn:not(.like):after {
     content: "|";
-    color: $gray-color;
+    color: $gray-color-7;
     padding: 0 6px;
     font-weight: normal;
     font-size: 11px

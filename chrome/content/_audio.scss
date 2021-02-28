@@ -6,7 +6,7 @@
 
 .audio_w_covers .audio_row .audio_row__performers,
 .audio_row .audio_row__title_inner_subtitle {
-    color: $gray-color
+    color: $gray-color-7
 }
 
 #{$exclude-dir} .audio_page_player_wrap {
@@ -1091,7 +1091,7 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
         }
 
         .ui_tab:not(.ui_tab_sel):hover {
-            background: #E1E7ED;
+            background: $background-hover;
         }
     }
 
@@ -1265,7 +1265,7 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
 }
 
 .audio_pl_item2 .audio_pl__year_subtitle {
-    color: $gray-color
+    color: $gray-color-7
 }
 
 .audio_pl_item2 .audio_pl__title {
@@ -1638,7 +1638,7 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
 
 .audio_pl_snippet2 .audio_pl_snippet__action_btn:hover,
 .podcast_episode_layer__actions .button_action_light:hover {
-    background: #E1E7ED;
+    background: $background-hover;
     border-radius: 3px
 }
 
@@ -1753,7 +1753,7 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
         margin-right: 10px;
 
         &:hover {
-            background: #E1E7ED;
+            background: $background-hover;
             border-radius: 3px;
         }
     }

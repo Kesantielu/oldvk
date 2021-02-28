@@ -135,7 +135,7 @@ var LocalizedContent = {
 
     init: function () {
         this.l_ntf.id = 'l_ntf';
-        this.l_ntf.innerHTML = '<a href="/feed?section=notifications" class="left_row" onclick="return nav.go(this, event, {noback: true, params: {_ref: \'left_nav\'}});" onmouseover="TopNotifier.preload();"><span class="left_label inl_bl">' + i18n.answers[lang] + '</span><span class="left_count_wrap fl_r" id="oldvk-notify-wrap" onmouseover="TopNotifier.preload()" onclick="TopNotifier.show(event);TopNotifier.setCount(\'\',true)"><span class="inl_bl left_count" id="oldvk-notify"></span></span></a>';
+        this.l_ntf.innerHTML = '<a href="/feed?section=notifications" class="left_row" onclick="return nav.go(this, event, {noback: true, params: {_ref: \'left_nav\'}});" onmouseover="TopNotifier.preload();"><span class="left_label inl_bl">' + i18n.answers[lang] + '</span><span class="left_count_wrap fl_r" id="oldvk-notify-wrap" onmouseover="TopNotifier.preload()" onmousedown="return TopNotifier.onBellMouseDown(event)" onclick="event.stopPropagation();TopNotifier.setCount(\'\',true);return TopNotifier.onBellClick(event)"><span class="inl_bl left_count" id="oldvk-notify"></span></span></a>';
 
         this.l_edit.id = 'l_edit';
         this.l_edit.classList.add('fl_r');
@@ -226,7 +226,7 @@ function initArrives() {
             page_block.className = 'page_block page_photo';
             page_block.innerHTML = '<div class="page_avatar_wrap"><div class="page_avatar" id="page_avatar"></div></div>';
             page_block.appendChild(page_actions);
-            var page_avatar_a = document.getElementsByClassName('page_cover_image')[0];
+            var page_avatar_a = document.getElementsByClassName('page_cover_image')[1];
             page_avatar_a.className = '';
             page_avatar_a.firstElementChild.className = 'page_avatar_img';
             if (page_avatar_a.hasAttribute('onclick')) {

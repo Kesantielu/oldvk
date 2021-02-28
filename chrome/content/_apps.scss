@@ -1,3 +1,6 @@
+$card-size: 112px;
+$card-size-small: 72px;
+
 .apps_recent_block .page_block_h2 {
     margin: -10px -10px 0;
     width: 627px;
@@ -63,16 +66,12 @@ body.static_header #page_header_cont {
 }
 
 .apps_cat_header_link:after {
+    background-image: $arrow-right;
     height: 10px
 }
 
 #apps_top_tabs .ui_tab.ui_tab_sel {
     color: #FFF
-}
-
-#apps_header .ui_tabs_header {
-    padding: 5px 0 0;
-    border-bottom: none
 }
 
 #apps_header .ui_tab_group {
@@ -432,5 +431,335 @@ body.static_header #page_header_cont {
         &:active {
             padding-right: 14px
         }
+    }
+}
+
+.GamesCatalogCollectionCardsList {
+    padding: 0 0 15px
+}
+
+.GamesCatalogHalfBlock {
+    width: auto;
+
+    .GamesCatalogCard__appLink {
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    .GamesCatalogCardsBlock__header {
+        margin: 10px 0;
+        border-bottom: 1px solid $border-line-color;
+    }
+}
+
+.GamesCatalogCollection {
+    width: auto
+}
+
+.GamesCatalogCollectionCard {
+    margin-left: 4px;
+    width: $card-size-small;
+
+    &__imageWrap {
+        width: $card-size-small;
+        height: $card-size-small;
+
+        &:after {
+            width: $card-size-small;
+            height: $card-size-small;
+            border: none;
+        }
+    }
+
+    &__image {
+        width: $card-size-small;
+        height: $card-size-small;
+    }
+}
+
+.GamesCatalogCardsBlock,
+.GamesCatalogGameOfWeek {
+    &__headerIcon {
+        display: none
+    }
+}
+
+.GamesCatalogCardsList {
+    padding: 0;
+    justify-content: space-between;
+
+    .GamesCatalogCard {
+        margin-left: auto;
+    }
+}
+
+.GamesCatalogCard {
+    width: $card-size;
+
+    &__appLink {
+        font-weight: bold;
+    }
+
+    &__imageWrap {
+        width: $card-size;
+        height: $card-size;
+
+        &:after {
+            width: 102px;
+            height: 102px;
+            border: none;
+        }
+    }
+
+    &__image {
+        width: $card-size;
+        height: $card-size;
+    }
+}
+
+.GamesCatalogGameOfWeek {
+    &__content {
+        padding: 10px 5px
+    }
+}
+
+.GamesCatalogMainContent {
+    margin-bottom: 0
+}
+
+.apps_rate_cat {
+    padding-bottom: 3px;
+}
+
+.GamesCatalog--downloaded_games {
+    .ui_tabs {
+        border-bottom: 1px solid #597DA3;
+    }
+}
+
+.DownloadedGameItem {
+    margin: -1px 0px;
+    padding: 10px 0;
+
+    &:hover {
+        margin: -1px -10px;
+        padding: 10px 10px;
+    }
+
+    &__image,
+    &__imageWrap {
+        height: 128px;
+        width: 224px;
+    }
+
+    &__imageWrap {
+        margin-right: 10px
+    }
+
+    &__imageWrap:after {
+        border: none
+    }
+
+    &__description {
+        width: auto
+    }
+}
+
+// Miniapps
+
+.AppsCatalogHeader {
+    padding: 5px;
+
+    &__tab {
+        padding: 0;
+        line-height: inherit
+    }
+
+    &__select {
+        padding: 0;
+        top: auto;
+        line-height: inherit;
+
+        .Select__arrow {
+            background-image: $arrow-down;
+
+            .Tabs__item--active & {
+                background-image: $arrow-down-white;
+            }
+        }
+
+    }
+
+    &__search {
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAYAAADUFP50AAAACXBIWXMAAC4jAAAuIwF4pT92AAACDUlEQVR42mNgwAESKuabpjYsr8loXtOXVresNLZkkQ4DPhBaPpM/s2nVzMLOjd+rpuz+XzN93/+KSbv+F3Ru/JTRuLLPN20mF4Ymz9xJ7Fktq9dVT9nzv3b63v/VU3b9r5q881vN1N1gPsigrObVsxgaGphQNGY0roqtmLTzfx1QUeWk7VdLe7cGF/Zt1S3p2xpVNWnHLZB4Wf+2v5mNKzyR9TEWdK7fUT9zP0jTm8K+TdrIksU9m0yrJu/4UD/zwP/8jnWLEYHRMJ+jtG/zg8bZh4CmblmLzf9lE7Zub5xz+H9x76ZzcEGHhPkcZX1bHzTMPvi/pGfzKmwaS3o3bwVpBBp8FtXE/i1b6mcd+A9U8DypYqkSslxy1SIdoPi7hllAg/u2LEDRWNS7Mal2Gig0d//Pa1t3JqVqsWto6XyJ1JolPvnt6y/VTNsDCuk/hV3r3eCaYqpmSuZ3bjhYDQz66qm7/oOioKhr49/8jvWfi3o2/QNpAgVMWc+WqfDoiC2ZLpbbtnYfSBNIQeWkHW+qJm3/BFIICixQSFdP3vmxfMK21sLCVZxgTYmV80RzW9bsrJ6653/djH3/Kyduv1vQv96gZOIWHWAo5lVM3llfPmlbZnHPBi0Uf2W3rOmtnbEfqAmYMibveFDatdmIgRhQ3LHGHejh95WTdz4t6d5gzkAKAGko6t2sT4oeAPZfIRdlmszHAAAAAElFTkSuQmCC');
+        width: 14px;
+        height: 15px;
+        margin-right: 4px
+    }
+}
+
+.AppsCatalogSelectMenu {
+    border-top: 1px $border-line-color solid;
+    padding: 0;
+    top: 18px;
+    max-height: 194px;
+
+    &__option {
+        line-height: 24px;
+        padding: 0 5px
+    }
+}
+
+.AppsCatalogSection {
+    padding: 0 15px;
+
+    &__header {
+        margin: 5px -15px 0;
+        padding: 3px 15px 4px;
+        border-bottom: 1px solid $border-line-color;
+        background: none;
+        height: auto;
+    }
+
+    &__content {
+        margin: 10px 0 15px
+    }
+
+    &__title {
+        color: $header-color;
+        line-height: inherit;
+        font-weight: bold;
+    }
+
+    &__card {
+        margin-right: 10px;
+    }
+}
+
+.AppsCatalogGrid {
+    &__card {
+        margin-right: 10px
+    }
+}
+
+$apps-catalog-card-size: 110px;
+
+.AppsCatalogCard {
+    width: $apps-catalog-card-size;
+
+    &__image {
+        width: $apps-catalog-card-size;
+        height: $apps-catalog-card-size;
+    }
+
+    &__name {
+        font-weight: bold;
+        color: $link-color;
+    }
+
+    &__category {
+        color: $gray-color-9
+    }
+}
+
+.AppsCatalogCardBadge {
+    border-radius: 2px
+}
+
+$apps-catalog-banner-width: 415px;
+$apps-catalog-banner-height: 249px;
+
+.AppsCatalogFeaturedBanner {
+    height: $apps-catalog-banner-height;
+
+    &__slide {
+        width: $apps-catalog-banner-width;
+        height: $apps-catalog-banner-height;
+    }
+
+    &__prev,
+    &__next {
+        width: 100px
+    }
+}
+
+.AppsCatalogSkeleton {
+    &__sectionName {
+        margin-bottom: 10px
+    }
+
+    &__block:after {
+        background: none;
+        animation: none
+    }
+
+    &__featuredBanner {
+        padding: 10px 0;
+        height: 249px;
+    }
+
+    &__card {
+        margin-right: 10px;
+        margin-bottom: 15px;
+    }
+
+    &__cardIcon {
+        width: $apps-catalog-card-size;
+        height: $apps-catalog-card-size;
+    }
+
+    &__slide {
+        width: $apps-catalog-banner-width;
+        height: $apps-catalog-banner-height;
+    }
+
+    &__tabsItem {
+        height: 15px;
+        margin-left: 15px;
+    }
+}
+
+.AppsCatalogMainPage {
+    &__showAllLink {
+        padding: 0;
+        line-height: inherit;
+
+        &:after {
+            background-image: $arrow-right;
+        }
+    }
+
+    &__clearLink {
+        padding: 0;
+        line-height: inherit
+    }
+}
+
+.AppsCatalogCategoryPage__grid,
+.AppsCatalogSkeleton__grid,
+.AppsCatalogSearchPage__grid,
+.AppsCatalogMainPage__grid,
+.AppsCatalogSkeleton__section,
+.AppsCatalogSkeleton__menu {
+    padding: 15px
+}
+
+.AppsCatalogSearchInput {
+    &__input {
+        @extend %ui_search_field;
+        height: auto;
+    }
+
+    &__searchInput {
+        padding: 15px 15px 0
+    }
+
+    &__resetControl {
+        @extend %ui_search_reset;
+        right: 0;
+    }
+
+    &__searchControl {
+        display: none
     }
 }

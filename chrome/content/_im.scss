@@ -1357,7 +1357,7 @@ button.im-page--dialogs-header-control:hover {
 }
 
 .chat_tab_wrap:hover {
-    background: #e1e7ed
+    background: $background-hover
 }
 
 .chat_tab_counter {
@@ -1924,4 +1924,8 @@ button.BotButton,
 .List.ChatSettingsMenu,
 .ChatSettingsInfo {
     margin: 0
+}
+
+.ChatSettings {
+    transform: none
 }

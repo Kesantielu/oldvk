@@ -75,12 +75,12 @@
 }
 
 .pv_counter {
-    color: $gray-color;
+    color: $gray-color-7;
     opacity: 1;
 }
 
 .pv_album_name a {
-    color: $gray-color;
+    color: $gray-color-7;
     font-weight: bold;
 }
 
@@ -169,7 +169,7 @@
 
 #pv_tag_info .pv_info,
 #pv_tag_info .pv_tag_info_text {
-    color: $gray-color
+    color: $gray-color-7
 }
 
 #pv_switch_wrap {
@@ -431,7 +431,7 @@
     }
 
     #pv_bottom_info_date {
-        color: $gray-color;
+        color: $gray-color-7;
         float: left;
 
         &:empty {
@@ -527,7 +527,7 @@
             margin-bottom: 4px;
 
             &:hover {
-                background: #E1E7ED;
+                background: $background-hover;
                 text-decoration: none;
             }
         }
