@@ -5,15 +5,15 @@
             <Seq>
                 <li>
                     <Description>
-                        <em:version>60.11</em:version>
+                        <em:version>61.0</em:version>
                         <em:targetApplication>
                             <Description>
                                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
                                 <em:minVersion>45.0</em:minVersion>
                                 <em:maxVersion>47.*</em:maxVersion>
                                 <em:strictCompatibility>true</em:strictCompatibility>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-60.11-u.xpi</em:updateLink>
-                                <em:updateHash>sha256:af46bc942e49c4a310e59d0998b763e7bbc66df9c604be870e9682d955fdf926</em:updateHash>
+                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-61.0-u.xpi</em:updateLink>
+                                <em:updateHash>sha256:d04684b75dd60154cb5bd8a5327a7a5af087c496791a487599d5301334d22234</em:updateHash>
                             </Description>
                         </em:targetApplication>
                         <em:targetApplication>
@@ -22,7 +22,7 @@
                                 <em:minVersion>45.0</em:minVersion>
                                 <em:maxVersion>47.*</em:maxVersion>
                                 <em:strictCompatibility>true</em:strictCompatibility>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-60.11-u.xpi</em:updateLink>
+                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-61.0-u.xpi</em:updateLink>
                             </Description>
                         </em:targetApplication>
                         <em:targetApplication>
@@ -31,7 +31,7 @@
                                 <em:minVersion>28.0.0a1</em:minVersion>
                                 <em:maxVersion>*</em:maxVersion>
                                 <em:strictCompatibility>true</em:strictCompatibility>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-60.11-u.xpi</em:updateLink>
+                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-61.0-u.xpi</em:updateLink>
                             </Description>
                         </em:targetApplication>
                     </Description>
