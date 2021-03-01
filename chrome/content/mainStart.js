@@ -216,6 +216,8 @@ function initArrives() {
 
     // KPP.add('#side_bar_inner', function () {
 
+    // Обложка страниц и аватарки
+
     KPP.add('.page_cover', function (element) {
         if (options.optionCover) {
             element.classList.add('adapted')
@@ -531,15 +533,15 @@ function initArrives() {
 
     // Перенос даты поста вниз
 
-    if (!options.optionDate)
-        KPP.add('.post', function (post) {
+    if (!options.optionDate) {
+        KPP.add('.post, .ShortVideoPost', function (post) {
             var pd = post.getElementsByClassName('post_date')[0];
             var wt = post.getElementsByClassName('wall_text')[0];
             var pfl = post.getElementsByClassName('post_full_like')[0];
             var lw = post.getElementsByClassName('like_wrap')[0];
             if (pd && pfl) {
                 pfl.insertBefore(pd, pfl.firstElementChild);
-                pd.style.outline = '1px #F55 dashed';
+                // pd.style.outline = '1px #F55 dashed'; // debug
             } else if (pd && wt) {
                 if (lw)
                     lw.insertBefore(pd, lw.firstChild);
@@ -547,6 +549,15 @@ function initArrives() {
                     wt.parentElement.appendChild(pd)
             }
         });
+
+        KPP.add('.ShortVideoPost', function (post) {
+            var pd = post.getElementsByClassName('ShortVideoPost__date')[0];
+            var pw = post.getElementsByClassName('ShortVideoPost__widgets')[0];
+            if (pd && pw) {
+                pw.insertBefore(pd, pw.firstElementChild)
+            }
+        });
+    }
 
     // Обработка изображений для расширения стены
 

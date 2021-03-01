@@ -442,11 +442,21 @@ div.fc_clist_filter,
 .AppsCatalogCard__name,
 .AppsCatalogCard__category,
 .Tooltip__in,
+.ShortVideoPost__date,
+.VideoTrack__title,
+.ShortVideoTopInfo__text,
+.ShortVideoTopInfo__description,
 h2 {
     font-size: inherit;
     font-family: inherit;
 }
 
+.ShortVideoTopInfo__photo,
+.ShortVideoGridItem,
+.ShortVideoGridItem:before,
+.ShortVideoTopInfo__photoWrapper,
+.short_video_item,
+.ShortVideoPage__container--empty,
 .AppsCatalogSkeleton__sectionName,
 .AppsCatalogSkeleton__slide,
 .AppsCatalogSkeleton__menu,

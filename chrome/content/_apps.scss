@@ -582,12 +582,13 @@ body.static_header #page_header_cont {
 
         .Select__arrow {
             background-image: $arrow-down;
+            width: 8px;
+            height: 6px;
 
             .Tabs__item--active & {
                 background-image: $arrow-down-white;
             }
         }
-
     }
 
     &__search {
@@ -639,6 +640,11 @@ body.static_header #page_header_cont {
 .AppsCatalogGrid {
     &__card {
         margin-right: 10px
+    }
+
+    &__cautionTitle {
+        @extend %h3;
+        margin-bottom: 10px;
     }
 }
 
@@ -744,14 +750,16 @@ $apps-catalog-banner-height: 249px;
     padding: 15px
 }
 
+.AppsCatalogSearchPage {
+    &__searchInput {
+        padding: 15px 15px 0
+    }
+}
+
 .AppsCatalogSearchInput {
     &__input {
         @extend %ui_search_field;
         height: auto;
-    }
-
-    &__searchInput {
-        padding: 15px 15px 0
     }
 
     &__resetControl {

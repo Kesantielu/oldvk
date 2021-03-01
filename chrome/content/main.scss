@@ -2,6 +2,7 @@ $link-color: #2b587a;
 $gray-color-5: #555;
 $gray-color-7: #777;
 $gray-color-9: #999;
+$gray-color-b: #bbb;
 $header-color: #45688E;
 $border-line-color: #dae1e8;
 $border-line-color-light: #E8EBEE;
@@ -63,6 +64,7 @@ h4 {
 $arrow-right: url("data:image/gif;base64,R0lGODlhBgAIALP/AAAAAIybspCgto6etZSkuZWkupinvJmovZOjuAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAAA8ALAAAAAAGAAgAAAQU8IVHqRj1EYJpMZx3GIhoVF9GZBEAOw==");
 $arrow-down: url('data:image/gif;base64,R0lGODlhCAAGALP/AAAAAJSkuZWkupCgtoybspinvJmovY6etZOjuAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAAA8ALAAAAAAIAAYAAAQU8Mkpg7giDPKKMUVwTEU4UshJrREAOw==');
 $arrow-down-white: url('data:image/gif;base64,R0lGODlhCAAGALMDAAAAABERESIiIjMzM0RERFVVVWZmZnd3d4iIiJmZmaqqqru7u8zMzN3d3e7u7gAAACH5BAkAAA8ALAAAAAAIAAYAAAQN8Mkpnb324Vwv1c4nRgA7');
+$close-icon: url('data:image/gif;base64,R0lGODlhCwALAIABAGuNsf///yH5BAEAAAEALAAAAAALAAsAAAIZTGCJBq3e4omI2nfTlNo65kHUJi6boh1GAQA7');
 
 %button-next {
     display: block;
@@ -348,7 +350,8 @@ body:not(.article_body) #page_wrap,
 }
 
 .page_actions_separator {
-    margin: 4px 0 0
+    margin: 4px 0 0;
+    border-color: $border-line-color;
 }
 
 .group_send_msg {
@@ -804,6 +807,28 @@ body.join_finish_page #page_body {
     font-size: 11px;
     opacity: 1;
     padding-left: 14px;
+}
+
+.short_videos_module {
+    .module_body {
+        padding: 8px;
+        display: flex;
+        justify-content: space-between;
+        &:after {
+            content: none
+        }
+    }
+}
+
+.short_video_item {
+    margin-right: 0;
+    width: 58px;
+    height: 103px;
+    font-size: 10px;
+}
+
+.short_video_views:before {
+    margin-top: 1px
 }
 
 .video_module .video .page_video_thumb {
@@ -2029,6 +2054,10 @@ div.page_status_input {
             color: #FFF
         }
     }
+
+    .ui_tab_plain {
+        padding: 0;
+    }
 }
 
 .ui_tab.ui_rmenu_item_sel:hover {
@@ -2243,18 +2272,22 @@ input.ui_search_field,
     clear: none
 }
 
-.wall_module .post_header .ui_actions_menu_icons {
-    top: 10px;
+%close_icon {
+    top: 0;
     right: 0;
-    background: url('data:image/gif;base64,R0lGODlhCwALAIABAGuNsf///yH5BAEAAAEALAAAAAALAAsAAAIZTGCJBq3e4omI2nfTlNo65kHUJi6boh1GAQA7') 0 0 no-repeat;
+    background: $close-icon 0 0 no-repeat;
     width: 11px;
     height: 11px;
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
+    &:hover {
+        opacity: 1 !important;
+    }
 }
 
-.wall_module .post_header .ui_actions_menu_icons:hover {
-    opacity: 1
+.wall_module .post_header .ui_actions_menu_icons {
+    @extend %close_icon;
+    top: 10px;
 }
 
 .ui_actions_menu {
@@ -6302,13 +6335,22 @@ head.oldvk-friends ~ body .wide_column_left .wide_column {
     padding: 0;
 }
 
-.feed_updates .wall_module {
-    margin: 0
-}
+.feed_updates {
+    .wall_module {
+        margin: 0;
 
-.feed_updates .wall_module .wall_text {
-    margin-left: 0;
-    padding-bottom: 0
+        .feed_row {
+            .post {
+                min-height: 73px;
+                border-top-color: $border-line-color;
+            }
+        }
+
+        .wall_text {
+            margin-left: 0;
+            padding-bottom: 0
+        }
+    }
 }
 
 .feed_topics_list {
@@ -7038,6 +7080,10 @@ a.group_app_button:after {
     &__item {
         @extend %ui_rmenu_item;
 
+        > * {
+            color: #45688E;
+        }
+
         &--active {
             @extend %ui_rmenu_item_sel;
 
@@ -7048,10 +7094,6 @@ a.group_app_button:after {
             .Tabs--animating &:hover {
                 border-bottom: none
             }
-        }
-
-        > * {
-            color: #45688E;
         }
     }
 
