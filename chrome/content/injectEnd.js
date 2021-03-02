@@ -21,15 +21,23 @@ var fav_pause = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8
 
 var fav_play = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAN9JREFUOBFjjGpY6sXw7//M////yzCQABgZGZ8wMDGmM5GjGWQP2EKgxUyk2ozsSJBeJmQBctg4DUj1t2AQ4OEkaCZOAxyNVRjas7wZtJUk8BqC0wCQLn4eDobKOGeGIAddBkZG7ObgNQCkhYmJkSHESZ+hMMIeqwkEDYDpYmdjgTFRaOyiKEoYGLYevcawfPd5NFEIF6cBwDhm+PbjN8OM9ccYzt54glUzSBCnAQfP32VYd+Ayw5sPX3FqxmvArA0n8GqESRIdiDAN6DQTOFehixLJB+llAmVJcgyBZWcA/L4+qnrrzWsAAAAASUVORK5CYII=";
 
+function icoNodeReplace(href) {
+    var new_node = document.createElement('link');
+    new_node.rel = 'shortcut icon';
+    new_node.href = href;
+    headNode.replaceChild(new_node, icoNode);
+    icoNode = new_node
+}
+
 if (typeof icoNode !== "undefined")
     if (icoNode.href.search(/fav_im\.ico/i) !== -1)
-        icoNode.href = fav_im;
+        icoNodeReplace(fav_im);
     else if (icoNode.href.search(/fav_pause\.ico/i) !== -1)
-        icoNode.href = fav_pause;
+        icoNodeReplace(fav_pause);
     else if (icoNode.href.search(/fav_play\.ico/i) !== -1)
-        icoNode.href = fav_play;
+        icoNodeReplace(fav_play);
     else
-        icoNode.href = fav_logo;
+        icoNodeReplace(fav_logo);
 
 if (typeof getAudioPlayer !== "undefined" && getAudioPlayer()._currentAudio)
     removeClass(ge("oldvk_top_play"), "oldvk-hide");

@@ -6,8 +6,10 @@
   "description": "An extension which brings back old design for VK",
   "author": "Kesantielu Dasefern",
   "homepage": "https://kesantielu.github.io/oldvk",
-  "updateURL": "https://kesantielu.github.io/oldvk/update.rdf",
   "main": "init.js",
+  "permissions": {
+    "private-browsing": true
+  },
   "locales": {
     "ru": {
       "title": "Старый дизайн ВК",
@@ -47,13 +49,6 @@
       "name": "optionAudio",
       "title": "Audio Covers",
       "description": "Show audio covers",
-      "type": "bool",
-      "value": false
-    },
-    {
-      "name": "optionIm",
-      "title": "Images on buttons",
-      "description": "Show images on buttons instead of text in messages",
       "type": "bool",
       "value": false
     },

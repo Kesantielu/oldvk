@@ -534,7 +534,7 @@ function initArrives() {
     // Перенос даты поста вниз
 
     if (!options.optionDate) {
-        KPP.add('.post, .ShortVideoPost', function (post) {
+        KPP.add('.post', function (post) {
             var pd = post.getElementsByClassName('post_date')[0];
             var wt = post.getElementsByClassName('wall_text')[0];
             var pfl = post.getElementsByClassName('post_full_like')[0];
