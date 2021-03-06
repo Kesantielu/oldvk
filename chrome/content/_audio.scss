@@ -1905,6 +1905,13 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
     &__audio_friends .ui_search_new .ui_search_input_inner {
         height: 25px
     }
+
+    &__layout {
+        &--header,
+        &--header_compact {
+            margin: 0
+        }
+    }
 }
 
 #{$exclude-dir} .CatalogBlock__header {

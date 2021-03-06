@@ -23,8 +23,7 @@ if (browser.runtime.onInstalled) {
             var notes = new XMLHttpRequest();
             notes.responseType = 'json';
             notes.onload = function () {
-                browser.notifications.create('update-note', notes.response[uiLang], function () {
-                })
+                browser.notifications.create('update-note', notes.response[uiLang])
             };
             notes.open('GET', browser.runtime.getURL('release.json'));
             notes.send();
