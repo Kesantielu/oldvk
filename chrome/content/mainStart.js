@@ -16,8 +16,6 @@ function init() {
     if (isWebExt) {
         insertCSS('local');
         insertCSS('main');
-        if (isFirefox)
-            insertCSS('fox');
         browser.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             if (request.action === 'updating') {
                 updateCSS(request.css);

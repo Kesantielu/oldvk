@@ -883,6 +883,10 @@ input.ui_search_field:-ms-input-placeholder {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+
+    body.firefox & {
+        display: block !important;
+    }
 }
 
 .nim-dialog:not(.nim-dialog_deleted).nim-dialog_hovered .nim-dialog--preview,

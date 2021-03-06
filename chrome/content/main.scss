@@ -296,6 +296,10 @@ body:not(.article_body) #page_wrap {
     width: 791px !important;
 }
 
+body.firefox #page_wrap {
+    overflow: inherit
+}
+
 #page_wrap .scroll_fix {
     width: auto !important
 }
@@ -814,6 +818,7 @@ body.join_finish_page #page_body {
         padding: 8px;
         display: flex;
         justify-content: space-between;
+
         &:after {
             content: none
         }
@@ -2280,6 +2285,7 @@ input.ui_search_field,
     height: 11px;
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
+
     &:hover {
         opacity: 1 !important;
     }
@@ -2682,9 +2688,31 @@ body.WideScreenAppPage .TopHomeLink--ny2021logo {
     display: none !important;
 }
 
-.oldvk-thumb-narrow a.page_post_thumb_wrap,
-.oldvk-thumb-narrow span.page_post_thumb_wrap {
-    margin: 0 3px 3px 0;
+.oldvk-thumb-narrow,
+body.firefox {
+    a.page_post_thumb_wrap,
+    span.page_post_thumb_wrap {
+        margin: 0 3px 3px 0;
+    }
+}
+
+body.firefox .wide {
+    a.page_post_thumb_wrap,
+    span.page_post_thumb_wrap {
+        margin: 0 4px 4px 0;
+    }
+}
+
+body.firefox .wide .page_post_sized_thumbs {
+    a.page_post_thumb_last_column,
+    span.page_post_thumb_last_column {
+        margin-right: 0;
+    }
+
+    a.page_post_thumb_last_row,
+    span.page_post_thumb_last_row {
+        margin-bottom: 0;
+    }
 }
 
 .wide_column:not(.wide) .wall_posts .poster__wrap {
@@ -3743,6 +3771,10 @@ img.fc_contact_photo {
 
 .fc_tab_wrap {
     font-size: inherit;
+}
+
+body.firefox.layers_shown {
+    overflow: hidden
 }
 
 .layers_shown .chat_onl:after {
