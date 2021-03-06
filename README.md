@@ -1,4 +1,5 @@
 # OLD VK
+
 ## Старый дизайн ВКонтакте
 
 Расширение поддерживает следующие браузеры:
@@ -8,11 +9,20 @@
 
 Разработка находится в статусе вечной беты.
 
-### Сборка CSS
+### Сборка
 
-Для сборки применяются утилиты **sass** и **postcss**.
+Для сборки применяется **Node.js**. Выполните следующие команды:
 
 ```
-sass --no-source-map chrome/content/main.scss:chrome/content/main.css chrome/content/local.scss:chrome/content/local.css
-postcss chrome/content/main.css -r
+npm install
+node build.js
 ```
+
+В результате получатся следующие файлы:
+
+* **oldvk-{version}.zip**: для Chrome
+* **oldvk-{version}.crx**: для Opera и прочих браузеров на базе Chromium, не требующих подписи Google в расширении
+* **oldvk-{version}-v2.crx**: то же, что и предыдущий, только тип расширения CRXv2, для старых браузеров, основанных на движке Chromium до 64 версии
+* **oldvk-{version}.xpi**: для Firefox от 48 версии
+* **oldvk-{version}-jetpack.xpi**: для Pale Moon и Firefox до 48 версии
+* **key.pem**: закрытый ключ для подписи расширений CRX

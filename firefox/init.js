@@ -71,7 +71,7 @@ var options = {
     include: '*.vk.com',
     contentScriptFile: ['./lib.js', './mainStart.js'],
     contentScriptWhen: 'start',
-    contentStyleFile: ['./main.css', './local.css', './fox.css'],
+    contentStyleFile: ['./main.css', './local.css'],
     contentScriptOptions: {
         inject: self.data.url('injectStart.js'),
         optionCover: prefs.optionCover,
