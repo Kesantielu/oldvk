@@ -64,7 +64,7 @@
 
 #photos_upload_area:hover,
 #ui_albums_load_more:hover {
-    background: #e9edf1;
+    background: $button-more-hover-color;
 }
 
 #photos_upload_area_drop + #photos_albums_block {
@@ -328,14 +328,14 @@ h1 {
     border-top: none;
     padding: 10px 0;
     background-color: #eff1f3;
-}
 
-.flat_button.ui_load_more_btn:hover {
-    background-color: #e9edf1;
-}
+    &:hover {
+        background-color: $button-more-hover-color;
+    }
 
-.flat_button.ui_load_more_btn:active {
-    padding: 11px 0 9px;
+    &:active {
+        padding: 11px 0 9px;
+    }
 }
 
 #pva_content_photos {

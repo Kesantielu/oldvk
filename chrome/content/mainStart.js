@@ -122,8 +122,8 @@ function headOptions() {
     if (options.optionFont)
         document.head.classList.add('oldvk-largefont');
 
-    if (options.optionIm)
-        document.head.classList.add('oldvk-im');
+    //if (options.optionIm)
+    //    document.head.classList.add('oldvk-im');
 }
 
 var LocalizedContent = {
@@ -142,8 +142,9 @@ var LocalizedContent = {
 
         this.l_set.id = 'l_sett';
         this.l_set.innerHTML = '<a href="/settings" class="left_row"><span class="left_label inl_bl" id="oldvk-settings">' + i18n.settings[lang] + '</span></a>';
-        KPP.add('#side_bar_inner ol', function () {
-            KPP.remove('#side_bar_inner ol');
+        KPP.add('#side_bar_inner ol', function (element) {
+            //KPP.remove('#side_bar_inner ol');
+            //console.log('ol', element)
             LocalizedContent.updateMenu();
         });
 
@@ -170,6 +171,7 @@ var LocalizedContent = {
         })
     },
     updateMenu: function () {
+        //console.log('updateMenu');
         if (!document.getElementById('l_ntf'))
             insertAfter(document.getElementById('l_nwsf'), this.l_ntf);
         if (!document.getElementById('l_edit')) {
@@ -182,12 +184,20 @@ var LocalizedContent = {
             else
                 insertAfter(document.getElementById('l_ntf'), this.l_set);
         }
-        document.querySelector('#l_ap .left_label').textContent = i18n.apps[lang];
-        document.querySelector('#l_aud .left_label').textContent = i18n.audios[lang];
-        document.querySelector('#l_vid .left_label').textContent = i18n.videos[lang];
-        document.querySelector('#l_gr .left_label').textContent = i18n.groups[lang];
-        document.querySelector('#l_msg .left_label').textContent = i18n.messages[lang];
-        document.querySelector('#l_vid .left_row').setAttribute('href', '/videos');
+
+        var ap = document.querySelector('#l_ap .left_label')
+        var aud = document.querySelector('#l_aud .left_label')
+        var vid = document.querySelector('#l_vid .left_label')
+        var gr = document.querySelector('#l_gr .left_label')
+        var msg = document.querySelector('#l_msg .left_label')
+        var vid_row = document.querySelector('#l_vid .left_row')
+
+        if (ap) ap.textContent = i18n.apps[lang];
+        if (aud) aud.textContent = i18n.audios[lang];
+        if (vid) vid.textContent = i18n.videos[lang];
+        if (gr) gr.textContent = i18n.groups[lang];
+        if (msg) msg.textContent = i18n.messages[lang];
+        if (vid_row) vid_row.setAttribute('href', '/videos');
         LocalizedContent.updateNotify()
     },
     updateNotify: function () {
@@ -212,7 +222,9 @@ function initArrives() {
 
     // KPP.add('#top_nav', function (element) {
 
-    // KPP.add('#side_bar_inner', function () {
+    /*KPP.add('#side_bar_inner ol', function (element) {
+        console.log(element)
+    })*/
 
     // Обложка страниц и аватарки
 
@@ -312,7 +324,7 @@ function initArrives() {
             chat.insertBefore(emoji_div, document.getElementsByClassName('im-chat-input--selector')[0]);
         });
         var avatar1 = document.createElement('img');
-        avatar1.src = document.getElementsByClassName('top_profile_img')[0].src;
+        avatar1.src = document.getElementsByClassName('TopNavBtn__profileImg')[0].src;
         avatar1.className = 'oldvk-chat-avatar';
         chat.parentNode.insertBefore(avatar1, chat);
 

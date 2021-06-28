@@ -128,3 +128,41 @@
     margin-top: 3px;
     margin-right: 5px;
 }
+
+#submit_post_box:not(.shown):not(.own_field) .BestFriendsSettingsEntrypoint {
+    right: 8px;
+    bottom: 9px;
+}
+
+.PageActionsClosedProfile {
+    color: $gray-color-5;
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+
+        svg {
+            transform: scale(calc(20 / 24));
+        }
+    }
+}
+
+.PageActionCell {
+    margin: 0;
+    padding: 4px 6px;
+    box-sizing: border-box;
+    height: 21px;
+
+    &__icon {
+        display: none
+    }
+
+    &__label {
+        color: $link-color
+    }
+
+    &:hover,
+    &:active {
+        background-color: $background-hover;
+    }
+}

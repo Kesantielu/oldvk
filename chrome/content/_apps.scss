@@ -1,5 +1,6 @@
 $card-size: 112px;
 $card-size-small: 72px;
+$card-size-fav: 72px;
 
 .apps_recent_block .page_block_h2 {
     margin: -10px -10px 0;
@@ -302,30 +303,46 @@ body.static_header #page_header_cont {
     margin: 15px auto 0;
 }
 
-.apps_main .apps_i_wrap {
-    margin: -10px;
+.apps_main {
+    .apps_i_wrap {
+        margin: -10px;
+    }
+
+    .apps_i_panel {
+        padding: 15px;
+    }
+
+    .apps_i_icon {
+        top: 15px;
+        left: 15px;
+    }
+
+    .apps_i_buttons {
+        top: 15px;
+        right: 15px;
+    }
 }
 
-.apps_main .apps_i_panel {
-    padding: 15px;
+
+.apps_i_description_content {
+    margin-bottom: 10px;
+
+    .apps_main & {
+        margin-top: 15px;
+    }
 }
 
-.apps_main .apps_i_icon {
-    top: 15px;
-    left: 15px;
-}
-
-.apps_main .apps_i_buttons {
-    top: 15px;
-    right: 15px;
-}
-
-.apps_main .apps_i_description_content {
-    margin-top: 15px;
-}
-
-.apps_ss_friend {
+.apps_install_header .apps_ss_friend {
     border-radius: 2px
+}
+
+.apps_install_settings__item {
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.apps_ss_friend_img {
+    margin-right: 0;
 }
 
 .apps_feed_user_photo img {
@@ -407,12 +424,51 @@ body.static_header #page_header_cont {
     margin: 8px 0;
 }
 
+.apps_install_header {
+    .apps_ss_playing__list {
+
+    }
+
+    .apps_share_button {
+        padding: 5px 14px 6px;
+    }
+}
+
+.GameCatalogSearchCard {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+
+    &__name {
+        font-weight: bold;
+        color: $link-color;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $link-color;
+            text-decoration: underline;
+        }
+    }
+
+    &__counters {
+        color: $gray-color-7
+    }
+
+    &__participants {
+        &:after {
+            content: '|';
+        }
+    }
+}
+
 .GamesCatalogNav {
     &__balanceLink {
         margin-top: 0;
         position: absolute;
         right: 5px;
         top: -8px;
+        color: $link-color;
+        font-weight: bold;
     }
 
     &__headerLink {
@@ -485,11 +541,31 @@ body.static_header #page_header_cont {
 }
 
 .GamesCatalogCardsList {
+    $card-fav-margin: 2px;
+
     padding: 0;
     justify-content: space-between;
 
+    &--favorite {
+        justify-content: flex-start;
+
+        .GamesCatalogCard {
+            &--favorite {
+                margin-bottom: $card-fav-margin;
+
+                &:nth-child(4n+1) {
+                    margin-left: 0 !important;
+                }
+            }
+        }
+    }
+
     .GamesCatalogCard {
-        margin-left: auto;
+        margin-left: $card-fav-margin;
+
+        &--favorite:nth-child(5n+1) {
+            margin-left: $card-fav-margin;
+        }
     }
 }
 
@@ -505,8 +581,8 @@ body.static_header #page_header_cont {
         height: $card-size;
 
         &:after {
-            width: 102px;
-            height: 102px;
+            width: $card-size;
+            height: $card-size;
             border: none;
         }
     }
@@ -515,11 +591,33 @@ body.static_header #page_header_cont {
         width: $card-size;
         height: $card-size;
     }
+
+    &--favorite,
+    &--favorite .GamesCatalogCard__image,
+    &--favorite .GamesCatalogCard__imageWrap {
+        width: $card-size-fav;
+        height: $card-size-fav;
+    }
 }
 
 .GamesCatalogGameOfWeek {
     &__content {
         padding: 10px 5px
+    }
+
+    &__subtext {
+        color: $gray-color-7
+    }
+
+    &__name {
+        font-size: 12px;
+        line-height: 24px;
+        font-weight: bold;
+        color: $link-color;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 
@@ -531,9 +629,80 @@ body.static_header #page_header_cont {
     padding-bottom: 3px;
 }
 
-.GamesCatalog--downloaded_games {
-    .ui_tabs {
-        border-bottom: 1px solid #597DA3;
+.GamesCatalog {
+    &--search_page {
+        box-shadow: none;
+    }
+
+    &--downloaded_games {
+        .ui_tabs {
+            border-bottom: 1px solid #597DA3;
+        }
+    }
+
+    &--profile {
+        height: auto;
+    }
+
+    .apps_cat_header_icon.apps_icon_recommended {
+        display: none;
+    }
+}
+
+.GamesCatalogSearchInput {
+    .ui_search_reset_button.ui_search_button_control {
+        margin-right: 0;
+    }
+
+    &.ui_search.ui_search_new {
+        margin: 10px 5px 0;
+        background: none;
+
+        .selector {
+            height: 19px !important;
+        }
+
+        .selector_table {
+            height: 27px !important;
+        }
+    }
+
+    .ui_search_custom_ctrl {
+        margin-left: 10px
+    }
+}
+
+.GamesCatalogSearchMainContent {
+    padding: 15px 5px;
+}
+
+.GamesCatalogSearchStartScreenList {
+    width: 50%;
+
+    &:first-child {
+        margin-right: 10px;
+    }
+
+    &__title {
+        @extend %h2-negative;
+        width: 100%;
+    }
+
+    &__list {
+        margin: 0;
+    }
+}
+
+.GamesCatalogSearchStartScreenListItem {
+    &__title {
+        color: $link-color;
+        font-weight: bold;
+    }
+
+    &__image {
+        border-radius: 2px;
+        width: 32px;
+        height: 32px;
     }
 }
 
@@ -563,6 +732,161 @@ body.static_header #page_header_cont {
     &__description {
         width: auto
     }
+}
+
+.GamesCatalogNav {
+    &__dotted {
+        a.ui_tab:after {
+            top: 0;
+            right: 0
+        }
+    }
+}
+
+.GamesCatalog {
+    &--profile {
+        .ui_tabs {
+            border-bottom: solid 1px $border-tabs-color;
+        }
+    }
+}
+
+$games-catalog-profile-column: 294px;
+
+.GamesCatalogProfileBlock {
+    box-shadow: none;
+    width: $games-catalog-profile-column;
+
+    &__header {
+        @extend %h2-negative;
+        background-color: transparent;
+    }
+}
+
+.GamesCatalogProfileBlockList {
+    margin-top: 0;
+    padding: 5px;
+}
+
+.ProfileUserInfo {
+    padding: 0;
+    margin-bottom: 10px;
+
+    &__username {
+        @extend %header-text-large;
+    }
+}
+
+.ProfileHeaderSection {
+    @extend %h2-negative;
+    border-top: none;
+    margin-top: 10px
+}
+
+.ProfileNewsFeed {
+    width: $games-catalog-profile-column !important;
+}
+
+.ProfileAchievements {
+    margin-top: -10px;
+
+    .ProfileAchievements__showMore.flat_button.ui_load_more_btn:hover {
+        background-color: $button-more-hover-color;
+    }
+}
+
+.ProfileAchievementsListWrap,
+.ProfileNewsFeed {
+    .ui_scroll_bar_container {
+        top: 0;
+        right: 0
+    }
+}
+
+.ProfileAchievementsListWrap {
+    width: $games-catalog-profile-column !important;
+}
+
+.ProfileAchievementItem {
+    padding: 4px 10px 4px 0;
+
+    &__title {
+        @extend %header-text
+    }
+
+    &__delimiter {
+        &:before {
+            content: '|'
+        }
+    }
+}
+
+.appAchievementsIllustration {
+    margin-top: 10px
+}
+
+.appAchievementsHeader {
+    &__subtitle {
+        color: $gray-color-5
+    }
+}
+
+.appAchievementsLeaderBoardItem {
+    &__name {
+
+    }
+}
+
+.ui_tooltipMenu__current {
+    &:after {
+        background: $arrow-down;
+    }
+}
+
+.appAchievementsAchievement {
+    &__name {
+        @extend %header-text-large
+    }
+
+    svg,
+    &__img {
+        width: 72px;
+        height: 72px;
+    }
+}
+
+
+
+.appAchievementsAchievementsList {
+    padding: 10px 5px;
+}
+
+.ui_tooltipMenu__list>.ui_tooltipMenu__items {
+    padding: 0;
+}
+
+.ui_tooltipMenu {
+    &__link {
+        padding: 6px 34px 6px 6px;
+    }
+
+    &__current:after {
+        height: 6px
+    }
+}
+
+.apps_feedRightAppsBlock {
+    .right_list {
+        padding: 0
+    }
+
+    &__hide {
+        @extend %close_icon
+    }
+}
+
+.ui_tooltipMenu__item.selected>.ui_tooltipMenu__link:after {
+    background-image: $check-icon;
 }
 
 // Miniapps

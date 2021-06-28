@@ -911,8 +911,9 @@ input.ui_search_field:-ms-input-placeholder {
 }
 
 .nim-dialog.nim-dialog_classic .nim-dialog--date {
-    right: auto;
-    top: 30px;
+    top: 17px;
+    left: -523px;
+    position: absolute;
     font-size: 0.9em
 }
 

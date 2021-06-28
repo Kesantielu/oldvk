@@ -22,8 +22,8 @@ if (options.enabled || !isWebExt) {
     var leftMenuObserver = new MutationObserver(function (m) {
         LocalizedContent.updateMenu();
     });
-    if (document.querySelector('#side_bar_inner ol'))
-        leftMenuObserver.observe(document.querySelector('#side_bar_inner ol'), {childList: true});
+    //if (document.querySelector('#side_bar_inner ol'))
+        //leftMenuObserver.observe(document.querySelector('#side_bar_inner ol'), {childList: true});
 
     var fw = document.getElementById('footer_wrap');
     var lmnw = document.getElementsByClassName('left_menu_nav_wrap')[0];
