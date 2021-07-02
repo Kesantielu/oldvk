@@ -36,7 +36,8 @@
 }
 
 .group_friends_image {
-    margin-right: 0
+    margin-right: 0;
+    border-radius: 4px;
 }
 
 .friends_dropdown__list_item .friends_dropdown__list_image {
@@ -88,6 +89,16 @@
     font-weight: bold;
     color: $header-color;
     font-size: 1.1em
+}
+
+.DonutCatalogPromo {
+    padding: 10px 5px;
+    margin: 10px 0;
+    box-shadow: none;
+
+    &__title {
+        @extend %header-text
+    }
 }
 
 .wall_module .post.Post--with_closed_comments_donut {
@@ -165,4 +176,61 @@
     &:active {
         background-color: $background-hover;
     }
+}
+
+.group_section_menu_gallery {
+    padding: 0 5px;
+}
+
+.docs_module {
+   .page_doc_row {
+        margin-bottom: 0;
+        padding: 5px;
+    }
+}
+
+// Widgets
+
+.app_widget_donation {
+
+
+    &_text {
+        @extend %header-text-large;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &_bar {
+        border-radius: 0;
+        background: #eff1f3;
+        margin: 5px 0 5px;
+        height: 6px
+    }
+}
+
+.app_widget_donation,
+.app_widget_matches {
+    padding: 5px 5px 0;
+}
+
+#donation_app_widget,
+#macthes_app_widget,
+#text_app_widget {
+    margin-bottom: 10px;
+}
+
+.app_widget_text_content {
+    padding: 15px 0;
+}
+
+.app_widget_text_descr {
+    margin: -15px 0 5px;
+}
+
+.module_body a.app_widget_matches_match:hover,
+.module_body a.app_widget_matches_match:hover+.app_widget_matches_match {
+    margin: 0 -5px;
+    padding: 0 5px;
 }

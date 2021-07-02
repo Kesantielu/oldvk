@@ -284,6 +284,15 @@ body.static_header #page_header_cont {
 .apps_options_bar {
     margin: -10px -10px 0;
     width: calc(100% + 20px);
+
+    .apps_options_bar_left .app_summary_name {
+        @extend %header-text-large
+    }
+}
+
+.apps_options_bar .divider:before,
+.apps_options_bar_right .divider:before {
+    top: -1px
 }
 
 .payments_getvotes_method_opt {
@@ -756,10 +765,24 @@ $games-catalog-profile-column: 294px;
 .GamesCatalogProfileBlock {
     box-shadow: none;
     width: $games-catalog-profile-column;
+    margin-bottom: 0;
 
     &__header {
         @extend %h2-negative;
         background-color: transparent;
+    }
+
+    &__counter {
+        @extend %header-text;
+        margin-left: 0;
+        background: none;
+        min-width: auto;
+        height: auto;
+        line-height: inherit;
+
+        &:before {
+            content: '|'
+        }
     }
 }
 
@@ -887,6 +910,44 @@ $games-catalog-profile-column: 294px;
 
 .ui_tooltipMenu__item.selected>.ui_tooltipMenu__link:after {
     background-image: $check-icon;
+}
+
+body.static_header.WideScreenAppPage {
+    #page_wrap,
+    #page_layout,
+    #page_body {
+        width: 100% !important;
+    }
+
+    #page_layout,
+    #page_wrap, {
+        margin: 0;
+    }
+
+    #page_body {
+        padding-right: 0;
+    }
+
+    #wrap2,
+    #wrap1 {
+        border: none
+    }
+
+    #content {
+        padding: 5px 0
+    }
+
+    .apps_main .app_container {
+        max-width: none;
+    }
+
+    .apps_options_bar {
+        width: 1183px
+    }
+
+    .page_header_cont {
+        margin: 0 auto 0 calc(50vw - 600px);
+    }
 }
 
 // Miniapps
@@ -1076,7 +1137,8 @@ $apps-catalog-banner-height: 249px;
 
 .AppsCatalogSearchPage {
     &__searchInput {
-        padding: 15px 15px 0
+        padding: 15px 15px 0;
+        margin: 0;
     }
 }
 
@@ -1094,4 +1156,14 @@ $apps-catalog-banner-height: 249px;
     &__searchControl {
         display: none
     }
+}
+
+.vk_app_modal_container {
+    .vk_app_modal_container__heading {
+        @extend %header-text-large
+    }
+}
+
+.vk_app_modal_btn {
+    @extend %flat_button
 }

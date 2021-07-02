@@ -122,5 +122,29 @@ body.new_header_design {
         top: 7px;
         border: none
     }
+
+    .WideScreenAppBack {
+        left: 680px !important;
+
+        &__arrowLeft {
+            background-image: url("data:image/gif;base64,R0lGODlhFAAYAJEAAAAAAOjv9wAAAAAAACH5BAkAAAMALAAAAAAUABgAAAIenI+py+0Po5y02hRsyHRz6X1RWHmaOKHXyrbuCyMFADs=");
+            width: 20px;
+        }
+
+        &__link {
+            color: #e8eff7;
+            text-shadow: 0 1px 0 #4e7097;
+            font-weight: bold;
+
+            &:hover {
+                background-color: rgba(0, 31, 64, 0.17);
+                color: #FFF
+            }
+        }
+
+        &__title {
+            padding: 0 5px;
+        }
+    }
 }
 

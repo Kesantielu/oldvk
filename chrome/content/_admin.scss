@@ -153,3 +153,17 @@ a.groups_messages_block:before {
 #group_section_menu.group_section_menu_admin .module_body {
     padding: 10px 0;
 }
+
+.community_apps_catalog_type_tabs.ui_tabs_header {
+    border-bottom-color: $border-tabs-color;
+    padding: 11px 10px 0;
+    margin: 0;
+}
+
+.apps_group_catalog_header {
+    border-bottom: none;
+}
+
+.add_community_app_card_name {
+    @extend %header-text
+}
