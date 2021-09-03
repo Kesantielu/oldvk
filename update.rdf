@@ -5,15 +5,15 @@
             <Seq>
                 <li>
                     <Description>
-                        <em:version>61.10</em:version>
+                        <em:version>61.11</em:version>
                         <em:targetApplication>
                             <Description>
                                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
                                 <em:minVersion>45.0</em:minVersion>
                                 <em:maxVersion>47.*</em:maxVersion>
                                 <em:strictCompatibility>true</em:strictCompatibility>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-61.10-u.xpi</em:updateLink>
-                                <em:updateHash>sha256:bcebe8febf8e80760101d0fbd28ced6d46d18f403751d3ecd8bc1759da2fcb9c</em:updateHash>
+                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-61.11-u.xpi</em:updateLink>
+                                <em:updateHash>sha256:4d92cfbb6d220150b528897e08dd6dce668ae5a69f26f68b32e6be1a8941406a</em:updateHash>
                             </Description>
                         </em:targetApplication>
                         <em:targetApplication>
@@ -22,8 +22,8 @@
                                 <em:minVersion>45.0</em:minVersion>
                                 <em:maxVersion>47.*</em:maxVersion>
                                 <em:strictCompatibility>true</em:strictCompatibility>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-61.10-u.xpi</em:updateLink>
-                                <em:updateHash>sha256:bcebe8febf8e80760101d0fbd28ced6d46d18f403751d3ecd8bc1759da2fcb9c</em:updateHash>
+                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-61.11-u.xpi</em:updateLink>
+                                <em:updateHash>sha256:4d92cfbb6d220150b528897e08dd6dce668ae5a69f26f68b32e6be1a8941406a</em:updateHash>
                             </Description>
                         </em:targetApplication>
                         <em:targetApplication>
@@ -32,8 +32,8 @@
                                 <em:minVersion>28.0.0a1</em:minVersion>
                                 <em:maxVersion>29.*</em:maxVersion>
                                 <em:strictCompatibility>true</em:strictCompatibility>
-                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-61.10-u.xpi</em:updateLink>
-                                <em:updateHash>sha256:bcebe8febf8e80760101d0fbd28ced6d46d18f403751d3ecd8bc1759da2fcb9c</em:updateHash>
+                                <em:updateLink>https://kesantielu.github.io/oldvk/firefox/oldvk-61.11-u.xpi</em:updateLink>
+                                <em:updateHash>sha256:4d92cfbb6d220150b528897e08dd6dce668ae5a69f26f68b32e6be1a8941406a</em:updateHash>
                             </Description>
                         </em:targetApplication>
                     </Description>
