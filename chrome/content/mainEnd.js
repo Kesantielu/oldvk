@@ -7,6 +7,7 @@ injectEnd.src = isWebExt ? browser.runtime.getURL('content/injectEnd.js') : self
 if (options.enabled || !isWebExt) {
     document.body.appendChild(injectEnd);
     initWide();
+    LocalizedContent.updateMenu();
 
     if (isWebExt)
         browser.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -17,13 +18,6 @@ if (options.enabled || !isWebExt) {
                 }, 500); // TODO: Найти лучшее решение
             }
         });
-
-
-    var leftMenuObserver = new MutationObserver(function (m) {
-        LocalizedContent.updateMenu();
-    });
-    //if (document.querySelector('#side_bar_inner ol'))
-        //leftMenuObserver.observe(document.querySelector('#side_bar_inner ol'), {childList: true});
 
     var fw = document.getElementById('footer_wrap');
     var lmnw = document.getElementsByClassName('left_menu_nav_wrap')[0];

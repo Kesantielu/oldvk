@@ -143,6 +143,14 @@ if (!Object.isEmpty) {
     });
 }
 
+if (!Object.values) {
+    Object.values = function (O) {
+        return Array.prototype.reduce.call(Reflect.ownKeys(O), function (v, k) {
+            return Array.prototype.concat.call(v, typeof k === 'string' && Object.prototype.propertyIsEnumerable.call(O, k) ? [O[k]] : []);
+        }, []);
+    }
+}
+
 var topStop = 4000;
 
 function getRandomInt(min, max) {
@@ -154,7 +162,7 @@ function getRandomInt(min, max) {
 var styles = [
     {css: 'audios', match: 'audio'},
     {css: 'friends', match: 'friends'},
-    {css: 'market', match: 'market'},
+    {css: 'market', match: 'classifieds'},
     {css: 'support', match: 'support'},
     {css: 'audios', match: 'artist'},
     {css: 'audios', match: 'music'},

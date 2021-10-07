@@ -1,4 +1,4 @@
-#marketplace .market_content .market_row.over .market_row_user {
+/*#marketplace .market_content .market_row.over .market_row_user {
     margin-top: 0
 }
 
@@ -72,7 +72,7 @@
 #marketplace .market_content .market_row_line .marketplace_icons {
     vertical-align: top;
     padding-top: 2px;
-}
+}*/
 
 .marketplace_frtt {
     padding: 8px
@@ -301,4 +301,147 @@ head.oldvk-market ~ body .search_filters_wrap:hover .ui_filters_block {
 
 .narrow_column .market_module .page_market_items_wrap {
     padding: 8px 8px 0;
+}
+
+// Объявления
+
+$market-image-size: 140px;
+
+.MarketCatalogBlockList {
+    margin-top: 0;
+    padding: 5px 15px 10px;
+
+    &__list {
+        grid-gap: 10px;
+
+        &--category {
+            grid-template-columns: repeat(3, $market-image-size);
+        }
+    }
+
+    &__header {
+        margin-top: 0
+    }
+
+    &--placeholder &__list--category {
+        width: 440px;
+    }
+
+    &--stacked#{&}--classified {
+        box-shadow: none;
+    }
+}
+
+.MarketCatalogBreadcrumbs {
+    background-color: $background-ui;
+    margin: 0 -15px 0px -15px;
+    padding: 0 15px;
+}
+
+.MarketCatalogHeader {
+    margin-top: 0;
+
+    &__search {
+        padding: 13px 16px;
+        background: $background-ui;
+        height: 25px;
+    }
+
+    &__row {
+        padding: 0;
+        height: auto;
+    }
+
+    &__menu,
+    &__popularCategories {
+        height: 38px
+    }
+
+    &--fixed {
+        height: 40px;
+        width: 633px;
+        display: none
+    }
+
+    &--visible {
+        top: 0;
+        display: block
+    }
+}
+
+.MarketCatalogLocation {
+    padding: 5px 0 0;
+}
+
+.MarketCatalogPage {
+    &__rightButton {
+        bottom: 7px;
+        position: absolute;
+        right: 0;
+        margin-right: 15px;
+    }
+}
+
+.MarketCatalogProduct {
+    width: $market-image-size;
+
+    &__imgWrap {
+        width: $market-image-size;
+        height: $market-image-size;
+    }
+
+    &--youla {
+        height: $market-image-size + 40px;
+    }
+
+    &__name {
+        @extend %link-text
+    }
+
+    &__price {
+        color: $gray-color-5;
+    }
+}
+
+.MarketCatalogSearchInput {
+    &__field {
+        @extend %ui_search_field
+    }
+}
+
+.MarketCatalogTabs {
+    background: none;
+    box-shadow: none;
+
+    &__link {
+        padding: 0;
+        line-height: inherit;
+    }
+
+    &__items {
+        padding-left: 10px;
+    }
+}
+
+#react_rootMarketCatalog:empty {
+    display: none;
+}
+
+.MarketSkeleton {
+    &__block {
+        padding: 15px;
+
+        &--products {
+            grid-template-columns: repeat(4, $market-image-size);
+            grid-auto-rows: $market-image-size + 40px;
+
+            .MarketSkeleton__element {
+                --width: $market-image-size
+            }
+        }
+    }
+
+    &__elementContainer--products {
+        grid-template-rows: $market-image-size 15px 15px;
+    }
 }

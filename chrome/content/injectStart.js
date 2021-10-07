@@ -354,6 +354,8 @@ watchVar('ap', function (ap) {
     }
 });
 
+
+
 /*function _bind(variable, func, before, after) { // TODO: Переписать функции с учетом этого
     if (!variable[func].oldvk) {
         var tmp = variable[func];

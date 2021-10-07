@@ -62,4 +62,4 @@
     color: #2f5879;
 }
 
-@include genlang((".post_info > .like_wrap .like_btn.like:before", ".mv_actions_block .like_wrap .like_btn.like:before", "#pv_bottom_info_like .like_wrap .like_btn.like:before", ".ShortVideoPost__widgets > .like_wrap .like_btn.like:before"), null, ("ru":"Мне нравится", "uk":"Мені подобається", "be":"Мне падабаецца", "be-tarask":"Мне падабаецца", "en-us":"Like", "ru-petr1708":"Мнѣ по нраву", "ru-ussr":"Одобряю", "kk":"Ұнатамын"));
+@include genlang((".post_info > .like_wrap .like_btn.like:before", ".post_info > .like_wrap .PostButtonReactions__icon:before", ".mv_actions_block .like_wrap .like_btn.like:before", "#pv_bottom_info_like .like_wrap .like_btn.like:before", "#wl_post_actions_wrap .like_wrap .like_btn.like:before", ".ShortVideoPost__widgets > .like_wrap .like_btn.like:before"), null, ("ru":"Мне нравится", "uk":"Мені подобається", "be":"Мне падабаецца", "be-tarask":"Мне падабаецца", "en-us":"Like", "ru-petr1708":"Мнѣ по нраву", "ru-ussr":"Одобряю", "kk":"Ұнатамын"));

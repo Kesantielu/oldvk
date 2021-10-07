@@ -140,21 +140,39 @@
     margin-right: 5px;
 }
 
-#submit_post_box:not(.shown):not(.own_field) .BestFriendsSettingsEntrypoint {
-    right: 8px;
-    bottom: 9px;
+.BestFriendsSettingsEntrypoint {
+
+    #submit_post_box:not(.shown):not(.own_field) & {
+        right: 8px;
+        bottom: 9px;
+    }
+
+    &__icon {
+        background: $lock-icon no-repeat center;
+        height: 21px;
+        opacity: 0.8;
+
+        svg {
+            display: none
+        }
+    }
 }
 
 .PageActionsClosedProfile {
     color: $gray-color-5;
 
     &__icon {
+        background: $lock-icon no-repeat center;
         width: 20px;
-        height: 20px;
+        height: 17px;
 
         svg {
-            transform: scale(calc(20 / 24));
+            display: none;
         }
+    }
+
+    &__content {
+        margin-left: 5px;
     }
 }
 
@@ -169,7 +187,21 @@
     }
 
     &__label {
+
+        .PageActionCell--accent:hover &,
+        .PageActionCell--accent:active & {
+            color: $link-color
+        }
+
         color: $link-color
+    }
+
+    &__ddIcon {
+        background: $arrow-down no-repeat center;
+
+        svg {
+            display: none;
+        }
     }
 
     &:hover,
@@ -183,7 +215,7 @@
 }
 
 .docs_module {
-   .page_doc_row {
+    .page_doc_row {
         margin-bottom: 0;
         padding: 5px;
     }
@@ -192,8 +224,6 @@
 // Widgets
 
 .app_widget_donation {
-
-
     &_text {
         @extend %header-text-large;
 
@@ -216,8 +246,9 @@
 }
 
 #donation_app_widget,
-#macthes_app_widget,
-#text_app_widget {
+#matches_app_widget,
+#text_app_widget,
+#list_app_widget {
     margin-bottom: 10px;
 }
 
@@ -230,7 +261,24 @@
 }
 
 .module_body a.app_widget_matches_match:hover,
-.module_body a.app_widget_matches_match:hover+.app_widget_matches_match {
+.module_body a.app_widget_matches_match:hover + .app_widget_matches_match {
     margin: 0 -5px;
     padding: 0 5px;
+}
+
+.app_widget_tiles_tile {
+    width: 122px;
+
+    .app_widget_image {
+        width: 122px;
+        height: 183px;
+    }
+
+    & + & {
+        margin-left: 10px;
+    }
+}
+
+#tiles_app_widget .module_body {
+    padding: 5px 5px 10px;
 }

@@ -774,14 +774,15 @@ $games-catalog-profile-column: 294px;
 
     &__counter {
         @extend %header-text;
-        margin-left: 0;
+        margin: 0;
         background: none;
         min-width: auto;
         height: auto;
         line-height: inherit;
 
         &:before {
-            content: '|'
+            content: '+';
+            margin-right: -2px;
         }
     }
 }

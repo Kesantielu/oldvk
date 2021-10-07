@@ -43,6 +43,10 @@ body.new_header_design {
             border-radius: 2px;
             min-width: 0;
 
+            &:hover {
+                text-decoration: none;
+            }
+
             .left_count {
                 padding: 0
             }

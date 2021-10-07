@@ -122,6 +122,9 @@ function headOptions() {
     if (options.optionFont)
         document.head.classList.add('oldvk-largefont');
 
+    if (options.optionReactions)
+        document.head.classList.add('oldvk-reactions');
+
     //if (options.optionIm)
     //    document.head.classList.add('oldvk-im');
 }
@@ -142,36 +145,32 @@ var LocalizedContent = {
 
         this.l_set.id = 'l_sett';
         this.l_set.innerHTML = '<a href="/settings" class="left_row"><span class="left_label inl_bl" id="oldvk-settings">' + i18n.settings[lang] + '</span></a>';
-        KPP.add('#side_bar_inner ol', function (element) {
-            //KPP.remove('#side_bar_inner ol');
-            //console.log('ol', element)
-            LocalizedContent.updateMenu();
-        });
 
         var top_menu = '<div class="head_nav_item fl_r"><a id="oldvk_top_exit" class="top_nav_link" href="" onclick="if (checkEvent(event) === false) { window.Notifier && Notifier.lcSend(\'logged_off\'); location.href = this.href; return cancelEvent(event); }" onmousedown="tnActive(this)"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_help" class="top_nav_link" href="/support?act=home" onclick="return TopMenu.select(this, event);"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_music" class="top_nav_link" href="" onclick="return (checkKeyboardEvent(event) ? AudioUtils.getLayer().toggle() : false);" onmouseover="AudioLayer.prepare()" onmousedown="return (checkKeyboardEvent(event) ? false : AudioUtils.getLayer().toggle(),cancelEvent(event))"><div class="top_profile_name">' + i18n.music[lang] + '</div><div id="oldvk_top_play" class="oldvk-hide" onclick="cancelEvent(event); if (getAudioPlayer().isPlaying()) {getAudioPlayer().pause(); removeClass(this,\'active\')} else {getAudioPlayer().play(); addClass(this,\'active\')}" onmousedown="cancelEvent(event);"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_apps" class="top_nav_link" href="/apps" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.games[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_communities" class="top_nav_link" href="/search?c[section]=communities" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.communities[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_peoples" class="top_nav_link" href="/search?c[section]=people" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.people[lang] + '</div></a></div>';
-        var tmw = document.createElement('div');
-        tmw.id = "oldvk_top_menu";
-        tmw.innerHTML = top_menu;
-        KPP.add('#top_nav', function (element) {
-            KPP.remove('#top_nav');
-            if (!document.getElementById('oldvk_top_menu')) element.appendChild(tmw);
-            var ote = document.getElementById('oldvk_top_exit');
-            var tll = document.getElementById('top_logout_link');
-            var oth = document.getElementById('oldvk_top_help');
-            var tsl = document.getElementById('top_support_link');
-            if (ote && tll) {
-                ote.firstElementChild.textContent = tll.textContent.toLowerCase();
-                ote.href = tll.href;
+        var oldvk_top_menu = document.createElement('div');
+        oldvk_top_menu.id = "oldvk_top_menu";
+        oldvk_top_menu.innerHTML = top_menu;
+        KPP.add('#top_profile_menu', function () {
+            KPP.remove('#top_profile_menu');
+            var top_nav = document.getElementById('top_nav');
+            if (!document.getElementById('oldvk_top_menu')) top_nav.appendChild(oldvk_top_menu);
+            var oldvk_top_exit = document.getElementById('oldvk_top_exit');
+            var top_logout_link = document.getElementById('top_logout_link');
+            var oldvk_top_help = document.getElementById('oldvk_top_help');
+            var top_support_link = document.getElementById('top_support_link');
+            if (oldvk_top_exit && top_logout_link) {
+                oldvk_top_exit.firstElementChild.textContent = top_logout_link.textContent.toLowerCase();
+                oldvk_top_exit.href = top_logout_link.href;
             }
-            if (oth && tsl) oth.firstElementChild.textContent = tsl.textContent.toLowerCase();
-            var otm = document.getElementById('oldvk_top_music');
-            var talp = document.getElementById('top_audio_layer_place')
-            if (otm && talp)
-                insertAfter(otm, talp);
+            if (oldvk_top_help && top_support_link) oldvk_top_help.firstElementChild.textContent = top_support_link.textContent.toLowerCase();
+            var oldvk_top_music = document.getElementById('oldvk_top_music');
+            var top_audio_layer_place = document.getElementById('top_audio_layer_place')
+            if (oldvk_top_music && top_audio_layer_place)
+                insertAfter(oldvk_top_music, top_audio_layer_place);
         })
     },
     updateMenu: function () {
-        //console.log('updateMenu');
+        console.log('updateMenu');
         if (!document.getElementById('l_ntf'))
             insertAfter(document.getElementById('l_nwsf'), this.l_ntf);
         if (!document.getElementById('l_edit')) {
@@ -222,9 +221,9 @@ function initArrives() {
 
     // KPP.add('#top_nav', function (element) {
 
-    /*KPP.add('#side_bar_inner ol', function (element) {
-        console.log(element)
-    })*/
+    KPP.add('.side_bar_ol', function () {
+        LocalizedContent.updateMenu();
+    });
 
     // Обложка страниц и аватарки
 

@@ -167,3 +167,7 @@ a.groups_messages_block:before {
 .add_community_app_card_name {
     @extend %header-text
 }
+
+.gtop_complex_message .gtop_content .gtop_mesage_buttons .gtop_button {
+    height: auto
+}

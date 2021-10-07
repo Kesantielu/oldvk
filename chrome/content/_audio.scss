@@ -1342,6 +1342,10 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
 
     .top_audio_player_btn {
         padding: 12px 8px 10px;
+
+        svg {
+            display: none;
+        }
     }
 
     .top_audio_player_title_wrap {
@@ -1391,18 +1395,20 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
 
     }
 
-    .top_audio_player_btn .top_audio_player_btn_icon {
+    .top_audio_player_play {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADtJREFUeNpj+P//PwM5GEOgoGPZfxAmWyMhzXg14tNMUCMuzURpxKaZaI3ommmvkX6BQ78EQHKSIxYDAAfaNZO96hpeAAAAAElFTkSuQmCC') no-repeat center;
         opacity: 0.8;
-        width: 14px;
-        height: 14px;
+        transition: opacity 200ms;
+
+        &:hover {
+            opacity: 1;
+        }
+
+
     }
 
-    .top_audio_player_play .top_audio_player_btn_icon {
-        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADtJREFUeNpj+P//PwM5GEOgoGPZfxAmWyMhzXg14tNMUCMuzURpxKaZaI3ommmvkX6BQ78EQHKSIxYDAAfaNZO96hpeAAAAAElFTkSuQmCC') no-repeat;
-    }
-
-    &.top_audio_player_playing .top_audio_player_play .top_audio_player_btn_icon {
-        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAOCAYAAAD0f5bSAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADFJREFUeNpj+P//PwOpGEwUdCw7DMT/kfBhmAJscjCJ/+gYSROG3KimEaCJ9GREKgYAvs/xDk8PxfQAAAAASUVORK5CYII=') no-repeat;
+    &.top_audio_player_playing .top_audio_player_play {
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAOCAYAAAD0f5bSAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADFJREFUeNpj+P//PwOpGEwUdCw7DMT/kfBhmAJscjCJ/+gYSROG3KimEaCJ9GREKgYAvs/xDk8PxfQAAAAASUVORK5CYII=');
     }
 }
 
@@ -1950,6 +1956,7 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
 
 .LinkSnippet {
     align-items: flex-start;
+
     &__text {
         padding-bottom: 5px
     }
