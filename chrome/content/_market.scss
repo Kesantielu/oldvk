@@ -327,8 +327,12 @@ $market-image-size: 140px;
         width: 440px;
     }
 
-    &--stacked#{&}--classified {
+    &--classified {
         box-shadow: none;
+    }
+
+    &__title {
+        @extend %h2-negative
     }
 }
 
@@ -371,6 +375,10 @@ $market-image-size: 140px;
 
 .MarketCatalogLocation {
     padding: 5px 0 0;
+
+    &--separated {
+        border-left: none;
+    }
 }
 
 .MarketCatalogPage {
@@ -430,6 +438,11 @@ $market-image-size: 140px;
 .MarketSkeleton {
     &__block {
         padding: 15px;
+        margin-top: 0;
+
+        &--menu {
+            padding: 0;
+        }
 
         &--products {
             grid-template-columns: repeat(4, $market-image-size);
@@ -439,9 +452,77 @@ $market-image-size: 140px;
                 --width: $market-image-size
             }
         }
+
+        &--tabs {
+            grid-template-rows: 24px;
+            grid-template-columns: repeat(3,100px);
+            grid-gap: 5px;
+            padding: 15px 10px 0;
+
+            .MarketSkeleton__element {
+                border-radius: 4px 4px 0 0;
+
+                &:first-child {
+                    display: none
+                }
+
+                &:last-child {
+                    right: 15px;
+                    border-radius: 4px;
+                    --width: 160px;
+                    --height: 24px;
+                    top: 7px;
+                }
+            }
+        }
+    }
+
+    &__catalogSelector &__element {
+        &:first-child {
+            --width: 69px;
+            --height: 13px;
+        }
+    }
+
+    &__categoryMenu {
+        grid-template-rows: 13px;
+        grid-template-columns: repeat(5, 91px);
+        grid-column-gap: 10px;
+    }
+
+    &__categoryMenuContainer {
+        padding: 13px 16px;
+        height: 40px;
+    }
+
+    &__citySelector &__element {
+        --width: 88px;
+    }
+
+    &__element {
+        &--leftSeparator {
+            width: 0
+        }
+
+        &--rightSeparator {
+            top: -13px;
+        }
     }
 
     &__elementContainer--products {
         grid-template-rows: $market-image-size 15px 15px;
+    }
+
+    &__searchMenu {
+        height: auto;
+        padding: 13px 16px;
+
+        > .MarketSkeleton__element {
+            --width: 495px;
+        }
+
+        .MarketSkeleton__element {
+            --height: 25px
+        }
     }
 }

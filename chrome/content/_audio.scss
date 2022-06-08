@@ -22,7 +22,7 @@
 
 head:not(.oldvk-option-audio) ~ body {
     .audio_row_cover_back,
-    .audio_row_cover,
+    .audio_w_covers .audio_row .audio_row_cover,
     .audio_sound_bars,
     .audio_page_player2 .audio_page_player__cover,
     .audio_w_covers .audio_row .audio_row__sound_bars,
@@ -276,6 +276,10 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
 .audio_row.audio_hq .audio_row__duration:before {
     left: -24px;
     top: 1px;
+}
+
+.audio_w_covers .audio_row .audio_row__cover {
+    padding: 3px
 }
 
 .audio_w_covers .audio_row .audio_row__cover_icon {
@@ -1027,6 +1031,10 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
 
         &:active {
             margin-top: 1px
+        }
+
+        svg {
+            display: none;
         }
     }
 

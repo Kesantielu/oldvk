@@ -508,6 +508,8 @@ h2 {
     font-family: inherit;
 }
 
+.audio_search.ui_search_new .ui_search_input_inner,
+.MarketCatalogCategoryMenu__list,
 .wall_module .reply_image_stories_unseen:after,
 .app_widget_tiles_tile .app_widget_image,
 .MarketSkeleton__block,
@@ -908,6 +910,9 @@ input.dark,
 .deep_active.wall_module .wl_replies_block_wrap .replies_wrap_deep .replies_deep_collapse,
 .apps_feedRightAppsBlock__ava,
 .apps_feedRightAppsBlock.apps_feedRightAppsBlock_single_app .apps_feedRightAppsBlock__ava,
+.VideoCard__thumb,
+.VideoCard__thumb:after,
+.VideoCard__thumbWrapper,
 .bd_img {
     border-radius: 0;
 }

@@ -282,3 +282,119 @@
 #tiles_app_widget .module_body {
     padding: 5px 5px 10px;
 }
+
+// Reactions
+
+.PostBottomAction {
+    background: none;
+    padding: 5px 6px;
+    height: 22px;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: $button-more-hover-color;
+    }
+
+    &:hover &__icon {
+        opacity: 0.6
+    }
+
+    &:before {
+        content: none
+    }
+
+    &__count,
+    &__label {
+        font-size: 10px
+    }
+
+    &__icon svg {
+        display: none;
+    }
+
+    &__icon {
+        background: url("data:image/gif;base64,R0lGODlhCwAgAMQfANjh68PN2ufs8aa2yPL1+LjE01V2m5Gku1p6nnicwc7Z5snY5uDn715/o/z8/paxzIqnxsXV5MnW5Yyqyqa60F+ApPDz9mKDp3ebv5+50oOkxZutwqe+1f///3mdwf///yH5BAEAAB8ALAAAAAALACAAAAWGoOR5EABAo/RNYzK+0+e576t9T10/34Lpo8XnwwFyhsNM7YgcFj3M5jASkVqllE6HQKEQOg7eV+twaDuCz3mttXwE7DPgs4lrD59KIF64DBF7ZwUITQYFWgMGVgYHB4RXDQ1Xk5QfClFSCiNWDE8eC0ChoqNBpE6bnS9Dmh5IrEibrlFFViEAOw==") no-repeat 0 1px;
+        width: 11px;
+        height: 11px;
+        opacity: 0.4;
+        transition: opacity 100ms ease-in-out;
+    }
+
+    &__count {
+        font-weight: bold;
+        margin-left: 1px;
+        color: #7295b2;
+    }
+
+    .PostBottomAction.share .PostBottomAction__icon {
+        background-position: 0 -21px;
+    }
+
+
+    &.comment &__icon {
+        background: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%225%206%2014%2014%22%20style%3D%22fill%3A%23799dc1%3B%22%3E%3Cpath%20d%3D%22M5%207C5%206.4%205.4%206%206%206L18%206C18.5%206%2019%206.5%2019%207L19%2015C19%2015.6%2018.6%2016%2018%2016L6%2016C5.5%2016%205%2015.5%205%2015L5%207ZM9%2016L9%2020%2014%2016%209%2016Z%22%2F%3E%3C%2Fsvg%3E) no-repeat 0 2px / contain;
+        height: 12px;
+    }
+
+}
+
+.like_cont.PostBottomActionLikeBtns {
+    justify-content: flex-end;
+}
+
+.PostButtonReactions {
+    &__icon {
+        width: 10px;
+        height: 10px
+    }
+
+    &--post {
+        .PostBottomAction__icon {
+            order: 1
+        }
+
+        .PostBottomAction__label {
+            margin: 0 2px 0 0
+        }
+
+        .PostBottomAction__count {
+            order: 1;
+            margin-left: 3px;
+        }
+
+        &:hover .PostButtonReactions__title {
+            color: #2f5879;
+        }
+
+        .PostButtonReactions__title,
+        &.PostButtonReactions--active .PostButtonReactions__title {
+            top: 0;
+            color: #829baf;
+            transition: color 100ms ease-in-out;
+        }
+    }
+
+    &--active .PostBottomAction__icon {
+        opacity: 1 !important
+    }
+
+}
+
+.PostButtonReactionsContainer {
+    order: 1
+}
+
+.ReactionsMenuPopper,
+.PostActionStatusBar {
+    display: none
+}
+
+.PostHeaderActionsUiActionMenuIconContainer {
+    top: 0;
+    right: 0
+}
+
+.PostBottomActionLikeBtns .like_btns > .PostBottomAction:not(:first-child),
+.PostBottomActionLikeBtns .like_btns > .PostBottomActionContainer:not(:first-child) {
+    margin-left: 0;
+}

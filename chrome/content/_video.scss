@@ -893,3 +893,79 @@
         background: #222;
     }
 }
+
+/* New video catalog design */
+
+.video_showcase {
+    --layout-min-width: 791px;
+    --layout-max-width: 791px;
+
+    .page_header_wrap {
+        background-color: transparent
+    }
+
+    .PortalNavigation {
+        display: none
+    }
+
+    #page_header {
+        padding: 0
+    }
+
+    .VKVideoLogo {
+        display: none
+    }
+
+    .TopHomeLink {
+        display: flex
+    }
+
+    #side_bar {
+        display: block !important
+    }
+
+    #page_layout {
+        display: block
+    }
+}
+
+.VideoLayout {
+    --aside-column-width: auto;
+    flex-direction: column;
+
+    &__main {
+        padding: 5px 5px 0;
+    }
+
+    &__aside {
+        position: static
+    }
+
+    &__contentsWrapper {
+        padding: 0
+    }
+}
+
+.VideoGrid {
+    width:100% !important;
+    grid-template-columns: [col-start] repeat(auto-fill,minmax(290px,1fr)) [col-end];
+    gap: 10px 10px;
+
+}
+
+.VideoCard {
+    &__title {
+        @extend %link-text;
+        font-size: inherit;
+    }
+
+    &__additionalInfo,
+    &__ownerLink {
+        font-size: inherit;
+        color:  $link-color;
+    }
+
+    &__additionalInfo.video_item_add_info {
+        color: $gray-color-7
+    }
+}

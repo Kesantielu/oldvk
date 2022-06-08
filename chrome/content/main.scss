@@ -2923,7 +2923,7 @@ body.firefox .wide .page_post_sized_thumbs {
     margin: 5px 0;
 }
 
-.wall_module:not(.search_results) .post--with-likes:not(.post_copy):not(.post_btl):not(.post_wf):not(.post_fr_likes):not(.post--withActionStatusBar):not(.post--withPostBottomAction) {
+.wall_module:not(.search_results) .post--with-likes:not(.post_copy):not(.post_btl):not(.post_wf):not(.post_fr_likes):not(.post--withActionStatusBar):not(.post--withPostBottomAction):not(.wcomments_post) {
     .wall_post_text ~ .DonutLinkSnippet:last-child,
     .wall_text .media_link:last-child,
     .wall_text .thumbed_link:last-child,
