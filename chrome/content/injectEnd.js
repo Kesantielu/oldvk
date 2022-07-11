@@ -106,14 +106,14 @@ window.addEventListener("message", function (m) {
 if (typeof setFavIcon !== 'undefined') {
     var sfi = setFavIcon;
     setFavIcon = function () {
-        if (arguments[0].search(/fav_logo\.ico/i) !== -1)
-            arguments[0] = fav_logo;
         if (arguments[0].search(/fav_im.*\.ico/i) !== -1)
             arguments[0] = fav_im;
-        if (arguments[0].search(/fav_pause\.ico/i) !== -1)
+        else if (arguments[0].search(/fav_pause\.ico/i) !== -1)
             arguments[0] = fav_pause;
-        if (arguments[0].search(/fav_play\.ico/i) !== -1)
+        else if (arguments[0].search(/fav_play\.ico/i) !== -1)
             arguments[0] = fav_play;
+        else
+            arguments[0] = fav_logo;
         sfi.apply(this, arguments);
         icoNode.href = icoNode.href.replace(/\?\d+$/, '')
     }

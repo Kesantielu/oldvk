@@ -1,5 +1,7 @@
 var lang, emoji;
 
+console.log('mainstart');
+
 var injectStart = document.createElement('script');
 injectStart.type = 'text/javascript';
 injectStart.src = isWebExt ? browser.runtime.getURL('content/injectStart.js') : options.inject;
@@ -8,10 +10,11 @@ var injectOptions = document.createElement('script');
 injectOptions.type = 'text/javascript';
 
 function init() {
-    injectOptions.text = 'var oldvk={};oldvk.options=' + JSON.stringify(options) + ';' + (!isWebExt ? 'oldvk.fox=true;' : '');
+    injectOptions.text = `var oldvk={};oldvk.options=${JSON.stringify(options)};${(!isWebExt ? 'oldvk.fox=true;' : '')}`;
     document.head.appendChild(injectOptions);
     document.head.appendChild(injectStart);
     headOptions();
+    headFixes();
     checkCSS(styles);
     if (isWebExt) {
         insertCSS('local');
@@ -95,8 +98,10 @@ function insertCSS(style) {
 
 function updateCSS(Styles) {
     for (var style in Styles) {
-        if (Styles.hasOwnProperty(style) && Styles[style]) document.head.classList.add('oldvk-' + style);
-        else document.head.classList.remove('oldvk-' + style);
+        if (Styles.hasOwnProperty(style) && Styles[style])
+            document.head.classList.add('oldvk-' + style);
+        else
+            document.head.classList.remove('oldvk-' + style);
     }
 }
 
@@ -113,30 +118,30 @@ function checkCSS(styles) {
 }
 
 function headOptions() {
-    if (options.optionAudio)
-        document.head.classList.add('oldvk-option-audio');
+    var active = ['audio', 'date', 'font']; // Список требуемых опций для head
+    active.forEach(function (option) {
+        if (options['option' + option[0].toUpperCase() + option.slice(1)])
+            document.head.classList.add('oldvk-option-' + option);
+    })
+}
 
-    if (options.optionDate)
-        document.head.classList.add('oldvk-option-date');
-
-    if (options.optionFont)
-        document.head.classList.add('oldvk-largefont');
-
-    if (options.optionReactions)
-        document.head.classList.add('oldvk-reactions');
-
-    //if (options.optionIm)
-    //    document.head.classList.add('oldvk-im');
+function headFixes() {
+    var browserVersion = getBrowser();
+    if (browserVersion.name === 'Firefox' && browserVersion.version < 54)
+        document.head.classList.add('oldvk-ff-grid-fix1');
+    if (browserVersion.name === 'Firefox' && browserVersion.version < 76)
+        document.head.classList.add('oldvk-ff-grid-fix2');
 }
 
 var LocalizedContent = {
     l_ntf: document.createElement('li'),
     l_edit: document.createElement('a'),
     l_set: document.createElement('li'),
+    l_srv: document.createElement('li'),
 
     init: function () {
         this.l_ntf.id = 'l_ntf';
-        this.l_ntf.innerHTML = '<a href="/feed?section=notifications" class="left_row" onclick="return nav.go(this, event, {noback: true, params: {_ref: \'left_nav\'}});" onmouseover="TopNotifier.preload();"><span class="left_label inl_bl">' + i18n.answers[lang] + '</span><span class="left_count_wrap fl_r" id="oldvk-notify-wrap" onmouseover="TopNotifier.preload()" onmousedown="return TopNotifier.onBellMouseDown(event)" onclick="event.stopPropagation();TopNotifier.setCount(\'\',true);return TopNotifier.onBellClick(event)"><span class="inl_bl left_count" id="oldvk-notify"></span></span></a>';
+        this.l_ntf.innerHTML = `<a href="/feed?section=notifications" class="left_row" onclick="return nav.go(this, event, {noback: true, params: {_ref: \'left_nav\'}});" onmouseover="TopNotifier.preload();"><span class="left_label inl_bl">${i18n.answers[lang]}</span><span class="left_count_wrap fl_r" id="oldvk-notify-wrap" onmouseover="TopNotifier.preload()" onmousedown="return TopNotifier.onBellMouseDown(event)" onclick="event.stopPropagation();TopNotifier.setCount(\'\',true);return TopNotifier.onBellClick(event)"><span class="inl_bl left_count" id="oldvk-notify"></span></span></a>`;
 
         this.l_edit.id = 'l_edit';
         this.l_edit.classList.add('fl_r');
@@ -144,60 +149,83 @@ var LocalizedContent = {
         this.l_edit.textContent = i18n.edit[lang];
 
         this.l_set.id = 'l_sett';
-        this.l_set.innerHTML = '<a href="/settings" class="left_row"><span class="left_label inl_bl" id="oldvk-settings">' + i18n.settings[lang] + '</span></a>';
+        this.l_set.innerHTML = `<a href="/settings" class="left_row"><span class="left_label inl_bl" id="oldvk-settings">${i18n.settings[lang]}</span></a>`;
+        KPP.add('#side_bar_inner ol', function (a) {
+            KPP.remove('#side_bar_inner ol');
+            LocalizedContent.updateMenuD(a);
+        });
 
-        var top_menu = '<div class="head_nav_item fl_r"><a id="oldvk_top_exit" class="top_nav_link" href="" onclick="if (checkEvent(event) === false) { window.Notifier && Notifier.lcSend(\'logged_off\'); location.href = this.href; return cancelEvent(event); }" onmousedown="tnActive(this)"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_help" class="top_nav_link" href="/support?act=home" onclick="return TopMenu.select(this, event);"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_music" class="top_nav_link" href="" onclick="return (checkKeyboardEvent(event) ? AudioUtils.getLayer().toggle() : false);" onmouseover="AudioLayer.prepare()" onmousedown="return (checkKeyboardEvent(event) ? false : AudioUtils.getLayer().toggle(),cancelEvent(event))"><div class="top_profile_name">' + i18n.music[lang] + '</div><div id="oldvk_top_play" class="oldvk-hide" onclick="cancelEvent(event); if (getAudioPlayer().isPlaying()) {getAudioPlayer().pause(); removeClass(this,\'active\')} else {getAudioPlayer().play(); addClass(this,\'active\')}" onmousedown="cancelEvent(event);"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_apps" class="top_nav_link" href="/apps" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.games[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_communities" class="top_nav_link" href="/search?c[section]=communities" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.communities[lang] + '</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_peoples" class="top_nav_link" href="/search?c[section]=people" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">' + i18n.people[lang] + '</div></a></div>';
-        var oldvk_top_menu = document.createElement('div');
-        oldvk_top_menu.id = "oldvk_top_menu";
-        oldvk_top_menu.innerHTML = top_menu;
-        KPP.add('#top_profile_menu', function () {
-            KPP.remove('#top_profile_menu');
-            var top_nav = document.getElementById('top_nav');
-            if (!document.getElementById('oldvk_top_menu')) top_nav.appendChild(oldvk_top_menu);
-            var oldvk_top_exit = document.getElementById('oldvk_top_exit');
-            var top_logout_link = document.getElementById('top_logout_link');
-            var oldvk_top_help = document.getElementById('oldvk_top_help');
-            var top_support_link = document.getElementById('top_support_link');
-            if (oldvk_top_exit && top_logout_link) {
-                oldvk_top_exit.firstElementChild.textContent = top_logout_link.textContent.toLowerCase();
-                oldvk_top_exit.href = top_logout_link.href;
+        this.l_srv.id = 'l_srv';
+
+        var top_menu = `<div class="head_nav_item fl_r"><a id="oldvk_top_exit" class="top_nav_link" href="" onclick="if (checkEvent(event) === false) { window.Notifier && Notifier.lcSend(\'logged_off\'); location.href = this.href; return cancelEvent(event); }" onmousedown="tnActive(this)"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_help" class="top_nav_link" href="/support?act=home" onclick="return TopMenu.select(this, event);"><div class="top_profile_name"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_music" class="top_nav_link" href="" onclick="return (checkKeyboardEvent(event) ? AudioUtils.getLayer().toggle() : false);" onmouseover="AudioLayer.prepare()" onmousedown="return (checkKeyboardEvent(event) ? false : AudioUtils.getLayer().toggle(),cancelEvent(event))"><div class="top_profile_name">${i18n.music[lang]}</div><div id="oldvk_top_play" class="oldvk-hide" onclick="cancelEvent(event); if (getAudioPlayer().isPlaying()) {getAudioPlayer().pause(); removeClass(this,\'active\')} else {getAudioPlayer().play(); addClass(this,\'active\')}" onmousedown="cancelEvent(event);"></div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_apps" class="top_nav_link" href="/apps" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">${i18n.games[lang]}</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_communities" class="top_nav_link" href="/search?c[section]=communities" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">${i18n.communities[lang]}</div></a></div><div class="head_nav_item fl_r"><a id="oldvk_top_peoples" class="top_nav_link" href="/search?c[section]=people" onclick="return TopMenu.select(this, event);"><div class="top_profile_name">${i18n.people[lang]}</div></a></div>`;
+        var tmw = document.createElement('div');
+        tmw.id = 'oldvk_top_menu';
+        tmw.innerHTML = top_menu;
+        KPP.add('#top_nav', function (element) {
+            KPP.remove('#top_nav');
+            if (!document.getElementById('oldvk_top_menu')) element.appendChild(tmw);
+
+            var otm = document.getElementById('oldvk_top_music');
+            var talp = document.getElementById('top_audio_layer_place')
+            if (otm && talp)
+                insertAfter(otm, talp);
+            var top_ecosystem_navigation_link = document.getElementById('top_ecosystem_navigation_link');
+            var top_ecosystem_navigation_menu = document.getElementById('top_ecosystem_navigation_menu');
+            if (top_ecosystem_navigation_link) {
+                console.log(document.getElementsByClassName('top_ecosystem_navigation_header')[0].textContent);
+                LocalizedContent.l_srv.appendChild(top_ecosystem_navigation_link);
+                LocalizedContent.l_srv.appendChild(top_ecosystem_navigation_menu);
+                var l_srv_label = document.createElement('span');
+                l_srv_label.className = 'left_label inl_bl';
+                l_srv_label.textContent = top_ecosystem_navigation_menu.getElementsByClassName('top_ecosystem_navigation_header')[0].textContent;
+                top_ecosystem_navigation_link.appendChild(l_srv_label);
+                top_ecosystem_navigation_link.classList.remove('TopNavBtn');
+                top_ecosystem_navigation_link.classList.add('left_row');
             }
-            if (oldvk_top_help && top_support_link) oldvk_top_help.firstElementChild.textContent = top_support_link.textContent.toLowerCase();
-            var oldvk_top_music = document.getElementById('oldvk_top_music');
-            var top_audio_layer_place = document.getElementById('top_audio_layer_place')
-            if (oldvk_top_music && top_audio_layer_place)
-                insertAfter(oldvk_top_music, top_audio_layer_place);
+
+            KPP.add('#top_logout_link', function (tll) {
+                KPP.remove('#top_logout_link');
+                var ote = document.getElementById('oldvk_top_exit');
+                var oth = document.getElementById('oldvk_top_help');
+                var tsl = document.getElementById('top_support_link');
+                if (ote) {
+                    ote.firstElementChild.textContent = tll.textContent.toLowerCase();
+                    ote.href = tll.href;
+                }
+                if (oth && tsl) oth.firstElementChild.textContent = tsl.textContent.toLowerCase();
+            })
         })
     },
-    updateMenu: function () {
-        console.log('updateMenu');
+    updateMenu: function (side_bar_ol) {
         if (!document.getElementById('l_ntf'))
-            insertAfter(document.getElementById('l_nwsf'), this.l_ntf);
+            insertAfter(document.getElementById('l_nwsf'), LocalizedContent.l_ntf);
         if (!document.getElementById('l_edit')) {
             var l_edit_parent = document.querySelector('#l_pr a.left_row');
-            l_edit_parent.appendChild(this.l_edit)
+            l_edit_parent.appendChild(LocalizedContent.l_edit)
         }
         if (!document.getElementById('l_sett')) {
             if (document.getElementById('l_fav'))
-                insertAfter(document.getElementById('l_fav'), this.l_set);
+                insertAfter(document.getElementById('l_fav'), LocalizedContent.l_set);
             else
-                insertAfter(document.getElementById('l_ntf'), this.l_set);
+                insertAfter(document.getElementById('l_ntf'), LocalizedContent.l_set);
         }
-
-        var ap = document.querySelector('#l_ap .left_label')
-        var aud = document.querySelector('#l_aud .left_label')
-        var vid = document.querySelector('#l_vid .left_label')
-        var gr = document.querySelector('#l_gr .left_label')
-        var msg = document.querySelector('#l_msg .left_label')
-        var vid_row = document.querySelector('#l_vid .left_row')
-
-        if (ap) ap.textContent = i18n.apps[lang];
-        if (aud) aud.textContent = i18n.audios[lang];
-        if (vid) vid.textContent = i18n.videos[lang];
-        if (gr) gr.textContent = i18n.groups[lang];
-        if (msg) msg.textContent = i18n.messages[lang];
-        if (vid_row) vid_row.setAttribute('href', '/videos');
+        if (!document.getElementById('l_srv')) {
+            if (side_bar_ol)
+                side_bar_ol.appendChild(LocalizedContent.l_srv);
+        }
+        document.querySelector('#l_ap .left_label').textContent = i18n.apps[lang];
+        document.querySelector('#l_aud .left_label').textContent = i18n.audios[lang];
+        document.querySelector('#l_vid .left_label').textContent = i18n.videos[lang];
+        document.querySelector('#l_gr .left_label').textContent = i18n.groups[lang];
+        document.querySelector('#l_msg .left_label').textContent = i18n.messages[lang];
+        document.querySelector('#l_vid .left_row').setAttribute('href', '/videos');
         LocalizedContent.updateNotify()
+    },
+    updateMenuD: function (arg) {
+        if (document.readyState === 'loading')
+            document.addEventListener('DOMContentLoaded', this.updateMenu.bind(null, arg))
+        else
+            this.updateMenu(arg)
     },
     updateNotify: function () {
         var notifyCount = parseInt(document.getElementById('top_notify_count').textContent, 10);
@@ -221,9 +249,7 @@ function initArrives() {
 
     // KPP.add('#top_nav', function (element) {
 
-    KPP.add('.side_bar_ol', function () {
-        LocalizedContent.updateMenu();
-    });
+    // KPP.add('#side_bar_inner', function () {
 
     // Обложка страниц и аватарки
 
@@ -318,7 +344,7 @@ function initArrives() {
             return emoji
         }, function () {
             emoji_div.innerHTML = emoji.html.map(function (e, i) {
-                return '<a class="emoji_smile_cont" onmousedown="Emoji.addEmoji(Emoji.last - 1,\'' + emoji.emoji[i] + '\', this); return cancelEvent(event);" onclick="return cancelEvent(event);" onmouseover="return Emoji.emojiOver(Emoji.last - 1, this, true);">' + e + '</a>'
+                return `<a class="emoji_smile_cont" onmousedown="Emoji.addEmoji(Emoji.last - 1,\'${emoji.emoji[i]}\', this); return cancelEvent(event);" onclick="return cancelEvent(event);" onmouseover="return Emoji.emojiOver(Emoji.last - 1, this, true);">${e}</a>`
             }).join('');
             chat.insertBefore(emoji_div, document.getElementsByClassName('im-chat-input--selector')[0]);
         });
@@ -611,7 +637,30 @@ function initArrives() {
         if (menu)
             menu.appendChild(likes)
     });
+
+    // Счетчик лайков для реакций
+
+    KPP.add('.PostButtonReactions', function (reactions) {
+        var count = reactions.dataset.reactionCounts;
+        if (count && !(reactions.dataset.reactionButtonTextIsCounter)) {
+            count = JSON.parse(count);
+            if (!Array.isArray(count)) {
+                count = Object.values(count)
+            }
+            var likes = count.reduce(function (previous, current) {
+                return previous + current
+            })
+            reactions.getElementsByClassName('PostButtonReactions__title')[0].textContent = likes;
+        }
+        reactions.dataset.reactionButtonTextIsCounter = '1';
+
+        var target = reactions.dataset.reactionTargetObject;
+        if (target) {
+            reactions.setAttribute('onmouseover', `Likes.showLikes(this,\'${target}\')`)
+        }
+    });
 }
+
 
 function resizeNarrow(element, factor) {
     element.style.width = Math.floor(element.clientWidth * factor) + 'px';
