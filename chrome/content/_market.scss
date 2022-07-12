@@ -455,7 +455,7 @@ $market-image-size: 140px;
 
         &--tabs {
             grid-template-rows: 24px;
-            grid-template-columns: repeat(3,100px);
+            grid-template-columns: repeat(3, 100px);
             grid-gap: 5px;
             padding: 15px 10px 0;
 
@@ -524,5 +524,37 @@ $market-image-size: 140px;
         .MarketSkeleton__element {
             --height: 25px
         }
+    }
+}
+
+.ClassifiedsCatalogProduct {
+    width: 140px;
+
+    &--youla {
+        height: 160px;
+    }
+
+    &__imgWrap {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+.ClassifiedsCatalogTabs {
+    &__link {
+        padding: 0;
+        font-size: 11px;
+        line-height: 14px;
+    }
+}
+
+.ClassifiedsCatalogHeader {
+    &--visible {
+        top: 0;
+    }
+
+    &--fixed {
+        width: 633px;
+        height: 40px;
     }
 }

@@ -1,3 +1,5 @@
+// Reset font to default
+
 .fakeinput,
 div[contenteditable=true]:not(.article_editor_canvas),
 input.big_text,
@@ -503,17 +505,31 @@ body.new_header_design .WideScreenAppBack__link,
 .FlatButton,
 .MarketCatalogPlaceholder__description,
 .MarketCatalogTabs__link,
+.VideoSearchInput.ui_search_new input.ui_search_field,
+.VideoSearchInput .ui_search_sugg_list .ui_search_sugg_list_item,
+.VideoSearchInput .ui_search_sugg_list .ui_search_sugg_history_header,
+.GamesCatalogFeed__notificationText,
+.ProfileAchievementItem__title,
+.ProfileAchievementItem__description,
+.GamesCatalogFeed__notificationTime,
+.GamesCatalogProfileBlock__header,
+.GamesCatalogProfileBlock__settingLink,
+.VideoRecomsItem__title,
+.VideoRecomsItem__author,
+.VideoRecomsItem__views,
 h2 {
     font-size: inherit;
     font-family: inherit;
 }
+
+// Reset border radius to zero
 
 .audio_search.ui_search_new .ui_search_input_inner,
 .MarketCatalogCategoryMenu__list,
 .wall_module .reply_image_stories_unseen:after,
 .app_widget_tiles_tile .app_widget_image,
 .MarketSkeleton__block,
-.MarketSkeleton__block--tabs:not(.MarketSkeleton__block--unstacked)+.MarketSkeleton__block,
+.MarketSkeleton__block--tabs:not(.MarketSkeleton__block--unstacked) + .MarketSkeleton__block,
 .MarketSkeleton__block--stacked,
 .MarketCatalogBreadcrumbs,
 .MarketSkeleton__element,
@@ -913,6 +929,51 @@ input.dark,
 .VideoCard__thumb,
 .VideoCard__thumb:after,
 .VideoCard__thumbWrapper,
+.ImUserAvatar,
+.ConvoRecommendList__removeItem,
+.ConvoRecommendList__avatar,
+.friends_photo_img:after,
+.friends_photo_stories_unseen:after,
+body.oldvk_video .VideoCard__thumb,
+body.oldvk_video .VideoCard__thumbWrapper,
+body.oldvk_video .VideoCard__thumb:after,
+body.oldvk_video .VideoCard--playlist,
+body.oldvk_video .VideoCard--playlist .VideoCard__info,
+body.oldvk_video .VideoCard .VideoRestriction__boxWrap,
+body.oldvk_video .VideoHeader .page_block_header,
+body.oldvk_video .VideoHeader__avatar,
+body.oldvk_video .VideoHeader__avatarImage,
+body.oldvk_video .VideoSearchInput.ui_search_new .ui_search_input_block,
+body.oldvk_video .PlaylistPanel__itemCoverImg,
+body.oldvk_video .PlaylistPanel__itemAction,
+body.oldvk_video .PlaylistPanel__item,
+.VideoSearchInput .ui_search_sugg_list,
+.ProfileUserInfo__imgWrap:after,
+.ProfileUserInfo__img,
+.ProfileUserInfo__imgWrap,
+.VideoRecomsItem__thumb_wrap,
+.FCThumb:first-child,
+.FCPanel__list,
 .bd_img {
     border-radius: 0;
+}
+
+// Disable unnecessary svgs
+
+.audio_page_player2 .audio_page_player_icon--done_outline_24,
+.audio_page_player2 .audio_page_player_add.audio_player_btn_added .audio_page_player_icon--add_outline_24,
+.audio_page_player2 .audio_page_player_add.audio_player_btn_added .audio_page_player_icon--done_outline_24,
+.MEAvatar__svg {
+    display: none
+}
+
+svg {
+    .im-page--dialogs-header-control &,
+    .audio_row__play_btn &,
+    .audio_page_layout2 .audio_page__main_tabs_btn &,
+    .audio_row .audio_row__icon &,
+    head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row .audio_row__cover &,
+    .audio_page_player_ctrl & {
+        display: none
+    }
 }

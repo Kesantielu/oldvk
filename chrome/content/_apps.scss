@@ -33,6 +33,17 @@ body.static_header #page_header_cont {
     width: 1178px;
 }
 
+body.static_header.WideScreenAppPage {
+    #page_body {
+        max-width: 1161px;
+        width: 100% !important;
+    }
+
+    .apps_main .app_container {
+        max-width: none
+    }
+}
+
 .apps_recent_row {
     width: 75px;
     height: 75px;
@@ -793,7 +804,7 @@ $games-catalog-profile-column: 294px;
 }
 
 .ProfileUserInfo {
-    padding: 0;
+    padding: 10px;
     margin-bottom: 10px;
 
     &__username {
@@ -880,12 +891,11 @@ $games-catalog-profile-column: 294px;
 }
 
 
-
 .appAchievementsAchievementsList {
     padding: 10px 5px;
 }
 
-.ui_tooltipMenu__list>.ui_tooltipMenu__items {
+.ui_tooltipMenu__list > .ui_tooltipMenu__items {
     padding: 0;
 }
 
@@ -909,7 +919,7 @@ $games-catalog-profile-column: 294px;
     }
 }
 
-.ui_tooltipMenu__item.selected>.ui_tooltipMenu__link:after {
+.ui_tooltipMenu__item.selected > .ui_tooltipMenu__link:after {
     background-image: $check-icon;
 }
 
@@ -1167,4 +1177,21 @@ $apps-catalog-banner-height: 249px;
 
 .vk_app_modal_btn {
     @extend %flat_button
+}
+
+.MEAvatar,
+.AvatarNoPhoto {
+    border-radius: 3px;
+}
+
+.MEAvatar {
+    &__imgWrapper {
+        clip-path: none !important
+    }
+}
+
+.MyGamesCloudCatalogList {
+    grid-template-columns: repeat(3, 192px);
+    gap: 10px;
+    grid-gap: 10px;
 }

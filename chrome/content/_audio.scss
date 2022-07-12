@@ -574,7 +574,7 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
     &.audio_page_player_fixed_shown,
     &.audio_page_player_fixed {
         transform: none;
-        -webkit-transform: none;
+        --webkit-transform: none;
         transition: none
     }
 
@@ -583,11 +583,39 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
     }
 
     .slider_hint.audio_player_hint {
-        margin-top: 4px
+        margin-top: 4px;
+        font-size: 10px
     }
 
     &.audio_player_podcast .audio_page_player_play_rate .btn_icon {
         background: none
+    }
+
+    .audio_page_player_ctrl.audio_page_player_btns {
+        height: 46px
+    }
+
+    .audio_page_player_add {
+        width: 15px;
+
+        .audio_page_player_icon {
+            &--add_outline_24,
+            &--done_outline_24 {
+                transform: none
+            }
+        }
+    }
+
+    .audio_page_player_play_rate {
+        width: 30px;
+        min-width: auto;
+
+        .audio_page_player_icon {
+            min-width: auto;
+            width: auto;
+            text-align: center;
+            line-height: 16px;
+        }
     }
 
 }
@@ -738,7 +766,11 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
     .audio_search {
         width: 424px;
         padding-top: 10px;
-        background: none
+        background: none;
+
+        &.ui_search_new .ui_search_input_inner {
+            border-radius: 0
+        }
     }
 
     .audio_section {
@@ -1325,7 +1357,8 @@ head:not(.oldvk-option-audio) ~ body .audio_w_covers .audio_row__cover_back {
 
 .audio_w_covers .audio_row .audio_row__cover,
 .audio_w_covers .audio_row.audio_row_with_cover:hover .audio_row__cover_back {
-    border-radius: 2px
+    border-radius: 2px;
+    padding: 4px
 }
 
 .audio_row .audio_row__performers,
@@ -1974,3 +2007,8 @@ head.oldvk-option-audio ~ body .audio_w_covers .audio_row .audio_row__inner {
 .CatalogSection__friends_updates .CatalogBlock__list ._audio_page__playlists {
     margin-top: -30px
 }
+
+.TopNavBtn__audio {
+    display: none !important;
+}
+

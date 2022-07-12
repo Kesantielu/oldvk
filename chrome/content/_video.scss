@@ -947,8 +947,8 @@
 }
 
 .VideoGrid {
-    width:100% !important;
-    grid-template-columns: [col-start] repeat(auto-fill,minmax(290px,1fr)) [col-end];
+    width: 100% !important;
+    grid-template-columns: [col-start] repeat(auto-fill, minmax(290px, 1fr)) [col-end];
     gap: 10px 10px;
 
 }
@@ -962,10 +962,273 @@
     &__additionalInfo,
     &__ownerLink {
         font-size: inherit;
-        color:  $link-color;
+        color: $link-color;
     }
 
     &__additionalInfo.video_item_add_info {
         color: $gray-color-7
     }
+}
+
+body.oldvk_video {
+    #side_bar {
+        display: block !important;
+    }
+
+    .VideoLayout {
+        flex-direction: column;
+
+        &__aside {
+            width: 100%;
+            position: static;
+            height: auto;
+            flex-basis: auto
+        }
+
+        &__asideFooter {
+            display: none
+        }
+
+        &__main {
+            padding: 5px;
+        }
+    }
+
+    .VideoActions {
+        padding: 5px;
+
+        &:after {
+            content: none
+        }
+
+        &--collapsed {
+            flex-direction: row;
+
+            .VideoActions__item {
+                width: auto;
+            }
+
+            .VideoActions__item + .VideoActions__item {
+                margin-left: 8px;
+                margin-top: 0;
+            }
+        }
+    }
+
+    .MenuList {
+        padding: 5px 5px;
+        display: flex;
+        flex-wrap: wrap;
+
+        &__itemText {
+            font-size: 11px;
+            color: #2b587a;
+            font-weight: bold;
+        }
+
+        &__item {
+            height: 24px;
+            border-radius: 3px;
+            padding: 0 6px;
+            margin-bottom: 5px;
+
+            &:hover .MenuList__itemText {
+                text-decoration: underline
+            }
+
+            & + & {
+                margin-top: 0;
+            }
+
+            &--expandable .MenuList__itemText {
+                text-decoration: none !important;
+                cursor: default;
+            }
+        }
+
+        &__itemIcon {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+        }
+
+        &__itemToggle {
+            margin-right: 0;
+            width: 16px;
+            height: 16px;
+        }
+
+        &--subList {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+    }
+
+    .PlaylistPanel {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 4px 5px 12px;
+
+        &__header {
+            height: 30px;
+            font-size: 11px;
+            margin: 0;
+            flex: 0 1 100%;
+        }
+
+        &__list {
+            padding: 0
+        }
+
+        &__item {
+            padding: 0 5px;
+            height: 30px;
+        }
+
+        &__itemAction {
+            margin-right: 5px;
+            border-radius: 0;
+            width: 20px;
+            height: 20px;
+            background: none
+        }
+
+        &__itemText {
+            font-size: 11px;
+        }
+
+        &__itemCover {
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+        }
+
+        &__headerLink {
+            font-size: 11px;
+        }
+
+        &--collapsed &__header {
+            margin: 0;
+            max-height: none;
+        }
+    }
+
+
+    .VideoSearchInput.video_search_input.ui_search.ui_search_new {
+        padding: 10px 224px 10px 10px;
+        box-sizing: border-box;
+    }
+
+    .VideoHeader {
+        .page_block_header {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .page_block_header_inner {
+            height: auto
+        }
+    }
+
+    .VideoInfoPanel {
+        &__action--small {
+            font-size: 11px;
+            height: auto;
+            line-height: inherit;
+            border-radius: 3px;
+            padding: 4px 6px;
+        }
+
+        &__actionIcon,
+        &__actionIcon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        &__actionIcon ~ &__actionText {
+            margin-left: 5px;
+        }
+    }
+
+
+    .PlaylistsSlider.ui_gallery .ui_gallery__inner_cont {
+        padding-left: 0;
+        padding-right: 15px;
+        margin-left: 0;
+    }
+
+    .VideoTabs.ui_tabs .ui_tab_sel, [dir] .VideoTabs.ui_tabs .ui_tab:hover {
+        padding-bottom: 4px;
+    }
+
+    .VideoTabs.ui_tabs .ui_tab,
+    .VideoTabs.ui_tabs .ui_tab.ui_gallery_item {
+        font-size: 11px;
+    }
+
+    .video_items_list {
+        width: auto
+    }
+
+    .VideoCard__title,
+    .VideoCard__additionalInfo {
+        font-size: 11px
+    }
+
+    .VideoSearchInputWrapper {
+        width: 597px
+    }
+
+    .VideoSearchInput {
+        max-width: 597px;
+
+        .ui_search_custom_ctrl svg {
+            display: none;
+        }
+
+        &.ui_search_new input.ui_search_field {
+            padding-left: 20px;
+        }
+
+        &#{&}--sticky {
+            transform: translateY(0px);
+        }
+
+        .VideoSearchInput.ui_search_new input.ui_search_field,
+        .VideoSearchInput .ui_search_sugg_list .ui_search_sugg_list_item,
+        .VideoSearchInput .ui_search_sugg_list .ui_search_sugg_history_header {
+            font-size: inherit;
+        }
+
+        [dir] .VideoSearchInput .ui_search_sugg_list {
+            border-radius: 0;
+            padding: 0;
+        }
+
+        &.video_search_input.ui_search.ui_search_new {
+            min-width: auto;
+        }
+    }
+
+    .VideoLayout__asideContentScroll .ui_scroll_blocker,
+    .VideoLayout__asideContentScroll .ui_scroll_outer {
+        overflow-y: hidden
+    }
+
+    .MenuList--collapsed .MenuList__itemContent,
+    .PlaylistPanel--collapsed .PlaylistPanel__title {
+        display: flex;
+    }
+
+    .PlaylistPanel--collapsed .PlaylistPanel__headerLink,
+    .PlaylistPanel--collapsed .PlaylistPanel__itemTextWrapper,
+    .VideoActions--collapsed .VideoActions__itemText {
+        display: block;
+    }
+
+
+}
+
+VideoRecomsItem__duration {
+    font-size: 10px
 }
