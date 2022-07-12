@@ -1,0 +1,35 @@
+[dir] body {
+    min-width: 320px;
+    margin: 10px
+}
+
+[dir] #options > div {
+    margin-bottom: 5px;
+}
+
+[dir] label.option input {
+    margin-right: 5px
+}
+
+[dir] #status {
+    color: #3F7F3A;
+    min-height: 15px;
+}
+
+[dir] #status.hide {
+    opacity: 0;
+    transition: opacity 2s ease-in;
+}
+
+[dir] #status.error {
+    color: #CC0000;
+}
+
+[dir] #layout {
+    margin-right: 5px;
+}
+
+[dir] #layout_wrap {
+    display: flex;
+    align-items: center;
+}

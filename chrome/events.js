@@ -1,35 +1,47 @@
+if (chrome.runtime.getManifest().manifest_version === 3)
+    importScripts('lib/lib_sw.js');
+
 function listener(tabId, info, tab) {
     if (info.status === isFirefox ? 'complete' : 'loading' && info.url) {
-        var url = document.createElement('a');
-        url.href = info.url;
+        const url = new URL(info.url);
         if (url.hostname === 'vk.com' || url.hostname.endsWith('.vk.com')) {
-            var path = url.pathname.slice(1);
-            var Styles = {};
+            const path = url.pathname.slice(1);
+            const Styles = {};
             styles.forEach(function (style) {
-                var apply = path.startsWith(style.match);
+                const apply = path.startsWith(style.match);
                 Styles[style.css] = Styles[style.css] || apply
             });
             browser.tabs.sendMessage(tabId, {action: 'updating', css: Styles, path: path}, null)
+                .catch(e => console.log())
         }
+        if (url.href.endsWith('vk.com/al_feed.php')) {
+            browser.tabs.update(tabId, {url: 'https://vk.com/feed'})
+                .catch(e => console.log())
+        } // Для переадресации после авторизации с id.vk.com
     }
 }
 
 browser.tabs.onUpdated.addListener(listener);
 
 if (browser.runtime.onInstalled) {
-    browser.runtime.onInstalled.addListener(function (details) {
+    browser.runtime.onInstalled.addListener(details => {
         if (details.reason === 'update') {
-            var uiLang = typeof chrome.i18n.getUILanguage !== 'undefined' ? chrome.i18n.getUILanguage() : "en";
-            var notes = new XMLHttpRequest();
-            notes.responseType = 'json';
-            notes.onload = function () {
-                browser.notifications.create('update-note', notes.response[uiLang])
-            };
-            notes.open('GET', browser.runtime.getURL('release.json'));
-            notes.send();
+            const uiLang = typeof browser.i18n.getUILanguage !== 'undefined' ? browser.i18n.getUILanguage() : 'en';
+            fetch(browser.runtime.getURL('release.json'))
+                .then(response => response.json())
+                .then(json => browser.notifications.create('update-note', json[uiLang]))
+                .catch(e => console.log(e))
         }
         if (details.reason === 'install') {
             browser.storage.local.set({enabled: true})
         }
     });
 }
+
+chrome.management.getAll()
+    .then(result => console.log(result.map(element => {
+        if (element.enabled) return element.id + ': ' + element.name
+    })
+        .filter(item => {
+            if (item !== 'undefined') return item
+        })));

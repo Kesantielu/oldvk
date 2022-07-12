@@ -1,6 +1,8 @@
-var wide;
+let wide;
 
-var injectEnd = document.createElement('script');
+Template.localize();
+
+const injectEnd = document.createElement('script');
 injectEnd.type = 'text/javascript';
 injectEnd.src = isWebExt ? browser.runtime.getURL('content/injectEnd.js') : self.options.inject;
 
@@ -14,49 +16,41 @@ function videoShowcase() {
 if (options.enabled || !isWebExt) {
     document.body.appendChild(injectEnd);
     initWide();
-
-    if (isWebExt)
+    updateMenu();
+    if (isWebExt) {
         browser.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             if (request.action === 'updating') {
                 initWide();
-                setTimeout(function () {
-                    initWide()
-                }, 500); // TODO: Найти лучшее решение
+                setTimeout(() => initWide(), 500); // TODO: Найти лучшее решение
             }
+            ;
+            sendResponse({result: true})
         });
+        if (options.layout)
+            setLayoutWidth(options.layout);
+    }
 
-    var leftMenuObserver = new MutationObserver(function (m) {
-        LocalizedContent.updateMenu();
-    });
-    if (document.querySelector('#side_bar_inner ol'))
-        leftMenuObserver.observe(document.querySelector('#side_bar_inner ol'), {childList: true});
+    const footer_wrap = document.getElementById('footer_wrap');
+    const left_menu_nav_wrap = document.getElementsByClassName('left_menu_nav_wrap')[0];
+    if (footer_wrap && left_menu_nav_wrap)
+        footer_wrap.appendChild(left_menu_nav_wrap);
 
-    var fw = document.getElementById('footer_wrap');
-    var lmnw = document.getElementsByClassName('left_menu_nav_wrap')[0];
-    if (fw && lmnw)
-        fw.appendChild(lmnw);
-
-    KPP.add('.apps_i_wrap', function (element) {
-        document.body.classList.remove('static_header')
-    });
+    KPP.add('.apps_i_wrap', () => document.body.classList.remove('static_header'));
 
     if (!localStorage.oldvk_pvLarge)
         localStorage.setItem('oldvk_pvLarge', options.oldvk_pvLarge);
     if (!localStorage.oldvk_pvDark)
         localStorage.setItem('oldvk_pvDark', options.oldvk_pvDark);
 
-    var bodyObserver = new MutationObserver(function (m) {
-        videoShowcase()
-    })
+    const bodyObserver = new MutationObserver(() => videoShowcase())
     videoShowcase();
     bodyObserver.observe(document.body, {attributes: true})
-
 }
 
 function initWide() {
     if (!document.getElementById('content')) return;
-    var contentID = document.getElementById('content').firstElementChild.id;
-    var wideApplicable = (contentID === "profile" || contentID === "group" || contentID === "public");
+    const contentID = document.getElementById('content').firstElementChild.id;
+    const wideApplicable = (contentID === 'profile' || contentID === 'group' || contentID === 'public');
     wide = (document.getElementById('narrow_column') && wideApplicable) ? (document.getElementById('narrow_column').getBoundingClientRect().bottom < 0) : true;
     if (wide && wideApplicable) {
         document.getElementById('wide_column').classList.add('wide');

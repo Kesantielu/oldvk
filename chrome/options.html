@@ -3,31 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Options</title>
-    <style>
-        body {
-            min-width: 320px;
-            margin: 10px
-        }
-
-        #options > div {
-            margin-bottom: 5px;
-        }
-
-        label.option input {
-            margin-right: 5px
-        }
-
-        #status {
-            color: #3F7F3A;
-            min-height: 15px;
-        }
-
-        #status.hide {
-            opacity: 0;
-            transition: opacity 2s ease-in;
-        }
-    </style>
-
+    <link rel="stylesheet" href="options.css">
 </head>
 <body>
 <form id="options">
@@ -57,7 +33,11 @@
     </div>
     <div>
         <input type="checkbox" id="reactions" name="reactions" disabled>
-        <label for="reactions" id="reactions_label" class="option" data-l10n-id="option_reactions"></label>
+        <label for="reactions" id="reactions_label" class="option" data-l10n-id="option_reactions" disabled></label>
+    </div>
+    <div id="layout_wrap">
+        <input type="range" id="layout" name="layout" min="791" max="1161" step="10">
+        <label for="layout" id="layout_label" class="option" data-l10n-id="option_layout"></label>
     </div>
     <div id="status"></div>
 </form>
