@@ -25,5 +25,6 @@ node build.js
 * `oldvk-{version}-v2.crx`: то же, что и предыдущий, только тип расширения CRXv2, для старых браузеров, основанных на движке Chromium до 64 версии
 * `oldvk-{version}-v3.crx`: Manifest v3, для Chrome 88+ и Firefox 101+ (в работе, сборка пока недоступна)
 * `oldvk-{version}.xpi`: для Firefox от 48 версии
-* `oldvk-{version}-jetpack.xpi`: для Pale Moon и Firefox до 48 версии
+* `oldvk-{version}-jetpack.xpi`: для Pale Moon и Firefox до 48 версии (устарело, выпуск будет завершен)
+* `oldvk-{version}-pm.xpi`: для Pale Moon и Firefox до 52 версии (Bootstrapped, замена версии Jetpack, сборка пока недоступна)
 * `key.pem`: закрытый ключ для подписи расширений CRX
