@@ -7,6 +7,7 @@ crx: Opera, Chromium
 crx2: Chromium <60, Yandex <17.9
 xpi: Mozilla Firefox 48+
 jpm: Pale Moon 28+, Mozilla Firefox 45-47
+donate: Поддержать донатом
 ---
 
 ## Что нового {#relnotes}
