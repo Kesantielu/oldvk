@@ -91,6 +91,8 @@ jpm: Pale Moon 28+, Mozilla Firefox 45-47
 Разработчики будут очень благодарны за любую помощь
 
 - **QIWI** +77011040913
-- **Yandex** 410012432431146
+- **Mastercard**: 5269 9400 1074 6412 (KZ, Евразийский банк)
+- **Binance Pay**: 247511445
 - **Bitcoin** 1PyEGc9WeeZMQgHQQQQUGW1kThbN5XckvS
 - **Ethereum** 0xb758589c1f467e0c727ee2f94432f5c9b233762b
+- ~~**Yandex** 410012432431146~~
