@@ -75,7 +75,7 @@ console.log('Сборка версии для Firefox...');
 
 // Подготовка manifest.json для Firefox
 
-manifest.applications = {"gecko": {"id": "oldvk@dasefern.com", "strict_min_version": "48.0"}}
+manifest.applications = {"gecko": {"id": "oldvk@dasefern.com", "strict_min_version": "60.0"}}
 fse.writeFileSync(tmpdir + '/manifest.json', JSON.stringify(manifest));
 
 // Упаковка расширения в XPI
