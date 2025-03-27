@@ -1,0 +1,100 @@
+{
+    "manifest_version": 3,
+    "name": "__MSG_appName__",
+    "description": "__MSG_appDesc__",
+    "version": "62.0.3",
+    "default_locale": "en",
+    "author": "Kesantielu Dasefern",
+    "homepage_url": "https://kesantielu.github.io/oldvk",
+    "minimum_chrome_version": "88",
+    "icons": {
+        "128": "oldvk-128.png",
+        "48": "oldvk-48.png",
+        "64": "oldvk-64.png"
+    },
+    "action": {
+        "default_icon": "oldvk-48.png",
+        "default_popup": "content/popup.html"
+    },
+    "permissions": [
+        "tabs",
+        "storage",
+        "notifications",
+        "management"
+    ],
+    "host_permissions": [
+        "*://*.vk.com/*"
+    ],
+    "background": {
+        "service_worker": "content/events.js"
+    },
+    "content_scripts": [
+        {
+            "all_frames": true,
+            "exclude_matches": [
+                "*://vk.com/notifier.php*",
+                "*://vk.com/al_*.php*",
+                "*://vk.com/upload_fails.php*",
+                "*://vk.com/ads_rotate.php*",
+                "*://vk.com/share.php*",
+                "*://vk.com/like.php*",
+                "*://vk.com/wkview.php*",
+                "*://vk.com/login.php*",
+                "*://*.vk.com/q_frame.php*",
+                "*://vk.com/login.php*",
+                "*://vk.com/*.svg*",
+                "*://vk.com/widget_*.php*",
+                "*://m.vk.com/*"
+            ],
+            "js": [
+                "lib/lib.js",
+                "content/mainStart.js"
+            ],
+            "matches": [
+                "*://*.vk.com/*"
+            ],
+            "run_at": "document_start"
+        },
+        {
+            "all_frames": true,
+            "exclude_matches": [
+                "*://vk.com/notifier.php*",
+                "*://vk.com/al_*.php*",
+                "*://vk.com/upload_fails.php*",
+                "*://vk.com/ads_rotate.php*",
+                "*://vk.com/share.php*",
+                "*://vk.com/like.php*",
+                "*://vk.com/wkview.php*",
+                "*://vk.com/login.php*",
+                "*://*.vk.com/q_frame.php*",
+                "*://vk.com/login.php*",
+                "*://vk.com/*.svg*",
+                "*://vk.com/widget_*.php*",
+                "*://m.vk.com/*"
+            ],
+            "js": [
+                "content/mainEnd.js"
+            ],
+            "matches": [
+                "*://*.vk.com/*"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "options_page": "content/options.html",
+    "options_ui": {
+        "page": "content/options.html"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "content/*.css",
+                "content/injectStart.js",
+                "content/injectEnd.js"
+            ],
+            "matches": [
+                "*://*.vk.com/*"
+            ]
+        }
+    ]
+}
