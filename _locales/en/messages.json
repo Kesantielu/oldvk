@@ -1,0 +1,63 @@
+{
+    "appDesc": {
+        "message": "The extension, which brings back old design of VK"
+    },
+    "appName": {
+        "message": "Old Design VK"
+    },
+    "developing": {
+        "message": "Developing"
+    },
+    "enable": {
+        "message": "Enable or disable extension"
+    },
+    "option_audio": {
+        "message": "Show audio album covers"
+    },
+    "option_cover": {
+        "message": "Use adapted community covers"
+    },
+    "option_date": {
+        "message": "Show post date on top"
+    },
+    "option_font": {
+        "message": "Use large fonts"
+    },
+    "option_im": {
+        "message": "Show images on buttons instead of text in messages"
+    },
+    "option_reactions": {
+        "description": "",
+        "message": "Enable post reactions"
+    },
+    "option_viewer": {
+        "message": "Use new photo viewer"
+    },
+    "option_profile": {
+        "message": "Enable only old profile design"
+    },
+    "option_layout": {
+        "message": "Layout width"
+    },
+    "options": {
+        "message": "Options"
+    },
+    "save": {
+        "message": "Save"
+    },
+    "saved": {
+        "message": "Options saved, refresh the page"
+    },
+    "reload": {
+        "message": "Please, refresh the page"
+    },
+    "styleVersion": {
+        "message": "Extension version"
+    },
+    "support": {
+        "message": "Support"
+    },
+    "updateStyle": {
+        "message": "Update style"
+    }
+}

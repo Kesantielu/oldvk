@@ -13,7 +13,9 @@
         "64": "oldvk-64.png"
     },
     "action": {
-        "default_icon": "oldvk-48.png",
+        "default_icon": {
+            "48": "oldvk-48.png"
+        },
         "default_popup": "content/popup.html"
     },
     "permissions": [
@@ -41,7 +43,6 @@
                 "*://vk.com/wkview.php*",
                 "*://vk.com/login.php*",
                 "*://*.vk.com/q_frame.php*",
-                "*://vk.com/login.php*",
                 "*://vk.com/*.svg*",
                 "*://vk.com/widget_*.php*",
                 "*://m.vk.com/*"
@@ -67,7 +68,6 @@
                 "*://vk.com/wkview.php*",
                 "*://vk.com/login.php*",
                 "*://*.vk.com/q_frame.php*",
-                "*://vk.com/login.php*",
                 "*://vk.com/*.svg*",
                 "*://vk.com/widget_*.php*",
                 "*://m.vk.com/*"
