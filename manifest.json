@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "__MSG_appName__",
     "description": "__MSG_appDesc__",
-    "version": "62.0.3",
+    "version": "62.0.4",
     "default_locale": "en",
     "author": "Kesantielu Dasefern",
     "homepage_url": "https://kesantielu.github.io/oldvk",
@@ -43,6 +43,7 @@
                 "*://vk.com/wkview.php*",
                 "*://vk.com/login.php*",
                 "*://*.vk.com/q_frame.php*",
+                "*://*.vk.com/q_frame.html*",
                 "*://vk.com/*.svg*",
                 "*://vk.com/widget_*.php*",
                 "*://m.vk.com/*"
@@ -68,6 +69,7 @@
                 "*://vk.com/wkview.php*",
                 "*://vk.com/login.php*",
                 "*://*.vk.com/q_frame.php*",
+                "*://*.vk.com/q_frame.html*",
                 "*://vk.com/*.svg*",
                 "*://vk.com/widget_*.php*",
                 "*://m.vk.com/*"
