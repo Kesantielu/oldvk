@@ -19,7 +19,15 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <meta property="og:image" content="https://kesantielu.github.io/oldvk/oldvk-200.png">
     <link rel="shortcut icon" href="oldvk-48.png">
-	<script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+		<style>
+			.btn.attention {
+				font-weight: bold;
+				color: #FFF;
+				display: table;
+				margin: 1em auto 0;
+			}
+		</style>
   </head>
   <body>
     <header class="page-header" role="banner">
@@ -31,6 +39,7 @@
 	  <a id="crx2-link" class="btn" href="#">{{ page.crx2 }}</a>
 	  <a id="firefox-webext-link" class="btn" onclick="return installF(e);" href="#">{{ page.xpi }}</a> 
 	  <a id="firefox-link" class="btn" onclick="return installF(e);" href="#">{{ page.jpm }}</a>
+	  <a id="donate-btn" class="btn attention" href="#donate">{{ page.donate }}</a>
     </header>
     <main id="content" class="main-content" role="main">
       {{ content }}
