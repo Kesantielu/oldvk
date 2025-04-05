@@ -1,0 +1,176 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+:root {
+  --color-primary: #007DFE;
+  --color-secondary: #00C4F4;
+  --color-text: #333;
+  --color-text-light: #767676;
+  --color-bg: #fff;
+  --color-border: #dce6f0;
+  --color-code-bg: #f3f6fa;
+  --color-link: #007DFE;
+}
+
+body {
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.page-header {
+  background-color: var(--color-primary);
+  background-image: linear-gradient(120deg, var(--color-primary), var(--color-secondary));
+  padding: 2rem 4rem;
+  text-align: center;
+}
+
+.project-name {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-size: 2.25rem;
+}
+
+.project-tagline {
+  margin-bottom: 2rem;
+  font-weight: normal;
+  opacity: 0.8;
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.3rem;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+.btn:hover {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+}
+
+.main-content {
+  max-width: 64rem;
+  padding: 2rem;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: normal;
+  color: var(--color-primary);
+}
+
+.main-content code {
+  padding: 2px 4px;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  color: var(--color-text);
+  background-color: var(--color-code-bg);
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.main-content pre {
+  padding: 0.8rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  color: var(--color-text);
+  background-color: var(--color-code-bg);
+  border-radius: 0.3rem;
+  overflow: auto;
+}
+
+.main-content pre > code {
+  padding: 0;
+  margin: 0;
+  color: var(--color-text);
+  background-color: transparent;
+  border: 0;
+  font-size: 0.9rem;
+}
+
+.main-content blockquote {
+  padding: 0 1rem;
+  margin-left: 0;
+  border-left: 0.3rem solid var(--color-primary);
+  color: var(--color-text-light);
+}
+
+.main-content a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.main-content a:hover {
+  text-decoration: underline;
+}
+
+.site-footer {
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: solid 1px var(--color-border);
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+.post-meta {
+  margin-bottom: 1.5rem;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.post-meta .category {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  background: var(--color-code-bg);
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 42em) {
+  .page-header {
+    padding: 1.5rem;
+  }
+  
+  .project-name {
+    font-size: 1.75rem;
+  }
+  
+  .project-tagline {
+    font-size: 1rem;
+  }
+  
+  .btn {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .main-content {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
