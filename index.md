@@ -2,12 +2,14 @@
 title: Старый дизайн ВКонтакте
 layout: index
 version: "63"
-chrome: Google Chrome, Yandex Browser
-crx: Opera, Chromium
-xpi: Mozilla Firefox 91+
+chrome: Google Chrome 88+, Yandex Browser 21+
+crx: Opera 74+, Chromium 88+
+xpi: Mozilla Firefox 78+
 jpm: Pale Moon 32+
 donate: Поддержать донатом
 ---
+
+### Пока установить расширение нельзя
 
 ## Что нового {#relnotes}
 
