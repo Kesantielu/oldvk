@@ -35,10 +35,9 @@
       <h1 class="project-name">{{ page.shortname | default: site.shortname }}</h1>
       <h2 class="project-tagline">Старый дизайн ВКонтакте. Версия {{ page.version }}</h2>
 	  <h3>Выберите версию браузера:</h3>
-	  <a id="chrome-link" class="btn" onclick="installC();" href="#">{{ page.chrome }}</a>
-	  <a id="opera-link" class="btn" href="#">{{ page.crx }}</a>
-	  <a id="crx2-link" class="btn" href="#">{{ page.crx2 }}</a>
-	  <a id="firefox-webext-link" class="btn" onclick="return installF(e);" href="#">{{ page.xpi }}</a> 
+	  <a class="btn" href="#">{{ page.chrome }}</a>
+	  <a class="btn" href="#">{{ page.crx }}</a>
+	  <a class="btn" href="#">{{ page.xpi }}</a> 
 	  <a id="firefox-link" class="btn" onclick="return installF(e);" href="#">{{ page.jpm }}</a>
 	  <a id="donate-btn" class="btn attention" href="#donate">{{ page.donate }}</a>
     </header>
