@@ -8,27 +8,47 @@
     "homepage_url": "https://kesantielu.github.io/oldvk",
     "minimum_chrome_version": "88",
     "icons": {
-        "128": "oldvk-128.png",
-        "48": "oldvk-48.png",
-        "64": "oldvk-64.png"
+        "128": "icons/oldvkn-128.png",
+        "96": "icons/oldvkn-96.png",
+        "64": "icons/oldvkn-64.png",
+        "48": "icons/oldvkn-48.png",
+        "38": "icons/oldvkn-38.png",
+        "32": "icons/oldvkn-32.png",
+        "19": "icons/oldvkn-19.png",
+        "16": "icons/oldvkn-16.png"
     },
     "action": {
         "default_icon": {
-            "48": "oldvk-48.png"
+            "128": "icons/oldvkn-128.png",
+            "96": "icons/oldvkn-96.png",
+            "64": "icons/oldvkn-64.png",
+            "48": "icons/oldvkn-48.png",
+            "38": "icons/oldvkn-38.png",
+            "32": "icons/oldvkn-32.png",
+            "19": "icons/oldvkn-19.png",
+            "16": "icons/oldvkn-16.png"
         },
+        "default_title": "__MSG_appDesc__",
         "default_popup": "content/popup.html"
     },
     "permissions": [
         "tabs",
         "storage",
         "notifications",
-        "management"
+        "management",
+        "webNavigation",
+        "webRequest",
+        "declarativeNetRequest"
     ],
     "host_permissions": [
         "*://*.vk.com/*"
     ],
     "background": {
-        "service_worker": "content/events.js"
+        "service_worker": "content/events.js",
+        "scripts": [
+            "lib/lib.js",
+            "content/events.js"
+        ]
     },
     "content_scripts": [
         {
@@ -49,7 +69,9 @@
                 "*://m.vk.com/*"
             ],
             "js": [
+                "lib/mustache.min.js",
                 "lib/lib.js",
+                "content/actions.js",
                 "content/mainStart.js"
             ],
             "matches": [
@@ -91,6 +113,7 @@
         {
             "resources": [
                 "content/*.css",
+                "lib/inject.js",
                 "content/injectStart.js",
                 "content/injectEnd.js"
             ],

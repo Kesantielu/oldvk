@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Options</title>
+    <link rel="stylesheet" href="options.css">
 </head>
 <body>
-
+<form id="options">
+    <!--<div class="option_group" id="group_new">
+        <div class="option">
+            <input type="checkbox" id="profile" name="profile" checked>
+            <label for="profile" id="profile_label" data-l10n-id="option_profile"></label>
+        </div>
+    </div>-->
+    <div class="option_group" id="group_classic">
+        <div class="option">
+            <input type="checkbox" id="optionCover">
+            <label for="optionCover" id="optionCover_label" data-l10n-id="option_cover"></label>
+        </div>
+        <div class="option">
+            <input type="checkbox" id="optionViewer">
+            <label for="optionViewer" id="optionViewer_label" data-l10n-id="option_viewer"></label>
+        </div>
+        <div class="option">
+            <input type="checkbox" id="optionFont">
+            <label for="optionFont" id="optionFont_label" data-l10n-id="option_font"></label>
+        </div>
+        <div class="option">
+            <input type="checkbox" id="optionAudio">
+            <label for="optionAudio" id="optionAudio_label" data-l10n-id="option_audio"></label>
+        </div>
+        <!--<div class="option">
+            <input type="checkbox" id="optionIm">
+            <label for="optionIm" id="optionIm_label" data-l10n-id="option_im"></label>
+        </div>-->
+        <div class="option">
+            <input type="checkbox" id="optionDate">
+            <label for="optionDate" id="optionDate_label" data-l10n-id="option_date"></label>
+        </div>
+        <div class="option">
+            <input type="checkbox" id="optionReactions" disabled>
+            <label for="optionReactions" id="optionReactions_label" data-l10n-id="option_reactions"></label>
+        </div>
+        <div id="layout_wrap">
+            <input type="range" id="layout" name="layout" min="791" max="1161" step="10">
+            <label for="layout" id="layout_label" data-l10n-id="option_layout"></label>
+        </div>
+    </div>
+</form>
+<div id="status"></div>
+<script type="text/javascript" src="../lib/lib.js"></script>
+<script type="module" src="options.js"></script>
 </body>
 </html>
